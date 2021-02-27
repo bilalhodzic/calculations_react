@@ -7,20 +7,12 @@ import {
   Modal,
   Input,
 } from "@material-ui/core";
-import {
-  makeStyles,
-  ThemeProvider,
-  createMuiTheme,
-} from "@material-ui/core/styles";
-
-const theme = createMuiTheme({
-  typography: {
-    fontFamily: ["Poppins", "Sans-serif"].join(","),
-  },
-});
+import { useHistory } from "react-router-dom";
+import { makeStyles } from "@material-ui/core/styles";
 
 export default function Login() {
   const [openDialog, setOpenDialog] = React.useState(false);
+  const history = useHistory();
 
   React.useEffect(() => {
     //call function while first time render
@@ -29,60 +21,58 @@ export default function Login() {
   const classes = useStyles();
 
   return (
-    <ThemeProvider theme={theme}>
-      <Container className={classes.root}>
-        <img
-          src={"/slider-image-3 1.png"}
-          alt={"background"}
-          className={classes.bgImage}
-        />
-        <Box className={classes.calcButton}>Calculation</Box>
-        {!openDialog && (
-          <>
-            <Typography className={classes.header}>Calculation</Typography>
-            <Box className={classes.loginText}>
-              But I must explain to you how all this mistaken idea of denouncing
-              pleasure and praising pain was born and I will give{" "}
-            </Box>
-            <Button
-              className={classes.button}
-              onClick={() => setOpenDialog(true)}
-            >
-              Log in
-            </Button>
-          </>
-        )}
-        <Modal
-          open={openDialog}
-          className={classes.dialog}
-          onClose={() => setOpenDialog(false)}
-        >
-          <Box className={classes.paper}>
-            <Typography className={classes.paperHeader}>Log in</Typography>
-            <Typography className={classes.paperText}>
-              Enter your details
-            </Typography>
-            <Input
-              placeholder="Email or username"
-              disableUnderline={true}
-              className={classes.input}
-            />
-            <Input
-              type="password"
-              placeholder="Password"
-              disableUnderline={true}
-              className={classes.input}
-            />
-            <Button
-              className={classes.button2}
-              onClick={() => console.log("ovdje")}
-            >
-              Log in
-            </Button>
+    <Container className={classes.root}>
+      <img
+        src={"/slider-image-3 1.png"}
+        alt={"background"}
+        className={classes.bgImage}
+      />
+      <Box className={classes.calcButton}>Calculation</Box>
+      {!openDialog && (
+        <>
+          <Typography className={classes.header}>Calculation</Typography>
+          <Box className={classes.loginText}>
+            But I must explain to you how all this mistaken idea of denouncing
+            pleasure and praising pain was born and I will give{" "}
           </Box>
-        </Modal>
-      </Container>
-    </ThemeProvider>
+          <Button
+            className={classes.button}
+            onClick={() => setOpenDialog(true)}
+          >
+            Log in
+          </Button>
+        </>
+      )}
+      <Modal
+        open={openDialog}
+        className={classes.dialog}
+        onClose={() => setOpenDialog(false)}
+      >
+        <Box className={classes.paper}>
+          <Typography className={classes.paperHeader}>Log in</Typography>
+          <Typography className={classes.paperText}>
+            Enter your details
+          </Typography>
+          <Input
+            placeholder="Email or username"
+            disableUnderline={true}
+            className={classes.input}
+          />
+          <Input
+            type="password"
+            placeholder="Password"
+            disableUnderline={true}
+            className={classes.input}
+          />
+          <Button
+            className={classes.button2}
+            onClick={() => history.push("/home")}
+          >
+            Log in
+          </Button>
+        </Box>
+      </Modal>
+    </Container>
   );
 }
 
