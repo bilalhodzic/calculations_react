@@ -13,6 +13,7 @@ export default function Dashboard() {
   return (
     <Layout>
       <Container className={classes.root}>This is Dashboard</Container>
+      <Container className={classes.root}>This is Dashboard2</Container>
     </Layout>
   );
 }
@@ -22,6 +23,7 @@ const useStyles = makeStyles((theme) => ({
   root: {
     "& > *": {
       margin: theme.spacing(1),
+      //height: 200,
     },
   },
 }));

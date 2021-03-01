@@ -113,6 +113,7 @@ const useStyles = makeStyles((theme) => ({
     height: 65,
     left: calculate(134),
     top: calculate(50, 1024),
+    minWidth: 150,
   },
   header: {
     position: "absolute",
@@ -136,6 +137,7 @@ const useStyles = makeStyles((theme) => ({
     lineHeight: "217.5%",
     fontSize: 25,
     fontStyle: "normal",
+    minWidth: 500,
   },
   button: {
     position: "absolute",
@@ -143,7 +145,7 @@ const useStyles = makeStyles((theme) => ({
     height: 51.81,
     left: calculate(732),
     top: calculate(703.81, 1024),
-
+    minWidth: 120,
     background: "#21344D",
     borderRadius: "9.77948px",
     textTransform: "none",

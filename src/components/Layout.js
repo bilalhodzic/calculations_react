@@ -65,6 +65,7 @@ export default function Layout(props) {
             </ListItem>
           ))}
         </List>
+        <Button className={classes.logoutbtn}>Log Out</Button>
       </Drawer>
       {props.children}
     </Box>
@@ -78,10 +79,8 @@ const calculate = (objectPx, totalPx = 1440) => {
 //add new styles here
 const useStyles = makeStyles((theme) => ({
   root: {
-    "& > *": {
-      // margin: theme.spacing(1),
-    },
-    display: "flex",
+    marginTop: theme.spacing(10),
+    marginLeft: `max(180px, ${calculate(266)})`, // max calculation similarly picks the largest from a comma separated list of values (of any length).
   },
   drawer: {
     width: calculate(266),
@@ -166,5 +165,22 @@ const useStyles = makeStyles((theme) => ({
     fontSize: 25,
     minWidth: 33,
     marginBottom: theme.spacing(1),
+  },
+  logoutbtn: {
+    display: "flex",
+    borderRadius: 23,
+    border: "1px solid white",
+    color: "white",
+    textTransform: "none",
+    alignSelf: "center",
+    position: "absolute",
+    bottom: theme.spacing(10),
+    fontWeight: 500,
+    fontSize: 14.25,
+    width: 100,
+    height: 36,
+    "&:hover": {
+      backgroundColor: "#36547B",
+    },
   },
 }));
