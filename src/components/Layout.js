@@ -1,4 +1,5 @@
 import React from "react";
+import { useHistory } from "react-router-dom";
 import {
   Button,
   Typography,
@@ -17,18 +18,22 @@ const drawerList = [
   {
     name: "Dashboard",
     icon: <HomeIcon />,
+    pathname: "/home",
   },
   {
     name: "Calculations",
     icon: <CalcIcon />,
+    pathname: "/calculations",
   },
   {
     name: "New Calculation",
     icon: "+ ",
+    pathname: "/add",
   },
 ];
 
 export default function Layout(props) {
+  const history = useHistory();
   React.useEffect(() => {
     //call function while first time render
   }, []);
@@ -47,12 +52,22 @@ export default function Layout(props) {
           <Box className={classes.drawerHeader}>
             <Typography>Calculation</Typography>
           </Box>
-          <Button className={classes.headerButton}>+ New Calculations</Button>
+          <Button
+            className={classes.headerButton}
+            onClick={() => history.push("/add")}
+          >
+            + New Calculations
+          </Button>
         </Box>
         <Box className={classes.footer}></Box>
         <List className={classes.list}>
           {drawerList.map((list, index) => (
-            <ListItem className={classes.listButton} button key={list.name}>
+            <ListItem
+              className={classes.listButton}
+              button
+              key={list.name}
+              onClick={() => history.push(list.pathname)}
+            >
               <ListItemIcon className={classes.listIcon}>
                 {list.icon}
               </ListItemIcon>
