@@ -18,7 +18,7 @@ export function ArrowIcon(props) {
         x2="9.5"
         y2="39.1738"
         stroke={props.color}
-        stroke-width="3"
+        strokeWidth="3"
       />
     </svg>
   );

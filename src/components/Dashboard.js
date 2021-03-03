@@ -1,17 +1,65 @@
 import React from "react";
 import Layout from "./Layout";
-import { Paper, Divider, Box, Typography } from "@material-ui/core";
+import { Paper, Divider, Box } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
+import { BuildingIcon } from "./svgIcons/BuildingIcon";
+import { HospitalIcon } from "./svgIcons/HospitalIcon";
+import { SchoolIcon } from "./svgIcons/SchoolIcon";
+import { HotelIcon } from "./svgIcons/HotelIcon";
 
 import CalcBox from "./CalcBox";
+import ScrollList from "./ScrollList";
 
 export default function Dashboard() {
   const [totalBuildings, setTotalBuildings] = React.useState(32456);
   const [totalHospital, setTotalHospital] = React.useState(15256);
   const [totalSchool, setTotalSchool] = React.useState(15256);
+  const [latestCalc, setLatestCalc] = React.useState([]);
 
   React.useEffect(() => {
     //call function while first time render
+    setLatestCalc([
+      {
+        name: "Building in Stockholm Sweden",
+        price: "1.854.456",
+        icon: <BuildingIcon color="#21344D" size={49} />,
+        type: "Building",
+        color: "#0EBD00",
+        backgroundColor: "#9BFF93",
+      },
+      {
+        name: "Hospital in Stockholm Sweden",
+        price: "2.854.456",
+        icon: <HospitalIcon color="#21344D" size={49} />,
+        type: "Hospital",
+        color: "#ff4100",
+        backgroundColor: "#FFcebd",
+      },
+      {
+        name: "School in Stockholm Sweden",
+        price: "854.456",
+        icon: <SchoolIcon color="#21344D" size={49} />,
+        type: "School",
+        color: "#00adff",
+        backgroundColor: "#b4e7ff",
+      },
+      {
+        name: "School in Norway",
+        price: "1.054.456",
+        icon: <SchoolIcon color="#21344D" size={49} />,
+        type: "School",
+        color: "#00adff",
+        backgroundColor: "#b4e7ff",
+      },
+      {
+        name: "Hotel in Stockholm Sweden",
+        price: "4.854.456",
+        icon: <HotelIcon color="#21344D" size={49} />,
+        type: "Hotel",
+        color: "#ff4100",
+        backgroundColor: "#FFcebd",
+      },
+    ]);
   }, []);
 
   const classes = useStyles();
@@ -42,6 +90,7 @@ export default function Dashboard() {
           />
         </Box>
         Latest Calculations
+        <ScrollList list={latestCalc} />
       </Paper>
     </Layout>
   );

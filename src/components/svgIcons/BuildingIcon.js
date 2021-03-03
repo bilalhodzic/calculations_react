@@ -2,8 +2,8 @@ export function BuildingIcon(props) {
   return (
     <svg
       {...props}
-      width="26"
-      height="26"
+      width={props.size || 26}
+      height={props.size || 26}
       viewBox="0 0 26 26"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
