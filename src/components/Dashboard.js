@@ -56,8 +56,8 @@ export default function Dashboard() {
         price: "4.854.456",
         icon: <HotelIcon color="#21344D" size={49} />,
         type: "Hotel",
-        color: "#ff4100",
-        backgroundColor: "#FFcebd",
+        color: "#3F75BD",
+        backgroundColor: "#C2DCFF",
       },
     ]);
   }, []);

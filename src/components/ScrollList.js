@@ -3,6 +3,7 @@ import { Box, Fab, Typography } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 import { ReactComponent as ArrowRigth } from "../images/arrowRight.svg";
 import { ReactComponent as ArrowLeft } from "../images/arrowLeft.svg";
+import ColoredBox from "./ColoredBox";
 
 export default function ScrollList(props) {
   const list = props.list;
@@ -15,7 +16,7 @@ export default function ScrollList(props) {
   React.useEffect(() => {
     //call function while first time render
     setDisplayList(list.slice(startSlice, endSlice));
-  }, []);
+  }, [list]);
 
   const handleNextItem = () => {
     //execute only if there is more element in list
@@ -61,12 +62,13 @@ export default function ScrollList(props) {
             >
               {el.price}$
             </Typography>
-            <Box
-              className={classes.coloredBox}
-              style={{ backgroundColor: el.backgroundColor, color: el.color }}
-            >
-              {el.type}
-            </Box>
+
+            <ColoredBox
+              color={el.color}
+              backgroundcolor={el.backgroundColor}
+              text={el.type}
+              position="absolute"
+            />
           </Box>
         ))}
       <Fab

@@ -80,7 +80,9 @@ export default function Layout(props) {
             </ListItem>
           ))}
         </List>
-        <Button className={classes.logoutbtn}>Log Out</Button>
+        <Button className={classes.logoutbtn} onClick={() => history.push("/")}>
+          Log Out
+        </Button>
       </Drawer>
       {props.children}
     </Box>
@@ -94,6 +96,7 @@ const calculate = (objectPx, totalPx = 1440) => {
 //add new styles here
 const useStyles = makeStyles((theme) => ({
   root: {
+    //backgroundColor: "#E5E5E5",
     marginTop: theme.spacing(10),
     marginLeft: `max(180px, ${calculate(266)})`, // max calculation similarly picks the largest from a comma separated list of values (of any length).
   },
@@ -109,7 +112,7 @@ const useStyles = makeStyles((theme) => ({
     minWidth: 180,
   },
   drawerHeader: {
-    height: "-webkit-fill-available",
+    height: "100%",
     width: calculate(267),
     backgroundColor: "#21344d",
     display: "flex",
