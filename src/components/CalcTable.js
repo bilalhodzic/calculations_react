@@ -38,7 +38,6 @@ const rows = [
     Date: "02/05/2021",
     Type: { text: "Building", color: "#0EBD00", backgroundcolor: "#9BFF93" },
     Area: "Adress1",
-    Actions: "actions",
   },
   {
     id: 2,
@@ -136,6 +135,8 @@ export default function Calctable(props) {
           backgroundcolor={params.value.backgroundcolor}
         />
       ),
+      sortComparator: (v1, v2, params1) => v1.text > v2.text,
+      filterable: false,
     },
     {
       field: "Area",
