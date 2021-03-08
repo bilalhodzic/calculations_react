@@ -14,6 +14,7 @@ const theme = createMuiTheme({
   },
   palette: {
     primary: { 500: "#21344D" },
+    previous: { 500: "#bababa" },
   },
 });
 

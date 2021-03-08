@@ -1,6 +1,7 @@
 export function HotelIcon(props) {
   return (
     <svg
+      {...props}
       width={props.size || 30}
       height={props.size || 30}
       viewBox="0 0 108 108"
