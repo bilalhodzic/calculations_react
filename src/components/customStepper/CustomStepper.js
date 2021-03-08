@@ -34,7 +34,14 @@ const CustomConnector = withStyles({
 
 export default function CustomStepper(props) {
   const [activeStep, setActiveStep] = React.useState(1);
+  const [newCalculation, setNewCalculation] = React.useState({
+    ProjectType: "",
+  });
   const steps = [1, 2, 3, 4, 5];
+
+  const handleChange = (propName, propValue) => {
+    setNewCalculation({ ...newCalculation, [propName]: propValue });
+  };
 
   const handleNext = () => {
     setActiveStep((prevActiveStep) => prevActiveStep + 1);
@@ -47,12 +54,15 @@ export default function CustomStepper(props) {
   const SwitchStep = () => {
     switch (activeStep) {
       case 0:
-        return <Step1 />;
-        break;
+        return (
+          <Step1
+            handleChange={handleChange}
+            type={newCalculation.ProjectType}
+          />
+        );
 
       default:
         return "nothing";
-        break;
     }
   };
 
@@ -82,7 +92,7 @@ export default function CustomStepper(props) {
             color: "#21344d",
             visibility: activeStep === 0 ? "hidden" : "initial",
           }}
-          color="previous"
+          color="secondary"
           variant="contained"
         >
           Previous
