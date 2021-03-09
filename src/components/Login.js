@@ -14,10 +14,6 @@ export default function Login() {
   const [openDialog, setOpenDialog] = React.useState(false);
   const history = useHistory();
 
-  React.useEffect(() => {
-    //call function while first time render
-  }, []);
-
   const classes = useStyles();
 
   return (
@@ -30,17 +26,19 @@ export default function Login() {
       <Box className={classes.calcButton}>Calculation</Box>
       {!openDialog && (
         <>
-          <Typography className={classes.header}>Calculation</Typography>
-          <Box className={classes.loginText}>
-            But I must explain to you how all this mistaken idea of denouncing
-            pleasure and praising pain was born and I will give{" "}
+          <Box className={classes.box}>
+            <Typography className={classes.header}>Calculation</Typography>
+            <Typography className={classes.loginText}>
+              But I must explain to you how all this mistaken idea of denouncing
+              pleasure and praising pain was born and I will give{" "}
+            </Typography>
+            <Button
+              className={classes.button}
+              onClick={() => setOpenDialog(true)}
+            >
+              Log in
+            </Button>
           </Box>
-          <Button
-            className={classes.button}
-            onClick={() => setOpenDialog(true)}
-          >
-            Log in
-          </Button>
         </>
       )}
       <Modal
@@ -85,9 +83,6 @@ const calculate = (objectPx, totalPx = 1433) => {
 //add new styles here
 const useStyles = makeStyles((theme) => ({
   root: {
-    // "& > *": {
-    //   margin: theme.spacing(1),
-    // },
     color: "white",
     margin: 0,
     padding: 0,
@@ -110,48 +105,43 @@ const useStyles = makeStyles((theme) => ({
     position: "absolute",
     width: calculate(217.75),
     fontSize: 17.87,
-    height: 65,
+    height: 60,
     left: calculate(134),
     top: calculate(50, 1024),
-    minWidth: 150,
+
+    minWidth: 130,
+  },
+  box: {
+    position: "absolute",
+    left: calculate(662),
+    top: calculate(371, 1024),
+    fontSize: 15,
+    maxWidth: 620,
   },
   header: {
-    position: "absolute",
-    left: calculate(732),
-    top: calculate(371, 1024),
     fontWeight: 600,
     fontSize: 70,
-    height: 90,
     lineHeight: "128%",
     letterSpacing: "0.015em",
     color: "#FFFCFC",
-    //width: calculate(783, 1433),
+    fontSize: "9vmin",
   },
   loginText: {
-    position: "absolute",
-    height: calculate(110, 1024),
-    width: calculate(621),
-    left: calculate(732),
-    top: calculate(473, 1024),
-    fontWeight: 600,
+    fontWeight: 500,
     lineHeight: "217.5%",
-    fontSize: 25,
+    fontSize: "3.4vmin",
     fontStyle: "normal",
-    minWidth: 500,
   },
   button: {
-    position: "absolute",
-    width: calculate(170),
-    height: 51.81,
-    left: calculate(732),
-    top: calculate(703.81, 1024),
-    minWidth: 120,
+    width: calculate(170, 600),
+
+    minWidth: 100,
     background: "#21344D",
     borderRadius: "9.77948px",
     textTransform: "none",
     fontWeight: 500,
     color: "white",
-    fontSize: "24.221px",
+    fontSize: "3.3vmin",
     "&:hover": {
       background: "#1b2c44",
     },
@@ -177,12 +167,16 @@ const useStyles = makeStyles((theme) => ({
   paper: {
     outline: 0,
     background: "white",
-    width: 472,
+    maxWidth: 472,
+    minWidth: 330,
     height: 472,
     borderRadius: 50,
-    boxShadow: "5px 6px 19px 7px rgba(0, 0, 0, 0.25)",
     textAlign: "center",
     fontWeight: 500,
+    [theme.breakpoints.down("xs")]: {
+      width: "100%",
+      borderRadius: 0,
+    },
   },
   paperHeader: {
     color: "#606060",

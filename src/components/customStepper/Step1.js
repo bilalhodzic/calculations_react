@@ -1,5 +1,5 @@
 import React from "react";
-import { Box, Button, Paper, Typography } from "@material-ui/core";
+import { Box, Paper, Typography } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 import { SchoolIcon } from "../svgIcons/SchoolIcon";
 import { BuildingIcon } from "../svgIcons/BuildingIcon";
@@ -9,7 +9,7 @@ import { HomeIcon } from "../svgIcons/HomeIcon";
 import { ChurchIcon } from "../svgIcons/ChurchIcon";
 
 export default function Step1(props) {
-  const [projectType, setProjectType] = React.useState(props.type);
+  const projectType = props.type;
 
   const handleClickPaper = (prop) => {
     //setting the state property from parent component
