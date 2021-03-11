@@ -7,10 +7,6 @@ import { HospitalIcon } from "./svgIcons/HospitalIcon";
 import { SchoolIcon } from "./svgIcons/SchoolIcon";
 
 export default function CalcBox(props) {
-  React.useEffect(() => {
-    //call function while first time render
-  }, []);
-
   const SwithcIcon = () => {
     switch (props.icon) {
       case "building":

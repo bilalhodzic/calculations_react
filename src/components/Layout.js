@@ -9,10 +9,12 @@ import {
   ListItem,
   ListItemIcon,
   ListItemText,
+  Hidden,
 } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 import { ReactComponent as CalcIcon } from "../images/calc_icon.svg";
 import { ReactComponent as HomeIcon } from "../images/HomeIcon.svg";
+import { ReactComponent as MenuIcon } from "../images/burgerIcon.svg";
 
 const drawerList = [
   {
@@ -33,57 +35,81 @@ const drawerList = [
 ];
 
 export default function Layout(props) {
+  const [mobileOpen, setMobileOpen] = React.useState(false);
   const history = useHistory();
-  React.useEffect(() => {
-    //call function while first time render
-  }, []);
-
   const classes = useStyles();
+
+  const handleDrawer = () => {
+    setMobileOpen(!mobileOpen);
+  };
+  const drawer = (
+    <>
+      <Box className={classes.footer}></Box>
+      <List className={classes.list}>
+        {drawerList.map((list, index) => (
+          <ListItem
+            className={classes.listButton}
+            button
+            key={list.name}
+            onClick={() => history.push(list.pathname)}
+          >
+            <ListItemIcon className={classes.listIcon}>
+              {list.icon}
+            </ListItemIcon>
+            <ListItemText disableTypography={true} className={classes.listText}>
+              {list.name}
+            </ListItemText>
+          </ListItem>
+        ))}
+      </List>
+      <Button className={classes.logoutbtn} onClick={() => history.push("/")}>
+        Log Out
+      </Button>
+    </>
+  );
 
   return (
     <Box className={classes.root}>
-      <Drawer
-        className={classes.drawer}
-        classes={{ paper: classes.drawerPaper }}
-        variant="permanent"
-        anchor="left"
-      >
-        <Box className={classes.header}>
-          <Box className={classes.drawerHeader}>
-            <Typography>Calculation</Typography>
-          </Box>
-          <Button
-            className={classes.headerButton}
-            onClick={() => history.push("/add")}
-          >
-            + New Calculations
-          </Button>
+      <Box className={classes.header}>
+        <Box className={classes.drawerHeader}>
+          <Typography>Calculation</Typography>
         </Box>
-        <Box className={classes.footer}></Box>
-        <List className={classes.list}>
-          {drawerList.map((list, index) => (
-            <ListItem
-              className={classes.listButton}
-              button
-              key={list.name}
-              onClick={() => history.push(list.pathname)}
-            >
-              <ListItemIcon className={classes.listIcon}>
-                {list.icon}
-              </ListItemIcon>
-              <ListItemText
-                disableTypography={true}
-                className={classes.listText}
-              >
-                {list.name}
-              </ListItemText>
-            </ListItem>
-          ))}
-        </List>
-        <Button className={classes.logoutbtn} onClick={() => history.push("/")}>
-          Log Out
+        <Button
+          className={classes.headerButton}
+          onClick={() => history.push("/add")}
+        >
+          + New Calculations
         </Button>
-      </Drawer>
+        <Hidden smUp>
+          <MenuIcon className={classes.menuIcon} onClick={handleDrawer} />
+        </Hidden>
+      </Box>
+      <Hidden smUp>
+        <Drawer
+          className={classes.drawer}
+          classes={{ paper: classes.drawerPaper }}
+          variant="temporary"
+          onClose={handleDrawer}
+          open={mobileOpen}
+          anchor="right"
+          ModalProps={{
+            keepMounted: true, // Better open performance on mobile.
+          }}
+        >
+          {drawer}
+        </Drawer>
+      </Hidden>
+      <Hidden xsDown>
+        <Drawer
+          className={classes.drawer}
+          classes={{ paper: classes.drawerPaper }}
+          variant="permanent"
+          anchor="left"
+        >
+          {drawer}
+        </Drawer>
+      </Hidden>
+
       {props.children}
     </Box>
   );
@@ -104,12 +130,19 @@ const useStyles = makeStyles((theme) => ({
     width: calculate(266),
     flexShrink: 0,
   },
+  menuIcon: {
+    margin: theme.spacing(3),
+    "&:hover": {
+      cursor: "pointer",
+    },
+  },
   drawerPaper: {
     color: "white",
     width: calculate(266),
     backgroundColor: "#21344D",
     textAlign: "center",
     minWidth: 180,
+    marginTop: 55,
   },
   drawerHeader: {
     height: "100%",
@@ -122,6 +155,7 @@ const useStyles = makeStyles((theme) => ({
     alignItems: "inherit",
     "& p": {
       fontSize: 22,
+      color: "white",
     },
   },
   footer: {
@@ -130,12 +164,17 @@ const useStyles = makeStyles((theme) => ({
     backgroundColor: "white",
     position: "fixed",
     bottom: 0,
+    [theme.breakpoints.down("xs")]: {
+      display: "none",
+    },
   },
   header: {
     backgroundColor: "white",
     width: "100%",
-    height: calculate(79, 1024),
-    position: "fixed",
+    height: 54,
+    position: "absolute",
+    top: 0,
+    left: 0,
     display: "flex",
     justifyContent: "space-between",
     alignItems: "center",
@@ -153,6 +192,9 @@ const useStyles = makeStyles((theme) => ({
     minWidth: 220,
     "&:hover": {
       background: "#1b2c44",
+    },
+    [theme.breakpoints.down("xs")]: {
+      display: "none",
     },
   },
   list: {
@@ -172,11 +214,17 @@ const useStyles = makeStyles((theme) => ({
     "&:focus": {
       background: "#36547B",
     },
+    [theme.breakpoints.down("xs")]: {
+      height: 45,
+    },
   },
   listText: {
     fontSize: 19,
     fontWeight: 500,
     fontFamily: "Poppins",
+    [theme.breakpoints.down("xs")]: {
+      fontSize: 13,
+    },
   },
   listIcon: {
     color: "white",
@@ -192,9 +240,10 @@ const useStyles = makeStyles((theme) => ({
     textTransform: "none",
     alignSelf: "center",
     position: "absolute",
-    bottom: theme.spacing(10),
+    bottom: theme.spacing(12),
     fontWeight: 500,
     fontSize: 14.25,
+    marginBottom: 20,
     width: 100,
     height: 36,
     "&:hover": {
