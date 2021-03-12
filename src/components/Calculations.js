@@ -1,5 +1,12 @@
 import React from "react";
-import { Paper, InputBase, Select, MenuItem, Button } from "@material-ui/core";
+import {
+  Paper,
+  InputBase,
+  Select,
+  MenuItem,
+  Button,
+  Hidden,
+} from "@material-ui/core";
 import Layout from "./Layout";
 import { makeStyles } from "@material-ui/core/styles";
 import { ReactComponent as ArrowDown } from "../images/arrowDown.svg";
@@ -118,19 +125,29 @@ export default function Calculations() {
   return (
     <Layout>
       <Paper elevation={6} className={classes.paperHeader}>
-        <InputBase
-          placeholder="Search By Name..."
-          className={classes.input}
-          value={searchInput}
-          style={{ width: 300 }}
-          onChange={handleInputChange}
-        />
+        <Hidden xsDown>
+          <InputBase
+            placeholder="Search By Name..."
+            className={classes.input}
+            value={searchInput}
+            style={{ width: 300 }}
+            onChange={handleInputChange}
+          />
+        </Hidden>
+        <Hidden smUp>
+          <InputBase
+            placeholder="Search By Name..."
+            className={classes.input}
+            value={searchInput}
+            onChange={handleInputChange}
+          />
+        </Hidden>
         <Select
           value={selectValue}
           className={classes.input}
           disableUnderline
           onChange={handleSelectChange}
-          style={{ width: 150, paddingRight: 10 }}
+          style={{ paddingRight: 10 }}
           IconComponent={() => <ArrowDown />}
         >
           <MenuItem value={"none"}>Type</MenuItem>
@@ -164,7 +181,6 @@ const useStyles = makeStyles((theme) => ({
     margin: theme.spacing(5),
     marginTop: 0,
     marginBottom: 0,
-    //width: "calc(100% - 100px)",
     borderRadius: 7,
     padding: theme.spacing(2),
     paddingLeft: theme.spacing(2),
@@ -175,6 +191,12 @@ const useStyles = makeStyles((theme) => ({
     color: "black",
     fontWeight: 500,
     minWidth: 600,
+    [theme.breakpoints.down("xs")]: {
+      margin: theme.spacing(1),
+      minWidth: 0,
+      fontSize: 23,
+      // height: "100%",
+    },
   },
   paperHeader: {
     marginBottom: theme.spacing(2),
@@ -183,7 +205,19 @@ const useStyles = makeStyles((theme) => ({
     margin: theme.spacing(5),
     display: "flex",
     alignItems: "center",
+    minWidth: 600,
+
     justifyContent: "space-between",
+    [theme.breakpoints.down("xs")]: {
+      margin: theme.spacing(1),
+      height: "100%",
+      minWidth: 0,
+
+      flexDirection: "column",
+      "& > *": {
+        margin: 8,
+      },
+    },
   },
   input: {
     height: 50,
@@ -194,6 +228,13 @@ const useStyles = makeStyles((theme) => ({
     color: "#5e5e5e",
     paddingLeft: theme.spacing(2),
     marginLeft: theme.spacing(3),
+    width: 150,
+
+    [theme.breakpoints.down("xs")]: {
+      fontSize: 15,
+      marginLeft: 0,
+      width: "80%",
+    },
   },
 
   Btn: {
@@ -203,5 +244,13 @@ const useStyles = makeStyles((theme) => ({
     fontSize: 17.82,
     marginRight: theme.spacing(3),
     textTransform: "none",
+    [theme.breakpoints.down("xs")]: {
+      fontSize: 15,
+      marginRight: 0,
+      marginLeft: theme.spacing(5),
+      alignSelf: "flex-start",
+      width: 150,
+      height: "auto",
+    },
   },
 }));

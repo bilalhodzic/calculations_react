@@ -8,6 +8,7 @@ import { ReactComponent as EditIcon } from "../images/editIcon.svg";
 import { ReactComponent as InfoIcon } from "../images/infoIcon.svg";
 import { ReactComponent as DeleteIcon } from "../images/deleteIcon.svg";
 import { ReactComponent as WarningIcon } from "../images/WarningIcon.svg";
+import useWindowDimensions from "./windowDimension";
 
 //add pagination to the datagrid
 function CustomPagination(props) {
@@ -95,6 +96,8 @@ const rows = [
 
 export default function Calctable(props) {
   const [openDialog, setOpenDialog] = React.useState(false);
+  const { width } = useWindowDimensions();
+
   const data = props.data || rows;
   React.useEffect(() => {
     //call function while first time render
@@ -118,6 +121,7 @@ export default function Calctable(props) {
       headerClassName: "headerClass",
       headerAlign: "center",
       align: "center",
+      hide: width < 600 ? true : false,
     },
     {
       field: "Type",
@@ -125,6 +129,7 @@ export default function Calctable(props) {
       headerClassName: "headerClass",
       headerAlign: "center",
       cellClassName: "typeClass",
+      hide: width < 600 ? true : false,
 
       align: "center",
       width: 170,
@@ -145,6 +150,7 @@ export default function Calctable(props) {
       headerClassName: "headerClass",
       headerAlign: "center",
       align: "center",
+      hide: width < 600 ? true : false,
     },
     {
       field: "Actions",
@@ -201,10 +207,8 @@ export default function Calctable(props) {
         className={classes.dialog}
       >
         <Box className={classes.paper}>
-          <WarningIcon style={{ marginTop: 60 }} />
-          <Typography style={{ fontSize: 21.37, marginTop: 50 }}>
-            Are you Sure?
-          </Typography>
+          <WarningIcon />
+          <Typography style={{ fontSize: 21.37 }}>Are you Sure?</Typography>
           <Button
             className={classes.dialogbtn}
             color="primary"
@@ -267,6 +271,16 @@ const useStyles = makeStyles((theme) => ({
     borderRadius: 7,
     textAlign: "center",
     fontWeight: 500,
+    "& > *": {
+      marginTop: 60,
+    },
+    [theme.breakpoints.down("xs")]: {
+      width: "80%",
+      height: "auto",
+      "& > *": {
+        marginTop: 30,
+      },
+    },
   },
   dialog: {
     display: "flex",
@@ -279,7 +293,11 @@ const useStyles = makeStyles((theme) => ({
     height: 46,
     fontSize: 17.41,
     fontWeight: 500,
-    margin: theme.spacing(1),
-    marginTop: theme.spacing(10),
+    marginInline: theme.spacing(1),
+    [theme.breakpoints.down("xs")]: {
+      fontSize: 15,
+      height: "auto",
+      marginBottom: theme.spacing(2),
+    },
   },
 }));

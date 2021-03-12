@@ -125,13 +125,16 @@ const useStyles = makeStyles((theme) => ({
     //backgroundColor: "#E5E5E5",
     marginTop: theme.spacing(10),
     marginLeft: `max(180px, ${calculate(266)})`, // max calculation similarly picks the largest from a comma separated list of values (of any length).
+    [theme.breakpoints.down("xs")]: {
+      marginLeft: 0,
+    },
   },
   drawer: {
     width: calculate(266),
     flexShrink: 0,
   },
   menuIcon: {
-    margin: theme.spacing(3),
+    padding: theme.spacing(3),
     "&:hover": {
       cursor: "pointer",
     },

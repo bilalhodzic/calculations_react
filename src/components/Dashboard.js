@@ -15,6 +15,7 @@ export default function Dashboard() {
   const [totalHospital, setTotalHospital] = React.useState(15256);
   const [totalSchool, setTotalSchool] = React.useState(15256);
   const [latestCalc, setLatestCalc] = React.useState([]);
+  const [calculations, setCalculations] = React.useState([]);
 
   React.useEffect(() => {
     //call function while first time render
@@ -60,6 +61,38 @@ export default function Dashboard() {
         backgroundColor: "#C2DCFF",
       },
     ]);
+    setCalculations([
+      {
+        item: (
+          <CalcBox
+            text={`${totalBuildings} Building Calculations`}
+            backgroundColor={"#9Bff93"}
+            color="#0EBD00"
+            icon="building"
+          />
+        ),
+      },
+      {
+        item: (
+          <CalcBox
+            text={`${totalHospital} Hospital Calculations`}
+            backgroundColor={"#FFCEBD"}
+            color="#FF4100"
+            icon="hospital"
+          />
+        ),
+      },
+      {
+        item: (
+          <CalcBox
+            text={`${totalSchool} School Calculations`}
+            backgroundColor={"#B4E7FF"}
+            color="#00ADFF"
+            icon="school"
+          />
+        ),
+      },
+    ]);
   }, []);
 
   const classes = useStyles();
@@ -69,28 +102,9 @@ export default function Dashboard() {
       <Paper elevation={5} className={classes.paper}>
         Calculations
         <Divider className={classes.divider} />
-        <Box className={classes.calcBoxes}>
-          <CalcBox
-            text={`${totalBuildings} Building Calculations`}
-            backgroundColor={"#9Bff93"}
-            color="#0EBD00"
-            icon="building"
-          />
-          <CalcBox
-            text={`${totalHospital} Hospital Calculations`}
-            backgroundColor={"#FFCEBD"}
-            color="#FF4100"
-            icon="hospital"
-          />
-          <CalcBox
-            text={`${totalSchool} School Calculations`}
-            backgroundColor={"#B4E7FF"}
-            color="#00ADFF"
-            icon="school"
-          />
-        </Box>
+        <ScrollList list={calculations} type="calculations" />
         Latest Calculations
-        <ScrollList list={latestCalc} />
+        <ScrollList list={latestCalc} type="latestCalc" />
       </Paper>
     </Layout>
   );
@@ -101,7 +115,6 @@ const useStyles = makeStyles((theme) => ({
   paper: {
     height: "70vh",
     margin: theme.spacing(5),
-    //width: "calc(100% - 100px)",
     borderRadius: 7,
     padding: theme.spacing(5),
     paddingLeft: theme.spacing(8),
@@ -113,6 +126,12 @@ const useStyles = makeStyles((theme) => ({
     color: "black",
     fontWeight: 500,
     minWidth: 600,
+    [theme.breakpoints.down("xs")]: {
+      margin: theme.spacing(1),
+      minWidth: 0,
+      fontSize: 23,
+      height: "100%",
+    },
   },
   divider: {
     height: 2,

@@ -113,14 +113,13 @@ const useStyles = makeStyles((theme) => ({
   },
   box: {
     position: "absolute",
-    left: calculate(662),
+    left: calculate(602),
     top: calculate(371, 1024),
     fontSize: 15,
     maxWidth: 620,
   },
   header: {
     fontWeight: 600,
-    fontSize: 70,
     lineHeight: "128%",
     letterSpacing: "0.015em",
     color: "#FFFCFC",
@@ -198,5 +197,9 @@ const useStyles = makeStyles((theme) => ({
     margin: theme.spacing(3.5),
     paddingLeft: theme.spacing(3),
     fontSize: 18,
+    [theme.breakpoints.down("xs")]: {
+      width: 250,
+      fontSize: 15,
+    },
   },
 }));

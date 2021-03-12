@@ -4,17 +4,35 @@ import { makeStyles } from "@material-ui/core/styles";
 import { ReactComponent as ArrowRigth } from "../images/arrowRight.svg";
 import { ReactComponent as ArrowLeft } from "../images/arrowLeft.svg";
 import ColoredBox from "./ColoredBox";
+import useWindowDimensions from "./windowDimension";
 
 export default function ScrollList(props) {
-  const list = props.list;
-
+  const { list, type } = props;
+  const { width } = useWindowDimensions();
   const [startSlice, setStartSlice] = React.useState(0);
-  const [endSlice, setEndSlice] = React.useState(3);
+  const [endSlice, setEndSlice] = React.useState(width < 600 ? 1 : 3);
   const [displayList, setDisplayList] = React.useState([]);
-
   const listLength = list.length;
+  const classes = useStyles({
+    listLength: listLength,
+    displayLength: displayList.length,
+  });
+
   React.useEffect(() => {
-    //call function while first time render
+    //call this when window width changes and set display list to responsive-- 1 element
+    if (width < 600) {
+      setEndSlice(1);
+      setDisplayList(list.slice(startSlice, endSlice));
+    }
+    if (width > 600 && endSlice === 1) {
+      setDisplayList(list.slice(startSlice, 3));
+
+      setEndSlice(3);
+    }
+  }, [width]);
+
+  React.useEffect(() => {
+    //call function when list changes
     setDisplayList(list.slice(startSlice, endSlice));
   }, [list]);
 
@@ -37,40 +55,42 @@ export default function ScrollList(props) {
     }
   };
 
-  const classes = useStyles();
-
   return (
     <Box className={classes.wraper}>
       <Fab
         size="medium"
         aria-label="prev"
-        style={{ marginLeft: -35 }}
+        style={{ marginLeft: -35, left: 0 }}
         className={classes.arrowBtn}
         onClick={handlePrevItem}
       >
         <ArrowLeft />
       </Fab>
       {displayList &&
-        displayList.map((el, index) => (
-          <Box className={classes.menuItem} key={index}>
-            <Box className={classes.menuIcon}>{el.icon}</Box>
-            <Typography style={{ fontWeight: 600, margin: 8 }}>
-              {el.name}
-            </Typography>
-            <Typography
-              style={{ color: "#6B6B6B", fontSize: 13.69, margin: 10 }}
-            >
-              {el.price}$
-            </Typography>
+        displayList.map((el, index) =>
+          type === "calculations" ? (
+            el.item
+          ) : (
+            <Box className={classes.menuItem} key={index}>
+              <Box className={classes.menuIcon}>{el.icon}</Box>
+              <Typography style={{ fontWeight: 600, margin: 8 }}>
+                {el.name}
+              </Typography>
+              <Typography
+                style={{ color: "#6B6B6B", fontSize: 13.69, margin: 10 }}
+              >
+                {el.price}$
+              </Typography>
 
-            <ColoredBox
-              color={el.color}
-              backgroundcolor={el.backgroundColor}
-              text={el.type}
-              position="absolute"
-            />
-          </Box>
-        ))}
+              <ColoredBox
+                color={el.color}
+                backgroundcolor={el.backgroundColor}
+                text={el.type}
+                position="absolute"
+              />
+            </Box>
+          )
+        )}
       <Fab
         size="medium"
         aria-label="next"
@@ -86,7 +106,6 @@ export default function ScrollList(props) {
 
 //add new styles here
 const useStyles = makeStyles((theme) => ({
-  root: {},
   menuItem: {
     width: 207,
     height: 200,
@@ -108,6 +127,9 @@ const useStyles = makeStyles((theme) => ({
     justifyContent: "space-between",
     marginTop: theme.spacing(3),
     position: "relative",
+    [theme.breakpoints.down("xs")]: {
+      justifyContent: "center",
+    },
   },
 
   coloredBox: {
@@ -119,11 +141,14 @@ const useStyles = makeStyles((theme) => ({
     fontSize: 13.69,
     fontWeight: 400,
   },
-  arrowBtn: {
+  arrowBtn: (props) => ({
     backgroundColor: "white",
     color: "#21344D",
     position: "absolute",
-    top: theme.spacing(9),
+    top: "50%",
+    transform: "translateY(-50%)",
     zIndex: 2,
-  },
+    display:
+      props.listLength === 3 && props.displayLength === 3 ? "none" : "inherit",
+  }),
 }));

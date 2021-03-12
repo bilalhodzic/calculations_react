@@ -47,6 +47,7 @@ const useStyles = makeStyles((theme) => ({
     display: "inline-block",
     position: "relative",
     minWidth: 170,
+    marginBottom: theme.spacing(3),
   },
   icon: {
     display: "block",

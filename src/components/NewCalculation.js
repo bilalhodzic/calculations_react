@@ -48,5 +48,9 @@ const useStyles = makeStyles((theme) => ({
     fontFamily: "Poppins",
     minWidth: 600,
     height: "max-content",
+    [theme.breakpoints.down("xs")]: {
+      margin: theme.spacing(1),
+      minWidth: 0,
+    },
   },
 }));
