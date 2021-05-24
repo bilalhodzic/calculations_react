@@ -4,10 +4,14 @@ import {
   Stepper,
   Step,
   StepLabel,
+  Typography,
   StepConnector,
+  Hidden,
 } from "@material-ui/core";
 import { makeStyles, withStyles } from "@material-ui/core/styles";
 import Step1 from "./Step1";
+import useWindowDimensions from "../windowDimension";
+import { useThemeProps } from "@material-ui/data-grid";
 
 const CustomConnector = withStyles({
   alternativeLabel: {
@@ -32,10 +36,17 @@ const CustomConnector = withStyles({
 
 export default function CustomStepper(props) {
   const [activeStep, setActiveStep] = React.useState(1);
+  const { width } = useWindowDimensions();
   const [newCalculation, setNewCalculation] = React.useState({
     ProjectType: "",
   });
-  const steps = [1, 2, 3, 4, 5];
+  const steps = [
+    "Choose Project Type",
+    "Project Info",
+    "Project Details",
+    "Project Address",
+    "Summary",
+  ];
 
   const handleChange = (propName, propValue) => {
     setNewCalculation({ ...newCalculation, [propName]: propValue });
@@ -67,14 +78,25 @@ export default function CustomStepper(props) {
   const classes = useStyles();
   return (
     <>
+      <Typography style={{}} className={classes.stepLabel}>
+        {steps[activeStep]}
+      </Typography>
       <Stepper
-        alternativeLabel
+        alternativeLabel={width < 600 ? false : true}
+        orientation={width < 600 ? "vertical" : "horizontal"}
         activeStep={activeStep}
         connector={<CustomConnector />}
       >
         {steps.map((label) => (
           <Step key={label}>
-            <StepLabel classes={{ iconContainer: classes.icon }} />
+            <StepLabel
+              classes={{
+                iconContainer: classes.icon,
+                labelContainer: classes.labelContainer,
+              }}
+            >
+              {width < 600 ? label : ""}
+            </StepLabel>
           </Step>
         ))}
       </Stepper>
@@ -115,6 +137,7 @@ const useStyles = makeStyles((theme) => ({
     textTransform: "none",
     width: 111,
     borderRadius: 8,
+    marginBottom: 10,
   },
   stepFooter: {
     display: "flex",
@@ -122,7 +145,22 @@ const useStyles = makeStyles((theme) => ({
     margin: theme.spacing(1),
   },
   stepContent: {
-    //height: "100%",
+    textAlign: "center",
+  },
+  stepLabel: {
+    fontSize: 31.27,
+    color: "black",
+    textAlign: "center",
+    [theme.breakpoints.down("xs")]: {
+      display: "none",
+    },
+  },
+  labelContainer: {
+    fontWeight: 600,
+    color: "black",
+    marginLeft: theme.spacing(3),
+    fontSize: 20,
+    fontWeight: 600,
   },
 
   icon: {
@@ -134,6 +172,10 @@ const useStyles = makeStyles((theme) => ({
       color: "#bababa",
       "& text": {
         fontSize: 10,
+      },
+      [theme.breakpoints.down("xs")]: {
+        width: 30,
+        //height: 30,
       },
     },
   },

@@ -175,7 +175,7 @@ const useStyles = makeStyles((theme) => ({
     backgroundColor: "white",
     width: "100%",
     height: 54,
-    position: "absolute",
+    position: "fixed",
     top: 0,
     left: 0,
     display: "flex",

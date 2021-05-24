@@ -1,5 +1,11 @@
 import React from "react";
-import { Container, Divider, Paper, Typography } from "@material-ui/core";
+import {
+  Container,
+  Divider,
+  Hidden,
+  Paper,
+  Typography,
+} from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 import Layout from "./Layout";
 import CustomStepper from "./customStepper/CustomStepper";
@@ -14,23 +20,21 @@ export default function NewCalculation() {
   return (
     <Layout>
       <Paper elevation={5} className={classes.paper}>
-        <Typography
-          style={{
-            fontSize: 21,
-            color: "black",
-            fontWeight: 600,
-            margin: 15,
-            paddingTop: 20,
-          }}
-        >
-          New Calculation
-        </Typography>
-        <Divider style={{ color: "#D3D3D3" }} />
-        <Typography
-          style={{ fontSize: 31.27, color: "black", textAlign: "center" }}
-        >
-          Choose project type
-        </Typography>
+        <Hidden xsDown>
+          <Typography
+            style={{
+              fontSize: 21,
+              color: "black",
+              fontWeight: 600,
+              margin: 15,
+              paddingTop: 20,
+            }}
+          >
+            New Calculation
+          </Typography>
+          <Divider style={{ color: "#D3D3D3" }} />
+        </Hidden>
+
         <div>
           <CustomStepper />
         </div>

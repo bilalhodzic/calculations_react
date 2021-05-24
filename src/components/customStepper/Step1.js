@@ -110,6 +110,13 @@ const useStyles = makeStyles((theme) => ({
   root: {
     display: "flex",
     justifyContent: "space-around",
+    [theme.breakpoints.down("xs")]: {
+      flexDirection: "column",
+      display: "inline-flex",
+      "&>*": {
+        margin: 10,
+      },
+    },
   },
   paperBox: {
     width: 250,
@@ -119,19 +126,16 @@ const useStyles = makeStyles((theme) => ({
     "&:hover": {
       cursor: "pointer",
     },
-    "&:active": {
-      border: "4px solid #21344D",
-    },
-    "&:focus": {
-      border: "4px solid #21344D",
-    },
-    "&::selection": {
-      border: "4px solid #21344D",
+    [theme.breakpoints.down("xs")]: {
+      width: 140,
     },
   },
   paperText: {
     fontSize: 24,
     fontWeight: 600,
     color: "black",
+    [theme.breakpoints.down("xs")]: {
+      fontSize: 20,
+    },
   },
 }));

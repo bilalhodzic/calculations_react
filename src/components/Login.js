@@ -19,7 +19,7 @@ export default function Login() {
   return (
     <Container className={classes.root}>
       <img
-        src={"/slider-image-3 1.png"}
+        src={"/slider-image-1 1.png"}
         alt={"background"}
         className={classes.bgImage}
       />
@@ -27,7 +27,9 @@ export default function Login() {
       {!openDialog && (
         <>
           <Box className={classes.box}>
-            <Typography className={classes.header}>Calculation</Typography>
+            <Typography className={classes.header}>
+              Nyckeltalskalkyler
+            </Typography>
             <Typography className={classes.loginText}>
               But I must explain to you how all this mistaken idea of denouncing
               pleasure and praising pain was born and I will give{" "}
@@ -113,7 +115,7 @@ const useStyles = makeStyles((theme) => ({
   },
   box: {
     position: "absolute",
-    left: calculate(602),
+    left: calculate(128),
     top: calculate(371, 1024),
     fontSize: 15,
     maxWidth: 620,
