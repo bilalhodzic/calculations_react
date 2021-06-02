@@ -4,7 +4,7 @@ import Login from "./components/Login";
 import Dashboard from "./components/Dashboard";
 import Calculations from "./components/Calculations";
 import NewCalculation from "./components/NewCalculation";
-
+import AboutUs from "./components/AboutUs";
 import "./App.css";
 import { ThemeProvider, createMuiTheme } from "@material-ui/core/styles";
 
@@ -26,6 +26,7 @@ function App() {
         <Route path="/home" component={Dashboard} />
         <Route path="/calculations" component={Calculations} />
         <Route path="/add" component={NewCalculation} />
+        <Route path="/about" component={AboutUs} />
       </BrowserRouter>
     </ThemeProvider>
   );

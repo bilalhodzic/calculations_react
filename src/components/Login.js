@@ -40,6 +40,13 @@ export default function Login() {
             >
               Log in
             </Button>
+            <Button
+              className={classes.button}
+              onClick={() => history.push("/about")}
+              style={{ marginLeft: "10%" }}
+            >
+              About us
+            </Button>
           </Box>
         </>
       )}
@@ -140,6 +147,7 @@ const useStyles = makeStyles((theme) => ({
     background: "#21344D",
     borderRadius: "9.77948px",
     textTransform: "none",
+    marginTop: 20,
     fontWeight: 500,
     color: "white",
     fontSize: "3.3vmin",
