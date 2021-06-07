@@ -156,7 +156,7 @@ const useStyles = makeStyles((theme) => ({
   drawerHeader: {
     height: "100%",
     width: calculate(267),
-    backgroundColor: "#21344d",
+    //backgroundColor: "#21344d",
     display: "flex",
     minWidth: 181,
 
