@@ -23,7 +23,16 @@ export default function Login() {
         alt={"background"}
         className={classes.bgImage}
       />
-      <Box className={classes.calcButton}>Calculation</Box>
+      <Box className={classes.calcButton}>
+        <img
+          src={"/logo.png"}
+          alt="logo"
+          height="130"
+          width="200"
+          className={classes.logo}
+        />
+      </Box>
+
       {!openDialog && (
         <>
           <Box className={classes.box}>
@@ -105,20 +114,23 @@ const useStyles = makeStyles((theme) => ({
     top: 0,
     left: 0,
   },
+  logo: {
+    [theme.breakpoints.down("xs")]: {
+      width: "110px",
+      height: 70,
+    },
+  },
   calcButton: {
-    backgroundColor: "#20262F",
-    borderRadius: "40.625px",
-    display: "flex",
-    justifyContent: "center",
-    alignItems: "center",
     position: "absolute",
     width: calculate(217.75),
-    fontSize: 17.87,
-    height: 60,
+
     left: calculate(134),
     top: calculate(50, 1024),
 
     minWidth: 130,
+    "&:hover": {
+      cursor: "pointer",
+    },
   },
   box: {
     position: "absolute",

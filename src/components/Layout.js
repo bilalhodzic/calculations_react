@@ -71,8 +71,14 @@ export default function Layout(props) {
   return (
     <Box className={classes.root}>
       <Box className={classes.header}>
-        <Box className={classes.drawerHeader}>
-          <Typography>Calculation</Typography>
+        <Box className={classes.drawerHeader} onClick={() => history.push("/")}>
+          <img
+            src={"/logo.png"}
+            alt="logo"
+            height="50"
+            width="80"
+            className={classes.logo}
+          />
         </Box>
         <Button
           className={classes.headerButton}
@@ -160,6 +166,12 @@ const useStyles = makeStyles((theme) => ({
       fontSize: 22,
       color: "white",
     },
+    "&:hover": {
+      cursor: "pointer",
+    },
+    [theme.breakpoints.down("xs")]: {
+      visibility: "hidden",
+    },
   },
   footer: {
     width: "100%",
@@ -243,7 +255,7 @@ const useStyles = makeStyles((theme) => ({
     textTransform: "none",
     alignSelf: "center",
     position: "absolute",
-    bottom: theme.spacing(12),
+    bottom: theme.spacing(13.5),
     fontWeight: 500,
     fontSize: 14.25,
     marginBottom: 20,
