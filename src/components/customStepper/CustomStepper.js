@@ -10,6 +10,7 @@ import {
 } from "@material-ui/core";
 import { makeStyles, withStyles } from "@material-ui/core/styles";
 import Step1 from "./Step1";
+import Step2 from './Step2';
 import useWindowDimensions from "../windowDimension";
 import { useThemeProps } from "@material-ui/data-grid";
 
@@ -61,6 +62,7 @@ export default function CustomStepper(props) {
   };
 
   const SwitchStep = () => {
+    console.log("SwitchStep: " + activeStep);
     switch (activeStep) {
       case 0:
         return (
@@ -69,6 +71,8 @@ export default function CustomStepper(props) {
             type={newCalculation.ProjectType}
           />
         );
+      case 1:
+          return (<Step2/>);
 
       default:
         return "nothing";
