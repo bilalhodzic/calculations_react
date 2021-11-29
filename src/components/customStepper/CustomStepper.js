@@ -35,7 +35,7 @@ const CustomConnector = withStyles({
 })(StepConnector);
 
 export default function CustomStepper(props) {
-  const [activeStep, setActiveStep] = React.useState(1);
+  const [activeStep, setActiveStep] = React.useState(0);
   const { width } = useWindowDimensions();
   const [newCalculation, setNewCalculation] = React.useState({
     ProjectType: "",

@@ -7,9 +7,9 @@ import {
   Button,
   Hidden,
 } from "@material-ui/core";
-import Layout from "./Layout";
+import Layout from "../Layout";
 import { makeStyles } from "@material-ui/core/styles";
-import { ReactComponent as ArrowDown } from "../images/arrowDown.svg";
+import { ReactComponent as ArrowDown } from "../../images/arrowDown.svg";
 import CalcTable from "./CalcTable";
 
 //table data which wiil be returned from database

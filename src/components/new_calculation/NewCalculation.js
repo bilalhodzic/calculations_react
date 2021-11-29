@@ -7,8 +7,8 @@ import {
   Typography,
 } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
-import Layout from "./Layout";
-import CustomStepper from "./customStepper/CustomStepper";
+import Layout from "../Layout";
+import CustomStepper from "../customStepper/CustomStepper";
 
 export default function NewCalculation() {
   React.useEffect(() => {

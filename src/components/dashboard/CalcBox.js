@@ -1,10 +1,10 @@
 import React from "react";
 import { Box } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
-import { BuildingIcon } from "./svgIcons/BuildingIcon";
-import { ArrowIcon } from "./svgIcons/ArrowIcon";
-import { HospitalIcon } from "./svgIcons/HospitalIcon";
-import { SchoolIcon } from "./svgIcons/SchoolIcon";
+import { BuildingIcon } from "../svgIcons/BuildingIcon";
+import { ArrowIcon } from "../svgIcons/ArrowIcon";
+import { HospitalIcon } from "../svgIcons/HospitalIcon";
+import { SchoolIcon } from "../svgIcons/SchoolIcon";
 
 export default function CalcBox(props) {
   const SwithcIcon = () => {

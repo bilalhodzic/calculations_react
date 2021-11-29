@@ -1,10 +1,10 @@
 import { BrowserRouter, Route } from "react-router-dom";
 
-import Login from "./components/Login";
-import Dashboard from "./components/Dashboard";
-import Calculations from "./components/Calculations";
-import NewCalculation from "./components/NewCalculation";
-import AboutUs from "./components/AboutUs";
+import Login from "./components/login/Login";
+import Dashboard from "./components/dashboard/Dashboard";
+import Calculations from "./components/calculations/Calculations";
+import NewCalculation from "./components/new_calculation/NewCalculation";
+import AboutUs from "./components/about/AboutUs";
 import "./App.css";
 import { ThemeProvider, createMuiTheme } from "@material-ui/core/styles";
 

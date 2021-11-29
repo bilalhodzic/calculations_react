@@ -1,10 +1,10 @@
 import React from "react";
 import { Box, Fab, Typography } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
-import { ReactComponent as ArrowRigth } from "../images/arrowRight.svg";
-import { ReactComponent as ArrowLeft } from "../images/arrowLeft.svg";
-import ColoredBox from "./ColoredBox";
-import useWindowDimensions from "./windowDimension";
+import { ReactComponent as ArrowRigth } from "../../images/arrowRight.svg";
+import { ReactComponent as ArrowLeft } from "../../images/arrowLeft.svg";
+import ColoredBox from "../ColoredBox";
+import useWindowDimensions from "../windowDimension";
 
 export default function ScrollList(props) {
   const { list, type } = props;

@@ -3,12 +3,12 @@ import { Box, Button, IconButton, Modal, Typography } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 import { DataGrid } from "@material-ui/data-grid";
 import { Pagination } from "@material-ui/lab";
-import ColoredBox from "./ColoredBox";
-import { ReactComponent as EditIcon } from "../images/editIcon.svg";
-import { ReactComponent as InfoIcon } from "../images/infoIcon.svg";
-import { ReactComponent as DeleteIcon } from "../images/deleteIcon.svg";
-import { ReactComponent as WarningIcon } from "../images/WarningIcon.svg";
-import useWindowDimensions from "./windowDimension";
+import ColoredBox from "../ColoredBox";
+import { ReactComponent as EditIcon } from "../../images/editIcon.svg";
+import { ReactComponent as InfoIcon } from "../../images/infoIcon.svg";
+import { ReactComponent as DeleteIcon } from "../../images/deleteIcon.svg";
+import { ReactComponent as WarningIcon } from "../../images/WarningIcon.svg";
+import useWindowDimensions from "../windowDimension";
 
 //add pagination to the datagrid
 function CustomPagination(props) {

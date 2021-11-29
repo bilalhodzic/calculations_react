@@ -1,11 +1,11 @@
 import React from "react";
-import Layout from "./Layout";
+import Layout from "../Layout";
 import { Paper, Divider, Box } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
-import { BuildingIcon } from "./svgIcons/BuildingIcon";
-import { HospitalIcon } from "./svgIcons/HospitalIcon";
-import { SchoolIcon } from "./svgIcons/SchoolIcon";
-import { HotelIcon } from "./svgIcons/HotelIcon";
+import { BuildingIcon } from "../svgIcons/BuildingIcon";
+import { HospitalIcon } from "../svgIcons/HospitalIcon";
+import { SchoolIcon } from "../svgIcons/SchoolIcon";
+import { HotelIcon } from "../svgIcons/HotelIcon";
 
 import CalcBox from "./CalcBox";
 import ScrollList from "./ScrollList";
