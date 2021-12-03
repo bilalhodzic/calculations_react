@@ -11,6 +11,7 @@ import {
 import { makeStyles, withStyles } from "@material-ui/core/styles";
 import Step1 from "./Step1";
 import Step2 from './Step2';
+import Step4 from './Step4';
 import useWindowDimensions from "../windowDimension";
 import { useThemeProps } from "@material-ui/data-grid";
 
@@ -45,8 +46,9 @@ export default function CustomStepper(props) {
     "Choose Project Type",
     "Project Info",
     "Project Details",
-    "Project Address",
-    "Summary",
+    "Project Location",
+    "Project Standard",
+    "Start date and end date",
   ];
 
   const handleChange = (propName, propValue) => {
@@ -73,6 +75,8 @@ export default function CustomStepper(props) {
         );
       case 1:
           return (<Step2/>);
+      case 3:
+        return (<Step4/>);
 
       default:
         return "nothing";
