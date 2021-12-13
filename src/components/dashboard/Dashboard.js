@@ -9,6 +9,7 @@ import { HotelIcon } from "../svgIcons/HotelIcon";
 
 import CalcBox from "./CalcBox";
 import ScrollList from "./ScrollList";
+import NoCalculations from "./NoCalculations";
 
 export default function Dashboard() {
   const [totalBuildings, setTotalBuildings] = React.useState(32456);
@@ -100,11 +101,11 @@ export default function Dashboard() {
   return (
     <Layout>
       <Paper elevation={5} className={classes.paper}>
-        Calculations
-        <Divider className={classes.divider} />
-        <ScrollList list={calculations} type="calculations" />
         Latest Calculations
-        <ScrollList list={latestCalc} type="latestCalc" />
+        <Divider className={classes.divider} />
+        {latestCalc.length != 0 ? (<><ScrollList list={calculations} type="calculations" />
+        Latest Calculations
+        <ScrollList list={latestCalc} type="latestCalc" /></>) : <NoCalculations/>}
       </Paper>
     </Layout>
   );
