@@ -19,7 +19,7 @@ export default function Login() {
   return (
     <Container className={classes.root}>
       <img
-        src={"/slider-image-1 1.png"}
+        src={"./static-header-1.png"}
         alt={"background"}
         className={classes.bgImage}
       />

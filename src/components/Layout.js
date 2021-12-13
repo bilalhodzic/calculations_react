@@ -15,6 +15,7 @@ import { makeStyles } from "@material-ui/core/styles";
 import { ReactComponent as CalcIcon } from "../images/calc_icon.svg";
 import { ReactComponent as HomeIcon } from "../images/HomeIcon.svg";
 import { ReactComponent as MenuIcon } from "../images/burgerIcon.svg";
+import { ReactComponent as LogoutIcon } from "../images/logout.svg";
 
 const drawerList = [
   {
@@ -26,11 +27,6 @@ const drawerList = [
     name: "Calculations",
     icon: <CalcIcon />,
     pathname: "/calculations",
-  },
-  {
-    name: "New Calculation",
-    icon: "+ ",
-    pathname: "/add",
   },
 ];
 
@@ -62,9 +58,18 @@ export default function Layout(props) {
           </ListItem>
         ))}
       </List>
-      <Button className={classes.logoutbtn} onClick={() => history.push("/")}>
-        Log Out
-      </Button>
+      <Box display="flex" flexDirection="column" alignItems="stretch" padding={1} position="absolute" bottom={10}>
+        <Button
+          className={classes.headerButton}
+          onClick={() => history.push("/add")}
+        >
+          + New Calculation
+        </Button>
+        <Button className={classes.logoutbtn} onClick={() => history.push("/")}>
+          <LogoutIcon style={{marginRight: 15}} />
+          Log Out
+        </Button>
+      </Box>
     </>
   );
 
@@ -72,20 +77,9 @@ export default function Layout(props) {
     <Box className={classes.root}>
       <Box className={classes.header}>
         <Box className={classes.drawerHeader} onClick={() => history.push("/")}>
-          <img
-            src={"/logo.png"}
-            alt="logo"
-            height="50"
-            width="80"
-            className={classes.logo}
-          />
+          <Typography>Calculation</Typography>
+          <MenuIcon style={{paddingLeft: 15}} />
         </Box>
-        <Button
-          className={classes.headerButton}
-          onClick={() => history.push("/add")}
-        >
-          + New Calculations
-        </Button>
         <Hidden smUp>
           <MenuIcon className={classes.menuIcon} onClick={handleDrawer} />
         </Hidden>
@@ -160,6 +154,7 @@ const useStyles = makeStyles((theme) => ({
     display: "flex",
     minWidth: 181,
 
+    backgroundColor: "#21344D",
     justifyContent: "center",
     alignItems: "inherit",
     "& p": {
@@ -198,6 +193,7 @@ const useStyles = makeStyles((theme) => ({
   headerButton: {
     backgroundColor: "#21344D",
     width: calculate(207),
+    alignSelf: "start",
     height: 40,
     borderRadius: 42,
     textTransform: "none",
@@ -211,13 +207,15 @@ const useStyles = makeStyles((theme) => ({
     [theme.breakpoints.down("xs")]: {
       display: "none",
     },
+    position: "absolute",
+    bottom: theme.spacing(20),
   },
   list: {
-    paddingTop: theme.spacing(8),
+    paddingTop: theme.spacing(2),
     alignSelf: "center",
   },
   listButton: {
-    marginBlockStart: theme.spacing(8),
+    marginBlockStart: theme.spacing(1),
     height: 55,
     borderRadius: 42.69,
     "&:hover": {
@@ -250,16 +248,15 @@ const useStyles = makeStyles((theme) => ({
   logoutbtn: {
     display: "flex",
     borderRadius: 23,
-    border: "1px solid white",
     color: "white",
     textTransform: "none",
-    alignSelf: "center",
+    alignSelf: "start",
     position: "absolute",
     bottom: theme.spacing(13.5),
     fontWeight: 500,
-    fontSize: 14.25,
-    marginBottom: 20,
-    width: 100,
+    fontSize: 18,
+    margin: theme.spacing(2),
+    minWidth: 220,
     height: 36,
     "&:hover": {
       backgroundColor: "#36547B",

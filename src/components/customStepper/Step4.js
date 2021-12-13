@@ -6,6 +6,7 @@ import {
   makeStyles,
   MenuItem,
   Select,
+  Typography,
 } from "@material-ui/core";
 
 export default function Step4(props) {
@@ -105,7 +106,9 @@ const useStyles = makeStyles((theme) => ({
     borderWidth: 2,
     borderColor: "black",
     backgroundColor: "white",
-    color: "black",
+    color: "#21344d",
+    fontWeight: "1000",
+    fontSize: 18
   },
   selectedButton: {
     color: "white",

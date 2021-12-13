@@ -162,9 +162,6 @@ export default function Calctable(props) {
       renderCell: (params) => (
         <>
           <IconButton style={{ padding: 8 }}>
-            <EditIcon />
-          </IconButton>
-          <IconButton style={{ padding: 8 }}>
             <InfoIcon />
           </IconButton>
           <IconButton style={{ padding: 8 }} onClick={handleDeleteClick}>
