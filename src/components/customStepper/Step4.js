@@ -108,7 +108,11 @@ const useStyles = makeStyles((theme) => ({
     backgroundColor: "white",
     color: "#21344d",
     fontWeight: "1000",
-    fontSize: 18
+    fontSize: 18,
+    "&:hover": {
+      color: "white",
+      backgroundColor: "#21344d"
+    }
   },
   selectedButton: {
     color: "white",
