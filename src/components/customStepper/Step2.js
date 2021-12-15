@@ -2,10 +2,10 @@ import {
   Box,
   InputLabel,
   makeStyles,
-  Paper,
   TextField,
-  Typography,
 } from "@material-ui/core";
+
+import { ReactComponent as Step2Icon } from '../../images/step2Icon.svg';
 
 export default function Step2(props) {
   console.log("Step2");
@@ -53,7 +53,9 @@ export default function Step2(props) {
           ></TextField>
         </Box>
         <Box className={classes.paperBox}></Box>
-        <Box className={classes.paperBox}></Box>
+        <Box className={classes.paperBox}>
+          <Step2Icon className={classes.svg} />
+        </Box>
       </Box>
     </>
   );
@@ -79,4 +81,8 @@ const useStyles = makeStyles((theme) => ({
       width: 140,
     },
   },
+  svg: {
+    width: 150,
+    marginLeft: theme.spacing(10)
+  }
 }));

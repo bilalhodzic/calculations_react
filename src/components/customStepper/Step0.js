@@ -99,7 +99,9 @@ const useStyles = makeStyles((theme) => ({
         color: "#21344D",
         fontSize: 50,
         fontWeight: "bold",
-        textAlign: "center"
+        margin: "0 auto",
+        textAlign: "center",
+        display: "block"
     },
     paper: {
         height: "70vh",
@@ -129,7 +131,8 @@ const useStyles = makeStyles((theme) => ({
         marginRight: "auto",
         display: "block",
         width: "50%",
-        position: "relative"
+        position: "relative",
+        textAlign: "center"
       },
       button: {
           minWidth: 250,
