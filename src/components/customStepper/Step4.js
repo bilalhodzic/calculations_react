@@ -9,6 +9,8 @@ import {
   Typography,
 } from "@material-ui/core";
 
+import { ReactComponent as Step4Icon } from '../../images/step4Icon.svg';
+
 export default function Step4(props) {
   const locations = [
     "Stockholm",
@@ -56,10 +58,8 @@ export default function Step4(props) {
           >
             In The City
           </Button>
-        </Box>
-        <Box className={classes.paperBox}>
           <Button
-            className={`${classes.button} ${selectedOut ? classes.selectedButton : ''}`}
+            className={`${classes.button} ${selectedOut ? classes.selectedButton : ''} ${classes.buttonRight}`}
             onClick={() => {
               setSelectedOut(!selectedOut);
               setSelectedIn(false);
@@ -67,6 +67,9 @@ export default function Step4(props) {
           >
             Outside The City
           </Button>
+        </Box>
+        <Box className={classes.paperBox}>
+            <Step4Icon className={classes.svg} />
         </Box>
       </Box>
     </>
@@ -84,14 +87,16 @@ const useStyles = makeStyles((theme) => ({
         margin: 10,
       },
     },
+    marginTop: theme.spacing(2)
   },
   paperBox: {
-    width: 250,
+    minWidth: 250,
     height: 140,
     textAlign: "center",
     [theme.breakpoints.down("xs")]: {
       width: 140,
     },
+    display: "inline-block"
   },
   inputLabel: {
     marginBottom: 20,
@@ -112,10 +117,17 @@ const useStyles = makeStyles((theme) => ({
     "&:hover": {
       color: "white",
       backgroundColor: "#21344d"
-    }
+    },
+    marginLeft: theme.spacing(12)
+  },
+  buttonRight:{
+    marginLeft: theme.spacing(5)
   },
   selectedButton: {
     color: "white",
     backgroundColor: "#21344d",
   },
+  svg: {
+    marginTop: theme.spacing(-9),
+  }
 }));
