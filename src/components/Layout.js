@@ -12,6 +12,7 @@ import {
   Hidden,
 } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
+import { Helmet } from "react-helmet";
 import { ReactComponent as CalcIcon } from "../images/calc_icon.svg";
 import { ReactComponent as HomeIcon } from "../images/HomeIcon.svg";
 import { ReactComponent as MenuIcon } from "../images/burgerIcon.svg";
@@ -40,6 +41,9 @@ export default function Layout(props) {
   };
   const drawer = (
     <>
+      <Helmet>
+          <style>{'body { background-color: #E5E5E5; }'}</style>
+      </Helmet>
       <Box className={classes.footer}></Box>
       <List className={classes.list}>
         {drawerList.map((list, index) => (
@@ -189,6 +193,7 @@ const useStyles = makeStyles((theme) => ({
     justifyContent: "space-between",
     alignItems: "center",
     borderBottom: "1px solid #B0B0B0",
+    zIndex: 10
   },
   headerButton: {
     backgroundColor: "#21344D",
@@ -209,6 +214,7 @@ const useStyles = makeStyles((theme) => ({
     },
     position: "absolute",
     bottom: theme.spacing(20),
+    textAlign: "center"
   },
   list: {
     paddingTop: theme.spacing(2),
@@ -261,5 +267,6 @@ const useStyles = makeStyles((theme) => ({
     "&:hover": {
       backgroundColor: "#36547B",
     },
+    textAlign: "center"
   },
 }));

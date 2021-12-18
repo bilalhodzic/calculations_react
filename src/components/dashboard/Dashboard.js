@@ -21,7 +21,7 @@ export default function Dashboard() {
   React.useEffect(() => {
     //call function while first time render
     setLatestCalc([
-      /*{
+      {
         name: "Building in Stockholm Sweden",
         price: "1.854.456",
         icon: <BuildingIcon color="#21344D" size={49} />,
@@ -60,7 +60,7 @@ export default function Dashboard() {
         type: "Hotel",
         color: "#3F75BD",
         backgroundColor: "#C2DCFF",
-      },*/
+      },
     ]);
     setCalculations([
       {

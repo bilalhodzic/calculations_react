@@ -12,6 +12,7 @@ import { makeStyles, withStyles } from "@material-ui/core/styles";
 import Step1 from "./Step1";
 import Step2 from './Step2';
 import Step4 from './Step4';
+import Step5 from './Step5';
 import useWindowDimensions from "../windowDimension";
 import { useThemeProps } from "@material-ui/data-grid";
 
@@ -77,6 +78,8 @@ export default function CustomStepper(props) {
           return (<Step2/>);
       case 3:
         return (<Step4/>);
+      case 4:
+        return (<Step5/>);
 
       default:
         return "nothing";
