@@ -8,7 +8,7 @@ import { HospitalIcon } from "../svgIcons/HospitalIcon";
 import { HomeIcon } from "../svgIcons/HomeIcon";
 import { ChurchIcon } from "../svgIcons/ChurchIcon";
 
-import types from "../types.json";
+import types from "../../helper/types.json";
 
 export default function Step1(props) {
   const projectType = props.type;

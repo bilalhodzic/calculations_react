@@ -21,7 +21,7 @@ export default function Step6(props) {
                     ></TextField>
                 </Box>
                 <Box>
-                    <TextField type="date"></TextField>
+                    <TextField type="date" label="End date" InputLabelProps={{shrink: true}}></TextField>
                 </Box>
             </Box>
         </>
