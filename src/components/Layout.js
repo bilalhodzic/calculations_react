@@ -16,7 +16,8 @@ import { Helmet } from "react-helmet";
 import { ReactComponent as CalcIcon } from "../images/calc_icon.svg";
 import { ReactComponent as HomeIcon } from "../images/HomeIcon.svg";
 import { ReactComponent as MenuIcon } from "../images/burgerIcon.svg";
-import { ReactComponent as LogoutIcon } from "../images/logout.svg";
+import { ReactComponent as LogoutIcon } from "../images/logoutIcon.svg";
+import { ReactComponent as PlusIcon } from "../images/plusIcon.svg";
 
 const drawerList = [
   {
@@ -62,18 +63,19 @@ export default function Layout(props) {
           </ListItem>
         ))}
       </List>
-      <Box display="flex" flexDirection="column" alignItems="stretch" padding={1} position="absolute" bottom={10}>
-        <Button
-          className={classes.headerButton}
+      <List className={`${classes.list} ${classes.bottomList}`}>
+        <ListItem
+          className={classes.listButton}
           onClick={() => history.push("/add")}
         >
-          + New Calculation
-        </Button>
-        <Button className={classes.logoutbtn} onClick={() => history.push("/")}>
+          <PlusIcon style={{marginRight: 15}} />
+          <Typography className={classes.listText}>New Calculation</Typography>
+        </ListItem>
+        <ListItem className={classes.listButton} onClick={() => history.push("/")}>
           <LogoutIcon style={{marginRight: 15}} />
-          Log Out
-        </Button>
-      </Box>
+          <Typography className={classes.listText}>Log out</Typography>
+        </ListItem>
+      </List>
     </>
   );
 
@@ -269,4 +271,8 @@ const useStyles = makeStyles((theme) => ({
     },
     textAlign: "center"
   },
+  bottomList:{
+    position: "absolute",
+    bottom: 150
+  }
 }));
