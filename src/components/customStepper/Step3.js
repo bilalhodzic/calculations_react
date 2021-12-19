@@ -1,5 +1,5 @@
 
-import { Box, InputLabel, makeStyles, TextField } from "@material-ui/core";
+import { Box, InputAdornment, InputLabel, makeStyles, TextField } from "@material-ui/core";
 
 import getFields from "../../helper/Fields";
 
@@ -7,10 +7,14 @@ export default function Step3 (props){
     const classes = useStyles();
 
     const fields = getFields(props.type);
+
+    const inputProps = {
+      endAdornment: <InputAdornment position="end"></InputAdornment>
+    };
     const formItems = fields.map((entry) => {
         return <Box className={classes.paperBox}>
             <InputLabel>{entry.label}</InputLabel>
-            <TextField variant="outlined"></TextField>
+            <TextField type="number" placeholder={!entry.isRight ? entry.placeholder : null} variant="outlined" InputProps={ entry.isRight ? {endAdornment: (<InputAdornment position="end">{entry.placeholder}</InputAdornment>)} : null}></TextField>
         </Box>
     });
     let form = [];
@@ -51,4 +55,7 @@ const useStyles = makeStyles((theme) => ({
         width: 140,
       },
     },
+    "input::placeholder": {
+      textAlign: "center"
+    }
   }));
