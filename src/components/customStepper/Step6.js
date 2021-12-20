@@ -1,29 +1,54 @@
 import React from "react";
-import { Box, TextField } from "@material-ui/core";
+import { Box, makeStyles, TextField } from "@material-ui/core";
 
 export default function Step6(props) {
-    const [isDateType, setDateType] = React.useState(false);
 
+    const classes = useStyles();
     return (
         <>
-            <Box>
-                <Box>
-                    <TextField
-                        type={isDateType ? "date" : "text"}
-                        onMouseOver={() => {
-                            console.log("Ovdje");
-                            setDateType(!isDateType);
-                        }}
-                        label="Start date"
-                        InputLabelProps={{
-                            shrink: true
-                        }}
-                    ></TextField>
+            <Box className={classes.root}>
+                <Box className={classes.paperBox}>
+                    <TextField type="date" label="Start date" onKeyDown={(e) => e.preventDefault()} InputLabelProps={{shrink: true}}></TextField>
                 </Box>
-                <Box>
-                    <TextField type="date" label="End date" InputLabelProps={{shrink: true}}></TextField>
+                <Box className={classes.paperBox}>
+                    <TextField type="date" label="End date" onKeyDown="return false" InputLabelProps={{shrink: true}}></TextField>
                 </Box>
             </Box>
         </>
     );
 }
+
+const useStyles = makeStyles((theme) => ({
+    root: {
+      display: "flex",
+      justifyContent: "space-around",
+      [theme.breakpoints.down("xs")]: {
+        flexDirection: "column",
+        display: "inline-flex",
+        "&>*": {
+          margin: 10,
+        },
+      },
+      paddingBottom: theme.spacing(10)
+    },
+    paperBox: {
+      width: 250,
+      height: 140,
+      textAlign: "center",
+      border: "4px solid white",
+      "&:hover": {
+        cursor: "pointer",
+      },
+      [theme.breakpoints.down("xs")]: {
+        width: 140,
+      },
+    },
+    paperText: {
+      fontSize: 24,
+      fontWeight: 600,
+      color: "black",
+      [theme.breakpoints.down("xs")]: {
+        fontSize: 20,
+      },
+    },
+  }));

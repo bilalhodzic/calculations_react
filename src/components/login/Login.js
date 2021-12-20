@@ -50,7 +50,7 @@ export default function Login() {
               Log in
             </Button>
             <Button
-              className={classes.button}
+              className={`${classes.button} ${classes.aboutButton}`}
               onClick={() => history.push("/about")}
               style={{ marginLeft: "10%" }}
             >
@@ -135,7 +135,7 @@ const useStyles = makeStyles((theme) => ({
   box: {
     position: "absolute",
     left: calculate(128),
-    top: calculate(371, 1024),
+    top: calculate(300, 1024),
     fontSize: 15,
     maxWidth: 620,
   },
@@ -145,6 +145,7 @@ const useStyles = makeStyles((theme) => ({
     letterSpacing: "0.015em",
     color: "#FFFCFC",
     fontSize: "9vmin",
+    marginBottom: theme.spacing(10)
   },
   loginText: {
     fontWeight: 500,
@@ -166,6 +167,14 @@ const useStyles = makeStyles((theme) => ({
     "&:hover": {
       background: "#1b2c44",
     },
+  },
+  aboutButton: {
+    background: "white",
+    color: "#21344D",
+    boxShadow: "1px 1px 8px 8px rgba(0, 0, 0, 0.25)",
+    "&:hover":{
+      background: "#dedbd5",
+    }
   },
   button2: {
     width: 159,
