@@ -83,8 +83,8 @@ export default function Layout(props) {
     <Box className={classes.root}>
       <Box className={classes.header}>
         <Box className={classes.drawerHeader} onClick={() => history.push("/")}>
-          <Typography>Calculation</Typography>
-          <MenuIcon style={{paddingLeft: 15}} />
+          <Typography className={classes.drawerHeaderText}>Calculation</Typography>
+          <MenuIcon className={classes.menuIcon} />
         </Box>
         <Hidden smUp>
           <MenuIcon className={classes.menuIcon} onClick={handleDrawer} />
@@ -156,12 +156,11 @@ const useStyles = makeStyles((theme) => ({
   drawerHeader: {
     height: "100%",
     width: calculate(267),
-    //backgroundColor: "#21344d",
     display: "flex",
     minWidth: 181,
 
     backgroundColor: "#21344D",
-    justifyContent: "center",
+    justifyContent: "flex-start",
     alignItems: "inherit",
     "& p": {
       fontSize: 22,
@@ -173,6 +172,12 @@ const useStyles = makeStyles((theme) => ({
     [theme.breakpoints.down("xs")]: {
       visibility: "hidden",
     },
+  },
+  drawerHeaderText:{
+    marginLeft: theme.spacing(4)
+  },
+  menuIcon:{
+    marginLeft: theme.spacing(8)
   },
   footer: {
     width: "100%",
@@ -220,10 +225,11 @@ const useStyles = makeStyles((theme) => ({
   },
   list: {
     paddingTop: theme.spacing(2),
-    alignSelf: "center",
+    alignSelf: "baseline",
   },
   listButton: {
     marginBlockStart: theme.spacing(1),
+    marginLeft: theme.spacing(2),
     height: 55,
     borderRadius: 42.69,
     "&:hover": {
