@@ -11,14 +11,14 @@ export default function getFields(type){
                 {
                     label: "Lokalarea",
                     id: "lokalarea",
-                    placeholder: "㎡",
+                    placeholder: "m",
                     superscript: 2,
                     isRight: true
                 },
                 {
                     label: "Antal RWC",
                     id: "rwc",
-                    placeholder: "㎡",
+                    placeholder: "m",
                     superscript: 2,
                     isRight: true
                 },
@@ -30,21 +30,21 @@ export default function getFields(type){
                 {
                     label: "Kvm Mork bruttoarea",
                     id: "mork",
-                    placeholder: "㎡",
+                    placeholder: "m",
                     superscript: 2,
                     isRight: true
                 },
                 {
                     label: "Kvm Ljus bruttoarea",
                     id: "ljus",
-                    placeholder: "㎡",
+                    placeholder: "m",
                     superscript: 2,
                     isRight: true
                 },
                 {
                     label: "Total BTA",
                     id: "bta",
-                    placeholder: "㎡",
+                    placeholder: "m",
                     superscript: 2,
                     isRight: true
                 },
@@ -116,7 +116,7 @@ export default function getFields(type){
                 {
                     label: "Dusch and WC",
                     id: "wc",
-                    info: "Antal dusch och wc. Summera antal dusch i duschrum, separata dusch och wc och skriva det totala antalet här.",
+                    info: "Antal dusch och wc. Summera antal dusch i duschrum,\n separata dusch och wc och skriva det totala antalet här.",
                     placeholder: "0"
                 },
                 {
@@ -368,14 +368,14 @@ export default function getFields(type){
                     label: "Boarea",
                     id: "boarea",
                     info: "Total m2 hotell, inkl reception, lobby, restaurang del mm.",
-                    placeholder: "㎡",
+                    placeholder: "m",
                     superscript: 2,
                     isRight: true
                 },
                 {
                     label: "Lokalarea",
                     id: "lokalarea",
-                    info: "Endast om det är lokal som inte tillhör hotellet, såsom separat handelslokal, kontor mm.",
+                    info: "Endast om det är lokal som inte tillhör hotellet,\n såsom separat handelslokal, kontor mm.",
                     placeholder: "m",
                     superscript: 2,
                     isRight: true
