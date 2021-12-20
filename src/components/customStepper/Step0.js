@@ -3,6 +3,7 @@ import { Box, makeStyles, Typography, Hidden, Paper, Button } from "@material-ui
 import { useHistory } from "react-router-dom";
 import {Helmet} from 'react-helmet';
 
+import { ReactComponent as CalculatorIcon } from "../../images/calculatorIcon.svg";
 import { ReactComponent as MenuIcon } from "../../images/burgerIcon.svg";
 
 export default function Step0 (props){
@@ -34,7 +35,7 @@ export default function Step0 (props){
                     <Typography className={classes.title}>What do you want?</Typography>
                     <Box className={classes.buttonGroup}>
                         <Button className={classes.button}>Rebuildings</Button>
-                        <MenuIcon className={classes.image}/>
+                        <CalculatorIcon className={classes.image}/>
                         <Button className={classes.button}>New production</Button>
                     </Box>
                 </Paper>
@@ -106,12 +107,14 @@ const useStyles = makeStyles((theme) => ({
     paper: {
         height: "70vh",
         //margin: theme.spacing(2),
-        marginRight: theme.spacing(10),
-        borderRadius: 7,
+        zIndex: 100,
+        marginRight: theme.spacing(20),
+        marginLeft: theme.spacing(-15),
+        borderRadius: "12px",
         padding: theme.spacing(5),
         paddingLeft: theme.spacing(8),
         paddingRight: theme.spacing(8),
-        boxShadow: "0 0 10px #ccc",
+        boxShadow: "1px 1px 14px 8px rgba(0, 0, 0, 0.25)",
         maxHeight: "80vh",
         fontSize: 31,
         fontFamily: "Poppins",
@@ -129,10 +132,11 @@ const useStyles = makeStyles((theme) => ({
         marginTop: theme.spacing(15),
         marginLeft: "auto",
         marginRight: "auto",
-        display: "block",
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
         width: "50%",
-        position: "relative",
-        textAlign: "center"
+        textAlign: "center",
       },
       button: {
           minWidth: 250,
@@ -149,11 +153,8 @@ const useStyles = makeStyles((theme) => ({
       image: {
           position: "absolute",
           zIndex: 10,
-          backgroundColor: "black",
-          width: 20,
-          height: 20,
-          marginTop: theme.spacing(4),
-          marginRight: theme.spacing(5)
+          height: 50,
+          width: 50,
       }
   }));
   
