@@ -26,10 +26,10 @@ export default function Step4(props) {
   const [selectedOut, setSelectedOut] = useState(false);
 
   return (
-    <>
+    <Box maxHeight={300} overflow="auto">
       <Box className={classes.root}>
         <Box className={classes.paperBox}>
-          <InputLabel className={classes.inputLabel}>
+          <InputLabel className={`${classes.inputLabel} ${classes.select}`}>
             Tell us yout project's location
           </InputLabel>
           <Select
@@ -37,6 +37,7 @@ export default function Step4(props) {
             style={{ width: 250 }}
             label="City"
             defaultValue="City"
+            className={classes.select}
           >
             {locations.map((city) => {
               return <MenuItem value={city}>{city}</MenuItem>;
@@ -72,14 +73,14 @@ export default function Step4(props) {
             <Step4Icon className={classes.svg} />
         </Box>
       </Box>
-    </>
+    </Box>
   );
 }
 
 const useStyles = makeStyles((theme) => ({
   root: {
     display: "flex",
-    justifyContent: "space-around",
+    justifyContent: "center",
     [theme.breakpoints.down("xs")]: {
       flexDirection: "column",
       display: "inline-flex",
@@ -93,10 +94,15 @@ const useStyles = makeStyles((theme) => ({
     minWidth: 250,
     height: 140,
     textAlign: "center",
+    marginLeft: theme.spacing(2),
+    marginRight: theme.spacing(2),
     [theme.breakpoints.down("xs")]: {
       width: 140,
     },
     display: "inline-block"
+  },
+  select: {
+    marginRight: theme.spacing(22)
   },
   inputLabel: {
     marginBottom: 20,

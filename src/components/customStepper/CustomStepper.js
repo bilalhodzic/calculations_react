@@ -105,6 +105,7 @@ export default function CustomStepper(props) {
                 orientation={width < 600 ? "vertical" : "horizontal"}
                 activeStep={activeStep}
                 connector={<CustomConnector />}
+                className={classes.stepper}
             >
                 {steps.map((label) => (
                     <Step key={label}>
@@ -122,7 +123,7 @@ export default function CustomStepper(props) {
             <div className={classes.stepContent}>
                 <SwitchStep />
             </div>
-            <div className={classes.stepFooter}>
+            <footer className={classes.stepFooter}>
                 <Button
                     onClick={handleBack}
                     className={classes.stepBtn}
@@ -145,7 +146,7 @@ export default function CustomStepper(props) {
                 >
                     {activeStep === steps.length - 1 ? "Submit" : "Next"}
                 </Button>
-            </div>
+            </footer>
         </>
     );
 }
@@ -157,17 +158,29 @@ const useStyles = makeStyles((theme) => ({
         width: 111,
         borderRadius: 8,
         marginBottom: 10,
+        height: 40
     },
     stepFooter: {
         display: "flex",
         justifyContent: "space-between",
+        background: "white",
         margin: theme.spacing(1),
+        position: "fixed",
+        bottom: 30,
+        right: 32,
+        left: 315,
+        borderBottomLeftRadius: 10,
+        borderBottomRightRadius: 10,
+        paddingTop: theme.spacing(1),
+        boxShadow: "0px -4px 12px rgba(167, 167, 167, 0.25)"
     },
     stepContent: {
         textAlign: "center",
     },
     stepLabel: {
-        fontSize: 31.27,
+        fontSize: 26,
+        marginTop: theme.spacing(4),
+        marginBottom: theme.spacing(2),
         color: "black",
         textAlign: "center",
         [theme.breakpoints.down("xs")]: {
@@ -198,4 +211,9 @@ const useStyles = makeStyles((theme) => ({
             },
         },
     },
+    stepper: {
+        width: "75%",
+        marginLeft: "auto",
+        marginRight: "auto"
+    }
 }));

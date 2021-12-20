@@ -45,7 +45,7 @@ export default function Layout(props) {
       <Helmet>
           <style>{'body { background-color: #E5E5E5; }'}</style>
       </Helmet>
-      <Box className={classes.footer}></Box>
+      
       <List className={classes.list}>
         {drawerList.map((list, index) => (
           <ListItem
@@ -179,16 +179,6 @@ const useStyles = makeStyles((theme) => ({
   menuIcon:{
     marginLeft: theme.spacing(8)
   },
-  footer: {
-    width: "100%",
-    height: calculate(67, 1024),
-    backgroundColor: "white",
-    position: "fixed",
-    bottom: 0,
-    [theme.breakpoints.down("xs")]: {
-      display: "none",
-    },
-  },
   header: {
     backgroundColor: "white",
     width: "100%",
@@ -279,6 +269,6 @@ const useStyles = makeStyles((theme) => ({
   },
   bottomList:{
     position: "absolute",
-    bottom: 150
+    bottom: 100
   }
 }));

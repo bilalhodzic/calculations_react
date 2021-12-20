@@ -56,13 +56,14 @@ export default function Step3(props) {
         );
     }
 
-    return <>{form.map((item) => item)}</>;
+    return <Box maxHeight={300} overflow="auto">{form.map((item) => item)}</Box>;
 }
 
 const useStyles = makeStyles((theme) => ({
     root: {
         display: "flex",
-        justifyContent: "space-around",
+        justifyContent: "center",
+        alignItems: "center",
         [theme.breakpoints.down("xs")]: {
             flexDirection: "column",
             display: "inline-flex",
@@ -75,11 +76,10 @@ const useStyles = makeStyles((theme) => ({
         width: 250,
         height: 140,
         textAlign: "center",
+        marginLeft: theme.spacing(4),
+        marginRight: theme.spacing(4),
         [theme.breakpoints.down("xs")]: {
             width: 140,
         },
-    },
-    "input::placeholder": {
-        textAlign: "center",
     },
 }));

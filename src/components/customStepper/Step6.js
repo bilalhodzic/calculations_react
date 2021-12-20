@@ -21,7 +21,7 @@ export default function Step6(props) {
 const useStyles = makeStyles((theme) => ({
     root: {
       display: "flex",
-      justifyContent: "space-around",
+      justifyContent: "center",
       [theme.breakpoints.down("xs")]: {
         flexDirection: "column",
         display: "inline-flex",
@@ -35,7 +35,8 @@ const useStyles = makeStyles((theme) => ({
       width: 250,
       height: 140,
       textAlign: "center",
-      border: "4px solid white",
+      marginLeft: theme.spacing(2),
+      marginRight: theme.spacing(2),
       "&:hover": {
         cursor: "pointer",
       },

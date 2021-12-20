@@ -20,7 +20,7 @@ export default function Step1(props) {
 
   const classes = useStyles();
   return (
-    <>
+    <Box maxHeight={300} overflow="auto">
       <Box className={classes.root}>
         <Paper
           elevation={4}
@@ -103,7 +103,7 @@ export default function Step1(props) {
           <Typography className={classes.paperText}>Church</Typography>
         </Paper>
       </Box>
-    </>
+    </Box>
   );
 }
 
@@ -111,7 +111,7 @@ export default function Step1(props) {
 const useStyles = makeStyles((theme) => ({
   root: {
     display: "flex",
-    justifyContent: "space-around",
+    justifyContent: "center",
     [theme.breakpoints.down("xs")]: {
       flexDirection: "column",
       display: "inline-flex",
@@ -124,6 +124,8 @@ const useStyles = makeStyles((theme) => ({
     width: 250,
     height: 140,
     textAlign: "center",
+    marginLeft: theme.spacing(2),
+    marginRight: theme.spacing(2),
     border: "4px solid white",
     "&:hover": {
       cursor: "pointer",

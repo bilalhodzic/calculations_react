@@ -8,7 +8,7 @@ export default function Step5(props) {
     const classes = useStyles();
 
     return (
-        <>
+        <Box maxHeight={300} overflow="auto">
             <Box className={classes.root}>
                 <Box className={classes.paperBox}>
                     <Typography className={classes.paperText}>
@@ -56,14 +56,14 @@ export default function Step5(props) {
                     </Paper>
                 </Box>
             </Box>
-        </>
+        </Box>
     );
 }
 
 const useStyles = makeStyles((theme) => ({
     root: {
         display: "flex",
-        justifyContent: "space-around",
+        justifyContent: "center",
         [theme.breakpoints.down("xs")]: {
             flexDirection: "column",
             display: "inline-flex",
@@ -76,6 +76,8 @@ const useStyles = makeStyles((theme) => ({
         minWidth: 250,
         height: 140,
         textAlign: "center",
+        marginLeft: theme.spacing(2),
+        marginRight: theme.spacing(2),
         border: "4px solid white",
         [theme.breakpoints.down("xs")]: {
             width: 140,
@@ -83,7 +85,7 @@ const useStyles = makeStyles((theme) => ({
     },
     standardsBoxHeight:{
         minHeight: 150,
-        marginTop: theme.spacing(2)
+        marginTop: theme.spacing(1)
     },
     standardsSize:{
         minWidth: 200,

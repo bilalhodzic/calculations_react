@@ -20,7 +20,7 @@ export default function Step2(props) {
     marginBottom: 15
   };
   return (
-    <>
+    <Box maxHeight={300} overflow="auto">
       <Box className={classes.root} style={{marginTop: 20}}>
         <Box className={classes.paperBox}>
           <InputLabel style={inputLabelProps} required>Name your project!</InputLabel>
@@ -57,14 +57,14 @@ export default function Step2(props) {
           <Step2Icon className={classes.svg} />
         </Box>
       </Box>
-    </>
+    </Box>
   );
 }
 
 const useStyles = makeStyles((theme) => ({
   root: {
     display: "flex",
-    justifyContent: "space-around",
+    justifyContent: "center",
     [theme.breakpoints.down("xs")]: {
       flexDirection: "column",
       display: "inline-flex",
@@ -77,6 +77,8 @@ const useStyles = makeStyles((theme) => ({
     width: 250,
     height: 140,
     textAlign: "center",
+    marginLeft: theme.spacing(2),
+    marginRight: theme.spacing(2),
     [theme.breakpoints.down("xs")]: {
       width: 140,
     },
