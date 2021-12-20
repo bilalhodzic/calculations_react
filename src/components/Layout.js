@@ -134,6 +134,7 @@ const useStyles = makeStyles((theme) => ({
     [theme.breakpoints.down("xs")]: {
       marginLeft: 0,
     },
+    position: "relative"
   },
   drawer: {
     width: calculate(266),

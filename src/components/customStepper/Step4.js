@@ -26,7 +26,7 @@ export default function Step4(props) {
   const [selectedOut, setSelectedOut] = useState(false);
 
   return (
-    <Box maxHeight={300} overflow="auto">
+    <Box maxHeight={260} overflow="auto">
       <Box className={classes.root}>
         <Box className={classes.paperBox}>
           <InputLabel className={`${classes.inputLabel} ${classes.select}`}>

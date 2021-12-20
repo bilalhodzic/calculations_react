@@ -8,7 +8,7 @@ export default function Step5(props) {
     const classes = useStyles();
 
     return (
-        <Box maxHeight={300} overflow="auto">
+        <Box maxHeight="260" overflow="auto">
             <Box className={classes.root}>
                 <Box className={classes.paperBox}>
                     <Typography className={classes.paperText}>

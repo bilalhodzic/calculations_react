@@ -56,7 +56,7 @@ export default function Step3(props) {
         );
     }
 
-    return <Box maxHeight={300} overflow="auto">{form.map((item) => item)}</Box>;
+    return <Box maxHeight={260} overflow="auto">{form.map((item) => item)}</Box>;
 }
 
 const useStyles = makeStyles((theme) => ({
