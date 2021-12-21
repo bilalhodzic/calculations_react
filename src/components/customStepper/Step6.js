@@ -1,12 +1,14 @@
 import React from "react";
 import { Box, makeStyles, TextField } from "@material-ui/core";
 
+import { ReactComponent as DatePickerIcon } from "../../images/datePickerIcon.svg";
+
 export default function Step6(props) {
 
     const classes = useStyles();
     return (
-        <>
-            <Box className={classes.root}>
+        <Box maxHeight={260} overflow="auto">
+            <Box className={classes.root} style={{marginTop: 2}}>
                 <Box className={classes.paperBox}>
                     <TextField type="date" label="Start date" onKeyDown={(e) => e.preventDefault()} InputLabelProps={{shrink: true}}></TextField>
                 </Box>
@@ -14,7 +16,12 @@ export default function Step6(props) {
                     <TextField type="date" label="End date" onKeyDown="return false" InputLabelProps={{shrink: true}}></TextField>
                 </Box>
             </Box>
-        </>
+            <Box className={classes.root}>
+              <Box className={classes.paperBox}>
+                <DatePickerIcon/>
+              </Box>
+            </Box>
+        </Box>
     );
 }
 
@@ -29,7 +36,6 @@ const useStyles = makeStyles((theme) => ({
           margin: 10,
         },
       },
-      paddingBottom: theme.spacing(10)
     },
     paperBox: {
       width: 250,
