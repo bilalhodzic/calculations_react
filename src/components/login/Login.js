@@ -10,8 +10,14 @@ import {
 import { useHistory } from "react-router-dom";
 import { makeStyles } from "@material-ui/core/styles";
 
+import axios from "axios";
+import config from "../../config.json";
+
 export default function Login() {
   const [openDialog, setOpenDialog] = React.useState(false);
+  const [username, setUsername] = React.useState("");
+  const [password, setPassword] = React.useState("");
+
   const history = useHistory();
 
   const classes = useStyles();
@@ -73,16 +79,18 @@ export default function Login() {
             placeholder="Email or username"
             disableUnderline={true}
             className={classes.input}
+            onChange={(e) => setUsername(e.target.value)}
           />
           <Input
             type="password"
             placeholder="Password"
             disableUnderline={true}
             className={classes.input}
+            onChange={(e) => setPassword(e.target.value)}
           />
           <Button
             className={classes.button2}
-            onClick={() => history.push("/home")}
+            onClick={() => login(username, password, history)}
           >
             Log in
           </Button>
@@ -96,6 +104,27 @@ export default function Login() {
 //I'm trying to convert them to %
 const calculate = (objectPx, totalPx = 1433) => {
   return (objectPx / totalPx) * 100 + "%";
+};
+
+async function login(username, password, history){
+  const axiosOptions = {
+    url: `${config.baseUrl}/auth/login`,
+    method: "POST",
+    headers: {
+      "Access-Control-Allow-Origin": "*",
+      "Access-Control-Allow-Credentials": true
+    },
+    data: {
+      username: username,
+      password: password
+    }
+  };
+  const response = await axios(axiosOptions);
+  if(response.status === 200){
+    history.push("/home");
+  }else{
+    console.log("Invalid login data");
+  }
 };
 
 //add new styles here

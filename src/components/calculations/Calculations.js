@@ -12,6 +12,10 @@ import { makeStyles } from "@material-ui/core/styles";
 import { ReactComponent as ArrowDown } from "../../images/arrowDown.svg";
 import CalcTable from "./CalcTable";
 
+import axios from "axios";
+import helper from "../../helper/TransformData";
+import config from "../../config.json";
+
 //table data which wiil be returned from database
 //just for testing
 const data = [
@@ -77,47 +81,34 @@ const data = [
 ];
 
 export default function Calculations() {
-  const [selectValue, setSelectValue] = React.useState("none");
+  const [selectValueType, setSelectValueType] = React.useState(0);
+  const [selectValueCategory, setSelectValueCategory] = React.useState(0);
   const [searchInput, setSearchInput] = React.useState("");
   const [tableData, setTableData] = React.useState(data);
 
-  React.useEffect(() => {
-    //call function while first time render
+  React.useEffect(async () => {
+    setTableData(helper.transformCalculations((await getCalculationsForPage(1, selectValueCategory, selectValueType)).data));
   }, []);
 
-  const handleSelectChange = (e) => {
-    setSelectValue(e.target.value);
+  const handleSelectTypeChange = (e) => {
+    setSelectValueType(e.target.value);
+  };
+
+  const handleSelectCategoryChange = (e) => {
+    setSelectValueCategory(e.target.value);
   };
 
   const handleInputChange = (e) => {
     setSearchInput(e.target.value);
   };
 
-  const handleSearchClick = (e) => {
-    //if search options are blank return all data
-    if (searchInput === "" && selectValue === "none") {
-      return setTableData(data);
+  const handleSearchClick = async (e) => {
+    if(searchInput === ""){
+      setTableData(helper.transformCalculations((await getCalculationsForPage(1, selectValueCategory, selectValueType)).data));
     }
-    var newData = [];
-    data.map((row) => {
-      if (searchInput === "") {
-        if (row.Type.text === selectValue) {
-          newData.push(row);
-        }
-      } else if (selectValue === "none") {
-        if (row.Name.toLowerCase().includes(searchInput.toLowerCase())) {
-          newData.push(row);
-        }
-      } else {
-        if (
-          row.Name.toLowerCase().includes(searchInput.toLowerCase()) &&
-          row.Type.text === selectValue
-        ) {
-          newData.push(row);
-        }
-      }
-    });
-    setTableData(newData);
+    // else{
+    //   setTableData(helper.transformCalculations((await getCalculationsWithName(searchInput)).data));
+    // }
   };
 
   const classes = useStyles();
@@ -143,20 +134,32 @@ export default function Calculations() {
           />
         </Hidden>
         <Select
-          value={selectValue}
+          value={selectValueType}
           className={classes.input}
           disableUnderline
-          onChange={handleSelectChange}
-          style={{ paddingRight: 10 }}
+          onChange={handleSelectTypeChange}
+          style={{ paddingRight: 10, width: 200 }}
+          IconComponent={() => <ArrowDown/> }
+        >
+          <MenuItem value={0}>Type</MenuItem>
+          <MenuItem value={1}>New Production</MenuItem>
+          <MenuItem value={2}>Rebuilding</MenuItem>
+        </Select>
+        <Select
+          value={selectValueCategory}
+          className={classes.input}
+          disableUnderline
+          onChange={handleSelectCategoryChange}
+          style={{ paddingRight: 10, width: 200 }}
           IconComponent={() => <ArrowDown />}
         >
-          <MenuItem value={"none"}>Type</MenuItem>
-          <MenuItem value={"Building"}>Building</MenuItem>
-          <MenuItem value={"Hospital"}>Hospital</MenuItem>
-          <MenuItem value={"School"}>School</MenuItem>
-          <MenuItem value={"Hotel"}>Hotel</MenuItem>
-          <MenuItem value={"Home"}>Home</MenuItem>
-          <MenuItem value={"Church"}>Church</MenuItem>
+          <MenuItem value={0}>Category</MenuItem>
+          <MenuItem value={1}>Building</MenuItem>
+          <MenuItem value={2}>Hospital</MenuItem>
+          <MenuItem value={3}>School</MenuItem>
+          <MenuItem value={4}>Hotel</MenuItem>
+          <MenuItem value={5}>Home</MenuItem>
+          <MenuItem value={6}>Church</MenuItem>
         </Select>
         <Button
           className={classes.Btn}
@@ -172,6 +175,26 @@ export default function Calculations() {
       </Paper>
     </Layout>
   );
+}
+
+async function getCalculationsForPage(pageNumber, categoryNumber, typeNumber){
+  const axiosOptions = {
+    url: `${config.baseUrl}/calculations/getcalculations/filter/${pageNumber}/${categoryNumber}/${typeNumber}`,
+    method: "GET",
+  };
+
+  const response = await axios(axiosOptions);
+  return response.data;
+}
+
+async function getCalculationsWithName(name){
+  const axiosOptions = {
+    url: `${config.baseUrl}/calculations/getname/${name}`,
+    method: "GET",
+  };
+
+  const response = await axios(axiosOptions);
+  return response.data;
 }
 
 //add new styles here

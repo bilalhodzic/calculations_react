@@ -10,6 +10,10 @@ import { ReactComponent as DeleteIcon } from "../../images/deleteIcon.svg";
 import { ReactComponent as WarningIcon } from "../../images/WarningIcon.svg";
 import useWindowDimensions from "../windowDimension";
 
+import axios from "axios";
+import config from "../../config.json";
+import helper from "../../helper/TransformData";
+
 //add pagination to the datagrid
 function CustomPagination(props) {
   const { state, api } = props;
@@ -37,6 +41,7 @@ const rows = [
     id: 1,
     Name: "Name",
     Date: "02/05/2021",
+    Category: "Building",
     Type: { text: "Building", color: "#0EBD00", backgroundcolor: "#9BFF93" },
     Area: "Adress1",
   },
@@ -44,6 +49,7 @@ const rows = [
     id: 2,
     Name: "Name1",
     Date: "04/03/2021",
+    Category: "Building",
     Type: { text: "School", color: "#00ADFF", backgroundcolor: "#B4E7FF" },
     Area: "Adress2",
     Actions: "actions",
@@ -52,6 +58,7 @@ const rows = [
     id: 3,
     Name: "Name2",
     Date: "04/08/2021",
+    Category: "Building",
     Type: {
       text: "Hospital",
       color: "#FF4100",
@@ -64,6 +71,7 @@ const rows = [
     id: 4,
     Name: "Name3",
     Date: "12/08/2021",
+    Category: "Building",
     Type: {
       text: "Hotel",
       color: "#3F75BD",
@@ -76,6 +84,7 @@ const rows = [
     id: 5,
     Name: "Name4",
     Date: "24/03/2021",
+    Category: "Building",
     Type: {
       text: "Hospital",
       color: "#FF4100",
@@ -88,6 +97,7 @@ const rows = [
     id: 6,
     Name: "Name5",
     Date: "02/01/2021",
+    Category: "Building",
     Type: { text: "Building", color: "#0EBD00", backgroundcolor: "#9BFF93" },
     Area: "Adress6",
     Actions: "actions",
@@ -98,10 +108,7 @@ export default function Calctable(props) {
   const [openDialog, setOpenDialog] = React.useState(false);
   const { width } = useWindowDimensions();
 
-  const data = props.data || rows;
-  React.useEffect(() => {
-    //call function while first time render
-  }, []);
+  const data = props.data;
 
   const columns = [
     {
@@ -122,6 +129,14 @@ export default function Calctable(props) {
       headerAlign: "center",
       align: "center",
       hide: width < 600 ? true : false,
+    },
+    {
+      field: "Category",
+      headerName: "Category",
+      headerAlign: "center",
+      headerClassName: "headerClass",
+      align: "center",
+      width: 200
     },
     {
       field: "Type",
@@ -160,14 +175,14 @@ export default function Calctable(props) {
       headerAlign: "center",
       align: "center",
       renderCell: (params) => (
-        <>
+        <Box display={"flex"} alignItems={"center"} justifyContent={"center"} style={{marginLeft: "auto", marginRight: "auto"}}>
           <IconButton style={{ padding: 8 }}>
             <InfoIcon />
           </IconButton>
           <IconButton style={{ padding: 8 }} onClick={handleDeleteClick}>
             <DeleteIcon />
           </IconButton>
-        </>
+        </Box>
       ),
     },
   ];
