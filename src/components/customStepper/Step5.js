@@ -1,5 +1,6 @@
 import React from "react";
 import { Box, Button, makeStyles, Paper, Typography } from "@material-ui/core";
+import { Scrollbars } from "react-custom-scrollbars";
 
 import { ReactComponent as MedalIcon } from "../../images/medalIcon.svg";
 import { ReactComponent as ExclusiveIcon } from "../../images/exclusiveIcon.svg";
@@ -9,76 +10,82 @@ export default function Step5(props) {
 
     return (
         <Box maxHeight={300} overflow="auto">
-            <Box className={classes.root}>
-                <Box className={classes.paperBox} style={{ height: 80 }}>
-                    <Typography className={classes.paperText}>
-                        Choose your standard
-                    </Typography>
-                </Box>
-            </Box>
-            <Box className={classes.root}>
-                <Box
-                    className={`${classes.paperBox} ${classes.buttonGroup}`}
-                    style={{ height: 80 }}
-                >
-                    <Button className={classes.button}>Indoor standard</Button>
-                    <Button className={classes.button}>Outdoor standard</Button>
-                </Box>
-            </Box>
-            <Box className={classes.root}>
-                <Box
-                    className={`${classes.paperBox} ${classes.standardsBoxHeight}`}
-                >
-                    <Paper elevation={4} className={classes.standardsSize}>
-                        <MedalIcon />
-                        <Typography className={classes.standardsText}>
-                            Normal Standard
+            <Scrollbars style={{ width: 1180, height: 300 }}>
+                <Box className={classes.root}>
+                    <Box className={classes.paperBox} style={{ height: 80 }}>
+                        <Typography className={classes.paperText}>
+                            Choose your standard
                         </Typography>
-                    </Paper>
+                    </Box>
                 </Box>
-                <Box
-                    className={`${classes.paperBox} ${classes.standardsBoxHeight}`}
-                >
-                    <Paper elevation={4} className={classes.standardsSize}>
-                        <MedalIcon />
-                        <Typography className={classes.standardsText}>
-                            Fourth Standard
-                        </Typography>
-                    </Paper>
+                <Box className={classes.root}>
+                    <Box
+                        className={`${classes.paperBox} ${classes.buttonGroup}`}
+                        style={{ height: 80 }}
+                    >
+                        <Button className={classes.button}>
+                            Indoor standard
+                        </Button>
+                        <Button className={classes.button}>
+                            Outdoor standard
+                        </Button>
+                    </Box>
                 </Box>
-                <Box
-                    className={`${classes.paperBox} ${classes.standardsBoxHeight}`}
-                >
-                    <Paper elevation={4} className={classes.standardsSize}>
-                        <MedalIcon />
-                        <Typography className={classes.standardsText}>
-                            High Standard
-                        </Typography>
-                    </Paper>
+                <Box className={classes.root}>
+                    <Box
+                        className={`${classes.paperBox} ${classes.standardsBoxHeight}`}
+                    >
+                        <Paper elevation={4} className={classes.standardsSize}>
+                            <MedalIcon />
+                            <Typography className={classes.standardsText}>
+                                Normal Standard
+                            </Typography>
+                        </Paper>
+                    </Box>
+                    <Box
+                        className={`${classes.paperBox} ${classes.standardsBoxHeight}`}
+                    >
+                        <Paper elevation={4} className={classes.standardsSize}>
+                            <MedalIcon />
+                            <Typography className={classes.standardsText}>
+                                Fourth Standard
+                            </Typography>
+                        </Paper>
+                    </Box>
+                    <Box
+                        className={`${classes.paperBox} ${classes.standardsBoxHeight}`}
+                    >
+                        <Paper elevation={4} className={classes.standardsSize}>
+                            <MedalIcon />
+                            <Typography className={classes.standardsText}>
+                                High Standard
+                            </Typography>
+                        </Paper>
+                    </Box>
                 </Box>
-            </Box>
-            <Box className={classes.root}>
-                <Box
-                    className={`${classes.paperBox} ${classes.standardsBoxHeight}`}
-                >
-                    <Paper elevation={4} className={classes.standardsSize}>
-                        <MedalIcon />
-                        <Typography className={classes.standardsText}>
-                            Fifth Standard
-                        </Typography>
-                    </Paper>
+                <Box className={classes.root}>
+                    <Box
+                        className={`${classes.paperBox} ${classes.standardsBoxHeight}`}
+                    >
+                        <Paper elevation={4} className={classes.standardsSize}>
+                            <MedalIcon />
+                            <Typography className={classes.standardsText}>
+                                Fifth Standard
+                            </Typography>
+                        </Paper>
+                    </Box>
+                    <Box
+                        className={`${classes.paperBox} ${classes.standardsBoxHeight}`}
+                    >
+                        <Paper elevation={4} className={classes.standardsSize}>
+                            <ExclusiveIcon />
+                            <Typography className={classes.standardsText}>
+                                Exclusive Standard
+                            </Typography>
+                        </Paper>
+                    </Box>
                 </Box>
-                <Box
-                    className={`${classes.paperBox} ${classes.standardsBoxHeight}`}
-                >
-                    <Paper elevation={4} className={classes.standardsSize}>
-                        <ExclusiveIcon />
-                        <Typography className={classes.standardsText}>
-                            Exclusive Standard
-                        </Typography>
-                    </Paper>
-                </Box>
-            </Box>
+            </Scrollbars>
         </Box>
     );
 }

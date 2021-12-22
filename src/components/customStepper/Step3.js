@@ -6,6 +6,7 @@ import {
     TextField,
     Typography,
 } from "@material-ui/core";
+import { Scrollbars } from "react-custom-scrollbars";
 
 import getFields from "../../helper/Fields";
 import { ReactComponent as InfoIcon } from "../../images/infoIcon.svg";
@@ -21,7 +22,11 @@ export default function Step3(props) {
     const formItems = fields.map((entry) => {
         return (
             <Box className={classes.paperBox}>
-                <InputLabel className={`${classes.label} ${entry.label.length >= 30 && classes.labelLong}`}>
+                <InputLabel
+                    className={`${classes.label} ${
+                        entry.label.length >= 30 && classes.labelLong
+                    }`}
+                >
                     {entry.label}{" "}
                     {entry.info ? (
                         <abbr title={entry.info}>
@@ -43,7 +48,9 @@ export default function Step3(props) {
                                 ? {
                                       endAdornment: (
                                           <InputAdornment position="end">
-                                              <Typography style={{ fontSize: 14 }}>
+                                              <Typography
+                                                  style={{ fontSize: 14 }}
+                                              >
                                                   {entry.placeholder}
                                                   <sup>{entry.superscript}</sup>
                                               </Typography>
@@ -73,7 +80,9 @@ export default function Step3(props) {
 
     return (
         <Box maxHeight={300} overflow="auto">
-            {form.map((item) => item)}
+            <Scrollbars style={{ width: 1180, height: 300 }}>
+                {form.map((item) => item)}
+            </Scrollbars>
         </Box>
     );
 }
@@ -104,12 +113,13 @@ const useStyles = makeStyles((theme) => ({
     label: {
         textAlign: "start",
         fontWeight: 600,
-        marginBottom: theme.spacing(2.5)
+        marginBottom: theme.spacing(2.5),
+        color: "black",
     },
     labelLong: {
-        marginBottom: theme.spacing(1)
+        marginBottom: theme.spacing(1),
     },
     adornedEnd: {
-        background: 'linear-gradient(-90deg, #E5E5E5 22%, #FFF 22%)'
+        background: "linear-gradient(-90deg, #E5E5E5 22%, #FFF 22%)",
     },
 }));

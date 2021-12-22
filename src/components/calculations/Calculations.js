@@ -84,7 +84,7 @@ export default function Calculations() {
   const [selectValueType, setSelectValueType] = React.useState(0);
   const [selectValueCategory, setSelectValueCategory] = React.useState(0);
   const [searchInput, setSearchInput] = React.useState("");
-  const [tableData, setTableData] = React.useState(data);
+  const [tableData, setTableData] = React.useState([]);
 
   React.useEffect(async () => {
     setTableData(helper.transformCalculations((await getCalculationsForPage(1, selectValueCategory, selectValueType)).data));
