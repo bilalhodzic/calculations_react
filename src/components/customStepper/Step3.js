@@ -72,7 +72,7 @@ export default function Step3(props) {
     }
 
     return (
-        <Box maxHeight={260} overflow="auto">
+        <Box maxHeight={300} overflow="auto">
             {form.map((item) => item)}
         </Box>
     );

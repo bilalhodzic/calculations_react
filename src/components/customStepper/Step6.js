@@ -7,7 +7,7 @@ export default function Step6(props) {
 
     const classes = useStyles();
     return (
-        <Box maxHeight={260} overflow="auto">
+        <Box maxHeight={300} overflow="auto">
             <Box className={classes.root} style={{marginTop: 2}}>
                 <Box className={classes.paperBox}>
                     <TextField type="date" label="Start date" onKeyDown={(e) => e.preventDefault()} InputLabelProps={{shrink: true}}></TextField>

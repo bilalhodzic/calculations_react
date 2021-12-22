@@ -26,9 +26,9 @@ export default function Step4(props) {
   const [selectedOut, setSelectedOut] = useState(false);
 
   return (
-    <Box maxHeight={260} overflow="auto">
+    <Box maxHeight={300} overflow="auto">
       <Box className={classes.root}>
-        <Box className={classes.paperBox}>
+        <Box className={classes.paperBox} style={{height: 100}}>
           <InputLabel className={`${classes.inputLabel} ${classes.select}`}>
             Tell us yout project's location
           </InputLabel>
@@ -44,7 +44,7 @@ export default function Step4(props) {
             })}
           </Select>
         </Box>
-        <Box className={classes.paperBox}></Box>
+        <Box className={classes.paperBox} style={{height: 100}}></Box>
       </Box>
       <Box className={classes.root}>
         <Box className={classes.paperBox}>
@@ -99,7 +99,7 @@ const useStyles = makeStyles((theme) => ({
     [theme.breakpoints.down("xs")]: {
       width: 140,
     },
-    display: "inline-block"
+    display: "inline-block",
   },
   select: {
     marginRight: theme.spacing(22)

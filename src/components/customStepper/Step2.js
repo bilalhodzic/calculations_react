@@ -20,7 +20,7 @@ export default function Step2(props) {
     marginBottom: 15
   };
   return (
-    <Box maxHeight={260} overflow="auto">
+    <Box maxHeight={300} overflow="auto">
       <Box className={classes.root} style={{marginTop: 20}}>
         <Box className={classes.paperBox}>
           <InputLabel style={inputLabelProps} required>Name your project!</InputLabel>

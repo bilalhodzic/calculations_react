@@ -165,18 +165,14 @@ const useStyles = makeStyles((theme) => ({
         justifyContent: "space-between",
         background: "white",
         margin: theme.spacing(1),
-        // position: "fixed",
-        // bottom: 30,
-        // right: 32,
-        // left: 315,
         borderBottomLeftRadius: 10,
         borderBottomRightRadius: 10,
         paddingTop: theme.spacing(1),
         boxShadow: "0px -4px 12px rgba(167, 167, 167, 0.25)",
         position: "absolute",
-        bottom: 0,
-        left: 35,
-        right: 33
+        bottom: -40,
+        left: 32,
+        right: 32
     },
     stepContent: {
         textAlign: "center",
