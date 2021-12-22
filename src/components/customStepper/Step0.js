@@ -24,7 +24,7 @@ export default function Step0 (props){
             <Box className={classes.root}>
                 <Box className={classes.header}>
                     <Box className={classes.drawerHeader} onClick={() => history.push("/")}>
-                        <Typography>Calculation</Typography>
+                        <Typography className={classes.headerText}>Calculation</Typography>
                     </Box>
                     <Hidden smUp>
                         <MenuIcon className={classes.menuIcon} onClick={handleDrawer} />
@@ -32,7 +32,7 @@ export default function Step0 (props){
                 </Box>
 
                 <Paper className={classes.paper}>
-                    <Typography className={classes.title}>What do you want?</Typography>
+                    <Typography className={classes.title}>What do you want ?</Typography>
                     <Box className={classes.buttonGroup}>
                         <Button className={classes.button}>Rebuildings</Button>
                         <CalculatorIcon className={classes.image}/>
@@ -65,13 +65,13 @@ const useStyles = makeStyles((theme) => ({
     },
     drawerHeader: {
       height: "100%",
-      width: calculate(267),
+      width: calculate(241),
       //backgroundColor: "#21344d",
       display: "flex",
-      minWidth: 181,
+      minWidth: 150,
   
       backgroundColor: "#21344D",
-      justifyContent: "center",
+      justifyContent: "flex-start",
       alignItems: "inherit",
       "& p": {
         fontSize: 22,
@@ -98,14 +98,14 @@ const useStyles = makeStyles((theme) => ({
     },
     title: {
         color: "#21344D",
-        fontSize: 50,
-        fontWeight: "bold",
+        fontSize: 70,
+        fontWeight: 900,
         margin: "0 auto",
         textAlign: "center",
         display: "block"
     },
     paper: {
-        height: "70vh",
+        height: "73vh",
         //margin: theme.spacing(2),
         zIndex: 100,
         marginRight: theme.spacing(20),
@@ -127,9 +127,13 @@ const useStyles = makeStyles((theme) => ({
           fontSize: 23,
           height: "100%",
         },
+        display: "flex",
+        flexDirection: "column",
+        alignItems: "center",
+        justifyContent: "center"
       },
       buttonGroup:{
-        marginTop: theme.spacing(15),
+        marginTop: theme.spacing(8),
         marginLeft: "auto",
         marginRight: "auto",
         display: "flex",
@@ -139,8 +143,8 @@ const useStyles = makeStyles((theme) => ({
         textAlign: "center",
       },
       button: {
-          minWidth: 250,
-          minHeight: 100,
+          minWidth: 300,
+          minHeight: 170,
           border: "2px solid black",
           "&:hover":{
               backgroundColor: "#21344D",
@@ -153,8 +157,11 @@ const useStyles = makeStyles((theme) => ({
       image: {
           position: "absolute",
           zIndex: 10,
-          height: 50,
-          width: 50,
+          height: 70,
+          width: 70,
+      },
+      headerText: {
+        marginLeft: theme.spacing(4)
       }
   }));
   
