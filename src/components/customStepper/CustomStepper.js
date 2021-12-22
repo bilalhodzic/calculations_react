@@ -81,7 +81,7 @@ export default function CustomStepper(props) {
             case 1:
                 return <Step2 />;
             case 2:
-                return <Step3 type={types.flerbostadshus}/>;
+                return <Step3 type={types.idrottshall}/>;
             case 3:
                 return <Step4 />;
             case 4:
@@ -184,7 +184,6 @@ const useStyles = makeStyles((theme) => ({
     stepLabel: {
         fontSize: 26,
         marginTop: theme.spacing(4),
-        marginBottom: theme.spacing(2),
         color: "black",
         textAlign: "center",
         [theme.breakpoints.down("xs")]: {
@@ -218,6 +217,7 @@ const useStyles = makeStyles((theme) => ({
     stepper: {
         width: "75%",
         marginLeft: "auto",
-        marginRight: "auto"
+        marginRight: "auto",
+        marginBottom: theme.spacing(2)
     }
 }));

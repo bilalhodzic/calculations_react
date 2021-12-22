@@ -149,7 +149,7 @@ const useStyles = makeStyles((theme) => ({
     root: {
         //backgroundColor: "#E5E5E5",
         marginTop: theme.spacing(10),
-        marginLeft: `max(180px, ${calculate(266)})`, // max calculation similarly picks the largest from a comma separated list of values (of any length).
+        marginLeft: `max(180px, ${calculate(245)})`, // max calculation similarly picks the largest from a comma separated list of values (of any length).
         [theme.breakpoints.down("xs")]: {
             marginLeft: 0,
         },

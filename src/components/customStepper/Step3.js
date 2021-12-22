@@ -21,9 +21,20 @@ export default function Step3(props) {
     const formItems = fields.map((entry) => {
         return (
             <Box className={classes.paperBox}>
-                <InputLabel>{entry.label}</InputLabel>
+                <InputLabel className={`${classes.label} ${entry.label.length >= 30 && classes.labelLong}`}>
+                    {entry.label}{" "}
+                    {entry.info ? (
+                        <abbr title={entry.info}>
+                            <InfoIcon
+                                style={{ height: 12, width: 12, marginLeft: 5 }}
+                            />
+                        </abbr>
+                    ) : null}
+                </InputLabel>
+
                 <Box position="relative" display="inline-block">
                     <TextField
+                        size="small"
                         type="number"
                         placeholder={!entry.isRight ? entry.placeholder : null}
                         variant="outlined"
@@ -32,15 +43,19 @@ export default function Step3(props) {
                                 ? {
                                       endAdornment: (
                                           <InputAdornment position="end">
-                                              <Typography>{entry.placeholder}</Typography>
-                                              <sup>{entry.superscript}</sup>
+                                              <Typography style={{ fontSize: 14 }}>
+                                                  {entry.placeholder}
+                                                  <sup>{entry.superscript}</sup>
+                                              </Typography>
                                           </InputAdornment>
                                       ),
+                                      classes: {
+                                          adornedEnd: classes.adornedEnd,
+                                      },
                                   }
                                 : null
                         }
                     ></TextField>
-                    {entry.info ? <abbr title={entry.info}><InfoIcon style={{ position: "absolute", right: 5, top: 5, height: 15, width: 15}} /></abbr>: null}
                 </Box>
             </Box>
         );
@@ -56,7 +71,11 @@ export default function Step3(props) {
         );
     }
 
-    return <Box maxHeight={260} overflow="auto">{form.map((item) => item)}</Box>;
+    return (
+        <Box maxHeight={260} overflow="auto">
+            {form.map((item) => item)}
+        </Box>
+    );
 }
 
 const useStyles = makeStyles((theme) => ({
@@ -74,12 +93,23 @@ const useStyles = makeStyles((theme) => ({
     },
     paperBox: {
         width: 250,
-        height: 140,
+        height: 100,
         textAlign: "center",
         marginLeft: theme.spacing(4),
         marginRight: theme.spacing(4),
         [theme.breakpoints.down("xs")]: {
             width: 140,
         },
+    },
+    label: {
+        textAlign: "start",
+        fontWeight: 600,
+        marginBottom: theme.spacing(2.5)
+    },
+    labelLong: {
+        marginBottom: theme.spacing(1)
+    },
+    adornedEnd: {
+        background: 'linear-gradient(-90deg, #E5E5E5 22%, #FFF 22%)'
     },
 }));
