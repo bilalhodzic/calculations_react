@@ -10,10 +10,6 @@ import { ReactComponent as DeleteIcon } from "../../images/deleteIcon.svg";
 import { ReactComponent as WarningIcon } from "../../images/WarningIcon.svg";
 import useWindowDimensions from "../windowDimension";
 
-import axios from "axios";
-import config from "../../config.json";
-import helper from "../../helper/TransformData";
-
 //add pagination to the datagrid
 function CustomPagination(props) {
   const { state, api } = props;
