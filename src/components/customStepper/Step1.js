@@ -11,7 +11,6 @@ import { HomeIcon } from "../svgIcons/HomeIcon";
 import { ChurchIcon } from "../svgIcons/ChurchIcon";
 
 import types from "../../helper/data.json";
-import { useLocation } from "react-router-dom";
 
 const newProduction = [
     {
@@ -95,11 +94,10 @@ const rebuilding = [
 ];
 
 export default function Step1(props) {
-    const data = useLocation().state;
     const classes = useStyles();
 
     const projectCategory = props.category;
-    const projectType = data.type;
+    const projectType = props.data.type;
 
     const items =
         projectType === types.types.new_production.id

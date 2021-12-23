@@ -19,6 +19,7 @@ import Step6 from "./Step6";
 import types from "../../helper/data.json";
 import useWindowDimensions from "../windowDimension";
 import { useThemeProps } from "@material-ui/data-grid";
+import { useLocation } from "react-router-dom/cjs/react-router-dom.min";
 
 const CustomConnector = withStyles({
     alternativeLabel: {
@@ -47,6 +48,9 @@ export default function CustomStepper(props) {
     const [newCalculation, setNewCalculation] = React.useState({
         ProjectType: "",
     });
+    const location = useLocation();
+    const [betweenStepsData, setBetweenStepsData] = React.useState({ type: location.state.type });
+
     const steps = [
         "Choose Project Type",
         "Project Info",
@@ -76,6 +80,8 @@ export default function CustomStepper(props) {
                     <Step1
                         handleChange={handleChange}
                         category={newCalculation.ProjectType}
+                        data={betweenStepsData}
+                        setData={setBetweenStepsData}
                     />
                 );
             case 1:
