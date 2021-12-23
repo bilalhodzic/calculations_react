@@ -7,8 +7,8 @@ import { ReactComponent as DatePickerIcon } from "../../images/datePickerIcon.sv
 export default function Step6(props) {
     const classes = useStyles();
     return (
-        <Box maxHeight={300} overflow="auto">
-            <Scrollbars style={{ width: 1180, height: 300 }}>
+        <Box maxHeight={"30em"} overflow="auto">
+            <Scrollbars style={{ width: "100%", height: "20em"}}>
                 <Box className={classes.root} style={{ marginTop: 2 }}>
                     <Box className={classes.paperBox}>
                         <TextField
@@ -22,7 +22,7 @@ export default function Step6(props) {
                         <TextField
                             type="date"
                             label="End date"
-                            onKeyDown="return false"
+                            onKeyDown={(e) => e.preventDefault()}
                             InputLabelProps={{ shrink: true }}
                         ></TextField>
                     </Box>

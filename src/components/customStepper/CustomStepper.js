@@ -75,7 +75,7 @@ export default function CustomStepper(props) {
                 return (
                     <Step1
                         handleChange={handleChange}
-                        type={newCalculation.ProjectType}
+                        category={newCalculation.ProjectType}
                     />
                 );
             case 1:

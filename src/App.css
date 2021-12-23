@@ -36,20 +36,3 @@
     transform: rotate(360deg);
   }
 }
-
-html{
-  scrollbar-width: thin;
-  scrollbar-color: red;
-}
-
-html::-webkit-scrollbar{
-  width: 10px
-}
-
-html::-webkit-scrollbar-thumb{
-  background-color: red;
-}
-
-html::-webkit-scrollbar-track{
-  background-color: green;
-}

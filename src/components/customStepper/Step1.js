@@ -11,137 +11,158 @@ import { HomeIcon } from "../svgIcons/HomeIcon";
 import { ChurchIcon } from "../svgIcons/ChurchIcon";
 
 import types from "../../helper/data.json";
+import { useLocation } from "react-router-dom";
+
+const newProduction = [
+    {
+        category: types.category.school,
+        icon: (
+            <SchoolIcon color="#21344d" size={80} style={{ paddingTop: 10 }} />
+        ),
+        label: "School",
+    },
+    {
+        category: types.category.building,
+        icon: (
+            <BuildingIcon
+                color="#21344d"
+                size={80}
+                style={{ paddingTop: 10 }}
+            />
+        ),
+        label: "Building",
+    },
+    {
+        category: types.category.hospital,
+        icon: (
+            <HospitalIcon
+                color="#21344d"
+                size={80}
+                style={{ paddingTop: 10 }}
+            />
+        ),
+        label: "Hospital",
+    },
+    {
+        category: types.category.hotel,
+        icon: (
+            <HotelIcon color="#21344d" size={80} style={{ paddingTop: 10 }} />
+        ),
+        label: "Hotel",
+    },
+    {
+        category: types.category.home,
+        icon: <HomeIcon color="#21344d" size={80} style={{ paddingTop: 10 }} />,
+        label: "Home",
+    },
+    {
+        category: types.category.church,
+        icon: (
+            <ChurchIcon color="#21344d" size={80} style={{ paddingTop: 10 }} />
+        ),
+        label: "Church",
+    },
+];
+const rebuilding = [
+    {
+        category: types.rebuilding.omby,
+        icon: (
+            <SchoolIcon color="#21344d" size={80} style={{ paddingTop: 10 }} />
+        ),
+        label: "Ombyggnad bostäder",
+    },
+    {
+        category: types.rebuilding.kontor,
+        icon: (
+            <SchoolIcon color="#21344d" size={80} style={{ paddingTop: 10 }} />
+        ),
+        label: "Kontor",
+    },
+    {
+        category: types.rebuilding.handel,
+        icon: (
+            <SchoolIcon color="#21344d" size={80} style={{ paddingTop: 10 }} />
+        ),
+        label: "Handel",
+    },
+    {
+        category: types.rebuilding.skola,
+        icon: (
+            <SchoolIcon color="#21344d" size={80} style={{ paddingTop: 10 }} />
+        ),
+        label: "Skola",
+    },
+];
 
 export default function Step1(props) {
-    const projectType = props.type;
+    const data = useLocation().state;
+    const classes = useStyles();
+
+    const projectCategory = props.category;
+    const projectType = data.type;
+
+    const items =
+        projectType === types.types.new_production.id
+            ? newProduction.map((e) => {
+                  return (
+                      <Paper
+                          elevation={4}
+                          onClick={() => handleClickPaper(e.category)}
+                          className={classes.paperBox}
+                          style={
+                              projectCategory === e.category
+                                  ? { border: "4px solid #21344d" }
+                                  : { border: "4px solid white" }
+                          }
+                      >
+                          {e.icon}
+                          <Typography className={classes.paperText}>
+                              {e.label}
+                          </Typography>
+                      </Paper>
+                  );
+              })
+            : rebuilding.map((e) => {
+                  return (
+                      <Paper
+                          elevation={4}
+                          onClick={() => handleClickPaper(e.category)}
+                          className={classes.paperBox}
+                          style={
+                              projectCategory === e.category
+                                  ? { border: "4px solid #21344d" }
+                                  : { border: "4px solid white" }
+                          }
+                      >
+                          {e.icon}
+                          <Typography className={classes.paperText}>
+                              {e.label}
+                          </Typography>
+                      </Paper>
+                  );
+              });
+
+    let rows = [];
+    for(let i = 0; i < items.length; i += 3){
+        rows.push(
+            <Box className={classes.root} style={{ marginTop: 20 }}>
+                {items[i]}
+                {i + 1 < items.length && items[i + 1]}
+                {i + 2 < items.length && items[i + 2]}
+            </Box>
+        );
+    }
 
     const handleClickPaper = (prop) => {
         //setting the state property from parent component
+        console.log(prop);
         props.handleChange("ProjectType", prop);
     };
 
-    const classes = useStyles();
     return (
-        <Box maxHeight={300} overflow="auto">
-            <Scrollbars style={{ width: 1180, height: 300}}>
-                <Box className={classes.root}>
-                    <Paper
-                        elevation={4}
-                        onClick={() => handleClickPaper(types.category.school)}
-                        className={classes.paperBox}
-                        style={
-                            projectType === types.category.school
-                                ? { border: "4px solid #21344d" }
-                                : { border: "4px solid white" }
-                        }
-                    >
-                        <SchoolIcon
-                            color="#21344d"
-                            size={80}
-                            style={{ paddingTop: 10 }}
-                        />
-                        <Typography className={classes.paperText}>
-                            School
-                        </Typography>
-                    </Paper>
-                    <Paper
-                        elevation={4}
-                        onClick={() => handleClickPaper(types.category.building)}
-                        className={classes.paperBox}
-                        style={
-                            projectType === types.category.building
-                                ? { border: "4px solid #21344d" }
-                                : { border: "4px solid white" }
-                        }
-                    >
-                        <BuildingIcon
-                            color="#21344d"
-                            size={80}
-                            style={{ paddingTop: 10 }}
-                        />
-                        <Typography className={classes.paperText}>
-                            Building
-                        </Typography>
-                    </Paper>
-                    <Paper
-                        elevation={4}
-                        onClick={() => handleClickPaper(types.category.hospital)}
-                        className={classes.paperBox}
-                        style={
-                            projectType === types.category.hospital
-                                ? { border: "4px solid #21344d" }
-                                : { border: "4px solid white" }
-                        }
-                    >
-                        <HospitalIcon
-                            color="#21344d"
-                            size={80}
-                            style={{ paddingTop: 10 }}
-                        />
-                        <Typography className={classes.paperText}>
-                            Hospital
-                        </Typography>
-                    </Paper>
-                </Box>
-                <Box className={classes.root} style={{ marginTop: 20 }}>
-                    <Paper
-                        elevation={4}
-                        onClick={() => handleClickPaper(types.category.hotel)}
-                        className={classes.paperBox}
-                        style={
-                            projectType === types.category.hotel
-                                ? { border: "4px solid #21344d" }
-                                : { border: "4px solid white" }
-                        }
-                    >
-                        <HotelIcon
-                            color="#21344d"
-                            size={80}
-                            style={{ paddingTop: 10 }}
-                        />
-                        <Typography className={classes.paperText}>
-                            Hotel
-                        </Typography>
-                    </Paper>
-                    <Paper
-                        elevation={4}
-                        onClick={() => handleClickPaper(types.category.home)}
-                        className={classes.paperBox}
-                        style={
-                            projectType === types.category.home
-                                ? { border: "4px solid #21344d" }
-                                : { border: "4px solid white" }
-                        }
-                    >
-                        <HomeIcon
-                            color="#21344d"
-                            size={80}
-                            style={{ paddingTop: 10 }}
-                        />
-                        <Typography className={classes.paperText}>
-                            Home
-                        </Typography>
-                    </Paper>
-                    <Paper
-                        elevation={4}
-                        onClick={() => handleClickPaper(types.category.church)}
-                        className={classes.paperBox}
-                        style={
-                            projectType === types.category.church
-                                ? { border: "4px solid #21344d" }
-                                : { border: "4px solid white" }
-                        }
-                    >
-                        <ChurchIcon
-                            color="#21344d"
-                            size={80}
-                            style={{ paddingTop: 10 }}
-                        />
-                        <Typography className={classes.paperText}>
-                            Church
-                        </Typography>
-                    </Paper>
-                </Box>
+        <Box maxHeight={"30em"} overflow="auto">
+            <Scrollbars style={{ width: "100%", height: "20em" }}>
+                {rows.map((e) => e)}
             </Scrollbars>
         </Box>
     );
@@ -175,7 +196,7 @@ const useStyles = makeStyles((theme) => ({
         },
     },
     paperText: {
-        fontSize: 24,
+        fontSize: 20,
         fontWeight: 600,
         color: "black",
         [theme.breakpoints.down("xs")]: {

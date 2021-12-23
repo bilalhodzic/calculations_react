@@ -30,5 +30,11 @@
             "id": 2,
             "value": "Rebuilding"
         }
+    },
+    "rebuilding": {
+        "omby": "Ombyggnad bostäder",
+        "kontor": "Kontor",
+        "handel": "Handel",
+        "skola": "Skola"
     }
 }

@@ -79,8 +79,8 @@ export default function Step3(props) {
     }
 
     return (
-        <Box maxHeight={300} overflow="auto">
-            <Scrollbars style={{ width: 1180, height: 300 }}>
+        <Box maxHeight={"30em"} overflow="auto">
+            <Scrollbars style={{ width: "100%", height: "20em"}}>
                 {form.map((item) => item)}
             </Scrollbars>
         </Box>
