@@ -10,7 +10,7 @@ import { HospitalIcon } from "../svgIcons/HospitalIcon";
 import { HomeIcon } from "../svgIcons/HomeIcon";
 import { ChurchIcon } from "../svgIcons/ChurchIcon";
 
-import types from "../../helper/types.json";
+import types from "../../helper/data.json";
 
 export default function Step1(props) {
     const projectType = props.type;
@@ -27,10 +27,10 @@ export default function Step1(props) {
                 <Box className={classes.root}>
                     <Paper
                         elevation={4}
-                        onClick={() => handleClickPaper(types.school)}
+                        onClick={() => handleClickPaper(types.category.school)}
                         className={classes.paperBox}
                         style={
-                            projectType === types.school
+                            projectType === types.category.school
                                 ? { border: "4px solid #21344d" }
                                 : { border: "4px solid white" }
                         }
@@ -46,10 +46,10 @@ export default function Step1(props) {
                     </Paper>
                     <Paper
                         elevation={4}
-                        onClick={() => handleClickPaper(types.building)}
+                        onClick={() => handleClickPaper(types.category.building)}
                         className={classes.paperBox}
                         style={
-                            projectType === types.building
+                            projectType === types.category.building
                                 ? { border: "4px solid #21344d" }
                                 : { border: "4px solid white" }
                         }
@@ -65,10 +65,10 @@ export default function Step1(props) {
                     </Paper>
                     <Paper
                         elevation={4}
-                        onClick={() => handleClickPaper(types.hospital)}
+                        onClick={() => handleClickPaper(types.category.hospital)}
                         className={classes.paperBox}
                         style={
-                            projectType === types.hospital
+                            projectType === types.category.hospital
                                 ? { border: "4px solid #21344d" }
                                 : { border: "4px solid white" }
                         }
@@ -86,10 +86,10 @@ export default function Step1(props) {
                 <Box className={classes.root} style={{ marginTop: 20 }}>
                     <Paper
                         elevation={4}
-                        onClick={() => handleClickPaper(types.hotel)}
+                        onClick={() => handleClickPaper(types.category.hotel)}
                         className={classes.paperBox}
                         style={
-                            projectType === types.hotel
+                            projectType === types.category.hotel
                                 ? { border: "4px solid #21344d" }
                                 : { border: "4px solid white" }
                         }
@@ -105,10 +105,10 @@ export default function Step1(props) {
                     </Paper>
                     <Paper
                         elevation={4}
-                        onClick={() => handleClickPaper(types.home)}
+                        onClick={() => handleClickPaper(types.category.home)}
                         className={classes.paperBox}
                         style={
-                            projectType === types.home
+                            projectType === types.category.home
                                 ? { border: "4px solid #21344d" }
                                 : { border: "4px solid white" }
                         }
@@ -124,10 +124,10 @@ export default function Step1(props) {
                     </Paper>
                     <Paper
                         elevation={4}
-                        onClick={() => handleClickPaper(types.church)}
+                        onClick={() => handleClickPaper(types.category.church)}
                         className={classes.paperBox}
                         style={
-                            projectType === types.church
+                            projectType === types.category.church
                                 ? { border: "4px solid #21344d" }
                                 : { border: "4px solid white" }
                         }

@@ -6,6 +6,8 @@ import {Helmet} from 'react-helmet';
 import { ReactComponent as CalculatorIcon } from "../../images/calculatorIcon.svg";
 import { ReactComponent as MenuIcon } from "../../images/burgerIcon.svg";
 
+import types from "../../helper/data.json";
+
 export default function Step0 (props){
 
     const [mobileOpen, setMobileOpen] = React.useState(false);
@@ -34,9 +36,9 @@ export default function Step0 (props){
                 <Paper className={classes.paper}>
                     <Typography className={classes.title}>What do you want ?</Typography>
                     <Box className={classes.buttonGroup}>
-                        <Button className={classes.button}>Rebuildings</Button>
+                        <Button className={classes.button} onClick={() => history.push({pathname: "/new", state: { type: types.types.rebuilding.id }})}>Rebuildings</Button>
                         <CalculatorIcon className={classes.image}/>
-                        <Button className={classes.button}>New production</Button>
+                        <Button className={classes.button} onClick={() => history.push({pathname: "/new", state: { type: types.types.new_production.id }})}>New production</Button>
                     </Box>
                 </Paper>
             </Box>

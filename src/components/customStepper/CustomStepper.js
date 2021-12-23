@@ -16,7 +16,7 @@ import Step4 from "./Step4";
 import Step5 from "./Step5";
 import Step6 from "./Step6";
 
-import types from "../../helper/types.json";
+import types from "../../helper/data.json";
 import useWindowDimensions from "../windowDimension";
 import { useThemeProps } from "@material-ui/data-grid";
 
@@ -81,7 +81,7 @@ export default function CustomStepper(props) {
             case 1:
                 return <Step2 />;
             case 2:
-                return <Step3 type={types.idrottshall}/>;
+                return <Step3 type={types.category.idrottshall}/>;
             case 3:
                 return <Step4 />;
             case 4:

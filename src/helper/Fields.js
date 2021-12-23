@@ -1,12 +1,12 @@
-import types from "./types.json";
+import types from "./data.json";
 
 
 export default function getFields(type){
     switch(type){
-        case types.lager:
-        case types.industribyggnad:
-        case types.skola:
-        case types.forskola:
+        case types.category.lager:
+        case types.category.industribyggnad:
+        case types.category.skola:
+        case types.category.forskola:
             return [
                 {
                     label: "Lokalarea",
@@ -49,7 +49,7 @@ export default function getFields(type){
                     isRight: true
                 },
             ];
-        case types.parkeringshus:
+        case types.category.parkeringshus:
             return [
                 {
                     label: "Garageyta",
@@ -97,7 +97,7 @@ export default function getFields(type){
                     placeholder: "0"
                 },
             ];
-        case types.idrottshall:
+        case types.category.idrottshall:
             return [
                 {
                     label: "Yta for idrottshall nklusive omkladningsrum",
@@ -141,7 +141,7 @@ export default function getFields(type){
                     isRight: true
                 },
             ];
-        case types.flerbostadshus:
+        case types.category.flerbostadshus:
             return [
                 {
                     label: "Boarea",
@@ -199,8 +199,8 @@ export default function getFields(type){
                     placeholder: "0"
                 },
             ];
-        case types.radhus:
-        case types.villor:
+        case types.category.radhus:
+        case types.category.villor:
             return [
                 {
                     label: "Boarea",
@@ -246,7 +246,7 @@ export default function getFields(type){
                     isRight: true
                 },
             ];
-        case types.vardboende:
+        case types.category.vardboende:
             return [
                 {
                     label: "Kvadratmeter pa vardboendet",
@@ -304,7 +304,7 @@ export default function getFields(type){
                     isRight: true
                 },
             ];
-        case types.studentlagenheter:
+        case types.category.studentlagenheter:
             return [
                 {
                     label: "Boarea",
@@ -362,7 +362,7 @@ export default function getFields(type){
                     placeholder: "0"
                 },
             ];
-        case types.hotell:
+        case types.category.hotell:
             return [
                 {
                     label: "Boarea",

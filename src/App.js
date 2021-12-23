@@ -26,9 +26,9 @@ function App() {
         <Route exact path="/" component={Login} />
         <Route path="/home" component={Dashboard} />
         <Route path="/calculations" component={Calculations} />
-        <Route path="/add" component={NewCalculation} />
+        <Route path="/add" component={Step0} />
         <Route path="/about" component={AboutUs} />
-        <Route path="/step0" component={Step0}/>
+        <Route path="/new" component={NewCalculation}/>
       </BrowserRouter>
     </ThemeProvider>
   );
