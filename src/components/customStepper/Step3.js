@@ -1,3 +1,4 @@
+import React from "react";
 import {
     Box,
     InputAdornment,
@@ -8,18 +9,19 @@ import {
 } from "@material-ui/core";
 import { Scrollbars } from "react-custom-scrollbars";
 
-import getFields from "../../helper/Fields";
+import { getFieldsNewBuilding } from "../../helper/Fields";
 import { ReactComponent as InfoIcon } from "../../images/infoIcon.svg";
 
 export default function Step3(props) {
     const classes = useStyles();
 
-    const fields = getFields(props.type);
+    const fields = getFieldsNewBuilding(props.type);
+    const [formValues, setFormValues] = React.useState([]);
 
-    const inputProps = {
-        endAdornment: <InputAdornment position="end"></InputAdornment>,
-    };
+    fields.forEach((e) => formValues.push(""));
+    let i = -1;
     const formItems = fields.map((entry) => {
+        i++;
         return (
             <Box className={classes.paperBox}>
                 <InputLabel
@@ -43,6 +45,11 @@ export default function Step3(props) {
                         type="number"
                         placeholder={!entry.isRight ? entry.placeholder : null}
                         variant="outlined"
+                        onChange={(e) => {
+                            console.log(i);
+                            formValues[i] = e.target.value;
+                            setFormValues(formValues);
+                        }}
                         InputProps={
                             entry.isRight
                                 ? {

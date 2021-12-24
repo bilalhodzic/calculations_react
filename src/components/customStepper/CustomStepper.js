@@ -65,6 +65,7 @@ export default function CustomStepper(props) {
     };
 
     const handleNext = () => {
+        console.log(betweenStepsData);
         setActiveStep((prevActiveStep) => prevActiveStep + 1);
     };
 
@@ -85,7 +86,7 @@ export default function CustomStepper(props) {
                     />
                 );
             case 1:
-                return <Step2 />;
+                return <Step2 data={betweenStepsData} setData={setBetweenStepsData} />;
             case 2:
                 return <Step3 type={types.category.idrottshall}/>;
             case 3:

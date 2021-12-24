@@ -1,7 +1,7 @@
 import types from "./data.json";
 
 
-export default function getFields(type){
+export function getFieldsNewBuilding(type){
     switch(type){
         case types.category.lager:
         case types.category.industribyggnad:
@@ -424,5 +424,129 @@ export default function getFields(type){
             ];
         default:
             return [];
+    }
+}
+
+export function getFieldsRebuilding(type){
+    switch(type){
+        case types.rebuildingType.endast:
+            return [
+                {
+                    label: "Antal bodrum",
+                    id: "bodrum",
+                    placeholder: 0
+                },
+                {
+                    label: "Antal WC",
+                    id: "wc",
+                    placeholder: 0
+                },
+                {
+                    label: "Antal lagenhetter",
+                    id: "lagenhetter",
+                    placeholder: 0
+                },
+                {
+                    label: "Kvm Mork bruttoarea",
+                    id: "mork",
+                    placeholder: "m",
+                    superscript: 2,
+                    isRight: true,
+                    info: "Avser allmänna utrymmen och där byter man alltid \nstammar/ledningar, pris per m2 mörk BTA är  indikerad i kalkylen"
+                },
+            ];
+        case types.rebuildingType.byte:
+        case types.rebuildingType.indvadigt:
+            return [
+                {
+                    label: "Boarea",
+                    id: "boarea",
+                    placeholder: "m",
+                    superscript: 2
+                },
+                {
+                    label: "Lokalarea",
+                    id: "lokalarea",
+                    placeholder: "m",
+                    superscript: 2
+                },
+                {
+                    label: "Antal lagenhetter",
+                    id: "lagenhetter",
+                    placeholder: 0
+                },
+                {
+                    label: "Antal bodrum",
+                    id: "bodrum",
+                    placeholder: 0
+                },
+                {
+                    label: "Antal WC",
+                    id: "wc",
+                    placeholder: 0
+                },
+                {
+                    label: "Kvm Mork bruttoarea",
+                    id: "mork",
+                    placeholder: "m",
+                    superscript: 2,
+                    info: "Avser allmänna utrymmen och där byter man alltid \nstammar/ledningar, pris per m2 mörk BTA är  indikerad i kalkylen"
+                },
+                {
+                    label: "Kvm Ljus bruttoarea",
+                    id: "ljus",
+                    placeholder: "m",
+                    superscript: 2
+                },
+                {
+                    label: "Total BTA",
+                    id: "bta",
+                    placeholder: "m",
+                    superscript: 2
+                },
+            ];
+        case types.rebuildingType.upprustning:
+        case types.rebuildingType.helt:
+        case types.rebuildingType.allt:
+        case types.rebuildingType.ytskikt:
+        case types.rebuildingType.ytskikt_helt:
+        case types.rebuildingType.arbete:
+        case types.rebuildingType.delvis:
+            return [
+                {
+                    label: "Lokalarea",
+                    id: "lokalarea",
+                    placeholder: "m",
+                    superscript: 2
+                },
+                {
+                    label: "Antal WC/Dusch",
+                    id: "dusch",
+                    placeholder: 0
+                },
+                {
+                    label: "Antal WC/RWC",
+                    id: "rwc",
+                    placeholder: 0
+                },
+                {
+                    label: "Kvm Mork bruttoarea",
+                    id: "mork",
+                    placeholder: "m",
+                    superscript: 2
+                },
+                {
+                    label: "Kvm Ljus bruttoarea",
+                    id: "ljus",
+                    placeholder: "m",
+                    superscript: 2
+                },
+                {
+                    label: "Total BTA",
+                    id: "bta",
+                    placeholder: "m",
+                    superscript: 2
+                },
+            ];
     }
 }

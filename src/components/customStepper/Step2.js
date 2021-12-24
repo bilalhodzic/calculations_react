@@ -4,8 +4,9 @@ import { Scrollbars } from "react-custom-scrollbars";
 import { ReactComponent as Step2Icon } from "../../images/step2Icon.svg";
 
 export default function Step2(props) {
-    console.log("Step2");
     const classes = useStyles();
+    const data = props.data;
+    const setData = props.setData;
 
     const inputLabelProps = {
         fontSize: 16,
@@ -26,6 +27,13 @@ export default function Step2(props) {
                         <TextField
                             placeholder="Project name"
                             variant="outlined"
+                            onChange={(e) => {
+                                if(!data.info){
+                                    data.info = {};
+                                }
+                                data.info.projectName = e.target.value;
+                                setData(data);
+                            }}
                         ></TextField>
                     </Box>
                     <Box className={classes.paperBox}>
@@ -35,26 +43,47 @@ export default function Step2(props) {
                         <TextField
                             placeholder="Project number"
                             variant="outlined"
+                            onChange={(e) => {
+                                if(!data.info){
+                                    data.info = {};
+                                }
+                                data.info.projectNumber = e.target.value;
+                                setData(data);
+                            }}
                         ></TextField>
                     </Box>
                     <Box className={classes.paperBox}>
                         <InputLabel style={inputLabelProps}>
-                            Project something
+                            Ansvarig projektledare
                         </InputLabel>
                         <TextField
-                            placeholder="Project something"
+                            placeholder="Ansvarig projektledare"
                             variant="outlined"
+                            onChange={(e) => {
+                                if(!data.info){
+                                    data.info = {};
+                                }
+                                data.info.projectSomething = e.target.value;
+                                setData(data);
+                            }}
                         ></TextField>
                     </Box>
                 </Box>
                 <Box className={classes.root}>
                     <Box className={classes.paperBox}>
                         <InputLabel style={inputLabelProps}>
-                            Project another field
+                            Datering på ritningar och underlag
                         </InputLabel>
                         <TextField
-                            placeholder="Project another field"
+                            placeholder="Datering på ritningar och underlag"
                             variant="outlined"
+                            onChange={(e) => {
+                                if(!data.info){
+                                    data.info = {};
+                                }
+                                data.info.projectAnotherThing = e.target.value;
+                                setData(data);
+                            }}
                         ></TextField>
                     </Box>
                     <Box className={classes.paperBox}></Box>

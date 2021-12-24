@@ -36,5 +36,17 @@
         "kontor": "Kontor",
         "handel": "Handel",
         "skola": "Skola"
+    },
+    "rebuildingType": {
+        "endast": "Stambyte endast",
+        "byte": "Stambyte ovh byte av kok",
+        "indvadigt": "Stambyte och all indvadigt & utvandigt",
+        "upprustning": "Upprustning med ca 50% nya installationer",
+        "helt": "Helt nya installationer",
+        "allt": "Allt utvandigt och invandigt arbete",
+        "ytskikt": "Ytskikt",
+        "ytskikt_helt": "Ytskikt och helt ny installationer",
+        "arbete": "Allt invandingt och utvandigt arbete",
+        "delvis": "Delvis installationer och i ovrigt allt invadigt och utvandigt arbete"
     }
 }
