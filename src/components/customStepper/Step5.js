@@ -5,12 +5,85 @@ import { Scrollbars } from "react-custom-scrollbars";
 import { ReactComponent as MedalIcon } from "../../images/medalIcon.svg";
 import { ReactComponent as ExclusiveIcon } from "../../images/exclusiveIcon.svg";
 
+const standards = [
+    {
+        name: "Normal Standard",
+        icon: <MedalIcon />,
+        value: 1,
+    },
+    {
+        name: "Fourth Standard",
+        icon: <MedalIcon />,
+        value: 2,
+    },
+    {
+        name: "High Standard",
+        icon: <MedalIcon />,
+        value: 3,
+    },
+    {
+        name: "Fifth Standard",
+        icon: <MedalIcon />,
+        value: 4,
+    },
+    {
+        name: "Exclusive Standard",
+        icon: <ExclusiveIcon />,
+        value: 5,
+    },
+];
+
 export default function Step5(props) {
     const classes = useStyles();
+    const data = props.data;
+    const setData = props.setData;
+    if (!data.standard) {
+        data.standard = {};
+        data.standard.isIndoorStandard = true;
+        setData(data);
+    }
+
+    const [indoorSelected, setIndoorSelected] = React.useState(true);
+    const [standardValue, setStandardValue] = React.useState(0);
+
+    const paperItems = standards.map((e) => {
+        return (
+            <Box
+                className={`${classes.paperBox} ${classes.standardsBoxHeight}`}
+            >
+                <Paper
+                    elevation={4}
+                    className={`${classes.standardsSize} ${
+                        standardValue == e.value && classes.selectedStandard
+                    }`}
+                    onClick={() => {
+                        data.standard.value = e.value;
+                        setData(data);
+                        setStandardValue(e.value);
+                    }}
+                >
+                    {e.icon}
+                    <Typography className={classes.standardsText}>
+                        {e.name}
+                    </Typography>
+                </Paper>
+            </Box>
+        );
+    });
+    const rows = [];
+    for (let i = 0; i < paperItems.length; i += 3) {
+        rows.push(
+            <Box className={classes.root}>
+                {paperItems[i]}
+                {i + 1 < paperItems.length && paperItems[i + 1]}
+                {i + 2 < paperItems.length && paperItems[i + 2]}
+            </Box>
+        );
+    }
 
     return (
         <Box maxHeight={"30em"} overflow="auto">
-            <Scrollbars style={{ width: "100%", height: "20em"}}>
+            <Scrollbars style={{ width: "100%", height: "20em" }}>
                 <Box className={classes.root}>
                     <Box className={classes.paperBox} style={{ height: 80 }}>
                         <Typography className={classes.paperText}>
@@ -23,68 +96,33 @@ export default function Step5(props) {
                         className={`${classes.paperBox} ${classes.buttonGroup}`}
                         style={{ height: 80 }}
                     >
-                        <Button className={classes.button}>
+                        <Button
+                            className={`${classes.button} ${
+                                indoorSelected && classes.selectedButton
+                            }`}
+                            onClick={() => {
+                                data.standard.isIndoorStandard = true;
+                                setData(data);
+                                setIndoorSelected(true);
+                            }}
+                        >
                             Indoor standard
                         </Button>
-                        <Button className={classes.button}>
+                        <Button
+                            className={`${classes.button} ${
+                                !indoorSelected && classes.selectedButton
+                            }`}
+                            onClick={() => {
+                                data.standard.isIndoorStandard = false;
+                                setData(data);
+                                setIndoorSelected(false);
+                            }}
+                        >
                             Outdoor standard
                         </Button>
                     </Box>
                 </Box>
-                <Box className={classes.root}>
-                    <Box
-                        className={`${classes.paperBox} ${classes.standardsBoxHeight}`}
-                    >
-                        <Paper elevation={4} className={classes.standardsSize}>
-                            <MedalIcon />
-                            <Typography className={classes.standardsText}>
-                                Normal Standard
-                            </Typography>
-                        </Paper>
-                    </Box>
-                    <Box
-                        className={`${classes.paperBox} ${classes.standardsBoxHeight}`}
-                    >
-                        <Paper elevation={4} className={classes.standardsSize}>
-                            <MedalIcon />
-                            <Typography className={classes.standardsText}>
-                                Fourth Standard
-                            </Typography>
-                        </Paper>
-                    </Box>
-                    <Box
-                        className={`${classes.paperBox} ${classes.standardsBoxHeight}`}
-                    >
-                        <Paper elevation={4} className={classes.standardsSize}>
-                            <MedalIcon />
-                            <Typography className={classes.standardsText}>
-                                High Standard
-                            </Typography>
-                        </Paper>
-                    </Box>
-                </Box>
-                <Box className={classes.root}>
-                    <Box
-                        className={`${classes.paperBox} ${classes.standardsBoxHeight}`}
-                    >
-                        <Paper elevation={4} className={classes.standardsSize}>
-                            <MedalIcon />
-                            <Typography className={classes.standardsText}>
-                                Fifth Standard
-                            </Typography>
-                        </Paper>
-                    </Box>
-                    <Box
-                        className={`${classes.paperBox} ${classes.standardsBoxHeight}`}
-                    >
-                        <Paper elevation={4} className={classes.standardsSize}>
-                            <ExclusiveIcon />
-                            <Typography className={classes.standardsText}>
-                                Exclusive Standard
-                            </Typography>
-                        </Paper>
-                    </Box>
-                </Box>
+                {rows.map((e) => e)}
             </Scrollbars>
         </Box>
     );
@@ -126,7 +164,11 @@ const useStyles = makeStyles((theme) => ({
         flexDirection: "column",
         "&:hover": {
             cursor: "pointer",
+            border: "3px solid #21344d",
         },
+    },
+    selectedStandard: {
+        border: "3px solid #21344d",
     },
     standardsText: {
         fontSize: 18,
@@ -162,5 +204,9 @@ const useStyles = makeStyles((theme) => ({
         },
         margin: theme.spacing(1),
         textTransform: "none",
+    },
+    selectedButton: {
+        color: "white",
+        backgroundColor: "#21344d",
     },
 }));
