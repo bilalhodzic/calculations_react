@@ -12,19 +12,48 @@ import { Scrollbars } from "react-custom-scrollbars";
 
 import { ReactComponent as Step4Icon } from "../../images/step4Icon.svg";
 
+const locations = [
+    {
+        value: 0,
+        city: "City"
+    },
+    {
+        value: 1,
+        city: "Stockholm"
+    },
+    {
+        value: 2,
+        city: "Lulea"
+    },
+    {
+        value: 3,
+        city: "Sundsvall"
+    },
+    {
+        value: 4,
+        city: "Malmo"
+    },
+    {
+        value: 5,
+        city: "Goteborg"
+    },
+    {
+        value: 6,
+        city: "Norrkoping"
+    },
+    {
+        value: 7,
+        city: "Other"
+    },
+];
+
 export default function Step4(props) {
-    const locations = [
-        "Stockholm",
-        "Lulea",
-        "Sundsvall",
-        "Malmo",
-        "Goteborg",
-        "Norrkoping",
-        "Other",
-    ];
     const classes = useStyles();
-    const [selectedIn, setSelectedIn] = useState(false);
-    const [selectedOut, setSelectedOut] = useState(false);
+    const data = props.data;
+    const setData = props.setData;
+
+    const [selectedIn, setSelectedIn] = useState(true);
+    const [selectedValue, setSelectedValue] = useState(0);
 
     return (
         <Box maxHeight={"30em"} overflow="auto">
@@ -40,11 +69,18 @@ export default function Step4(props) {
                             displayEmpty
                             style={{ width: 250 }}
                             label="City"
-                            defaultValue="City"
+                            defaultValue={selectedValue}
                             className={classes.select}
+                            onChange={(e) => {
+                                if(!data.location){
+                                    data.location = {};
+                                }
+                                data.location.city = e.target.value;
+                                setData(data);
+                            }}
                         >
                             {locations.map((city) => {
-                                return <MenuItem value={city}>{city}</MenuItem>;
+                                return <MenuItem value={city.value}>{city.city}</MenuItem>;
                             })}
                         </Select>
                     </Box>
@@ -60,18 +96,26 @@ export default function Step4(props) {
                                 selectedIn ? classes.selectedButton : ""
                             }`}
                             onClick={() => {
-                                setSelectedIn(!selectedIn);
-                                setSelectedOut(false);
+                                if(!data.location){
+                                    data.location = {};
+                                }
+                                data.location.isInCity = true;
+                                setData(data);
+                                setSelectedIn(true);
                             }}
                         >
                             In The City
                         </Button>
                         <Button
                             className={`${classes.button} ${
-                                selectedOut ? classes.selectedButton : ""
+                                !selectedIn ? classes.selectedButton : ""
                             } ${classes.buttonRight}`}
                             onClick={() => {
-                                setSelectedOut(!selectedOut);
+                                if(!data.location){
+                                    data.location = {};
+                                }
+                                data.location.isInCity = false;
+                                setData(data);
                                 setSelectedIn(false);
                             }}
                         >

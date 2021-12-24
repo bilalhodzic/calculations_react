@@ -88,13 +88,13 @@ export default function CustomStepper(props) {
             case 1:
                 return <Step2 data={betweenStepsData} setData={setBetweenStepsData} />;
             case 2:
-                return <Step3 type={types.category.idrottshall}/>;
+                return <Step3 type={types.category.idrottshall} data={betweenStepsData} setData={setBetweenStepsData} />;
             case 3:
-                return <Step4 />;
+                return <Step4 data={betweenStepsData} setData={setBetweenStepsData} />;
             case 4:
-                return <Step5 />;
+                return <Step5 data={betweenStepsData} setData={setBetweenStepsData} />;
             case 5:
-                return <Step6 />;
+                return <Step6 data={betweenStepsData} setData={setBetweenStepsData} />;
 
             default:
                 return "nothing";
