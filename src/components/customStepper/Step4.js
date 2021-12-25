@@ -69,18 +69,19 @@ export default function Step4(props) {
                             displayEmpty
                             style={{ width: 250 }}
                             label="City"
-                            defaultValue={selectedValue}
-                            className={classes.select}
+                            value={selectedValue}
+                            className={`${classes.select} ${selectedValue === 0 && classes.placeholderText}`}
                             onChange={(e) => {
                                 if(!data.location){
                                     data.location = {};
                                 }
                                 data.location.city = e.target.value;
                                 setData(data);
+                                setSelectedValue(e.target.value);
                             }}
                         >
                             {locations.map((city) => {
-                                return <MenuItem value={city.value}>{city.city}</MenuItem>;
+                                return <MenuItem value={city.value} >{city.city}</MenuItem>;
                             })}
                         </Select>
                     </Box>
@@ -190,4 +191,8 @@ const useStyles = makeStyles((theme) => ({
     svg: {
         marginTop: theme.spacing(-9),
     },
+    placeholderText: {
+        textAlign: "left",
+        color: "grey"
+    }
 }));

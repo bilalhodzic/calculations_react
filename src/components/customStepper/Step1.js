@@ -10,56 +10,131 @@ import { HospitalIcon } from "../svgIcons/HospitalIcon";
 import { HomeIcon } from "../svgIcons/HomeIcon";
 import { ChurchIcon } from "../svgIcons/ChurchIcon";
 
+import { ReactComponent as FlerbostadhusIcon } from "../../images/FlerbostadhusIcon.svg";
+import { ReactComponent as RadhusIcon } from "../../images/RadhusIcon.svg";
+import { ReactComponent as VillorIcon } from "../../images/VillorIcon.svg";
+import { ReactComponent as VardboendeIcon } from "../../images/VardboendeIcon.svg";
+import { ReactComponent as StudentlagenheterIcon } from "../../images/StudentlagenheterIcon.svg";
+import { ReactComponent as LagerIcon } from "../../images/LagerIcon.svg";
+import { ReactComponent as IndustribyggnadIcon } from "../../images/IndustribyggnadIcon.svg";
+import { ReactComponent as ForskolaIcon } from "../../images/ForskolaIcon.svg";
+import { ReactComponent as ParkeringshusIcon } from "../../images/ParkeringshusIcon.svg";
+import { ReactComponent as IdrottshallIcon } from "../../images/IdrottshallIcon.svg";
+
 import types from "../../helper/data.json";
 
 const newProduction = [
     {
-        category: types.category.school,
+        category: types.category.flerbostadshus,
         icon: (
-            <SchoolIcon color="#21344d" size={80} style={{ paddingTop: 10 }} />
-        ),
-        label: "School",
-    },
-    {
-        category: types.category.building,
-        icon: (
-            <BuildingIcon
+            <FlerbostadhusIcon
                 color="#21344d"
                 size={80}
                 style={{ paddingTop: 10 }}
             />
         ),
-        label: "Building",
+        label: "Flerbostadhus",
     },
     {
-        category: types.category.hospital,
+        category: types.category.radhus,
         icon: (
-            <HospitalIcon
+            <RadhusIcon color="#21344d" size={80} style={{ paddingTop: 10 }} />
+        ),
+        label: "Radhus",
+    },
+    {
+        category: types.category.villor,
+        icon: (
+            <VillorIcon color="#21344d" size={80} style={{ paddingTop: 10 }} />
+        ),
+        label: "Villor",
+    },
+    {
+        category: types.category.vardboende,
+        icon: (
+            <VardboendeIcon
                 color="#21344d"
                 size={80}
                 style={{ paddingTop: 10 }}
             />
         ),
-        label: "Hospital",
+        label: "Vardboende",
     },
     {
-        category: types.category.hotel,
+        category: types.category.hotell,
         icon: (
             <HotelIcon color="#21344d" size={80} style={{ paddingTop: 10 }} />
         ),
-        label: "Hotel",
+        label: "Hotell",
     },
     {
-        category: types.category.home,
-        icon: <HomeIcon color="#21344d" size={80} style={{ paddingTop: 10 }} />,
-        label: "Home",
-    },
-    {
-        category: types.category.church,
+        category: types.category.studentlagenheter,
         icon: (
-            <ChurchIcon color="#21344d" size={80} style={{ paddingTop: 10 }} />
+            <StudentlagenheterIcon
+                color="#21344d"
+                size={80}
+                style={{ paddingTop: 10 }}
+            />
         ),
-        label: "Church",
+        label: "Studentlagenheter",
+    },
+    {
+        category: types.category.lager,
+        icon: (
+            <LagerIcon color="#21344d" size={80} style={{ paddingTop: 10 }} />
+        ),
+        label: "Lager",
+    },
+    {
+        category: types.category.industribyggnad,
+        icon: (
+            <IndustribyggnadIcon
+                color="#21344d"
+                size={80}
+                style={{ paddingTop: 10 }}
+            />
+        ),
+        label: "Industribyggnad",
+    },
+    {
+        category: types.category.skola,
+        icon: (
+            <SchoolIcon color="#21344d" size={80} style={{ paddingTop: 10 }} />
+        ),
+        label: "Skola",
+    },
+    {
+        category: types.category.forskola,
+        icon: (
+            <ForskolaIcon
+                color="#21344d"
+                size={80}
+                style={{ paddingTop: 10 }}
+            />
+        ),
+        label: "Forskola",
+    },
+    {
+        category: types.category.parkeringshus,
+        icon: (
+            <ParkeringshusIcon
+                color="#21344d"
+                size={80}
+                style={{ paddingTop: 10 }}
+            />
+        ),
+        label: "Parkeringshus",
+    },
+    {
+        category: types.category.idrottshall,
+        icon: (
+            <IdrottshallIcon
+                color="#21344d"
+                size={80}
+                style={{ paddingTop: 10 }}
+            />
+        ),
+        label: "Idrottshall",
     },
 ];
 const rebuilding = [
@@ -144,7 +219,7 @@ export default function Step1(props) {
               });
 
     let rows = [];
-    for(let i = 0; i < items.length; i += 3){
+    for (let i = 0; i < items.length; i += 3) {
         rows.push(
             <Box className={classes.root} style={{ marginTop: 20 }}>
                 {items[i]}
