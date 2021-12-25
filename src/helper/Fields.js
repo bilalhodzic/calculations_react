@@ -548,5 +548,7 @@ export function getFieldsRebuilding(type){
                     superscript: 2
                 },
             ];
+        default:
+            return [];
     }
 }

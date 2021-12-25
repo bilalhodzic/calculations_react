@@ -74,7 +74,6 @@ export default function CustomStepper(props) {
     };
 
     const SwitchStep = () => {
-        console.log("SwitchStep: " + activeStep);
         switch (activeStep) {
             case 0:
                 return (
@@ -88,7 +87,7 @@ export default function CustomStepper(props) {
             case 1:
                 return <Step2 data={betweenStepsData} setData={setBetweenStepsData} />;
             case 2:
-                return <Step3 type={types.category.idrottshall} data={betweenStepsData} setData={setBetweenStepsData} />;
+                return <Step3 data={betweenStepsData} setData={setBetweenStepsData} />;
             case 3:
                 return <Step4 data={betweenStepsData} setData={setBetweenStepsData} />;
             case 4:

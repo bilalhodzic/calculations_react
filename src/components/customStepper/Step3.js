@@ -9,19 +9,23 @@ import {
 } from "@material-ui/core";
 import { Scrollbars } from "react-custom-scrollbars";
 
-import { getFieldsNewBuilding } from "../../helper/Fields";
+import types from "../../helper/data.json";
+import { getFieldsNewBuilding, getFieldsRebuilding } from "../../helper/Fields";
 import { ReactComponent as InfoIcon } from "../../images/infoIcon.svg";
 
 export default function Step3(props) {
     const classes = useStyles();
 
-    const fields = getFieldsNewBuilding(props.type);
-    const [formValues, setFormValues] = React.useState([]);
+    const data = props.data;
+    const setData = props.setData;
 
-    fields.forEach((e) => formValues.push(""));
-    let i = -1;
+    console.log(data.category);
+    const fields = data.type == types.types.new_production.id ? getFieldsNewBuilding(data.category) : getFieldsRebuilding(data.category);
+    if(!data.details){
+        data.details = {};
+    }
+
     const formItems = fields.map((entry) => {
-        i++;
         return (
             <Box className={classes.paperBox}>
                 <InputLabel
@@ -46,9 +50,8 @@ export default function Step3(props) {
                         placeholder={!entry.isRight ? entry.placeholder : null}
                         variant="outlined"
                         onChange={(e) => {
-                            console.log(i);
-                            formValues[i] = e.target.value;
-                            setFormValues(formValues);
+                            data.details[entry.id] = e.target.value;
+                            setData(data);
                         }}
                         InputProps={
                             entry.isRight

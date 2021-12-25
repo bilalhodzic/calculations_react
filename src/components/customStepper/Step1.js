@@ -96,6 +96,9 @@ const rebuilding = [
 export default function Step1(props) {
     const classes = useStyles();
 
+    const data = props.data;
+    const setData = props.setData;
+
     const projectCategory = props.category;
     const projectType = props.data.type;
 
@@ -153,7 +156,7 @@ export default function Step1(props) {
 
     const handleClickPaper = (prop) => {
         //setting the state property from parent component
-        console.log(prop);
+        data.category = prop;
         props.handleChange("ProjectType", prop);
     };
 
