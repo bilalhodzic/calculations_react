@@ -15,6 +15,7 @@ import Step3 from "./Step3";
 import Step4 from "./Step4";
 import Step5 from "./Step5";
 import Step6 from "./Step6";
+import BetweenStep from "./BetweenStep";
 
 import types from "../../helper/data.json";
 import useWindowDimensions from "../windowDimension";
@@ -52,12 +53,33 @@ export default function CustomStepper(props) {
     const [betweenStepsData, setBetweenStepsData] = React.useState({ type: location.state.type });
 
     const steps = [
-        "Choose Project Type",
-        "Project Info",
-        "Project Details",
-        "Project Location",
-        "Project Standard",
-        "Start date and end date",
+        { 
+            label: "Choose Project Type",
+            id: 1
+        },
+        { 
+            label: "Choose Project Type"
+        },
+        { 
+            label: "Project Info",
+            id: 2
+        },
+        { 
+            label: "Project Details",
+            id: 3
+        },
+        { 
+            label: "Project Location",
+            id: 4
+        },
+        { 
+            label: "Project Standard",
+            id: 5
+        },
+        { 
+            label: "Start date and end date",
+            id: 6
+        },
     ];
 
     const handleChange = (propName, propValue) => {
@@ -66,11 +88,11 @@ export default function CustomStepper(props) {
 
     const handleNext = () => {
         console.log(betweenStepsData);
-        setActiveStep((prevActiveStep) => prevActiveStep + 1);
+        setActiveStep((prevActiveStep) => prevActiveStep + 1 + (prevActiveStep == 0 && betweenStepsData.category !== types.category.lager && 1));
     };
 
     const handleBack = () => {
-        setActiveStep((prevActiveStep) => prevActiveStep - 1);
+        setActiveStep((prevActiveStep) => prevActiveStep - 1 - (prevActiveStep == 2 && betweenStepsData.category !== types.category.lager && 1));
     };
 
     const SwitchStep = () => {
@@ -85,14 +107,16 @@ export default function CustomStepper(props) {
                     />
                 );
             case 1:
-                return <Step2 data={betweenStepsData} setData={setBetweenStepsData} />;
+                return <BetweenStep handleChange={handleChange} data={betweenStepsData} setData={setBetweenStepsData} />
             case 2:
-                return <Step3 data={betweenStepsData} setData={setBetweenStepsData} />;
+                return <Step2 data={betweenStepsData} setData={setBetweenStepsData} />;
             case 3:
-                return <Step4 data={betweenStepsData} setData={setBetweenStepsData} />;
+                return <Step3 data={betweenStepsData} setData={setBetweenStepsData} />;
             case 4:
-                return <Step5 data={betweenStepsData} setData={setBetweenStepsData} />;
+                return <Step4 data={betweenStepsData} setData={setBetweenStepsData} />;
             case 5:
+                return <Step5 data={betweenStepsData} setData={setBetweenStepsData} />;
+            case 6:
                 return <Step6 data={betweenStepsData} setData={setBetweenStepsData} />;
 
             default:
@@ -104,7 +128,7 @@ export default function CustomStepper(props) {
     return (
         <>
             <Typography style={{}} className={classes.stepLabel}>
-                {steps[activeStep]}
+                {steps[activeStep].label}
             </Typography>
             <Stepper
                 alternativeLabel={width < 600 ? false : true}
@@ -113,15 +137,17 @@ export default function CustomStepper(props) {
                 connector={<CustomConnector />}
                 className={classes.stepper}
             >
-                {steps.map((label) => (
-                    <Step key={label}>
+                {steps.map((e) => (
+                    <Step key={e.label}>
                         <StepLabel
+                            icon={e.id}
+                            
                             classes={{
                                 iconContainer: classes.icon,
                                 labelContainer: classes.labelContainer,
                             }}
                         >
-                            {width < 600 ? label : ""}
+                            {width < 600 ? e.label : ""}
                         </StepLabel>
                     </Step>
                 ))}
