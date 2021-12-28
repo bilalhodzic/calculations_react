@@ -19,7 +19,6 @@ export default function Step3(props) {
     const data = props.data;
     const setData = props.setData;
 
-    console.log(data.category);
     const fields = data.type == types.types.new_production.id ? getFieldsNewBuilding(data.category) : getFieldsRebuilding(data.category);
     if(!data.details){
         data.details = {};

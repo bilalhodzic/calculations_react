@@ -52,35 +52,57 @@ export default function CustomStepper(props) {
     });
 
     const location = useLocation();
-    const [betweenStepsData, setBetweenStepsData] = React.useState({ type: location.state.type });
+    const [betweenStepsData, setBetweenStepsData] = React.useState({
+        type: location.state.type,
+    });
+
+    React.useEffect(() => {
+        props.emptySteps();
+        props.pushStep("New Calculation");
+        props.pushStep(betweenStepsData.type);
+        console.log(activeStep);
+        switch(activeStep){
+            case 1:
+            case 3:
+            case 4:
+            case 5:
+                props.pushStep(betweenStepsData.category);
+                break;
+            case 2:
+                props.pushStep("Production Type");
+                break;
+            default:
+
+        }
+    }, [activeStep]);
 
     const steps = [
-        { 
+        {
             label: "Choose Project Type",
-            id: 1
+            id: 1,
         },
-        { 
+        {
             label: "Choose Project Type",
         },
-        { 
+        {
             label: "Project Info",
-            id: 2
+            id: 2,
         },
-        { 
+        {
             label: "Project Details",
-            id: 3
+            id: 3,
         },
-        { 
+        {
             label: "Project Location",
-            id: 4
+            id: 4,
         },
-        { 
+        {
             label: "Project Standard",
-            id: 5
+            id: 5,
         },
-        { 
+        {
             label: "Start date and end date",
-            id: 6
+            id: 6,
         },
     ];
 
@@ -90,13 +112,43 @@ export default function CustomStepper(props) {
 
     const handleNext = () => {
         console.log(betweenStepsData);
-        const betweenStepsCategories = [types.category.lager, types.rebuilding.omby, types.rebuilding.kontor, types.rebuilding.handel];
-        setActiveStep((prevActiveStep) => prevActiveStep + 1 + (prevActiveStep == 0 && !betweenStepsCategories.includes(betweenStepsData.category) && 1));
+        const betweenStepsCategories = [
+            types.category.lager,
+            types.rebuilding.omby,
+            types.rebuilding.kontor,
+            types.rebuilding.handel,
+        ];
+        setActiveStep(
+            (prevActiveStep) =>
+                prevActiveStep +
+                1 +
+                (prevActiveStep == 0 &&
+                    !betweenStepsCategories.includes(
+                        betweenStepsData.category
+                    ) &&
+                    1)
+        );
     };
 
     const handleBack = () => {
-        const betweenStepsCategories = [types.category.varmlager, types.category.kalllager, types.category.kyllager, types.rebuilding.omby, types.rebuilding.kontor, types.rebuilding.handel];
-        setActiveStep((prevActiveStep) => prevActiveStep - 1 - (prevActiveStep == 2 && !betweenStepsCategories.includes(betweenStepsData.category) && 1));
+        const betweenStepsCategories = [
+            types.category.varmlager,
+            types.category.kalllager,
+            types.category.kyllager,
+            types.rebuilding.omby,
+            types.rebuilding.kontor,
+            types.rebuilding.handel,
+        ];
+        setActiveStep(
+            (prevActiveStep) =>
+                prevActiveStep -
+                1 -
+                (prevActiveStep == 2 &&
+                    !betweenStepsCategories.includes(
+                        betweenStepsData.category
+                    ) &&
+                    1)
+        );
     };
 
     const SwitchStep = () => {
@@ -108,23 +160,73 @@ export default function CustomStepper(props) {
                         category={newCalculation.ProjectType}
                         data={betweenStepsData}
                         setData={setBetweenStepsData}
+                        steps={props.steps}
+                        setSteps={props.setSteps}
                     />
                 );
             case 1:
-                if(betweenStepsData.type === types.types.rebuilding.id){
-                    return <BetweenStepRebuilding data={betweenStepsData} setData={setBetweenStepsData} />
+                if (betweenStepsData.type === types.types.rebuilding.id) {
+                    return (
+                        <BetweenStepRebuilding
+                            data={betweenStepsData}
+                            setData={setBetweenStepsData}
+                            steps={props.steps}
+                            setSteps={props.setSteps}
+                        />
+                    );
                 }
-                return <BetweenStep handleChange={handleChange} data={betweenStepsData} setData={setBetweenStepsData} />
+                return (
+                    <BetweenStep
+                        handleChange={handleChange}
+                        data={betweenStepsData}
+                        setData={setBetweenStepsData}
+                        steps={props.steps}
+                        setSteps={props.setSteps}
+                    />
+                );
             case 2:
-                return <Step2 data={betweenStepsData} setData={setBetweenStepsData} />;
+                return (
+                    <Step2
+                        data={betweenStepsData}
+                        setData={setBetweenStepsData}
+                        steps={props.steps}
+                        setSteps={props.setSteps}
+                    />
+                );
             case 3:
-                return <Step3 data={betweenStepsData} setData={setBetweenStepsData} />;
+                return (
+                    <Step3
+                        data={betweenStepsData}
+                        setData={setBetweenStepsData}
+                        steps={props.steps}
+                        setSteps={props.setSteps}
+                    />
+                );
             case 4:
-                return <Step4 data={betweenStepsData} setData={setBetweenStepsData} />;
+                return (
+                    <Step4
+                        data={betweenStepsData}
+                        setData={setBetweenStepsData}
+                        pushStep={props.pushStep}
+                    />
+                );
             case 5:
-                return <Step5 data={betweenStepsData} setData={setBetweenStepsData} />;
+                return (
+                    <Step5
+                        data={betweenStepsData}
+                        setData={setBetweenStepsData}
+                        pushStep={props.pushStep}
+                    />
+                );
             case 6:
-                return <Step6 data={betweenStepsData} setData={setBetweenStepsData} />;
+                return (
+                    <Step6
+                        data={betweenStepsData}
+                        setData={setBetweenStepsData}
+                        steps={props.steps}
+                        setSteps={props.setSteps}
+                    />
+                );
 
             default:
                 return "nothing";
@@ -196,7 +298,7 @@ const useStyles = makeStyles((theme) => ({
         width: 111,
         borderRadius: 8,
         marginBottom: 10,
-        height: 40
+        height: 40,
     },
     stepFooter: {
         display: "flex",
@@ -210,7 +312,7 @@ const useStyles = makeStyles((theme) => ({
         position: "absolute",
         bottom: -40,
         left: 32,
-        right: 32
+        right: 32,
     },
     stepContent: {
         textAlign: "center",
@@ -251,6 +353,6 @@ const useStyles = makeStyles((theme) => ({
         width: "75%",
         marginLeft: "auto",
         marginRight: "auto",
-        marginBottom: theme.spacing(2)
-    }
+        marginBottom: theme.spacing(2),
+    },
 }));

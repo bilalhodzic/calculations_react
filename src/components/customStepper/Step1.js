@@ -164,6 +164,7 @@ const rebuilding = [
 ];
 
 export default function Step1(props) {
+    const steps = props.steps;
     const data = props.data;
     const setData = props.setData;
 
@@ -174,5 +175,15 @@ export default function Step1(props) {
         props.handleChange("ProjectType", prop);
     };
 
-    return <CardRows data={data} handleClickPaper={handleClickPaper} items={data.type === types.types.new_production.id ? newProduction : rebuilding} />
+    return (
+        <CardRows
+            data={data}
+            handleClickPaper={handleClickPaper}
+            items={
+                data.type === types.types.new_production.id
+                    ? newProduction
+                    : rebuilding
+            }
+        />
+    );
 }

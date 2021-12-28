@@ -87,11 +87,11 @@ export default function Step4(props) {
                     </Box>
                     <Box
                         className={classes.paperBox}
-                        style={{ height: 100 }}
+                        style={{ width: 430, height: 100 }}
                     ></Box>
                 </Box>
                 <Box className={classes.root}>
-                    <Box className={classes.paperBox}>
+                    <Box className={`${classes.paperBox} ${classes.buttonGroup}`}>
                         <Button
                             className={`${classes.button} ${
                                 selectedIn ? classes.selectedButton : ""
@@ -157,7 +157,7 @@ const useStyles = makeStyles((theme) => ({
         display: "inline-block",
     },
     select: {
-        marginRight: theme.spacing(22),
+        //marginRight: theme.spacing(22),
     },
     inputLabel: {
         marginBottom: 20,
@@ -179,11 +179,17 @@ const useStyles = makeStyles((theme) => ({
             color: "white",
             backgroundColor: "#21344d",
         },
-        marginLeft: theme.spacing(12),
+        marginLeft: theme.spacing(8),
     },
-    buttonRight: {
-        marginLeft: theme.spacing(5),
+    buttonGroup: {
+        display: "flex",
+        flexDirection: "row",
+        textAlign: "center",
+        marginLeft: theme.spacing(10)
     },
+    // buttonRight: {
+    //     marginLeft: theme.spacing(5),
+    // },
     selectedButton: {
         color: "white",
         backgroundColor: "#21344d",

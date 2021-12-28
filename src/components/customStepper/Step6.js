@@ -10,6 +10,7 @@ export default function Step6(props) {
     const data = props.data;
     const setData = props.setData;
 
+
     const [yearsValue, setYearsValue] = useState(0);
     const [monthsValue, setMonthsValue] = useState(0);
 

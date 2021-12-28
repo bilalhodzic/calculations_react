@@ -14,7 +14,7 @@ const useStyles = makeStyles((theme) => ({
   coloredBox: (props) => ({
     backgroundColor: props.backgroundcolor,
     color: props.color,
-    width: 70,
+    minWidth: 70,
     borderRadius: 18.25,
     position: props.position || "inherit",
     bottom: 10,
