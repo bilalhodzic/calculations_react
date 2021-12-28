@@ -3,7 +3,9 @@ import types from "./data.json";
 
 export function getFieldsNewBuilding(type){
     switch(type){
-        case types.category.lager:
+        case types.category.varmlager:
+        case types.category.kyllager:
+        case types.category.kalllager:
         case types.category.industribyggnad:
         case types.category.skola:
         case types.category.forskola:

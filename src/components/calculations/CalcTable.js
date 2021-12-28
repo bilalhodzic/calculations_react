@@ -206,6 +206,12 @@ export default function Calctable(props) {
         //autoHeight
         density="comfortable"
         components={{ Pagination: CustomPagination }}
+        onPageChange={(page) => {
+          if(page.page % 2 == 1){
+            props.downloadMoreData(page.page + 1);
+          }
+          console.log(data.length);
+        }}
       />
       <Modal
         open={openDialog}

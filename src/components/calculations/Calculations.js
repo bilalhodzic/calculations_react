@@ -81,6 +81,7 @@ const data = [
 ];
 
 export default function Calculations() {
+  let maxPage = 1;
   const [selectValueType, setSelectValueType] = React.useState(0);
   const [selectValueCategory, setSelectValueCategory] = React.useState(0);
   const [searchInput, setSearchInput] = React.useState("");
@@ -111,6 +112,16 @@ export default function Calculations() {
     // }
   };
 
+  const downloadMoreData = async (page) => {
+    console.log("Ovdje");
+    if(page <= maxPage) return;
+    console.log("Proslo");
+    maxPage++;
+    const temp = helper.transformCalculations((await getCalculationsForPage(maxPage, selectValueCategory, selectValueType)).data);
+    tableData.push(...temp);
+    setTableData(tableData);
+  };
+
   const classes = useStyles();
 
   return (
@@ -138,7 +149,7 @@ export default function Calculations() {
           className={classes.input}
           disableUnderline
           onChange={handleSelectTypeChange}
-          style={{ paddingRight: 10, width: 200 }}
+          style={{ paddingRight: 10, width: 250 }}
           IconComponent={() => <ArrowDown/> }
         >
           <MenuItem value={0}>Type</MenuItem>
@@ -149,8 +160,9 @@ export default function Calculations() {
           value={selectValueCategory}
           className={classes.input}
           disableUnderline
+          autoWidth
           onChange={handleSelectCategoryChange}
-          style={{ paddingRight: 10, width: 200 }}
+          style={{ paddingRight: 10, width: 250 }}
           IconComponent={() => <ArrowDown />}
         >
           <MenuItem value={0}>Category</MenuItem>
@@ -171,7 +183,7 @@ export default function Calculations() {
         </Button>
       </Paper>
       <Paper elevation={6} className={classes.paper}>
-        <CalcTable data={tableData} />
+        <CalcTable data={tableData} downloadMoreData={downloadMoreData} />
       </Paper>
     </Layout>
   );
@@ -252,7 +264,6 @@ const useStyles = makeStyles((theme) => ({
     paddingLeft: theme.spacing(2),
     marginLeft: theme.spacing(3),
     width: 150,
-
     [theme.breakpoints.down("xs")]: {
       fontSize: 15,
       marginLeft: 0,

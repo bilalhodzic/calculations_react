@@ -50,6 +50,7 @@ export default function CustomStepper(props) {
     const [newCalculation, setNewCalculation] = React.useState({
         ProjectType: "",
     });
+
     const location = useLocation();
     const [betweenStepsData, setBetweenStepsData] = React.useState({ type: location.state.type });
 
@@ -59,7 +60,7 @@ export default function CustomStepper(props) {
             id: 1
         },
         { 
-            label: "Choose Project Type"
+            label: "Choose Project Type",
         },
         { 
             label: "Project Info",
@@ -94,7 +95,7 @@ export default function CustomStepper(props) {
     };
 
     const handleBack = () => {
-        const betweenStepsCategories = [types.category.lager, types.rebuilding.omby, types.rebuilding.kontor, types.rebuilding.handel];
+        const betweenStepsCategories = [types.category.varmlager, types.category.kalllager, types.category.kyllager, types.rebuilding.omby, types.rebuilding.kontor, types.rebuilding.handel];
         setActiveStep((prevActiveStep) => prevActiveStep - 1 - (prevActiveStep == 2 && !betweenStepsCategories.includes(betweenStepsData.category) && 1));
     };
 
@@ -143,13 +144,12 @@ export default function CustomStepper(props) {
                 connector={<CustomConnector />}
                 className={classes.stepper}
             >
-                {steps.map((e) => (
+                {steps.map((e, index) => (
                     <Step key={e.label}>
                         <StepLabel
                             icon={e.id}
-                            
                             classes={{
-                                iconContainer: classes.icon,
+                                iconContainer: `${classes.icon}`,
                                 labelContainer: classes.labelContainer,
                             }}
                         >
@@ -231,7 +231,6 @@ const useStyles = makeStyles((theme) => ({
         fontSize: 20,
         fontWeight: 600,
     },
-
     icon: {
         fontSize: 25,
         "& svg": {

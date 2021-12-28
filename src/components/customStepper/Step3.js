@@ -29,9 +29,7 @@ export default function Step3(props) {
         return (
             <Box className={classes.paperBox}>
                 <InputLabel
-                    className={`${classes.label} ${
-                        entry.label.length >= 30 && classes.labelLong
-                    }`}
+                    className={classes.label}
                 >
                     {entry.label}{" "}
                     {entry.info ? (
@@ -43,37 +41,36 @@ export default function Step3(props) {
                     ) : null}
                 </InputLabel>
 
-                <Box position="relative" display="inline-block">
-                    <TextField
-                        size="small"
-                        type="number"
-                        placeholder={!entry.isRight ? entry.placeholder : null}
-                        variant="outlined"
-                        onChange={(e) => {
-                            data.details[entry.id] = e.target.value;
-                            setData(data);
-                        }}
-                        InputProps={
-                            entry.isRight
-                                ? {
-                                      endAdornment: (
-                                          <InputAdornment position="end">
-                                              <Typography
-                                                  style={{ fontSize: 14 }}
-                                              >
-                                                  {entry.placeholder}
-                                                  <sup>{entry.superscript}</sup>
-                                              </Typography>
-                                          </InputAdornment>
-                                      ),
-                                      classes: {
-                                          adornedEnd: classes.adornedEnd,
-                                      },
-                                  }
-                                : null
-                        }
-                    ></TextField>
-                </Box>
+                <TextField
+                    size="small"
+                    type="number"
+                    placeholder={!entry.isRight ? entry.placeholder : null}
+                    variant="outlined"
+                    onChange={(e) => {
+                        data.details[entry.id] = e.target.value;
+                        setData(data);
+                    }}
+                    style={{ position: "absolute", bottom: 0, left: 0, right: 0}}
+                    InputProps={
+                        entry.isRight
+                            ? {
+                                    endAdornment: (
+                                        <InputAdornment position="end">
+                                            <Typography
+                                                style={{ fontSize: 14 }}
+                                            >
+                                                {entry.placeholder}
+                                                <sup>{entry.superscript}</sup>
+                                            </Typography>
+                                        </InputAdornment>
+                                    ),
+                                    classes: {
+                                        adornedEnd: classes.adornedEnd,
+                                    },
+                                }
+                            : null
+                    }
+                ></TextField>
             </Box>
         );
     });
@@ -102,6 +99,7 @@ const useStyles = makeStyles((theme) => ({
         display: "flex",
         justifyContent: "center",
         alignItems: "center",
+        marginBottom: theme.spacing(5),
         [theme.breakpoints.down("xs")]: {
             flexDirection: "column",
             display: "inline-flex",
@@ -112,13 +110,14 @@ const useStyles = makeStyles((theme) => ({
     },
     paperBox: {
         width: 250,
-        height: 100,
+        height: 90,
         textAlign: "center",
         marginLeft: theme.spacing(4),
         marginRight: theme.spacing(4),
         [theme.breakpoints.down("xs")]: {
             width: 140,
         },
+        position: "relative"
     },
     label: {
         textAlign: "start",
@@ -130,6 +129,6 @@ const useStyles = makeStyles((theme) => ({
         marginBottom: theme.spacing(1),
     },
     adornedEnd: {
-        background: "linear-gradient(-90deg, #E5E5E5 22%, #FFF 22%)",
+        background: "linear-gradient(-90deg, #F0F2F5 22%, #FFFFFF 22%)",
     },
 }));

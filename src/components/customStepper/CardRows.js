@@ -13,7 +13,7 @@ export default function CardRows(props) {
                 onClick={() => props.handleClickPaper(e.category)}
                 className={classes.paperBox}
                 style={
-                    props.data.type === types.types.new_production
+                    props.data.type === types.types.new_production.id
                         ? props.data.category === e.category
                             ? { border: "4px solid #21344d" }
                             : { border: "4px solid white" }
