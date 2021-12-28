@@ -1,7 +1,8 @@
 import { Scrollbars } from "react-custom-scrollbars";
 import { Paper, Typography, Box, makeStyles } from "@material-ui/core";
+import types from "../../helper/data.json";
 
-export default function CardRows (props) {
+export default function CardRows(props) {
     const dataItems = props.items;
     const classes = useStyles();
 
@@ -12,15 +13,17 @@ export default function CardRows (props) {
                 onClick={() => props.handleClickPaper(e.category)}
                 className={classes.paperBox}
                 style={
-                    props.data.category === e.category
-                        ? { border: "4px solid #21344d" }
-                        : { border: "4px solid white" }
+                    props.data.type === types.types.new_production
+                        ? props.data.category === e.category
+                            ? { border: "4px solid #21344d" }
+                            : { border: "4px solid white" }
+                        : props.data.rebuildingCategory === e.category
+                            ? { border: "4px solid #21344d" }
+                            : { border: "4px solid white" }
                 }
             >
                 {e.icon}
-                <Typography className={classes.paperText}>
-                    {e.label}
-                </Typography>
+                <Typography className={classes.paperText}>{e.label}</Typography>
             </Paper>
         );
     });
@@ -58,7 +61,7 @@ const useStyles = makeStyles((theme) => ({
     },
     paperBox: {
         width: 250,
-        height: 140,
+        minHeight: 140,
         textAlign: "center",
         marginLeft: theme.spacing(2),
         marginRight: theme.spacing(2),

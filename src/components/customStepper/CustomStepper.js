@@ -21,6 +21,7 @@ import types from "../../helper/data.json";
 import useWindowDimensions from "../windowDimension";
 import { useThemeProps } from "@material-ui/data-grid";
 import { useLocation } from "react-router-dom/cjs/react-router-dom.min";
+import BetweenStepRebuilding from "./BetweenStepRebuilding";
 
 const CustomConnector = withStyles({
     alternativeLabel: {
@@ -88,11 +89,13 @@ export default function CustomStepper(props) {
 
     const handleNext = () => {
         console.log(betweenStepsData);
-        setActiveStep((prevActiveStep) => prevActiveStep + 1 + (prevActiveStep == 0 && betweenStepsData.category !== types.category.lager && 1));
+        const betweenStepsCategories = [types.category.lager, types.rebuilding.omby, types.rebuilding.kontor, types.rebuilding.handel];
+        setActiveStep((prevActiveStep) => prevActiveStep + 1 + (prevActiveStep == 0 && !betweenStepsCategories.includes(betweenStepsData.category) && 1));
     };
 
     const handleBack = () => {
-        setActiveStep((prevActiveStep) => prevActiveStep - 1 - (prevActiveStep == 2 && betweenStepsData.category !== types.category.lager && 1));
+        const betweenStepsCategories = [types.category.lager, types.rebuilding.omby, types.rebuilding.kontor, types.rebuilding.handel];
+        setActiveStep((prevActiveStep) => prevActiveStep - 1 - (prevActiveStep == 2 && !betweenStepsCategories.includes(betweenStepsData.category) && 1));
     };
 
     const SwitchStep = () => {
@@ -107,6 +110,9 @@ export default function CustomStepper(props) {
                     />
                 );
             case 1:
+                if(betweenStepsData.type === types.types.rebuilding.id){
+                    return <BetweenStepRebuilding data={betweenStepsData} setData={setBetweenStepsData} />
+                }
                 return <BetweenStep handleChange={handleChange} data={betweenStepsData} setData={setBetweenStepsData} />
             case 2:
                 return <Step2 data={betweenStepsData} setData={setBetweenStepsData} />;
