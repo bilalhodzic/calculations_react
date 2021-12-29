@@ -246,6 +246,7 @@ const useStyles = makeStyles((theme) => ({
         borderRadius: 42.69,
         "&:hover": {
             background: "#36547B",
+            cursor: "pointer"
         },
         "&:active": {
             background: "#36547B",

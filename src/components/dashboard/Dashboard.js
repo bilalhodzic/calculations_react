@@ -7,8 +7,6 @@ import { HospitalIcon } from "../svgIcons/HospitalIcon";
 import { SchoolIcon } from "../svgIcons/SchoolIcon";
 import { HotelIcon } from "../svgIcons/HotelIcon";
 
-import CalcBox from "./CalcBox";
-import ScrollList from "./ScrollList";
 import NoCalculations from "./NoCalculations";
 import ColoredBox from "../ColoredBox";
 
@@ -121,19 +119,24 @@ export default function Dashboard() {
 //add new styles here
 const useStyles = makeStyles((theme) => ({
     paper: {
-        height: "70vh",
+ //       height: "72vh",
         margin: theme.spacing(5),
         borderRadius: 7,
         padding: theme.spacing(5),
         paddingLeft: theme.spacing(8),
         paddingRight: theme.spacing(8),
 
-        maxHeight: "80vh",
+        //maxHeight: "80vh",
         fontSize: 31,
         fontFamily: "Poppins",
         color: "black",
         fontWeight: 500,
-        minWidth: 600,
+//        minWidth: 600,
+        position: "absolute",
+        bottom: "-90vh",
+        top: "-5vh",
+        left: 0,
+        right: 0,
         [theme.breakpoints.down("xs")]: {
             margin: theme.spacing(1),
             minWidth: 0,
