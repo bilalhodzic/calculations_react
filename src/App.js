@@ -6,6 +6,7 @@ import Calculations from "./components/calculations/Calculations";
 import NewCalculation from "./components/new_calculation/NewCalculation";
 import AboutUs from "./components/about/AboutUs";
 import Step0 from "./components/customStepper/Step0";
+import TaxQuestion from "./components/customStepper/TaxQuestion";
 import "./App.css";
 import { ThemeProvider, createMuiTheme } from "@material-ui/core/styles";
 
@@ -29,6 +30,7 @@ function App() {
         <Route path="/add" component={Step0} />
         <Route path="/about" component={AboutUs} />
         <Route path="/new" component={NewCalculation}/>
+        <Route path="/tax" component={TaxQuestion}/>
       </BrowserRouter>
     </ThemeProvider>
   );

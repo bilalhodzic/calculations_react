@@ -1,4 +1,5 @@
 import React from "react";
+import { useHistory } from "react-router";
 import {
     Button,
     Stepper,
@@ -45,6 +46,7 @@ const CustomConnector = withStyles({
 })(StepConnector);
 
 export default function CustomStepper(props) {
+    const history = useHistory();
     const [activeStep, setActiveStep] = React.useState(0);
     const { width } = useWindowDimensions();
     const [newCalculation, setNewCalculation] = React.useState({
@@ -227,6 +229,8 @@ export default function CustomStepper(props) {
                         setSteps={props.setSteps}
                     />
                 );
+            case 7:
+                history.push("/tax");
 
             default:
                 return "nothing";
@@ -237,7 +241,7 @@ export default function CustomStepper(props) {
     return (
         <>
             <Typography style={{}} className={classes.stepLabel}>
-                {steps[activeStep].label}
+                {steps[activeStep] && steps[activeStep].label}
             </Typography>
             <Stepper
                 alternativeLabel={width < 600 ? false : true}
@@ -353,6 +357,6 @@ const useStyles = makeStyles((theme) => ({
         width: "75%",
         marginLeft: "auto",
         marginRight: "auto",
-        marginBottom: theme.spacing(2),
+        //marginBottom: theme.spacing(1),
     },
 }));
