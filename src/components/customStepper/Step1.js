@@ -15,6 +15,9 @@ import { ReactComponent as IndustribyggnadIcon } from "../../images/Industribygg
 import { ReactComponent as ForskolaIcon } from "../../images/ForskolaIcon.svg";
 import { ReactComponent as ParkeringshusIcon } from "../../images/ParkeringshusIcon.svg";
 import { ReactComponent as IdrottshallIcon } from "../../images/IdrottshallIcon.svg";
+import { ReactComponent as TubesIcon } from "../../images/TubesIcon.svg";
+import { ReactComponent as WorkIcon } from "../../images/WorkIcon.svg";
+import { ReactComponent as ShopIcon } from "../../images/ShopIcon.svg";
 
 import types from "../../helper/data.json";
 
@@ -136,21 +139,21 @@ const rebuilding = [
     {
         category: types.rebuilding.omby,
         icon: (
-            <SchoolIcon color="#21344d" size={80} style={{ paddingTop: 10 }} />
+            <TubesIcon color="#21344d" size={80} style={{ paddingTop: 10 }} />
         ),
         label: "Ombyggnad bostäder",
     },
     {
         category: types.rebuilding.kontor,
         icon: (
-            <SchoolIcon color="#21344d" size={80} style={{ paddingTop: 10 }} />
+            <WorkIcon color="#21344d" size={80} style={{ paddingTop: 10 }} />
         ),
         label: "Kontor",
     },
     {
         category: types.rebuilding.handel,
         icon: (
-            <SchoolIcon color="#21344d" size={80} style={{ paddingTop: 10 }} />
+            <ShopIcon color="#21344d" size={80} style={{ paddingTop: 10 }} />
         ),
         label: "Handel",
     },
