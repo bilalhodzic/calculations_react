@@ -28,10 +28,7 @@ export default function Step2(props) {
                             placeholder="Project name"
                             variant="outlined"
                             onChange={(e) => {
-                                if(!data.info){
-                                    data.info = {};
-                                }
-                                data.info.projectName = e.target.value;
+                                data.name = e.target.value;
                                 setData(data);
                             }}
                         ></TextField>
@@ -44,10 +41,7 @@ export default function Step2(props) {
                             placeholder="Project number"
                             variant="outlined"
                             onChange={(e) => {
-                                if(!data.info){
-                                    data.info = {};
-                                }
-                                data.info.projectNumber = e.target.value;
+                                data.projectNumber = e.target.value;
                                 setData(data);
                             }}
                         ></TextField>
@@ -60,10 +54,7 @@ export default function Step2(props) {
                             placeholder="Ansvarig projektledare"
                             variant="outlined"
                             onChange={(e) => {
-                                if(!data.info){
-                                    data.info = {};
-                                }
-                                data.info.projectSomething = e.target.value;
+                                data.projectSomething = e.target.value;
                                 setData(data);
                             }}
                         ></TextField>
@@ -78,10 +69,7 @@ export default function Step2(props) {
                             placeholder="Datering på ritningar och underlag"
                             variant="outlined"
                             onChange={(e) => {
-                                if(!data.info){
-                                    data.info = {};
-                                }
-                                data.info.projectAnotherThing = e.target.value;
+                                data.projectAnotherThing = e.target.value;
                                 setData(data);
                             }}
                         ></TextField>

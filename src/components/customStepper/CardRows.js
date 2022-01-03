@@ -17,7 +17,7 @@ export default function CardRows(props) {
                         ? props.data.category === e.category
                             ? { border: "4px solid #21344d" }
                             : { border: "4px solid white" }
-                        : props.data.category === e.category || props.data.rebuildingCategory === e.category
+                        : (!props.data.rebuildingCategory && props.data.category === e.category) || props.data.rebuildingCategory === e.category
                             ? { border: "4px solid #21344d" }
                             : { border: "4px solid white" }
                 }

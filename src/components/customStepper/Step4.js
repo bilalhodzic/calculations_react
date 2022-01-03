@@ -53,7 +53,7 @@ export default function Step4(props) {
     const setData = props.setData;
 
     const [selectedIn, setSelectedIn] = useState(true);
-    const [selectedValue, setSelectedValue] = useState(0);
+    const [selectedValue, setSelectedValue] = useState("Other");
 
     return (
         <Box maxHeight={"80vh"} overflow="auto">
@@ -72,18 +72,15 @@ export default function Step4(props) {
                             size="small"
                             label="City"
                             value={selectedValue}
-                            className={`${classes.select} ${selectedValue === 0 && classes.placeholderText}`}
+                            className={`${classes.select} ${selectedValue === "Other" && classes.placeholderText}`}
                             onChange={(e) => {
-                                if(!data.location){
-                                    data.location = {};
-                                }
-                                data.location.city = e.target.value;
+                                data.location = e.target.value;
                                 setData(data);
                                 setSelectedValue(e.target.value);
                             }}
                         >
                             {locations.map((city) => {
-                                return <MenuItem value={city.value} >{city.city}</MenuItem>;
+                                return <MenuItem value={city.city} >{city.city}</MenuItem>;
                             })}
                         </Select>
                     </Box>
@@ -99,10 +96,7 @@ export default function Step4(props) {
                                 selectedIn ? classes.selectedButton : ""
                             }`}
                             onClick={() => {
-                                if(!data.location){
-                                    data.location = {};
-                                }
-                                data.location.isInCity = true;
+                                data.urbanArea = true;
                                 setData(data);
                                 setSelectedIn(true);
                             }}
@@ -114,10 +108,7 @@ export default function Step4(props) {
                                 !selectedIn ? classes.selectedButton : ""
                             } ${classes.buttonRight}`}
                             onClick={() => {
-                                if(!data.location){
-                                    data.location = {};
-                                }
-                                data.location.isInCity = false;
+                                data.urbanArea = false;
                                 setData(data);
                                 setSelectedIn(false);
                             }}

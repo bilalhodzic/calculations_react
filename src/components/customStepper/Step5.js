@@ -33,18 +33,13 @@ const standards = [
     },
 ];
 
+let selected = true;
+
 export default function Step5(props) {
     const classes = useStyles();
-    const data = props.data;
-    const setData = props.setData;
-    if (!data.standard) {
-        data.standard = {};
-        data.standard.isIndoorStandard = true;
-        setData(data);
-    }
 
-    const [indoorSelected, setIndoorSelected] = React.useState(true);
-    const [standardValue, setStandardValue] = React.useState(0);
+    const [indoorSelected, setIndoorSelected] = React.useState(selected);
+
 
     const paperItems = standards.map((e) => {
         return (
@@ -54,12 +49,16 @@ export default function Step5(props) {
                 <Paper
                     elevation={4}
                     className={`${classes.standardsSize} ${
-                        standardValue == e.value && classes.selectedStandard
+                        (!indoorSelected && props.data.externalStandard == e.value || indoorSelected && props.data.internalStandard == e.value) && classes.selectedStandard
                     }`}
                     onClick={() => {
-                        data.standard.value = e.value;
-                        setData(data);
-                        setStandardValue(e.value);
+                        if(indoorSelected){
+                            props.handleChange("internalStandard", e.value);
+                            selected=true;
+                        }else{
+                            props.handleChange("externalStandard", e.value);
+                            selected=false;
+                        }
                     }}
                 >
                     {e.icon}
@@ -101,8 +100,6 @@ export default function Step5(props) {
                                 indoorSelected && classes.selectedButton
                             }`}
                             onClick={() => {
-                                data.standard.isIndoorStandard = true;
-                                setData(data);
                                 setIndoorSelected(true);
                             }}
                         >
@@ -113,8 +110,6 @@ export default function Step5(props) {
                                 !indoorSelected && classes.selectedButton
                             }`}
                             onClick={() => {
-                                data.standard.isIndoorStandard = false;
-                                setData(data);
                                 setIndoorSelected(false);
                             }}
                         >

@@ -62,7 +62,7 @@ export default function CustomStepper(props) {
     React.useEffect(() => {
         props.emptySteps();
         props.pushStep("New Calculation");
-        props.pushStep(betweenStepsData.type);
+        props.pushStep(betweenStepsData.type === 1 ? "New Production" : "Rebuilding");
         console.log(activeStep);
         switch(activeStep){
             case 1:
@@ -112,7 +112,7 @@ export default function CustomStepper(props) {
     ];
 
     const handleChange = (propName, propValue) => {
-        setNewCalculation({ ...newCalculation, [propName]: propValue });
+        setBetweenStepsData({ ...betweenStepsData, [propName]: propValue });
     };
 
     const handleNext = () => {
@@ -220,6 +220,7 @@ export default function CustomStepper(props) {
                     <Step5
                         data={betweenStepsData}
                         setData={setBetweenStepsData}
+                        handleChange={handleChange}
                         pushStep={props.pushStep}
                     />
                 );

@@ -12,7 +12,7 @@ export function getFieldsNewBuilding(type){
             return [
                 {
                     label: "Lokalarea",
-                    id: "lokalarea",
+                    id: "loa",
                     placeholder: "m",
                     superscript: 2,
                     isRight: true
@@ -31,21 +31,14 @@ export function getFieldsNewBuilding(type){
                 },
                 {
                     label: "Kvm Mork bruttoarea",
-                    id: "mork",
+                    id: "darkBta",
                     placeholder: "m",
                     superscript: 2,
                     isRight: true
                 },
                 {
                     label: "Kvm Ljus bruttoarea",
-                    id: "ljus",
-                    placeholder: "m",
-                    superscript: 2,
-                    isRight: true
-                },
-                {
-                    label: "Total BTA",
-                    id: "bta",
+                    id: "lightBta",
                     placeholder: "m",
                     superscript: 2,
                     isRight: true
@@ -74,21 +67,14 @@ export function getFieldsNewBuilding(type){
                 },
                 {
                     label: "Kvm Mork bruttoarea",
-                    id: "mork",
+                    id: "darkBta",
                     placeholder: "m",
                     superscript: 2,
                     isRight: true
                 },
                 {
                     label: "Kvm Ljus bruttoarea",
-                    id: "ljus",
-                    placeholder: "m",
-                    superscript: 2,
-                    isRight: true
-                },
-                {
-                    label: "Total BTA",
-                    id: "bta",
+                    id: "lightBta",
                     placeholder: "m",
                     superscript: 2,
                     isRight: true
@@ -123,21 +109,14 @@ export function getFieldsNewBuilding(type){
                 },
                 {
                     label: "Kvm Mork bruttoarea",
-                    id: "mork",
+                    id: "darkBta",
                     placeholder: "m",
                     superscript: 2,
                     isRight: true
                 },
                 {
-                    label: "Kvm ljus bruttoarea",
-                    id: "ljus",
-                    placeholder: "m",
-                    superscript: 2,
-                    isRight: true
-                },
-                {
-                    label: "Total BTA",
-                    id: "bta",
+                    label: "Kvm Ljus bruttoarea",
+                    id: "lightBta",
                     placeholder: "m",
                     superscript: 2,
                     isRight: true
@@ -147,21 +126,21 @@ export function getFieldsNewBuilding(type){
             return [
                 {
                     label: "Boarea",
-                    id: "boarea",
+                    id: "boa",
                     placeholder: "m",
                     superscript: 2,
                     isRight: true
                 },
                 {
                     label: "Lokalarea",
-                    id: "lokalarea",
+                    id: "loa",
                     placeholder: "m",
                     superscript: 2,
                     isRight: true
                 },
                 {
                     label: "Antal lagenheter",
-                    id: "lagenheter",
+                    id: "apartmentNumber",
                     placeholder: "0"
                 },
                 {
@@ -176,21 +155,14 @@ export function getFieldsNewBuilding(type){
                 },
                 {
                     label: "Kvm Mork bruttoarea",
-                    id: "mork",
+                    id: "darkBta",
                     placeholder: "m",
                     superscript: 2,
                     isRight: true
                 },
                 {
                     label: "Kvm Ljus bruttoarea",
-                    id: "ljus",
-                    placeholder: "m",
-                    superscript: 2,
-                    isRight: true
-                },
-                {
-                    label: "Total BTA",
-                    id: "bta",
+                    id: "lightBta",
                     placeholder: "m",
                     superscript: 2,
                     isRight: true
@@ -206,14 +178,14 @@ export function getFieldsNewBuilding(type){
             return [
                 {
                     label: "Boarea",
-                    id: "boarea",
+                    id: "boa",
                     placeholder: "m",
                     superscript: 2,
                     isRight: true
                 },
                 {
                     label: "Antal lagenheter",
-                    id: "lagenheter",
+                    id: "apartmentNumber",
                     placeholder: "m",
                     superscript: 2,
                     isRight: true
@@ -230,19 +202,12 @@ export function getFieldsNewBuilding(type){
                 },
                 {
                     label: "Kvm Mork bruttoarea",
-                    id: "mork",
+                    id: "darkBta",
                     placeholder: "0"
                 },
                 {
                     label: "Kvm Ljus bruttoarea",
-                    id: "ljus",
-                    placeholder: "m",
-                    superscript: 2,
-                    isRight: true
-                },
-                {
-                    label: "Total BTA",
-                    id: "bta",
+                    id: "lightBta",
                     placeholder: "m",
                     superscript: 2,
                     isRight: true
@@ -259,7 +224,7 @@ export function getFieldsNewBuilding(type){
                 },
                 {
                     label: "Antal lagenheter",
-                    id: "lagenheter",
+                    id: "apartmentNumber",
                     placeholder: "m",
                     superscript: 2,
                     isRight: true
@@ -276,19 +241,12 @@ export function getFieldsNewBuilding(type){
                 },
                 {
                     label: "Kvm Mork bruttoarea",
-                    id: "mork",
+                    id: "darkBta",
                     placeholder: "0"
                 },
                 {
                     label: "Antal bodrum",
                     id: "bodrum",
-                    placeholder: "m",
-                    superscript: 2,
-                    isRight: true
-                },
-                {
-                    label: "Total BTA",
-                    id: "bta",
                     placeholder: "m",
                     superscript: 2,
                     isRight: true
@@ -300,7 +258,7 @@ export function getFieldsNewBuilding(type){
                 },
                 {
                     label: "Kvm Ljus bruttoarea",
-                    id: "ljus",
+                    id: "lightBta",
                     placeholder: "m",
                     superscript: 2,
                     isRight: true
@@ -310,21 +268,21 @@ export function getFieldsNewBuilding(type){
             return [
                 {
                     label: "Boarea",
-                    id: "boarea",
+                    id: "boa",
                     placeholder: "m",
                     superscript: 2,
                     isRight: true
                 },
                 {
                     label: "Lokalarea",
-                    id: "lokalarea",
+                    id: "loa",
                     placeholder: "m",
                     superscript: 2,
                     isRight: true
                 },
                 {
                     label: "Antal lagenheter",
-                    id: "lagenheter",
+                    id: "apartmentNumber",
                     placeholder: "0"
                 },
                 {
@@ -339,21 +297,14 @@ export function getFieldsNewBuilding(type){
                 },
                 {
                     label: "Kvm Mork bruttoarea",
-                    id: "mork",
+                    id: "darkBta",
                     placeholder: "m",
                     superscript: 2,
                     isRight: true
                 },
                 {
                     label: "Kvm Ljus bruttoarea",
-                    id: "ljus",
-                    placeholder: "m",
-                    superscript: 2,
-                    isRight: true
-                },
-                {
-                    label: "Total BTA",
-                    id: "bta",
+                    id: "lightBta",
                     placeholder: "m",
                     superscript: 2,
                     isRight: true
@@ -368,7 +319,7 @@ export function getFieldsNewBuilding(type){
             return [
                 {
                     label: "Boarea",
-                    id: "boarea",
+                    id: "boa",
                     info: "Total m2 hotell, inkl reception, lobby, restaurang del mm.",
                     placeholder: "m",
                     superscript: 2,
@@ -376,7 +327,7 @@ export function getFieldsNewBuilding(type){
                 },
                 {
                     label: "Lokalarea",
-                    id: "lokalarea",
+                    id: "loa",
                     info: "Endast om det är lokal som inte tillhör hotellet,\n såsom separat handelslokal, kontor mm.",
                     placeholder: "m",
                     superscript: 2,
@@ -399,22 +350,17 @@ export function getFieldsNewBuilding(type){
                 },
                 {
                     label: "Kvm Mork bruttoarea",
-                    id: "mork",
+                    id: "darkBta",
                     placeholder: "m",
                     superscript: 2,
                     isRight: true
                 },
                 {
                     label: "Kvm Ljus bruttoarea",
-                    id: "ljus",
+                    id: "lightBta",
                     placeholder: "m",
                     superscript: 2,
                     isRight: true
-                },
-                {
-                    label: "Total BTA",
-                    id: "bta",
-                    placeholder: "0"
                 },
                 {
                     label: "Antal garageplatser",
@@ -450,7 +396,7 @@ export function getFieldsRebuilding(type){
                 },
                 {
                     label: "Kvm Mork bruttoarea",
-                    id: "mork",
+                    id: "darkBta",
                     placeholder: "m",
                     superscript: 2,
                     isRight: true,
@@ -462,13 +408,13 @@ export function getFieldsRebuilding(type){
             return [
                 {
                     label: "Boarea",
-                    id: "boarea",
+                    id: "boa",
                     placeholder: "m",
                     superscript: 2
                 },
                 {
                     label: "Lokalarea",
-                    id: "lokalarea",
+                    id: "loa",
                     placeholder: "m",
                     superscript: 2
                 },
@@ -489,20 +435,14 @@ export function getFieldsRebuilding(type){
                 },
                 {
                     label: "Kvm Mork bruttoarea",
-                    id: "mork",
+                    id: "darkBta",
                     placeholder: "m",
                     superscript: 2,
                     info: "Avser allmänna utrymmen och där byter man alltid \nstammar/ledningar, pris per m2 mörk BTA är  indikerad i kalkylen"
                 },
                 {
                     label: "Kvm Ljus bruttoarea",
-                    id: "ljus",
-                    placeholder: "m",
-                    superscript: 2
-                },
-                {
-                    label: "Total BTA",
-                    id: "bta",
+                    id: "lightBta",
                     placeholder: "m",
                     superscript: 2
                 },
@@ -517,7 +457,7 @@ export function getFieldsRebuilding(type){
             return [
                 {
                     label: "Lokalarea",
-                    id: "lokalarea",
+                    id: "loa",
                     placeholder: "m",
                     superscript: 2
                 },
@@ -533,19 +473,13 @@ export function getFieldsRebuilding(type){
                 },
                 {
                     label: "Kvm Mork bruttoarea",
-                    id: "mork",
+                    id: "darkBta",
                     placeholder: "m",
                     superscript: 2
                 },
                 {
                     label: "Kvm Ljus bruttoarea",
-                    id: "ljus",
-                    placeholder: "m",
-                    superscript: 2
-                },
-                {
-                    label: "Total BTA",
-                    id: "bta",
+                    id: "lightBta",
                     placeholder: "m",
                     superscript: 2
                 },

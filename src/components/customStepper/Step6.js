@@ -21,6 +21,7 @@ export default function Step6(props) {
                     <Box className={classes.paperBox}>
                         <InputLabel className={classes.label}>Start date</InputLabel>
                         <TextField
+                            style={{marginRight: 100}}
                             type="date"
                             onKeyDown={(e) => e.preventDefault()}
                             InputLabelProps={{ shrink: true }}
@@ -35,6 +36,7 @@ export default function Step6(props) {
                     <Box className={classes.paperBox}>
                         <InputLabel className={classes.label}>Duration - years</InputLabel>
                         <TextField
+                            className={classes.numberInput}
                             type="number"
                             size="small"
                             variant="outlined"
@@ -46,7 +48,7 @@ export default function Step6(props) {
                                 if(value < 0) value = 0;
                                 setYearsValue(value);
                                 
-                                data.yearsDuration = value;
+                                data.years = value;
                                 setData(data);
                             }}
                         ></TextField>
@@ -66,7 +68,7 @@ export default function Step6(props) {
                                 if(value > 11) value = 11;
                                 setMonthsValue(value);
                                 
-                                data.monthsDuration = value;
+                                data.months = value;
                                 setData(data);
                             }}
                         ></TextField>
@@ -121,4 +123,9 @@ const useStyles = makeStyles((theme) => ({
         marginBottom: theme.spacing(2.5),
         color: "black",
     },
+    numberInput: {
+        "& input::-webkit-clear-button, & input::-webkit-outer-spin-button, & input::-webkit-inner-spin-button": {
+            "-webkit-appearance": "none"
+     }
+    }
 }));
