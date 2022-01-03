@@ -238,11 +238,13 @@ const useStyles = makeStyles((theme) => ({
     list: {
         paddingTop: theme.spacing(2),
         alignSelf: "baseline",
+        width: "100%"
     },
     listButton: {
         marginBlockStart: theme.spacing(1),
         marginLeft: theme.spacing(2),
         height: 55,
+        width: "90%",
         borderRadius: 42.69,
         "&:hover": {
             background: "#36547B",

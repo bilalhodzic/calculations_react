@@ -17,8 +17,8 @@ export default function Step2(props) {
         marginBottom: 15,
     };
     return (
-        <Box maxHeight={"30em"} overflow="auto">
-            <Scrollbars style={{ width: "100%", height: "20em"}}>
+        <Box maxHeight={"80vh"} overflow="auto">
+            <Scrollbars style={{ width: "100%", height: "55vh"}}>
                 <Box className={classes.root} style={{ marginTop: 20 }}>
                     <Box className={classes.paperBox}>
                         <InputLabel style={inputLabelProps} required>

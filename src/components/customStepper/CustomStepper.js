@@ -10,6 +10,7 @@ import {
     Hidden,
 } from "@material-ui/core";
 import { makeStyles, withStyles } from "@material-ui/core/styles";
+import { ReactComponent as CircleIcon } from "../../images/CircleIcon.svg";
 import Step1 from "./Step1";
 import Step2 from "./Step2";
 import Step3 from "./Step3";
@@ -78,6 +79,7 @@ export default function CustomStepper(props) {
         }
     }, [activeStep]);
 
+    const classes = useStyles();
     const steps = [
         {
             label: "Choose Project Type",
@@ -85,6 +87,7 @@ export default function CustomStepper(props) {
         },
         {
             label: "Choose Project Type",
+            id: <CircleIcon className={activeStep !== 0 && classes.doneStep} style={{ height: 30, width: 30, marginTop: 6}} />
         },
         {
             label: "Project Info",
@@ -237,7 +240,6 @@ export default function CustomStepper(props) {
         }
     };
 
-    const classes = useStyles();
     return (
         <>
             <Typography style={{}} className={classes.stepLabel}>
@@ -359,4 +361,7 @@ const useStyles = makeStyles((theme) => ({
         marginRight: "auto",
         //marginBottom: theme.spacing(1),
     },
+    doneStep: {
+        filter: "brightness(0) saturate(100%) invert(15%) sepia(9%) saturate(3603%) hue-rotate(175deg) brightness(91%) contrast(86%)"
+    }
 }));

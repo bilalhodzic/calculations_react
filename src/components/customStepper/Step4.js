@@ -56,8 +56,8 @@ export default function Step4(props) {
     const [selectedValue, setSelectedValue] = useState(0);
 
     return (
-        <Box maxHeight={"30em"} overflow="auto">
-            <Scrollbars style={{ width: "100%", height: "20em"}}>
+        <Box maxHeight={"80vh"} overflow="auto">
+            <Scrollbars style={{ width: "100%", height: "55vh"}}>
                 <Box className={classes.root}>
                     <Box className={classes.paperBox} style={{ height: 100 }}>
                         <InputLabel
@@ -68,6 +68,8 @@ export default function Step4(props) {
                         <Select
                             displayEmpty
                             style={{ width: 250 }}
+                            variant="outlined"
+                            size="small"
                             label="City"
                             value={selectedValue}
                             className={`${classes.select} ${selectedValue === 0 && classes.placeholderText}`}

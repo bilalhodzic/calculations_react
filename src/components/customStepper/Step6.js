@@ -15,8 +15,8 @@ export default function Step6(props) {
     const [monthsValue, setMonthsValue] = useState(0);
 
     return (
-        <Box maxHeight={"30em"} overflow="auto">
-            <Scrollbars style={{ width: "100%", height: "20em"}}>
+        <Box maxHeight={"80vh"} overflow="auto">
+            <Scrollbars style={{ width: "100%", height: "55vh"}}>
                 <Box className={classes.root} style={{ marginTop: 2 }}>
                     <Box className={classes.paperBox}>
                         <InputLabel className={classes.label}>Start date</InputLabel>

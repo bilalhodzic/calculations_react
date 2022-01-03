@@ -82,8 +82,8 @@ export default function Step5(props) {
     }
 
     return (
-        <Box maxHeight={"30em"} overflow="auto">
-            <Scrollbars style={{ width: "100%", height: "20em" }}>
+        <Box maxHeight={"80vh"} overflow="auto">
+            <Scrollbars style={{ width: "100%", height: "55vh" }}>
                 <Box className={classes.root}>
                     <Box className={classes.paperBox} style={{ height: 80 }}>
                         <Typography className={classes.paperText}>
