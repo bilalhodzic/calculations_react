@@ -10,7 +10,7 @@ exports.transformCalculations = (initialData) => {
             Type: {
                 text: entry.type === 1 ? "New production" : "Rebuilding",
             },
-            Area: entry.adress,
+            Area: entry.location,
             Actions: "actions"
         }
     });
