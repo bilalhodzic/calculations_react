@@ -2,7 +2,7 @@ import React from "react";
 import { Box, InputLabel, makeStyles, TextField } from "@material-ui/core";
 import { Scrollbars } from "react-custom-scrollbars";
 
-import { ReactComponent as DatePickerIcon } from "../../images/datePickerIcon.svg";
+import { ReactComponent as DatePickerIcon } from "../../images/DatePickerIcon.svg";
 import { useState } from "react";
 
 export default function Step6(props) {

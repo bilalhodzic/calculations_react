@@ -50,9 +50,6 @@ export default function CustomStepper(props) {
     const history = useHistory();
     const [activeStep, setActiveStep] = React.useState(0);
     const { width } = useWindowDimensions();
-    const [newCalculation, setNewCalculation] = React.useState({
-        ProjectType: "",
-    });
 
     const location = useLocation();
     const [betweenStepsData, setBetweenStepsData] = React.useState({
@@ -62,22 +59,31 @@ export default function CustomStepper(props) {
     React.useEffect(() => {
         props.emptySteps();
         props.pushStep("New Calculation");
-        props.pushStep(betweenStepsData.type === 1 ? "New Production" : "Rebuilding");
-        switch(activeStep){
+        props.pushStep(
+            betweenStepsData.type === 1 ? "New Production" : "Rebuilding"
+        );
+        switch (activeStep) {
             case 1:
             case 3:
             case 4:
             case 5:
-                if([types.category.varmlager, types.category.kalllager, types.category.kyllager].includes(betweenStepsData.category)){
+                if (
+                    [
+                        types.category.varmlager,
+                        types.category.kalllager,
+                        types.category.kyllager,
+                    ].includes(betweenStepsData.category)
+                ) {
                     props.pushStep("Lager");
                 }
-                props.pushStep(betweenStepsData.category.value);
+                if (betweenStepsData.category) {
+                    props.pushStep(betweenStepsData.category.value);
+                }
                 break;
             case 2:
                 props.pushStep("Production Type");
                 break;
             default:
-
         }
     }, [activeStep]);
 
@@ -89,7 +95,12 @@ export default function CustomStepper(props) {
         },
         {
             label: "Choose Project Type",
-            id: <CircleIcon className={activeStep !== 0 && classes.doneStep} style={{ height: 30, width: 30, marginTop: 6}} />
+            id: (
+                <CircleIcon
+                    className={activeStep !== 0 && classes.doneStep}
+                    style={{ height: 30, width: 30, marginTop: 6 }}
+                />
+            ),
         },
         {
             label: "Project Info",
@@ -113,9 +124,9 @@ export default function CustomStepper(props) {
         },
     ];
 
-    const handleChange = (propName, propValue) => {
+    const handleChange = React.useCallback((propName, propValue) => {
         setBetweenStepsData({ ...betweenStepsData, [propName]: propValue });
-    };
+    });
 
     const handleNext = () => {
         console.log(betweenStepsData);
@@ -165,6 +176,7 @@ export default function CustomStepper(props) {
                     <Step1
                         handleChange={handleChange}
                         data={betweenStepsData}
+                        pageNumber={activeStep}
                     />
                 );
             case 1:
@@ -348,6 +360,6 @@ const useStyles = makeStyles((theme) => ({
         //marginBottom: theme.spacing(1),
     },
     doneStep: {
-        filter: "brightness(0) saturate(100%) invert(15%) sepia(9%) saturate(3603%) hue-rotate(175deg) brightness(91%) contrast(86%)"
-    }
+        filter: "brightness(0) saturate(100%) invert(15%) sepia(9%) saturate(3603%) hue-rotate(175deg) brightness(91%) contrast(86%)",
+    },
 }));

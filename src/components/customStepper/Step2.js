@@ -3,6 +3,11 @@ import { Scrollbars } from "react-custom-scrollbars";
 
 import { ReactComponent as Step2Icon } from "../../images/step2Icon.svg";
 
+let projectName = "";
+let projectNumber = "";
+let projectSomething = "";
+let projectAnotherThing = "";
+
 export default function Step2(props) {
     const classes = useStyles();
 
@@ -14,65 +19,88 @@ export default function Step2(props) {
         marginLeft: 10,
         marginBottom: 15,
     };
+    const inputFields = (
+        <>
+            <Box className={classes.root} style={{ marginTop: 20 }}>
+                <Box className={classes.paperBox}>
+                    <InputLabel style={inputLabelProps} required>
+                        Name your project!
+                    </InputLabel>
+                    <TextField
+                        key={1}
+                        placeholder="Project name"
+                        variant="outlined"
+                        defaultValue={""}
+                        onChange={(e) => {
+                            props.handleChange("name", e.target.value);
+                        }}
+                    ></TextField>
+                </Box>
+                <Box className={classes.paperBox}>
+                    <InputLabel style={inputLabelProps}>
+                        Project number
+                    </InputLabel>
+                    <TextField
+                        key={2}
+                        placeholder="Project number"
+                        variant="outlined"
+                        value={projectNumber}
+                        onChange={(e) => {
+                            projectNumber = e.target.value;
+                            props.handleChange("projectNumber", e.target.value);
+                        }}
+                    ></TextField>
+                </Box>
+                <Box className={classes.paperBox}>
+                    <InputLabel style={inputLabelProps}>
+                        Ansvarig projektledare
+                    </InputLabel>
+                    <TextField
+                        key={3}
+                        placeholder="Ansvarig projektledare"
+                        variant="outlined"
+                        value={projectSomething}
+                        onChange={(e) => {
+                            projectSomething = e.target.value;
+                            props.handleChange(
+                                "projectSomething",
+                                e.target.value
+                            );
+                        }}
+                    ></TextField>
+                </Box>
+            </Box>
+            <Box className={classes.root}>
+                <Box className={classes.paperBox}>
+                    <InputLabel style={inputLabelProps}>
+                        Datering på ritningar och underlag
+                    </InputLabel>
+                    <TextField
+                        key={4}
+                        placeholder="Datering på ritningar och underlag"
+                        variant="outlined"
+                        value={projectAnotherThing}
+                        onChange={(e) => {
+                            projectAnotherThing = e.target.value;
+                            props.handleChange(
+                                "projectAnotherThing",
+                                e.target.value
+                            );
+                        }}
+                    ></TextField>
+                </Box>
+                <Box className={classes.paperBox}></Box>
+                <Box className={classes.paperBox}>
+                    <Step2Icon className={classes.svg} />
+                </Box>
+            </Box>
+        </>
+    );
+
     return (
         <Box maxHeight={"80vh"} overflow="auto">
-            <Scrollbars style={{ width: "100%", height: "55vh"}}>
-                <Box className={classes.root} style={{ marginTop: 20 }}>
-                    <Box className={classes.paperBox}>
-                        <InputLabel style={inputLabelProps} required>
-                            Name your project!
-                        </InputLabel>
-                        <TextField
-                            placeholder="Project name"
-                            variant="outlined"
-                            onChange={(e) => {
-                                props.handleChange("name", e.target.value);
-                            }}
-                        ></TextField>
-                    </Box>
-                    <Box className={classes.paperBox}>
-                        <InputLabel style={inputLabelProps}>
-                            Project number
-                        </InputLabel>
-                        <TextField
-                            placeholder="Project number"
-                            variant="outlined"
-                            onChange={(e) => {
-                                props.handleChange("projectNumber", e.target.value);
-                            }}
-                        ></TextField>
-                    </Box>
-                    <Box className={classes.paperBox}>
-                        <InputLabel style={inputLabelProps}>
-                            Ansvarig projektledare
-                        </InputLabel>
-                        <TextField
-                            placeholder="Ansvarig projektledare"
-                            variant="outlined"
-                            onChange={(e) => {
-                                props.handleChange("projectSomething", e.target.value);
-                            }}
-                        ></TextField>
-                    </Box>
-                </Box>
-                <Box className={classes.root}>
-                    <Box className={classes.paperBox}>
-                        <InputLabel style={inputLabelProps}>
-                            Datering på ritningar och underlag
-                        </InputLabel>
-                        <TextField
-                            placeholder="Datering på ritningar och underlag"
-                            variant="outlined"
-                            onChange={(e) => {
-                                props.handleChange("projectAnotherThing", e.target.value);
-                            }}
-                        ></TextField>
-                    </Box>
-                    <Box className={classes.paperBox}></Box>
-                    <Box className={classes.paperBox}>
-                        <Step2Icon className={classes.svg} />
-                    </Box>
-                </Box>
+            <Scrollbars style={{ width: "100%", height: "55vh" }}>
+                {inputFields}
             </Scrollbars>
         </Box>
     );

@@ -158,7 +158,7 @@ const useStyles = makeStyles((theme) => ({
     menuItem: {
         width: 207,
         height: 200,
-        boxShadow: "0px 0px 14px 3px rgba(0, 0, 0, 0.25)",
+        boxShadow: "0px 6px 14px 3px rgba(186, 186, 186, 0.28)",
         borderRadius: 15,
         fontSize: 15,
         fontWeight: 600,
