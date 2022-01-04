@@ -14,10 +14,10 @@ export default function CardRows(props) {
                 className={classes.paperBox}
                 style={
                     props.data.type === types.types.new_production.id
-                        ? props.data.category === e.category
+                        ? props.data.category && props.data.category.id === e.category.id
                             ? { border: "4px solid #21344d" }
                             : { border: "4px solid white" }
-                        : (!props.data.rebuildingCategory && props.data.category === e.category) || props.data.rebuildingCategory === e.category
+                        : props.data.category && ((!props.data.rebuildingCategory && props.data.category.id === e.category.id) || props.data.rebuildingCategory === e.category.id)
                             ? { border: "4px solid #21344d" }
                             : { border: "4px solid white" }
                 }

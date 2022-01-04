@@ -63,13 +63,15 @@ export default function CustomStepper(props) {
         props.emptySteps();
         props.pushStep("New Calculation");
         props.pushStep(betweenStepsData.type === 1 ? "New Production" : "Rebuilding");
-        console.log(activeStep);
         switch(activeStep){
             case 1:
             case 3:
             case 4:
             case 5:
-                props.pushStep(betweenStepsData.category);
+                if([types.category.varmlager, types.category.kalllager, types.category.kyllager].includes(betweenStepsData.category)){
+                    props.pushStep("Lager");
+                }
+                props.pushStep(betweenStepsData.category.value);
                 break;
             case 2:
                 props.pushStep("Production Type");
@@ -162,9 +164,7 @@ export default function CustomStepper(props) {
                 return (
                     <Step1
                         handleChange={handleChange}
-                        category={newCalculation.ProjectType}
                         data={betweenStepsData}
-                        setData={setBetweenStepsData}
                     />
                 );
             case 1:

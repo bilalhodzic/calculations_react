@@ -1,26 +1,129 @@
 {
     "category": {
-        "school": "School",
-        "building": "Building",
-        "hospital": "Hospital",
-        "hotel": "Hotel",
-        "home": "Home",
-        "church": "Church",
-        "lager": "Lager",
-        "varmlager": "Varmlager",
-        "kalllager": "Kall Lager",
-        "kyllager": "Kyl/Fris Lager",
-        "radhus": "Radhus",
-        "villor": "Villor",
-        "industribyggnad": "Industribyggnad",
-        "skola": "Skola",
-        "forskola": "Forskola",
-        "parkeringshus": "Parkeringshus and Garage",
-        "idrottshall": "Idrottshall",
-        "flerbostadshus": "Flerbostadshus",
-        "vardboende": "Vardboende",
-        "studentlagenheter": "Studentlagenheter",
-        "hotell": "Hotell"
+        "flerbostadshus": {
+            "id": 1,
+            "value": "Flerbostadshus"
+        },
+        "radhus": {
+            "id": 2,
+            "value": "Radhus"
+        },
+        "villor":{
+            "id": 3,
+            "value": "Villor"
+        },
+        "vardboende": {
+            "id": 4,
+            "value": "Vardboende"
+        },
+        "studentbostader": {
+            "id": 5,
+            "value": "Studentbostader"
+        },
+        "hotell": {
+            "id": 6,
+            "value": "Hotell"
+        },
+        "kontor": {
+            "id": 7,
+            "value": "Kontor"
+        },
+        "handel": {
+            "id": 8,
+            "value": "Handel"
+        },
+        "varmlager": {
+            "id": 9,
+            "value": "Varm lager"
+        },
+        "kalllager": {
+            "id": 10,
+            "value": "Kall lager"
+        },
+        "kyllager": {
+            "id": 11,
+            "value": "Kyl/frys lager"
+        },
+        "industribyggnad": {
+            "id": 12,
+            "value": "Industribyggnad"
+        },
+        "skola": {
+            "id": 13,
+            "value": "Skola"
+        },
+        "forskola": {
+            "id": 14,
+            "value": "Forskola"
+        },
+        "parkeringshus": {
+            "id": 15,
+            "value": "Parkeringshus och Garagehus"
+        },
+        "idrottshall": {
+            "id": 16,
+            "value": "Idrottshall"
+        },
+        "apartment1": {
+            "id": 17,
+            "value": "Apartment1"
+        },
+        "apartment2": {
+            "id": 18,
+            "value": "Apartment2"
+        },
+        "apartment3": {
+            "id": 19,
+            "value": "Apartment3"
+        },
+        "apartment4": {
+            "id": 20,
+            "value": "Apartment4"
+        },
+        "office1": {
+            "id": 21,
+            "value": "Office1"
+        },
+        "office2": {
+            "id": 22,
+            "value": "Office2"
+        },
+        "office3": {
+            "id": 23,
+            "value": "Office3"
+        },
+        "office4": {
+            "id": 24,
+            "value": "Office4"
+        },
+        "trade1": {
+            "id": 25,
+            "value": "Trade1"
+        },
+        "trade2": {
+            "id": 26,
+            "value": "Trade2"
+        },
+        "trade3": {
+            "id": 27,
+            "value": "Trade3"
+        },
+        "trade4": {
+            "id": 28,
+            "value": "Trade4"
+        },
+        "school1": {
+            "id": 29,
+            "value": "School1"
+        },
+        "school2": {
+            "id": 30,
+            "value": "School2"
+        },
+        "lager": {
+            "id": 31,
+            "value": "Lager"
+        }
     },
     "types": {
         "new_production":{

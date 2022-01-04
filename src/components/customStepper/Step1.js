@@ -66,7 +66,7 @@ const newProduction = [
         label: "Hotell",
     },
     {
-        category: types.category.studentlagenheter,
+        category: types.category.studentbostader,
         icon: (
             <StudentlagenheterIcon
                 color="#21344d"
@@ -74,7 +74,7 @@ const newProduction = [
                 style={{ paddingTop: 10 }}
             />
         ),
-        label: "Studentlagenheter",
+        label: "Studentbostader",
     },
     {
         category: types.category.lager,
