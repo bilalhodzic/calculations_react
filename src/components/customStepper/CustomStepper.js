@@ -165,8 +165,6 @@ export default function CustomStepper(props) {
                         category={newCalculation.ProjectType}
                         data={betweenStepsData}
                         setData={setBetweenStepsData}
-                        steps={props.steps}
-                        setSteps={props.setSteps}
                     />
                 );
             case 1:
@@ -174,9 +172,7 @@ export default function CustomStepper(props) {
                     return (
                         <BetweenStepRebuilding
                             data={betweenStepsData}
-                            setData={setBetweenStepsData}
-                            steps={props.steps}
-                            setSteps={props.setSteps}
+                            handleChange={handleChange}
                         />
                     );
                 }
@@ -184,56 +180,45 @@ export default function CustomStepper(props) {
                     <BetweenStep
                         handleChange={handleChange}
                         data={betweenStepsData}
-                        setData={setBetweenStepsData}
-                        steps={props.steps}
-                        setSteps={props.setSteps}
                     />
                 );
             case 2:
                 return (
                     <Step2
                         data={betweenStepsData}
-                        setData={setBetweenStepsData}
-                        steps={props.steps}
-                        setSteps={props.setSteps}
+                        handleChange={handleChange}
                     />
                 );
             case 3:
                 return (
                     <Step3
                         data={betweenStepsData}
-                        setData={setBetweenStepsData}
-                        steps={props.steps}
-                        setSteps={props.setSteps}
+                        handleChange={handleChange}
                     />
                 );
             case 4:
                 return (
                     <Step4
                         data={betweenStepsData}
-                        setData={setBetweenStepsData}
-                        pushStep={props.pushStep}
+                        handleChange={handleChange}
                     />
                 );
             case 5:
                 return (
                     <Step5
                         data={betweenStepsData}
-                        setData={setBetweenStepsData}
                         handleChange={handleChange}
-                        pushStep={props.pushStep}
                     />
                 );
             case 6:
                 return (
                     <Step6
                         data={betweenStepsData}
-                        setData={setBetweenStepsData}
-                        steps={props.steps}
-                        setSteps={props.setSteps}
+                        handleChange={handleChange}
                     />
                 );
             case 7:
+                console.log(`Data: ${betweenStepsData}`);
                 history.push("/tax");
 
             default:

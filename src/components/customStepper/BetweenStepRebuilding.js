@@ -156,7 +156,6 @@ const handelList = [
 
 export default function BetweenStepRebuilding (props) {
     const data = props.data;
-    const setData = props.setData;
 
     let items = [];
     if(data.category === types.rebuilding.omby){
@@ -168,8 +167,7 @@ export default function BetweenStepRebuilding (props) {
     }
 
     const handleClickPaper = (prop) => {
-        data.rebuildingCategory = prop;
-        setData(data);
+        props.handleChange("category", prop);
     };
 
     return <CardRows data={data} handleClickPaper={handleClickPaper} items={items} />

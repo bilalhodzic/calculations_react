@@ -15,14 +15,9 @@ import { ReactComponent as InfoIcon } from "../../images/infoIcon.svg";
 
 export default function Step3(props) {
     const classes = useStyles();
-
     const data = props.data;
-    const setData = props.setData;
 
     const fields = data.type == types.types.new_production.id ? getFieldsNewBuilding(data.category) : getFieldsRebuilding(data.category);
-    if(!data.details){
-        data.details = {};
-    }
 
     const formItems = fields.map((entry) => {
         return (
@@ -46,8 +41,7 @@ export default function Step3(props) {
                     placeholder={!entry.isRight ? entry.placeholder : null}
                     variant="outlined"
                     onChange={(e) => {
-                        data.details[entry.id] = e.target.value;
-                        setData(data);
+                        props.handleChange(`${entry.id}`, e.target.value);
                     }}
                     style={{ position: "absolute", bottom: 0, left: 0, right: 0}}
                     InputProps={

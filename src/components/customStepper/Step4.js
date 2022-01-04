@@ -49,8 +49,6 @@ const locations = [
 
 export default function Step4(props) {
     const classes = useStyles();
-    const data = props.data;
-    const setData = props.setData;
 
     const [selectedIn, setSelectedIn] = useState(true);
     const [selectedValue, setSelectedValue] = useState("Other");
@@ -74,8 +72,7 @@ export default function Step4(props) {
                             value={selectedValue}
                             className={`${classes.select} ${selectedValue === "Other" && classes.placeholderText}`}
                             onChange={(e) => {
-                                data.location = e.target.value;
-                                setData(data);
+                                props.handleChange("location", e.target.value);
                                 setSelectedValue(e.target.value);
                             }}
                         >
@@ -96,8 +93,7 @@ export default function Step4(props) {
                                 selectedIn ? classes.selectedButton : ""
                             }`}
                             onClick={() => {
-                                data.urbanArea = true;
-                                setData(data);
+                                props.handleChange("urbanArea", true);
                                 setSelectedIn(true);
                             }}
                         >
@@ -108,8 +104,7 @@ export default function Step4(props) {
                                 !selectedIn ? classes.selectedButton : ""
                             } ${classes.buttonRight}`}
                             onClick={() => {
-                                data.urbanArea = false;
-                                setData(data);
+                                props.handleChange("urbanArea", false);
                                 setSelectedIn(false);
                             }}
                         >

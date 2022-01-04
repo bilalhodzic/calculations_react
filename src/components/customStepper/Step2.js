@@ -5,8 +5,6 @@ import { ReactComponent as Step2Icon } from "../../images/step2Icon.svg";
 
 export default function Step2(props) {
     const classes = useStyles();
-    const data = props.data;
-    const setData = props.setData;
 
     const inputLabelProps = {
         fontSize: 16,
@@ -28,8 +26,7 @@ export default function Step2(props) {
                             placeholder="Project name"
                             variant="outlined"
                             onChange={(e) => {
-                                data.name = e.target.value;
-                                setData(data);
+                                props.handleChange("name", e.target.value);
                             }}
                         ></TextField>
                     </Box>
@@ -41,8 +38,7 @@ export default function Step2(props) {
                             placeholder="Project number"
                             variant="outlined"
                             onChange={(e) => {
-                                data.projectNumber = e.target.value;
-                                setData(data);
+                                props.handleChange("projectNumber", e.target.value);
                             }}
                         ></TextField>
                     </Box>
@@ -54,8 +50,7 @@ export default function Step2(props) {
                             placeholder="Ansvarig projektledare"
                             variant="outlined"
                             onChange={(e) => {
-                                data.projectSomething = e.target.value;
-                                setData(data);
+                                props.handleChange("projectSomething", e.target.value);
                             }}
                         ></TextField>
                     </Box>
@@ -69,8 +64,7 @@ export default function Step2(props) {
                             placeholder="Datering på ritningar och underlag"
                             variant="outlined"
                             onChange={(e) => {
-                                data.projectAnotherThing = e.target.value;
-                                setData(data);
+                                props.handleChange("projectAnotherThing", e.target.value);
                             }}
                         ></TextField>
                     </Box>

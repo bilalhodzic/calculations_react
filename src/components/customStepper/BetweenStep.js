@@ -41,16 +41,19 @@ const lagerTypes = [
     },
 ];
 
-export default function BetweenStep (props) {
+export default function BetweenStep(props) {
     const data = props.data;
-    const setData = props.setData;
 
     const handleClickPaper = (prop) => {
         //setting the state property from parent component
-        data.category = prop;
-        setData(data);
-        props.handleChange("ProjectType", prop);
+        props.handleChange("category", prop);
     };
 
-    return <CardRows data={data} handleClickPaper={handleClickPaper} items={lagerTypes} />
+    return (
+        <CardRows
+            data={data}
+            handleClickPaper={handleClickPaper}
+            items={lagerTypes}
+        />
+    );
 }

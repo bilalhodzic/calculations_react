@@ -7,9 +7,6 @@ import { useState } from "react";
 
 export default function Step6(props) {
     const classes = useStyles();
-    const data = props.data;
-    const setData = props.setData;
-
 
     const [yearsValue, setYearsValue] = useState(0);
     const [monthsValue, setMonthsValue] = useState(0);
@@ -28,8 +25,7 @@ export default function Step6(props) {
                             variant="outlined"
                             size="small"
                             onChange={(e) => {
-                                data.startDate = e.target.value;
-                                setData(data);
+                                props.handleChange("startDate", e.target.value);
                             }}
                         ></TextField>
                     </Box>
@@ -47,9 +43,8 @@ export default function Step6(props) {
 
                                 if(value < 0) value = 0;
                                 setYearsValue(value);
-                                
-                                data.years = value;
-                                setData(data);
+
+                                props.handleChange("years", value);
                             }}
                         ></TextField>
                     </Box>
@@ -67,9 +62,8 @@ export default function Step6(props) {
                                 if(value < 0) value = 0;
                                 if(value > 11) value = 11;
                                 setMonthsValue(value);
-                                
-                                data.months = value;
-                                setData(data);
+
+                                props.handleChange("months", e.target.value);
                             }}
                         ></TextField>
                     </Box>
