@@ -123,6 +123,10 @@
         "lager": {
             "id": 31,
             "value": "Lager"
+        },
+        "ombyggnad": {
+            "id": 32,
+            "value": "Ombyggnad"
         }
     },
     "types": {

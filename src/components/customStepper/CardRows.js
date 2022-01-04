@@ -1,25 +1,25 @@
 import { Scrollbars } from "react-custom-scrollbars";
 import { Paper, Typography, Box, makeStyles } from "@material-ui/core";
-import types from "../../helper/data.json";
+import React from "react";
 
 export default function CardRows(props) {
     const dataItems = props.items;
     const classes = useStyles();
+    const [selectedIndex, setSelectedIndex] = React.useState(-1);
 
-    const items = dataItems.map((e) => {
+    const items = dataItems.map((e, index) => {
         return (
             <Paper
                 elevation={4}
-                onClick={() => props.handleClickPaper(e.category)}
+                onClick={() => {
+                    props.handleClickPaper(e.category);
+                    setSelectedIndex(index);
+                }}
                 className={classes.paperBox}
                 style={
-                    props.data.type === types.types.new_production.id
-                        ? props.data.category && props.data.category.id === e.category.id
-                            ? { border: "4px solid #21344d" }
-                            : { border: "4px solid white" }
-                        : props.data.category && ((!props.data.rebuildingCategory && props.data.category.id === e.category.id) || props.data.rebuildingCategory === e.category.id)
-                            ? { border: "4px solid #21344d" }
-                            : { border: "4px solid white" }
+                    index === selectedIndex
+                        ? { border: "4px solid #21344d" }
+                        : { border: "4px solid white" }
                 }
             >
                 {e.icon}

@@ -33,15 +33,14 @@ const standards = [
     },
 ];
 
-let selected = true;
-
 export default function Step5(props) {
     const classes = useStyles();
 
-    const [indoorSelected, setIndoorSelected] = React.useState(selected);
+    const [indoorSelected, setIndoorSelected] = React.useState(true);
+    const [externalStandard, setExternalStandard] = React.useState(0);
+    const [internalStandard, setInternalStandard] = React.useState(0);
 
-
-    const paperItems = standards.map((e) => {
+    const paperItems = standards.map((e, index) => {
         return (
             <Box
                 className={`${classes.paperBox} ${classes.standardsBoxHeight}`}
@@ -49,15 +48,15 @@ export default function Step5(props) {
                 <Paper
                     elevation={4}
                     className={`${classes.standardsSize} ${
-                        (!indoorSelected && props.data.externalStandard == e.value || indoorSelected && props.data.internalStandard == e.value) && classes.selectedStandard
+                        (!indoorSelected && index + 1 === externalStandard || indoorSelected && internalStandard === index + 1) && classes.selectedStandard
                     }`}
                     onClick={() => {
                         if(indoorSelected){
                             props.handleChange("internalStandard", e.value);
-                            selected=true;
+                            setInternalStandard(e.value);
                         }else{
                             props.handleChange("externalStandard", e.value);
-                            selected=false;
+                            setExternalStandard(e.value);
                         }
                     }}
                 >

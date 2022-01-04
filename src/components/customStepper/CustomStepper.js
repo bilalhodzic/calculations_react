@@ -52,7 +52,7 @@ export default function CustomStepper(props) {
     const { width } = useWindowDimensions();
 
     const location = useLocation();
-    const [betweenStepsData, setBetweenStepsData] = React.useState({
+    const betweenStepsData = React.useRef({
         type: location.state.type,
     });
 
@@ -124,12 +124,12 @@ export default function CustomStepper(props) {
         },
     ];
 
-    const handleChange = React.useCallback((propName, propValue) => {
-        setBetweenStepsData({ ...betweenStepsData, [propName]: propValue });
-    });
+    const handleChange = (propName, propValue) => {
+        betweenStepsData.current[propName] = propValue;
+    }
 
     const handleNext = () => {
-        console.log(betweenStepsData);
+        console.log(betweenStepsData.current);
         const betweenStepsCategories = [
             types.category.lager,
             types.rebuilding.omby,
@@ -175,7 +175,7 @@ export default function CustomStepper(props) {
                 return (
                     <Step1
                         handleChange={handleChange}
-                        data={betweenStepsData}
+                        data={betweenStepsData.current}
                         pageNumber={activeStep}
                     />
                 );
@@ -183,7 +183,7 @@ export default function CustomStepper(props) {
                 if (betweenStepsData.type === types.types.rebuilding.id) {
                     return (
                         <BetweenStepRebuilding
-                            data={betweenStepsData}
+                            data={betweenStepsData.current}
                             handleChange={handleChange}
                         />
                     );
@@ -191,46 +191,46 @@ export default function CustomStepper(props) {
                 return (
                     <BetweenStep
                         handleChange={handleChange}
-                        data={betweenStepsData}
+                        data={betweenStepsData.current}
                     />
                 );
             case 2:
                 return (
                     <Step2
-                        data={betweenStepsData}
+                        data={betweenStepsData.current}
                         handleChange={handleChange}
                     />
                 );
             case 3:
                 return (
                     <Step3
-                        data={betweenStepsData}
+                        data={betweenStepsData.current}
                         handleChange={handleChange}
                     />
                 );
             case 4:
                 return (
                     <Step4
-                        data={betweenStepsData}
+                        data={betweenStepsData.current}
                         handleChange={handleChange}
                     />
                 );
             case 5:
                 return (
                     <Step5
-                        data={betweenStepsData}
+                        data={betweenStepsData.current}
                         handleChange={handleChange}
                     />
                 );
             case 6:
                 return (
                     <Step6
-                        data={betweenStepsData}
+                        data={betweenStepsData.current}
                         handleChange={handleChange}
                     />
                 );
             case 7:
-                console.log(`Data: ${betweenStepsData}`);
+                console.log(`Data: ${JSON.stringify(betweenStepsData.current)}`);
                 history.push("/tax");
 
             default:

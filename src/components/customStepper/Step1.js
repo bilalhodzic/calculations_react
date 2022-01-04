@@ -137,28 +137,28 @@ const newProduction = [
 ];
 const rebuilding = [
     {
-        category: types.rebuilding.omby,
+        category: types.category.ombyggnad,
         icon: (
             <TubesIcon color="#21344d" size={80} style={{ paddingTop: 10 }} />
         ),
         label: "Ombyggnad bostäder",
     },
     {
-        category: types.rebuilding.kontor,
+        category: types.category.kontor,
         icon: (
             <WorkIcon color="#21344d" size={80} style={{ paddingTop: 10 }} />
         ),
         label: "Kontor",
     },
     {
-        category: types.rebuilding.handel,
+        category: types.category.handel,
         icon: (
             <ShopIcon color="#21344d" size={80} style={{ paddingTop: 10 }} />
         ),
         label: "Handel",
     },
     {
-        category: types.rebuilding.skola,
+        category: types.category.skola,
         icon: (
             <SchoolIcon color="#21344d" size={80} style={{ paddingTop: 10 }} />
         ),
