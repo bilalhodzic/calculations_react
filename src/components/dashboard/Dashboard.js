@@ -14,7 +14,7 @@ const initialData = [
     {
         name: "Building in Stockholm Sweden",
         price: "1.854.456",
-        icon: <BuildingIcon color="#21344D" size={49} />,
+        icon: <BuildingIcon color="#21344D" size={49} style={{ transform: "scale(2.5)"}} />,
         type: "Building",
         color: "#0EBD00",
         backgroundColor: "#9BFF93",
@@ -156,8 +156,8 @@ const useStyles = makeStyles((theme) => ({
         marginBottom: theme.spacing(3),
     },
     menuItem: {
-        width: 207,
-        height: 200,
+        width: "17vw",
+        height: "30vh",
         boxShadow: "0px 6px 14px 3px rgba(186, 186, 186, 0.28)",
         borderRadius: 15,
         fontSize: 15,
@@ -170,7 +170,12 @@ const useStyles = makeStyles((theme) => ({
         margin: theme.spacing(2),
     },
     menuIcon: {
+        marginLeft: "auto",
+        marginRight: "auto",
+        marginTop: theme.spacing(2),
         paddingTop: theme.spacing(3),
+        width: "10vw",
+        height: "10vh",
     },
     root: {
         display: "flex",
