@@ -51,7 +51,7 @@ export default function Step4(props) {
     const classes = useStyles();
 
     const [selectedIn, setSelectedIn] = useState(true);
-    const [selectedValue, setSelectedValue] = useState("Other");
+    const [selectedValue, setSelectedValue] = useState("City");
 
     return (
         <Box maxHeight={"80vh"} overflow="auto">
@@ -70,7 +70,7 @@ export default function Step4(props) {
                             size="small"
                             label="City"
                             value={selectedValue}
-                            className={`${classes.select} ${selectedValue === "Other" && classes.placeholderText}`}
+                            className={`${classes.select} ${selectedValue === "City" && classes.placeholderText}`}
                             onChange={(e) => {
                                 props.handleChange("location", e.target.value);
                                 setSelectedValue(e.target.value);

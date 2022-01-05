@@ -8,6 +8,7 @@ import {
     Typography,
     StepConnector,
     Hidden,
+    Box,
 } from "@material-ui/core";
 import { makeStyles, withStyles } from "@material-ui/core/styles";
 import { ReactComponent as CircleIcon } from "../../images/CircleIcon.svg";
@@ -57,10 +58,11 @@ export default function CustomStepper(props) {
     });
 
     React.useEffect(() => {
+        console.log(activeStep);
         props.emptySteps();
         props.pushStep("New Calculation");
         props.pushStep(
-            betweenStepsData.type === 1 ? "New Production" : "Rebuilding"
+            betweenStepsData.current.type === 1 ? "New Production" : "Rebuilding"
         );
         switch (activeStep) {
             case 1:
@@ -129,7 +131,6 @@ export default function CustomStepper(props) {
     }
 
     const handleNext = () => {
-        console.log(betweenStepsData.current);
         const betweenStepsCategories = [
             types.category.lager,
             types.rebuilding.omby,
@@ -195,6 +196,10 @@ export default function CustomStepper(props) {
                     />
                 );
             case 2:
+                if(!betweenStepsData.current["category"]){
+                    setActiveStep(0);
+                    return "nothing";
+                }
                 return (
                     <Step2
                         data={betweenStepsData.current}
@@ -202,6 +207,10 @@ export default function CustomStepper(props) {
                     />
                 );
             case 3:
+                if(!betweenStepsData.current["name"] || betweenStepsData.current["name"].trim() === ""){
+                    setActiveStep(2);
+                    return "nothing";
+                }
                 return (
                     <Step3
                         data={betweenStepsData.current}
@@ -216,6 +225,10 @@ export default function CustomStepper(props) {
                     />
                 );
             case 5:
+                if(!betweenStepsData.current["location"]){
+                    setActiveStep(4);
+                    return "nothing";
+                }
                 return (
                     <Step5
                         data={betweenStepsData.current}
@@ -223,6 +236,10 @@ export default function CustomStepper(props) {
                     />
                 );
             case 6:
+                if(!betweenStepsData.current["internalStandard"] || !betweenStepsData.current["externalStandard"]){
+                    setActiveStep(5);
+                    return "nothing";
+                }
                 return (
                     <Step6
                         data={betweenStepsData.current}
@@ -230,6 +247,10 @@ export default function CustomStepper(props) {
                     />
                 );
             case 7:
+                if(!betweenStepsData.current["startDate"]){
+                    setActiveStep(6);
+                    return "nothing";
+                }
                 console.log(`Data: ${JSON.stringify(betweenStepsData.current)}`);
                 history.push("/tax");
 

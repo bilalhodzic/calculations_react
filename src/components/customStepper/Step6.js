@@ -11,6 +11,14 @@ export default function Step6(props) {
     const [yearsValue, setYearsValue] = useState(0);
     const [monthsValue, setMonthsValue] = useState(0);
 
+    props.handleChange("years", yearsValue);
+    props.handleChange("months", monthsValue);
+
+    const todaysDateValue = () => {
+        const d = new Date();
+        return `${d.getFullYear()}-${(d.getMonth()+1).toLocaleString("en-US", { minimumIntegerDigits: 2, useGrouping: false})}-${d.getDate().toLocaleString("en-US", { minimumIntegerDigits: 2, useGrouping: false})}`;
+    }
+
     return (
         <Box maxHeight={"80vh"} overflow="auto">
             <Scrollbars style={{ width: "100%", height: "55vh"}}>
@@ -24,6 +32,9 @@ export default function Step6(props) {
                             InputLabelProps={{ shrink: true }}
                             variant="outlined"
                             size="small"
+                            inputProps={{
+                                min: todaysDateValue()
+                            }}
                             onChange={(e) => {
                                 props.handleChange("startDate", e.target.value);
                             }}
