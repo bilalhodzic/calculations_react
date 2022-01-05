@@ -53,6 +53,8 @@ export default function Step4(props) {
     const [selectedIn, setSelectedIn] = useState(true);
     const [selectedValue, setSelectedValue] = useState("City");
 
+    props.handleChange("urbanArea", selectedIn);
+
     return (
         <Box maxHeight={"80vh"} overflow="auto">
             <Scrollbars style={{ width: "100%", height: "55vh"}}>

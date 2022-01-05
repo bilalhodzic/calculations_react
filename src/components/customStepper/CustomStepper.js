@@ -20,6 +20,7 @@ import Step5 from "./Step5";
 import Step6 from "./Step6";
 import BetweenStep from "./BetweenStep";
 
+import { newCalculation } from "../../helper/externalCalls";
 import types from "../../helper/data.json";
 import useWindowDimensions from "../windowDimension";
 import { useThemeProps } from "@material-ui/data-grid";
@@ -252,6 +253,9 @@ export default function CustomStepper(props) {
                     return "nothing";
                 }
                 console.log(`Data: ${JSON.stringify(betweenStepsData.current)}`);
+                const id = betweenStepsData.current["category"].id;
+                handleChange("category", id);
+                newCalculation(betweenStepsData.current);
                 history.push("/tax");
 
             default:

@@ -26,7 +26,7 @@ export function getFieldsNewBuilding(type){
                 },
                 {
                     label: "Antal WC",
-                    id: "wc",
+                    id: "toiletNumber",
                     placeholder: "0"
                 },
                 {
@@ -62,7 +62,7 @@ export function getFieldsNewBuilding(type){
                 },
                 {
                     label: "Antal WC",
-                    id: "wc",
+                    id: "toiletNumber",
                     placeholder: "0"
                 },
                 {
@@ -103,7 +103,7 @@ export function getFieldsNewBuilding(type){
                 },
                 {
                     label: "Dusch and WC",
-                    id: "wc",
+                    id: "toiletNumber",
                     info: "Antal dusch och wc. Summera antal dusch i duschrum,\n separata dusch och wc och skriva det totala antalet här.",
                     placeholder: "0"
                 },
@@ -150,7 +150,7 @@ export function getFieldsNewBuilding(type){
                 },
                 {
                     label: "Antal WC",
-                    id: "wc",
+                    id: "toiletNumber",
                     placeholder: "0"
                 },
                 {
@@ -192,12 +192,12 @@ export function getFieldsNewBuilding(type){
                 },
                 {
                     label: "Antal bodrum",
-                    id: "bodrum",
+                    id: "bathNumber",
                     placeholder: "0"
                 },
                 {
                     label: "Antal WC",
-                    id: "wc",
+                    id: "toiletNumber",
                     placeholder: "0"
                 },
                 {
@@ -236,7 +236,7 @@ export function getFieldsNewBuilding(type){
                 },
                 {
                     label: "Antal WC",
-                    id: "wc",
+                    id: "toiletNumber",
                     placeholder: "0"
                 },
                 {
@@ -246,7 +246,7 @@ export function getFieldsNewBuilding(type){
                 },
                 {
                     label: "Antal bodrum",
-                    id: "bodrum",
+                    id: "bathNumber",
                     placeholder: "m",
                     superscript: 2,
                     isRight: true
@@ -292,7 +292,7 @@ export function getFieldsNewBuilding(type){
                 },
                 {
                     label: "Antal WC",
-                    id: "wc",
+                    id: "toiletNumber",
                     placeholder: "0"
                 },
                 {
@@ -345,7 +345,7 @@ export function getFieldsNewBuilding(type){
                 },
                 {
                     label: "Antal WC",
-                    id: "wc",
+                    id: "toiletNumber",
                     placeholder: "0"
                 },
                 {
@@ -381,12 +381,12 @@ export function getFieldsRebuilding(type){
             return [
                 {
                     label: "Antal bodrum",
-                    id: "bodrum",
+                    id: "bathNumber",
                     placeholder: 0
                 },
                 {
                     label: "Antal WC",
-                    id: "wc",
+                    id: "toiletNumber",
                     placeholder: 0
                 },
                 {
@@ -425,12 +425,12 @@ export function getFieldsRebuilding(type){
                 },
                 {
                     label: "Antal bodrum",
-                    id: "bodrum",
+                    id: "bathNumber",
                     placeholder: 0
                 },
                 {
                     label: "Antal WC",
-                    id: "wc",
+                    id: "toiletNumber",
                     placeholder: 0
                 },
                 {
