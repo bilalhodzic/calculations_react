@@ -342,6 +342,10 @@ const useStyles = makeStyles((theme) => ({
         bottom: -40,
         left: 32,
         right: 32,
+        [theme.breakpoints.down("xs")]: {
+            left: 0,
+            right: 0
+        }
     },
     stepContent: {
         textAlign: "center",

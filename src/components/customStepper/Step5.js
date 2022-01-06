@@ -71,7 +71,7 @@ export default function Step5(props) {
     const rows = [];
     for (let i = 0; i < paperItems.length; i += 3) {
         rows.push(
-            <Box className={classes.root}>
+            <Box className={`${classes.root} ${i === 0 && classes.initialRoot} ${i + 3 >= paperItems.length && classes.lastRoot}`}>
                 {paperItems[i]}
                 {i + 1 < paperItems.length && paperItems[i + 1]}
                 {i + 2 < paperItems.length && paperItems[i + 2]}
@@ -181,6 +181,11 @@ const useStyles = makeStyles((theme) => ({
     buttonGroup: {
         display: "flex",
         flexDirection: "row",
+        [theme.breakpoints.down("xs")]: {
+            flexDirection: "column",
+            justifyContent: "center",
+            alignItems: "center"
+        }
     },
     button: {
         width: 400,
@@ -198,9 +203,22 @@ const useStyles = makeStyles((theme) => ({
         },
         margin: theme.spacing(1),
         textTransform: "none",
+        [theme.breakpoints.down("xs")]: {
+            width: "50vw"
+        }
     },
     selectedButton: {
         color: "white",
         backgroundColor: "#21344d",
     },
+    initialRoot: {
+        [theme.breakpoints.down("xs")]: {
+            marginTop: theme.spacing(5)
+        }
+    },
+    lastRoot: {
+        [theme.breakpoints.down("xs")]: {
+            paddingBottom: theme.spacing(8)
+        }
+    }
 }));

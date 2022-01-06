@@ -31,7 +31,7 @@ export default function CardRows(props) {
     const rows = [];
     for (let i = 0; i < items.length; i += 3) {
         rows.push(
-            <Box className={classes.root} style={{ marginTop: 20 }}>
+            <Box className={`${classes.root} ${i + 3 >= items.length && classes.lastRoot}`} style={{ marginTop: 20 }}>
                 {items[i]}
                 {i + 1 < items.length && items[i + 1]}
                 {i + 2 < items.length && items[i + 2]}
@@ -74,11 +74,16 @@ const useStyles = makeStyles((theme) => ({
         },
     },
     paperText: {
-        fontSize: 20,
+        fontSize: 18,
         fontWeight: 600,
         color: "black",
         [theme.breakpoints.down("xs")]: {
-            fontSize: 20,
-        },
+            fontSize: 16
+        }
     },
+    lastRoot: {
+        [theme.breakpoints.down("xs")]: {
+            paddingBottom: theme.spacing(8)
+        }
+    }
 }));

@@ -94,7 +94,7 @@ export default function Layout(props) {
                 <Box className={classes.header}>
                     <Box
                         className={classes.drawerHeader}
-                        onClick={() => history.push("/")}
+                        onClick={() => history.push("/home")}
                     >
                         <Typography className={classes.drawerHeaderText}>
                             Calculation
@@ -191,7 +191,9 @@ const useStyles = makeStyles((theme) => ({
             cursor: "pointer",
         },
         [theme.breakpoints.down("xs")]: {
-            visibility: "hidden",
+            "& p": {
+                fontSize: 16
+            }
         },
     },
     drawerHeaderText: {

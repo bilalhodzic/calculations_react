@@ -81,7 +81,7 @@ export default function Step6(props) {
                 </Box>
                 <Box className={classes.root}>
                     <Box className={classes.paperBox}>
-                        <DatePickerIcon />
+                        <DatePickerIcon className={classes.svg}/>
                     </Box>
                 </Box>
             </Scrollbars>
@@ -95,10 +95,7 @@ const useStyles = makeStyles((theme) => ({
         justifyContent: "center",
         [theme.breakpoints.down("xs")]: {
             flexDirection: "column",
-            display: "inline-flex",
-            "&>*": {
-                margin: 10,
-            },
+            alignItems: "center"
         },
     },
     paperBox: {
@@ -111,7 +108,7 @@ const useStyles = makeStyles((theme) => ({
             cursor: "pointer",
         },
         [theme.breakpoints.down("xs")]: {
-            width: 140,
+            width: 210,
         },
     },
     paperText: {
@@ -132,5 +129,10 @@ const useStyles = makeStyles((theme) => ({
         "& input::-webkit-clear-button, & input::-webkit-outer-spin-button, & input::-webkit-inner-spin-button": {
             "-webkit-appearance": "none"
      }
+    },
+    svg: {
+        [theme.breakpoints.down("xs")]: {
+            paddingBottom: theme.spacing(8)
+        }
     }
 }));

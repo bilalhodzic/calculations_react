@@ -112,10 +112,8 @@ const useStyles = makeStyles((theme) => ({
         justifyContent: "center",
         [theme.breakpoints.down("xs")]: {
             flexDirection: "column",
-            display: "inline-flex",
-            "&>*": {
-                margin: 10,
-            },
+            justifyContent: "center",
+            alignItems: "center",
         },
     },
     paperBox: {
@@ -125,11 +123,14 @@ const useStyles = makeStyles((theme) => ({
         marginLeft: theme.spacing(2),
         marginRight: theme.spacing(2),
         [theme.breakpoints.down("xs")]: {
-            width: 140,
+            width: 200,
         },
     },
     svg: {
         width: 150,
         marginLeft: theme.spacing(10),
+        [theme.breakpoints.down("xs")]:{
+            marginTop: theme.spacing(-10)
+        }
     },
 }));

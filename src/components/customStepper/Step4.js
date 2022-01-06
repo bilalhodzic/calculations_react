@@ -128,10 +128,7 @@ const useStyles = makeStyles((theme) => ({
         justifyContent: "center",
         [theme.breakpoints.down("xs")]: {
             flexDirection: "column",
-            display: "inline-flex",
-            "&>*": {
-                margin: 10,
-            },
+            alignItems: "center"
         },
         marginTop: theme.spacing(2),
     },
@@ -170,12 +167,21 @@ const useStyles = makeStyles((theme) => ({
             backgroundColor: "#21344d",
         },
         marginLeft: theme.spacing(8),
+        [theme.breakpoints.down("xs")]: {
+            marginLeft: 0,
+            marginBottom: theme.spacing(2)
+        }
     },
     buttonGroup: {
         display: "flex",
         flexDirection: "row",
         textAlign: "center",
-        marginLeft: theme.spacing(10)
+        marginLeft: theme.spacing(10),
+        [theme.breakpoints.down("xs")]: {
+            marginLeft: 0,
+            flexDirection: "column",
+            marginTop: theme.spacing(-7)
+        }
     },
     // buttonRight: {
     //     marginLeft: theme.spacing(5),
@@ -186,6 +192,10 @@ const useStyles = makeStyles((theme) => ({
     },
     svg: {
         marginTop: theme.spacing(-9),
+        [theme.breakpoints.down("xs")]: {
+            marginTop: theme.spacing(2),
+            paddingBottom: theme.spacing(10)
+        }
     },
     placeholderText: {
         textAlign: "left",

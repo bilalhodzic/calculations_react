@@ -25,7 +25,7 @@ export default function Step0 (props){
             </Helmet>
             <Box className={classes.root}>
                 <Box className={classes.header}>
-                    <Box className={classes.drawerHeader} onClick={() => history.push("/")}>
+                    <Box className={classes.drawerHeader} onClick={() => history.push("/home")}>
                         <Typography className={classes.headerText}>Calculation</Typography>
                     </Box>
                     <Hidden smUp>
@@ -76,15 +76,17 @@ const useStyles = makeStyles((theme) => ({
       justifyContent: "flex-start",
       alignItems: "inherit",
       "& p": {
-        fontSize: 22,
+        fontSize: "1.5vw",
         color: "white",
       },
       "&:hover": {
         cursor: "pointer",
       },
       [theme.breakpoints.down("xs")]: {
-        visibility: "hidden",
-      },
+        "& p": {
+          fontSize: 16
+        }
+      }
     },
     header: {
       width: "100%",
@@ -104,7 +106,10 @@ const useStyles = makeStyles((theme) => ({
         fontWeight: 900,
         margin: "0 auto",
         textAlign: "center",
-        display: "block"
+        display: "block",
+        [theme.breakpoints.down("xs")]: {
+          fontSize: 50
+        }
     },
     paper: {
         height: "73vh",
@@ -143,6 +148,9 @@ const useStyles = makeStyles((theme) => ({
         justifyContent: "center",
         width: "50%",
         textAlign: "center",
+        [theme.breakpoints.down("xs")]: {
+          flexDirection: "column"
+        }
       },
       button: {
           minWidth: 300,
@@ -163,7 +171,10 @@ const useStyles = makeStyles((theme) => ({
           width: 70,
       },
       headerText: {
-        marginLeft: theme.spacing(4)
+        marginLeft: theme.spacing(4),
+        [theme.breakpoints.down("xs")]: {
+          fontSize: 15
+        }
       }
   }));
   

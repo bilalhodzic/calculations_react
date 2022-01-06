@@ -70,7 +70,7 @@ export default function Step3(props) {
     let form = [];
     for (let i = 0; i < formItems.length; i += 3) {
         form.push(
-            <Box className={classes.root}>
+            <Box className={`${classes.root} ${i + 3 >= formItems.length && classes.lastRoot}`}>
                 {formItems[i]}
                 {i + 1 < formItems.length ? formItems[i + 1] : null}
                 {i + 2 < formItems.length ? formItems[i + 2] : null}
@@ -95,10 +95,9 @@ const useStyles = makeStyles((theme) => ({
         marginBottom: theme.spacing(5),
         [theme.breakpoints.down("xs")]: {
             flexDirection: "column",
-            display: "inline-flex",
-            "&>*": {
-                margin: 10,
-            },
+            justifyContent: "center",
+            alignItems: "center",
+            marginBottom: 0
         },
     },
     paperBox: {
@@ -108,14 +107,15 @@ const useStyles = makeStyles((theme) => ({
         marginLeft: theme.spacing(4),
         marginRight: theme.spacing(4),
         [theme.breakpoints.down("xs")]: {
-            width: 140,
+            width: 200,
+            marginTop: theme.spacing(2)
         },
         position: "relative"
     },
     label: {
         textAlign: "start",
         fontWeight: 600,
-        marginBottom: theme.spacing(2.5),
+        marginBottom: theme.spacing(2),
         color: "black",
     },
     labelLong: {
@@ -124,4 +124,9 @@ const useStyles = makeStyles((theme) => ({
     adornedEnd: {
         background: "linear-gradient(-90deg, #F0F2F5 22%, #FFFFFF 22%)",
     },
+    lastRoot: {
+        [theme.breakpoints.down("xs")]:{
+            paddingBottom: theme.spacing(8)
+        }
+    }
 }));
