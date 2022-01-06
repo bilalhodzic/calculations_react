@@ -14,7 +14,7 @@ const initialData = [
     {
         name: "Building in Stockholm Sweden",
         price: "1.854.456",
-        icon: <BuildingIcon color="#21344D" size={49} style={{ transform: "scale(2.5)"}} />,
+        icon: <BuildingIcon color="#21344D" size={49} style={{ transform: "scale(2)"}} />,
         type: "Building",
         color: "#0EBD00",
         backgroundColor: "#9BFF93",
@@ -22,7 +22,7 @@ const initialData = [
     {
         name: "Hospital in Stockholm Sweden",
         price: "2.854.456",
-        icon: <HospitalIcon color="#21344D" size={49} />,
+        icon: <HospitalIcon color="#21344D" size={49} style={{ transform: "scale(2)"}} />,
         type: "Hospital",
         color: "#ff4100",
         backgroundColor: "#FFcebd",
@@ -30,7 +30,7 @@ const initialData = [
     {
         name: "School in Stockholm Sweden",
         price: "854.456",
-        icon: <SchoolIcon color="#21344D" size={49} />,
+        icon: <SchoolIcon color="#21344D" size={49} style={{ transform: "scale(2)"}} />,
         type: "School",
         color: "#00adff",
         backgroundColor: "#b4e7ff",
@@ -38,7 +38,7 @@ const initialData = [
     {
         name: "School in Norway",
         price: "1.054.456",
-        icon: <SchoolIcon color="#21344D" size={49} />,
+        icon: <SchoolIcon color="#21344D" size={49} style={{ transform: "scale(2)"}} />,
         type: "School",
         color: "#00adff",
         backgroundColor: "#b4e7ff",
@@ -46,7 +46,7 @@ const initialData = [
     {
         name: "Hotel in Stockholm Sweden",
         price: "4.854.456",
-        icon: <HotelIcon color="#21344D" size={49} />,
+        icon: <HotelIcon color="#21344D" size={49} style={{ transform: "scale(2)"}} />,
         type: "Hotel",
         color: "#3F75BD",
         backgroundColor: "#C2DCFF",

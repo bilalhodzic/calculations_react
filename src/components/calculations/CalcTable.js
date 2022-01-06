@@ -32,79 +32,16 @@ function CustomPagination(props) {
   );
 }
 
-const rows = [
-  {
-    id: 1,
-    Name: "Name",
-    Date: "02/05/2021",
-    Category: "Building",
-    Type: { text: "Building", color: "#0EBD00", backgroundcolor: "#9BFF93" },
-    Area: "Adress1",
-  },
-  {
-    id: 2,
-    Name: "Name1",
-    Date: "04/03/2021",
-    Category: "Building",
-    Type: { text: "School", color: "#00ADFF", backgroundcolor: "#B4E7FF" },
-    Area: "Adress2",
-    Actions: "actions",
-  },
-  {
-    id: 3,
-    Name: "Name2",
-    Date: "04/08/2021",
-    Category: "Building",
-    Type: {
-      text: "Hospital",
-      color: "#FF4100",
-      backgroundcolor: "#FFCEBD",
-    },
-    Area: "Adress3",
-    Actions: "actions",
-  },
-  {
-    id: 4,
-    Name: "Name3",
-    Date: "12/08/2021",
-    Category: "Building",
-    Type: {
-      text: "Hotel",
-      color: "#3F75BD",
-      backgroundcolor: "#C2DCFF",
-    },
-    Area: "Adress4",
-    Actions: "actions",
-  },
-  {
-    id: 5,
-    Name: "Name4",
-    Date: "24/03/2021",
-    Category: "Building",
-    Type: {
-      text: "Hospital",
-      color: "#FF4100",
-      backgroundcolor: "#FFCEBD",
-    },
-    Area: "Adress5",
-    Actions: "actions",
-  },
-  {
-    id: 6,
-    Name: "Name5",
-    Date: "02/01/2021",
-    Category: "Building",
-    Type: { text: "Building", color: "#0EBD00", backgroundcolor: "#9BFF93" },
-    Area: "Adress6",
-    Actions: "actions",
-  },
-];
-
 export default function Calctable(props) {
   const [openDialog, setOpenDialog] = React.useState(false);
   const { width } = useWindowDimensions();
+  const [isLoading, setIsLoading] = React.useState(true);
 
   const data = props.data;
+
+  React.useEffect(() => {
+    setIsLoading(data.length == 0);
+  }, [data]);
 
   const columns = [
     {
@@ -114,13 +51,13 @@ export default function Calctable(props) {
       headerAlign: "center",
       align: "center",
 
-      width: 140,
+      width: width * 0.1,
     },
     {
       field: "Date",
       headerName: "Date",
       type: "date",
-      width: 130,
+      width: width * 0.095,
       headerClassName: "headerClass",
       headerAlign: "center",
       align: "center",
@@ -132,7 +69,7 @@ export default function Calctable(props) {
       headerAlign: "center",
       headerClassName: "headerClass",
       align: "center",
-      width: 200
+      width: width * 0.15
     },
     {
       field: "Type",
@@ -143,7 +80,7 @@ export default function Calctable(props) {
       hide: width < 600 ? true : false,
 
       align: "center",
-      width: 170,
+      width: width * 0.13,
       renderCell: (params) => (
         <ColoredBox
           text={params.value.text}
@@ -157,7 +94,7 @@ export default function Calctable(props) {
     {
       field: "Area",
       headerName: "Area",
-      width: 200,
+      width: width * 0.13,
       headerClassName: "headerClass",
       headerAlign: "center",
       align: "center",
@@ -166,7 +103,7 @@ export default function Calctable(props) {
     {
       field: "Actions",
       headerName: "Actions",
-      width: 150,
+      width: width * 0.08,
       headerClassName: "headerClass",
       headerAlign: "center",
       align: "center",
@@ -198,7 +135,9 @@ export default function Calctable(props) {
     <Box className={classes.root}>
       <DataGrid
         pagination
+        loading={isLoading}
         rows={data}
+        getRowId={(row) => row.id}
         columns={columns}
         hideFooterSelectedRowCount
         pageSize={5}

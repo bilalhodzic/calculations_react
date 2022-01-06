@@ -107,9 +107,6 @@ export default function Calculations() {
     if(searchInput === ""){
       setTableData(helper.transformCalculations((await getCalculationsForPage(1, selectValueCategory, selectValueType)).data));
     }
-    // else{
-    //   setTableData(helper.transformCalculations((await getCalculationsWithName(searchInput)).data));
-    // }
   };
 
   const downloadMoreData = async (page) => {
@@ -118,8 +115,8 @@ export default function Calculations() {
     console.log("Proslo");
     maxPage++;
     const temp = helper.transformCalculations((await getCalculationsForPage(maxPage, selectValueCategory, selectValueType)).data);
-    tableData.push(...temp);
-    setTableData(tableData);
+    console.log(temp);
+    setTableData([...tableData, temp]);
   };
 
   const classes = useStyles();
@@ -192,6 +189,9 @@ export default function Calculations() {
 async function getCalculationsForPage(pageNumber, categoryNumber, typeNumber){
   const axiosOptions = {
     url: `${config.baseUrl}/calculations/getcalculations/filter/${pageNumber}/${categoryNumber}/${typeNumber}`,
+    headers: {
+      'Access-Control-Allow-Origin': "*"
+    },
     method: "GET",
   };
 
