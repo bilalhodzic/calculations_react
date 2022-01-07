@@ -132,6 +132,7 @@ export default function CustomStepper(props) {
     }
 
     const handleNext = () => {
+        console.log(betweenStepsData.current);
         const betweenStepsCategories = [
             types.category.lager,
             types.rebuilding.omby,
@@ -144,7 +145,7 @@ export default function CustomStepper(props) {
                 1 +
                 (prevActiveStep == 0 &&
                     !betweenStepsCategories.includes(
-                        betweenStepsData.category
+                        betweenStepsData.current.category
                     ) &&
                     1)
         );
@@ -165,7 +166,7 @@ export default function CustomStepper(props) {
                 1 -
                 (prevActiveStep == 2 &&
                     !betweenStepsCategories.includes(
-                        betweenStepsData.category
+                        betweenStepsData.current.category
                     ) &&
                     1)
         );
@@ -253,9 +254,12 @@ export default function CustomStepper(props) {
                     return "nothing";
                 }
                 console.log(`Data: ${JSON.stringify(betweenStepsData.current)}`);
-                const id = betweenStepsData.current["category"].id;
-                handleChange("category", id);
-                newCalculation(betweenStepsData.current);
+                let id = 0;
+                if(betweenStepsData.current["category"]){
+                    id = betweenStepsData.current["category"].id;
+                    handleChange("category", id);
+                    newCalculation(betweenStepsData.current);
+                }
                 history.push("/tax");
 
             default:

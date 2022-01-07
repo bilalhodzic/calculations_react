@@ -70,7 +70,7 @@ const useStyles = makeStyles((theme) => ({
             cursor: "pointer",
         },
         [theme.breakpoints.down("xs")]: {
-            width: 140,
+            width: "30vw",
         },
     },
     paperText: {

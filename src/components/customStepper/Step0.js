@@ -133,6 +133,7 @@ const useStyles = makeStyles((theme) => ({
           minWidth: 0,
           fontSize: 23,
           height: "100%",
+          marginTop: theme.spacing(17)
         },
         display: "flex",
         flexDirection: "column",

@@ -106,9 +106,8 @@ const useStyles = makeStyles((theme) => ({
         right: 0,
         [theme.breakpoints.down("xs")]: {
             margin: theme.spacing(1),
-            minWidth: 0,
-            fontSize: 23,
-            height: "100%",
+            bottom: "-80vh",
+            marginTop: theme.spacing(10)
         },
     },
     text: {

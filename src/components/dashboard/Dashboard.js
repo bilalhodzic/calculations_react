@@ -10,54 +10,10 @@ import { HotelIcon } from "../svgIcons/HotelIcon";
 import NoCalculations from "./NoCalculations";
 import ColoredBox from "../ColoredBox";
 
-const initialData = [
-    {
-        name: "Building in Stockholm Sweden",
-        price: "1.854.456",
-        icon: <BuildingIcon color="#21344D" size={49} style={{ transform: "scale(2)"}} />,
-        type: "Building",
-        color: "#0EBD00",
-        backgroundColor: "#9BFF93",
-    },
-    {
-        name: "Hospital in Stockholm Sweden",
-        price: "2.854.456",
-        icon: <HospitalIcon color="#21344D" size={49} style={{ transform: "scale(2)"}} />,
-        type: "Hospital",
-        color: "#ff4100",
-        backgroundColor: "#FFcebd",
-    },
-    {
-        name: "School in Stockholm Sweden",
-        price: "854.456",
-        icon: <SchoolIcon color="#21344D" size={49} style={{ transform: "scale(2)"}} />,
-        type: "School",
-        color: "#00adff",
-        backgroundColor: "#b4e7ff",
-    },
-    {
-        name: "School in Norway",
-        price: "1.054.456",
-        icon: <SchoolIcon color="#21344D" size={49} style={{ transform: "scale(2)"}} />,
-        type: "School",
-        color: "#00adff",
-        backgroundColor: "#b4e7ff",
-    },
-    {
-        name: "Hotel in Stockholm Sweden",
-        price: "4.854.456",
-        icon: <HotelIcon color="#21344D" size={49} style={{ transform: "scale(2)"}} />,
-        type: "Hotel",
-        color: "#3F75BD",
-        backgroundColor: "#C2DCFF",
-    },
-];
-
 export default function Dashboard() {
     const [totalBuildings, setTotalBuildings] = React.useState(32456);
     const [totalHospital, setTotalHospital] = React.useState(15256);
     const [totalSchool, setTotalSchool] = React.useState(15256);
-    const [latestCalc, setLatestCalc] = React.useState(initialData);
     const [calculations, setCalculations] = React.useState([]);
 
     React.useEffect(() => {
@@ -65,6 +21,50 @@ export default function Dashboard() {
     }, []);
 
     const classes = useStyles();
+
+    const initialData = [
+        {
+            name: "Building in Stockholm Sweden",
+            price: "1.854.456",
+            icon: <BuildingIcon color="#21344D" size={49} className={classes.icon} />,
+            type: "Building",
+            color: "#0EBD00",
+            backgroundColor: "#9BFF93",
+        },
+        {
+            name: "Hospital in Stockholm Sweden",
+            price: "2.854.456",
+            icon: <HospitalIcon color="#21344D" size={49} className={classes.icon} />,
+            type: "Hospital",
+            color: "#ff4100",
+            backgroundColor: "#FFcebd",
+        },
+        {
+            name: "School in Stockholm Sweden",
+            price: "854.456",
+            icon: <SchoolIcon color="#21344D" size={49} className={classes.icon} />,
+            type: "School",
+            color: "#00adff",
+            backgroundColor: "#b4e7ff",
+        },
+        {
+            name: "School in Norway",
+            price: "1.054.456",
+            icon: <SchoolIcon color="#21344D" size={49} className={classes.icon} />,
+            type: "School",
+            color: "#00adff",
+            backgroundColor: "#b4e7ff",
+        },
+        {
+            name: "Hotel in Stockholm Sweden",
+            price: "4.854.456",
+            icon: <HotelIcon color="#21344D" size={49} className={classes.icon} />,
+            type: "Hotel",
+            color: "#3F75BD",
+            backgroundColor: "#C2DCFF",
+        },
+    ];
+    const [latestCalc, setLatestCalc] = React.useState(initialData);
 
     const latestCalculationItems = latestCalc.map((el, index) => {
         return (
@@ -139,9 +139,8 @@ const useStyles = makeStyles((theme) => ({
         right: 0,
         [theme.breakpoints.down("xs")]: {
             margin: theme.spacing(1),
-            minWidth: 0,
-            fontSize: 23,
-            height: "100%",
+            marginBottom: -10,
+            bottom: "-103vh"
         },
     },
     divider: {
@@ -168,6 +167,10 @@ const useStyles = makeStyles((theme) => ({
             cursor: "pointer",
         },
         margin: theme.spacing(2),
+        [theme.breakpoints.down("xs")]: {
+            width: "19vh",
+            height: "28vh"
+        }
     },
     menuIcon: {
         marginLeft: "auto",
@@ -187,5 +190,11 @@ const useStyles = makeStyles((theme) => ({
                 margin: 10,
             },
         },
+    },
+    icon: {
+        transform: "scale(2)",
+        [theme.breakpoints.down("xs")]: {
+            transform: "scale(1)"
+        }
     },
 }));
