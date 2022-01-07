@@ -129,6 +129,128 @@
             "value": "Ombyggnad"
         }
     },
+    "by_id": {
+        "1": {
+            "value": "Flerbostadshus",
+            "color": "#4dafd7"
+        },
+        "2": {
+            "value": "Radhus",
+            "color": "#dac071"
+        },
+        "3": {
+            "value": "Villor",
+            "color": "#093d94"
+        },
+        "4": {
+            "value": "Vardboende",
+            "color": "#e9bbcd"
+        },
+        "5": {
+            "value": "Studentbostader",
+            "color": "#f0f2ae"
+        },
+        "6": {
+            "value": "Hotell",
+            "color": "#f0c860"
+        },
+        "7": {
+            "value": "Kontor",
+            "color": "#9f9c80"
+        },
+        "8": {
+            "value": "Handel",
+            "color": "#c4cb56"
+        },
+        "9": {
+            "value": "Varm lager",
+            "color": "#f3d70e"
+        },
+        "10": {
+            "value": "Kall lager",
+            "color": "#a441a8"
+        },
+        "11": {
+            "value": "Kyl/frys lager",
+            "color": "#5172ae"
+        },
+        "12": {
+            "value": "Industribyggnad",
+            "color": "#cf9b5e"
+        },
+        "13": {
+            "value": "Skola",
+            "color": "#bb185f"
+        },
+        "14": {
+            "value": "Forskola",
+            "color": "#6cb5c6"
+        },
+        "15": {
+            "value": "Parkeringshus",
+            "color": "#ded67f"
+        },
+        "16": {
+            "value": "Idrottshall",
+            "color": "#7871a9"
+        },
+        "17": {
+            "value": "Apartment1",
+            "color": "#1ba4d9"
+        },
+        "18": {
+            "value": "Apartment2",
+            "color": "#1ba4db"
+        },
+        "19": {
+            "value": "Apartment3",
+            "color": "#1ba4f9"
+        },
+        "20": {
+            "value": "Apartment4",
+            "color": "#1ba4ea"
+        },
+        "21": {
+            "value": "Office1",
+            "color": "#8a22de"
+        },
+        "22": {
+            "value": "Office2",
+            "color": "#8b22de"
+        },
+        "23": {
+            "value": "Office3",
+            "color": "#8a22df"
+        },
+        "24": {
+            "value": "Office4",
+            "color": "#8b22df"
+        },
+        "25": {
+            "value": "Trade1",
+            "color": "#0ed8b0"
+        },
+        "26": {
+            "value": "Trade2",
+            "color": "#0ed8b2"
+        },
+        "27": {
+            "value": "Trade3",
+            "color": "#0edab0"
+        },
+        "28": {
+            "value": "Trade4",
+            "color": "#0edab2"
+        },
+        "29": {
+            "value": "School1",
+            "color": "#afecf2"
+        },
+        "30": {
+            "value": "School2",
+            "color": "#afecf5"
+        }
+    },
     "types": {
         "new_production":{
             "id": 1,

@@ -14,6 +14,7 @@ import CalcTable from "./CalcTable";
 
 import axios from "axios";
 import helper from "../../helper/TransformData";
+import types from "../../helper/data.json";
 import config from "../../config.json";
 
 //table data which wiil be returned from database
@@ -110,16 +111,18 @@ export default function Calculations() {
   };
 
   const downloadMoreData = async (page) => {
-    console.log("Ovdje");
-    if(page <= maxPage) return;
-    console.log("Proslo");
+    if(page <= maxPage) return [];
     maxPage++;
-    const temp = helper.transformCalculations((await getCalculationsForPage(maxPage, selectValueCategory, selectValueType)).data);
-    console.log(temp);
-    setTableData([...tableData, temp]);
+    return helper.transformCalculations((await getCalculationsForPage(maxPage, selectValueCategory, selectValueType)).data);
   };
 
   const classes = useStyles();
+  const menuItems = [];
+  menuItems.push(<MenuItem value={0}>Category</MenuItem>)
+  for(const property in types.category){
+    if(types.category[property].id === 31) break;
+    menuItems.push(<MenuItem value={types.category[property].id}>{types.category[property].value}</MenuItem>);
+  }
 
   return (
     <Layout>
@@ -162,13 +165,7 @@ export default function Calculations() {
           style={{ paddingRight: 10, width: 250 }}
           IconComponent={() => <ArrowDown />}
         >
-          <MenuItem value={0}>Category</MenuItem>
-          <MenuItem value={1}>Building</MenuItem>
-          <MenuItem value={2}>Hospital</MenuItem>
-          <MenuItem value={3}>School</MenuItem>
-          <MenuItem value={4}>Hotel</MenuItem>
-          <MenuItem value={5}>Home</MenuItem>
-          <MenuItem value={6}>Church</MenuItem>
+          {menuItems.map((e) => e)}
         </Select>
         <Button
           className={classes.Btn}
