@@ -82,6 +82,7 @@ const useStyles = makeStyles((theme) => ({
         }
     },
     lastRoot: {
+        paddingBottom: theme.spacing(2),
         [theme.breakpoints.down("xs")]: {
             paddingBottom: theme.spacing(8)
         }

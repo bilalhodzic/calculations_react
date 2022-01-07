@@ -36,12 +36,12 @@ function CustomPagination(props) {
 export default function Calctable(props) {
     const [openDialog, setOpenDialog] = React.useState(false);
     const { width } = useWindowDimensions();
-    const [isLoading, setIsLoading] = React.useState(false);
+    const [isLoading, setIsLoading] = React.useState(true);
 
     const [data, setData] = React.useState(props.data);
 
     React.useEffect(() => {
-        setIsLoading(false);
+        setIsLoading(props.data.length === 0);
         setData(props.data);
     }, [props.data]);
 
