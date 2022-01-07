@@ -19,6 +19,7 @@ import Step4 from "./Step4";
 import Step5 from "./Step5";
 import Step6 from "./Step6";
 import BetweenStep from "./BetweenStep";
+import TaxQuestion from "./TaxQuestion";
 
 import { newCalculation } from "../../helper/externalCalls";
 import types from "../../helper/data.json";
@@ -54,6 +55,9 @@ export default function CustomStepper(props) {
     const { width } = useWindowDimensions();
 
     const location = useLocation();
+    if(!location){
+        history.push("/add");
+    }
     const betweenStepsData = React.useRef({
         type: location.state.type,
     });
@@ -63,7 +67,9 @@ export default function CustomStepper(props) {
         props.emptySteps();
         props.pushStep("New Calculation");
         props.pushStep(
-            betweenStepsData.current.type === 1 ? "New Production" : "Rebuilding"
+            betweenStepsData.current.type === 1
+                ? "New Production"
+                : "Rebuilding"
         );
         switch (activeStep) {
             case 1:
@@ -129,15 +135,15 @@ export default function CustomStepper(props) {
 
     const handleChange = (propName, propValue) => {
         betweenStepsData.current[propName] = propValue;
-    }
+    };
 
     const handleNext = () => {
         console.log(betweenStepsData.current);
         const betweenStepsCategories = [
             types.category.lager,
-            types.rebuilding.omby,
-            types.rebuilding.kontor,
-            types.rebuilding.handel,
+            types.category.ombyggnad,
+            types.category.kontor,
+            types.category.handel,
         ];
         setActiveStep(
             (prevActiveStep) =>
@@ -152,22 +158,12 @@ export default function CustomStepper(props) {
     };
 
     const handleBack = () => {
-        const betweenStepsCategories = [
-            types.category.varmlager,
-            types.category.kalllager,
-            types.category.kyllager,
-            types.rebuilding.omby,
-            types.rebuilding.kontor,
-            types.rebuilding.handel,
-        ];
         setActiveStep(
             (prevActiveStep) =>
                 prevActiveStep -
                 1 -
                 (prevActiveStep == 2 &&
-                    !betweenStepsCategories.includes(
-                        betweenStepsData.current.category
-                    ) &&
+                    betweenStepsData.current.category.id < 17 &&
                     1)
         );
     };
@@ -175,6 +171,9 @@ export default function CustomStepper(props) {
     const SwitchStep = () => {
         switch (activeStep) {
             case 0:
+                if(!betweenStepsData.current.type){
+                    history.push("/add");
+                }
                 return (
                     <Step1
                         handleChange={handleChange}
@@ -183,7 +182,7 @@ export default function CustomStepper(props) {
                     />
                 );
             case 1:
-                if (betweenStepsData.type === types.types.rebuilding.id) {
+                if (betweenStepsData.current.type === types.types.rebuilding.id) {
                     return (
                         <BetweenStepRebuilding
                             data={betweenStepsData.current}
@@ -198,8 +197,17 @@ export default function CustomStepper(props) {
                     />
                 );
             case 2:
-                if(!betweenStepsData.current["category"]){
+                const betweenStepsCategories = [
+                    types.category.lager,
+                    types.category.ombyggnad,
+                    types.category.handel,
+                    types.category.kontor
+                ];
+                if (!betweenStepsData.current["category"]) {
                     setActiveStep(0);
+                    return "nothing";
+                }else if(betweenStepsCategories.includes(betweenStepsData.current["category"])){
+                    setActiveStep(1);
                     return "nothing";
                 }
                 return (
@@ -209,7 +217,10 @@ export default function CustomStepper(props) {
                     />
                 );
             case 3:
-                if(!betweenStepsData.current["name"] || betweenStepsData.current["name"].trim() === ""){
+                if (
+                    !betweenStepsData.current["name"] ||
+                    betweenStepsData.current["name"].trim() === ""
+                ) {
                     setActiveStep(2);
                     return "nothing";
                 }
@@ -227,7 +238,7 @@ export default function CustomStepper(props) {
                     />
                 );
             case 5:
-                if(!betweenStepsData.current["location"]){
+                if (!betweenStepsData.current["location"]) {
                     setActiveStep(4);
                     return "nothing";
                 }
@@ -238,7 +249,10 @@ export default function CustomStepper(props) {
                     />
                 );
             case 6:
-                if(!betweenStepsData.current["internalStandard"] || !betweenStepsData.current["externalStandard"]){
+                if (
+                    !betweenStepsData.current["internalStandard"] ||
+                    !betweenStepsData.current["externalStandard"]
+                ) {
                     setActiveStep(5);
                     return "nothing";
                 }
@@ -249,18 +263,22 @@ export default function CustomStepper(props) {
                     />
                 );
             case 7:
-                if(!betweenStepsData.current["startDate"]){
-                    setActiveStep(6);
-                    return "nothing";
-                }
-                console.log(`Data: ${JSON.stringify(betweenStepsData.current)}`);
-                let id = 0;
-                if(betweenStepsData.current["category"]){
-                    id = betweenStepsData.current["category"].id;
-                    handleChange("category", id);
-                    newCalculation(betweenStepsData.current);
-                }
-                history.push("/tax");
+                // if (!betweenStepsData.current["startDate"]) {
+                //     setActiveStep(6);
+                //     return "nothing";
+                // }
+                // console.log(
+                //     `Data: ${JSON.stringify(betweenStepsData.current)}`
+                // );
+                // let id = 0;
+                // if (betweenStepsData.current["category"]) {
+                //     id = betweenStepsData.current["category"].id;
+                //     handleChange("category", id);
+                //     newCalculation(betweenStepsData.current);
+                // }
+                return (
+                    <TaxQuestion></TaxQuestion>
+                );
 
             default:
                 return "nothing";
@@ -277,7 +295,7 @@ export default function CustomStepper(props) {
                 orientation={width < 600 ? "vertical" : "horizontal"}
                 activeStep={activeStep}
                 connector={<CustomConnector />}
-                className={classes.stepper}
+                className={`${classes.stepper} ${activeStep===7 && classes.hidden}`}
             >
                 {steps.map((e, index) => (
                     <Step key={e.label}>
@@ -348,8 +366,8 @@ const useStyles = makeStyles((theme) => ({
         right: 32,
         [theme.breakpoints.down("xs")]: {
             left: 0,
-            right: 0
-        }
+            right: 0,
+        },
     },
     stepContent: {
         textAlign: "center",
@@ -395,4 +413,7 @@ const useStyles = makeStyles((theme) => ({
     doneStep: {
         filter: "brightness(0) saturate(100%) invert(15%) sepia(9%) saturate(3603%) hue-rotate(175deg) brightness(91%) contrast(86%)",
     },
+    hidden: {
+        display: "none"
+    }
 }));

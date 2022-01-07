@@ -20,66 +20,62 @@ export default function TaxQuestion(props) {
     const classes = useStyles();
 
     return (
-        <Layout>
-            <Paper className={classes.paper}>
-                <Box
-                    display={"flex"}
-                    flexDirection={"column"}
-                    justifyContent={"center"}
-                    alignItems={"center"}
-                    marginTop={5}
+        <Box
+            display={"flex"}
+            flexDirection={"column"}
+            justifyContent={"center"}
+            alignItems={"center"}
+            marginTop={5}
+        >
+            <Typography className={classes.text}>
+                Da li zelis report sa kamatom ili bez kamate?
+            </Typography>
+            <FormControl component={"fieldset"}>
+                <RadioGroup
+                    style={{ marginTop: 30 }}
+                    value={withTax}
+                    name="radio-buttons-group"
                 >
-                    <Typography className={classes.text}>
-                        Da li zelis report sa kamatom ili bez kamate?
-                    </Typography>
-                    <FormControl component={"fieldset"}>
-                        <RadioGroup
-                            style={{ marginTop: 30 }}
-                            value={withTax}
-                            name="radio-buttons-group"
-                        >
-                            <FormControlLabel
-                                value={true}
-                                control={
-                                    <Radio
-                                        checked={withTax}
-                                        classes={{
-                                            root: classes.radio,
-                                            checked: classes.checked,
-                                        }}
-                                        onClick={(e) => setWithTax(true)}
-                                    />
-                                }
-                                label={
-                                    <Typography className={classes.radioButton}>
-                                        Prikazi report sa kamatom
-                                    </Typography>
-                                }
+                    <FormControlLabel
+                        value={true}
+                        control={
+                            <Radio
+                                checked={withTax}
+                                classes={{
+                                    root: classes.radio,
+                                    checked: classes.checked,
+                                }}
+                                onClick={(e) => setWithTax(true)}
                             />
-                            <FormControlLabel
-                                value={false}
-                                control={
-                                    <Radio
-                                        checked={!withTax}
-                                        classes={{
-                                            root: classes.radio,
-                                            checked: classes.checked,
-                                        }}
-                                        onClick={(e) => setWithTax(false)}
-                                    />
-                                }
-                                label={
-                                    <Typography className={classes.radioButton}>
-                                        Prikazi report bez kamate
-                                    </Typography>
-                                }
+                        }
+                        label={
+                            <Typography className={classes.radioButton}>
+                                Prikazi report sa kamatom
+                            </Typography>
+                        }
+                    />
+                    <FormControlLabel
+                        value={false}
+                        control={
+                            <Radio
+                                checked={!withTax}
+                                classes={{
+                                    root: classes.radio,
+                                    checked: classes.checked,
+                                }}
+                                onClick={(e) => setWithTax(false)}
                             />
-                        </RadioGroup>
-                    </FormControl>
-                    <TaxesIcon className={classes.icon} />
-                </Box>
-            </Paper>
-        </Layout>
+                        }
+                        label={
+                            <Typography className={classes.radioButton}>
+                                Prikazi report bez kamate
+                            </Typography>
+                        }
+                    />
+                </RadioGroup>
+            </FormControl>
+            <TaxesIcon className={classes.icon} />
+        </Box>
     );
 }
 
@@ -107,7 +103,7 @@ const useStyles = makeStyles((theme) => ({
         [theme.breakpoints.down("xs")]: {
             margin: theme.spacing(1),
             bottom: "-80vh",
-            marginTop: theme.spacing(10)
+            marginTop: theme.spacing(10),
         },
     },
     text: {
@@ -124,6 +120,6 @@ const useStyles = makeStyles((theme) => ({
     },
     checked: {},
     icon: {
-        marginTop: theme.spacing(10)
-    }
+        marginTop: theme.spacing(10),
+    },
 }));
