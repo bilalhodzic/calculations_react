@@ -263,19 +263,19 @@ export default function CustomStepper(props) {
                     />
                 );
             case 7:
-                // if (!betweenStepsData.current["startDate"]) {
-                //     setActiveStep(6);
-                //     return "nothing";
-                // }
-                // console.log(
-                //     `Data: ${JSON.stringify(betweenStepsData.current)}`
-                // );
-                // let id = 0;
-                // if (betweenStepsData.current["category"]) {
-                //     id = betweenStepsData.current["category"].id;
-                //     handleChange("category", id);
-                //     newCalculation(betweenStepsData.current);
-                // }
+                if (!betweenStepsData.current["startDate"]) {
+                    setActiveStep(6);
+                    return "nothing";
+                }
+                console.log(
+                    `Data: ${JSON.stringify(betweenStepsData.current)}`
+                );
+                let id = 0;
+                if (betweenStepsData.current["category"]) {
+                    id = betweenStepsData.current["category"].id;
+                    handleChange("category", id);
+                    newCalculation(betweenStepsData.current);
+                }
                 return (
                     <TaxQuestion></TaxQuestion>
                 );
@@ -320,7 +320,7 @@ export default function CustomStepper(props) {
                     className={classes.stepBtn}
                     style={{
                         marginLeft: 30,
-                        color: "#21344d",
+                        color: "white",
                         visibility: activeStep === 0 ? "hidden" : "initial",
                     }}
                     color="secondary"
@@ -350,6 +350,7 @@ const useStyles = makeStyles((theme) => ({
         borderRadius: 8,
         marginBottom: 10,
         height: 40,
+        fontWeight: "bold"
     },
     stepFooter: {
         display: "flex",

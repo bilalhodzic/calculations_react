@@ -88,7 +88,7 @@ export default function Step4(props) {
                         style={{ width: 430, height: 100 }}
                     ></Box>
                 </Box>
-                <Box className={classes.root}>
+                <Box className={classes.root} style={{marginTop: 50}}>
                     <Box className={`${classes.paperBox} ${classes.buttonGroup}`}>
                         <Button
                             className={`${classes.button} ${
@@ -148,7 +148,7 @@ const useStyles = makeStyles((theme) => ({
     },
     inputLabel: {
         marginBottom: 20,
-        fontSize: 16,
+        fontSize: 18,
         color: "black",
         fontWeight: "bold",
     },

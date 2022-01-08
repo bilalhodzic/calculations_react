@@ -70,11 +70,11 @@ export default function Dashboard() {
         return (
             <Box className={classes.menuItem} key={index}>
                 <Box className={classes.menuIcon}>{el.icon}</Box>
-                <Typography style={{ fontWeight: 600, margin: 8 }}>
+                <Typography className={classes.menuName}>
                     {el.name}
                 </Typography>
                 <Typography
-                    style={{ color: "#6B6B6B", fontSize: 13.69, margin: 10 }}
+                    style={{ color: "#6B6B6B", fontSize: 14.69, margin: 10 }}
                 >
                     {el.price}$
                 </Typography>
@@ -175,10 +175,15 @@ const useStyles = makeStyles((theme) => ({
     menuIcon: {
         marginLeft: "auto",
         marginRight: "auto",
-        marginTop: theme.spacing(2),
+        marginTop: "17%",
         paddingTop: theme.spacing(3),
         width: "10vw",
         height: "10vh",
+    },
+    menuName: {
+        fontWeight: 600,
+        margin: 8,
+        fontSize: 18
     },
     root: {
         display: "flex",
