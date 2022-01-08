@@ -1,6 +1,7 @@
 import React from "react";
 import { Box, makeStyles, Typography, Hidden, Paper, Button } from "@material-ui/core";
 import { useHistory } from "react-router-dom";
+import { useLocation } from "react-router";
 import {Helmet} from 'react-helmet';
 
 import { ReactComponent as CalculatorIcon } from "../../images/calculatorIcon.svg";
@@ -13,6 +14,12 @@ export default function Step0 (props){
     const [mobileOpen, setMobileOpen] = React.useState(false);
     const history = useHistory();
     const classes = useStyles();
+    const location = useLocation();
+
+    if(!location.state || !location.state.token){
+      return "Unauthorized";
+    }
+    const token = location.state.token;
 
     const handleDrawer = () => {
         setMobileOpen(!mobileOpen);
@@ -25,7 +32,7 @@ export default function Step0 (props){
             </Helmet>
             <Box className={classes.root}>
                 <Box className={classes.header}>
-                    <Box className={classes.drawerHeader} onClick={() => history.push("/home")}>
+                    <Box className={classes.drawerHeader} onClick={() => history.push({pathname: "/home", state: { token: token }})}>
                         <Typography className={classes.headerText}>Calculation</Typography>
                     </Box>
                     <Hidden smUp>
@@ -36,9 +43,9 @@ export default function Step0 (props){
                 <Paper className={classes.paper}>
                     <Typography className={classes.title}>What do you want ?</Typography>
                     <Box className={classes.buttonGroup}>
-                        <Button className={classes.button} onClick={() => history.push({pathname: "/new", state: { type: types.types.rebuilding.id }})}>Rebuildings</Button>
+                        <Button className={classes.button} onClick={() => history.push({pathname: "/new", state: { type: types.types.rebuilding.id, token: token }})}>Rebuildings</Button>
                         <CalculatorIcon className={classes.image}/>
-                        <Button className={classes.button} onClick={() => history.push({pathname: "/new", state: { type: types.types.new_production.id }})}>New production</Button>
+                        <Button className={classes.button} onClick={() => history.push({pathname: "/new", state: { type: types.types.new_production.id, token: token }})}>New production</Button>
                     </Box>
                 </Paper>
             </Box>

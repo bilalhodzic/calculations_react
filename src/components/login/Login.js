@@ -135,16 +135,14 @@ async function login(username, password, history) {
     };
     try {
         const response = await axios(axiosOptions);
-        console.log(response.status);
         if (response.status === 200) {
-            history.push("/home");
+            history.push({ pathname: "/home", state: { token: response.data.data } });
             return true;
         } else {
             console.log("Invalid login data");
             return false;
         }
     } catch (err) {
-        console.log("Ovdje");
         return false;
     }
 }

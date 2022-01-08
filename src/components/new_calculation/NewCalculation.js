@@ -11,10 +11,18 @@ import { makeStyles } from "@material-ui/core/styles";
 import Layout from "../Layout";
 import CustomStepper from "../customStepper/CustomStepper";
 import { ReactComponent as ArrowIcon } from "../../images/ArrowIcon.svg";
+import { useLocation } from "react-router";
 
 export default function NewCalculation() {
     const [steps, setSteps] = React.useState(["New Calculation"]);
     const classes = useStyles();
+    const location = useLocation();
+
+    if(!location.state || !location.state.token){
+        return "Unauthorized";
+    }
+
+    const token = location.state.token;
 
     const newStep = (newStep) => {
         setSteps(previous => [...previous, newStep]);
@@ -47,7 +55,7 @@ export default function NewCalculation() {
     });
 
     return (
-        <Layout>
+        <Layout token={token}>
             <Paper elevation={5} className={classes.paper}>
                 <Hidden xsDown>
                     <Box
@@ -61,7 +69,7 @@ export default function NewCalculation() {
                 </Hidden>
 
                 <div>
-                    <CustomStepper pushStep={newStep} emptySteps={emptySteps} />
+                    <CustomStepper pushStep={newStep} emptySteps={emptySteps} token={token}/>
                 </div>
             </Paper>
         </Layout>

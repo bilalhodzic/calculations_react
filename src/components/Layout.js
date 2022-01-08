@@ -48,7 +48,7 @@ export default function Layout(props) {
                         className={classes.listButton}
                         button
                         key={list.name}
-                        onClick={() => history.push(list.pathname)}
+                        onClick={() => history.push( { pathname: list.pathname, state: { token: props.token } })}
                     >
                         <ListItemIcon className={classes.listIcon}>
                             {list.icon}
@@ -65,7 +65,7 @@ export default function Layout(props) {
             <List className={`${classes.list} ${classes.bottomList}`}>
                 <ListItem
                     className={classes.listButton}
-                    onClick={() => history.push("/add")}
+                    onClick={() => history.push({ pathname: "/add", state: { token: props.token }})}
                 >
                     <PlusIcon style={{ marginRight: 15 }} />
                     <Typography className={classes.listText}>

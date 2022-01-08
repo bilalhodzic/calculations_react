@@ -9,6 +9,7 @@ import { HotelIcon } from "../svgIcons/HotelIcon";
 
 import NoCalculations from "./NoCalculations";
 import ColoredBox from "../ColoredBox";
+import { useLocation } from "react-router";
 
 export default function Dashboard() {
     const [totalBuildings, setTotalBuildings] = React.useState(32456);
@@ -66,6 +67,13 @@ export default function Dashboard() {
     ];
     const [latestCalc, setLatestCalc] = React.useState(initialData);
 
+    const location = useLocation();
+
+    if(!location.state || !location.state.token){
+        return "Unauthorized";
+    }
+    const token = location.state.token;
+
     const latestCalculationItems = latestCalc.map((el, index) => {
         return (
             <Box className={classes.menuItem} key={index}>
@@ -102,7 +110,7 @@ export default function Dashboard() {
     }
 
     return (
-        <Layout>
+        <Layout token={token}>
             <Paper elevation={5} className={classes.paper}>
                 Latest Calculations
                 <Divider className={classes.divider} />

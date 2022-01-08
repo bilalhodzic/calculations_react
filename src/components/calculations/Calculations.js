@@ -16,6 +16,7 @@ import axios from "axios";
 import helper from "../../helper/TransformData";
 import types from "../../helper/data.json";
 import config from "../../config.json";
+import { useLocation } from "react-router";
 
 //table data which wiil be returned from database
 //just for testing
@@ -81,7 +82,7 @@ const data = [
   },
 ];
 
-export default function Calculations() {
+export default function Calculations(props) {
   let maxPage = 1;
   const [selectValueType, setSelectValueType] = React.useState(0);
   const [selectValueCategory, setSelectValueCategory] = React.useState(0);
@@ -91,6 +92,28 @@ export default function Calculations() {
   React.useEffect(async () => {
     setTableData(helper.transformCalculations((await getCalculationsForPage(1, selectValueCategory, selectValueType)).data));
   }, []);
+
+  const classes = useStyles();
+  const location = useLocation();
+
+  if(!location.state || !location.state.token){
+    return "Unauthorized";
+  }
+  const token = location.state.token;
+
+  const getCalculationsForPage = async (pageNumber, categoryNumber, typeNumber) => {
+    const axiosOptions = {
+      url: `${config.baseUrl}/calculations/getcalculations/filter/${pageNumber}/${categoryNumber}/${typeNumber}`,
+      headers: {
+        'Access-Control-Allow-Origin': "*",
+        'Authorization': `Bearer ${token}`
+      },
+      method: "GET",
+    };
+  
+    const response = await axios(axiosOptions);
+    return response.data;
+  }
 
   const handleSelectTypeChange = (e) => {
     setSelectValueType(e.target.value);
@@ -116,7 +139,6 @@ export default function Calculations() {
     return helper.transformCalculations((await getCalculationsForPage(maxPage, selectValueCategory, selectValueType)).data);
   };
 
-  const classes = useStyles();
   const menuItems = [];
   menuItems.push(<MenuItem value={0}>Category</MenuItem>)
   for(const property in types.category){
@@ -125,7 +147,7 @@ export default function Calculations() {
   }
 
   return (
-    <Layout>
+    <Layout token={token}>
       <Paper elevation={6} className={classes.paperHeader}>
         <Hidden xsDown>
           <InputBase
@@ -181,19 +203,6 @@ export default function Calculations() {
       </Paper>
     </Layout>
   );
-}
-
-async function getCalculationsForPage(pageNumber, categoryNumber, typeNumber){
-  const axiosOptions = {
-    url: `${config.baseUrl}/calculations/getcalculations/filter/${pageNumber}/${categoryNumber}/${typeNumber}`,
-    headers: {
-      'Access-Control-Allow-Origin': "*"
-    },
-    method: "GET",
-  };
-
-  const response = await axios(axiosOptions);
-  return response.data;
 }
 
 async function getCalculationsWithName(name){

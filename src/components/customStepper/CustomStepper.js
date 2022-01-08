@@ -97,6 +97,12 @@ export default function CustomStepper(props) {
     }, [activeStep]);
 
     const classes = useStyles();
+
+    if(!props.token){
+        return "Unauthorized";
+    }
+    const token = props.token;
+
     const steps = [
         {
             label: "Choose Project Type",
@@ -274,7 +280,7 @@ export default function CustomStepper(props) {
                 if (betweenStepsData.current["category"]) {
                     id = betweenStepsData.current["category"].id;
                     handleChange("category", id);
-                    newCalculation(betweenStepsData.current);
+                    newCalculation(betweenStepsData.current, token);
                 }
                 return (
                     <TaxQuestion></TaxQuestion>
