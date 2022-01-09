@@ -27,6 +27,7 @@ import useWindowDimensions from "../windowDimension";
 import { useThemeProps } from "@material-ui/data-grid";
 import { useLocation } from "react-router-dom/cjs/react-router-dom.min";
 import BetweenStepRebuilding from "./BetweenStepRebuilding";
+import Report from "../report/Report";
 
 const CustomConnector = withStyles({
     alternativeLabel: {
@@ -61,6 +62,7 @@ export default function CustomStepper(props) {
     const betweenStepsData = React.useRef({
         type: location.state.type,
     });
+    const [calculation, setCalculation] = React.useState({});
 
     React.useEffect(() => {
         console.log(activeStep);
@@ -280,11 +282,16 @@ export default function CustomStepper(props) {
                 if (betweenStepsData.current["category"]) {
                     id = betweenStepsData.current["category"].id;
                     handleChange("category", id);
-                    newCalculation(betweenStepsData.current, token);
+                    newCalculation(betweenStepsData.current, token).then((res) => {
+                        setCalculation(res.data);
+                    });
                 }
                 return (
                     <TaxQuestion></TaxQuestion>
                 );
+            case 8:
+                console.log(calculation);
+                return <Report data={calculation}></Report>;
 
             default:
                 return "nothing";
@@ -301,7 +308,7 @@ export default function CustomStepper(props) {
                 orientation={width < 600 ? "vertical" : "horizontal"}
                 activeStep={activeStep}
                 connector={<CustomConnector />}
-                className={`${classes.stepper} ${activeStep===7 && classes.hidden}`}
+                className={`${classes.stepper} ${activeStep>=7 && classes.hidden}`}
             >
                 {steps.map((e, index) => (
                     <Step key={e.label}>

@@ -20,9 +20,7 @@ export function getFieldsNewBuilding(type){
                 {
                     label: "Antal RWC",
                     id: "rwc",
-                    placeholder: "m",
-                    superscript: 2,
-                    isRight: true
+                    placeholder: "0",
                 },
                 {
                     label: "Antal WC",
@@ -56,9 +54,7 @@ export function getFieldsNewBuilding(type){
                 {
                     label: "Antal RWC",
                     id: "rwc",
-                    placeholder: "m",
-                    superscript: 2,
-                    isRight: true
+                    placeholder: "0"
                 },
                 {
                     label: "Antal WC",
@@ -97,9 +93,7 @@ export function getFieldsNewBuilding(type){
                 {
                     label: "Antal RWC",
                     id: "rwc",
-                    placeholder: "m",
-                    superscript: 2,
-                    isRight: true
+                    placeholder: "0"
                 },
                 {
                     label: "Dusch and WC",
@@ -186,9 +180,7 @@ export function getFieldsNewBuilding(type){
                 {
                     label: "Antal lagenheter",
                     id: "apartmentNumber",
-                    placeholder: "m",
-                    superscript: 2,
-                    isRight: true
+                    placeholder: "0"
                 },
                 {
                     label: "Antal bodrum",
@@ -225,9 +217,7 @@ export function getFieldsNewBuilding(type){
                 {
                     label: "Antal lagenheter",
                     id: "apartmentNumber",
-                    placeholder: "m",
-                    superscript: 2,
-                    isRight: true
+                    placeholder: "0"
                 },
                 {
                     label: "LOA",
@@ -247,9 +237,7 @@ export function getFieldsNewBuilding(type){
                 {
                     label: "Antal bodrum",
                     id: "bathNumber",
-                    placeholder: "m",
-                    superscript: 2,
-                    isRight: true
+                    placeholder: "0"
                 },
                 {
                     label: "Antal garageplatser",
@@ -264,7 +252,7 @@ export function getFieldsNewBuilding(type){
                     isRight: true
                 },
             ];
-        case types.category.studentlagenheter:
+        case types.category.studentbostader:
             return [
                 {
                     label: "Boarea",
@@ -365,9 +353,7 @@ export function getFieldsNewBuilding(type){
                 {
                     label: "Antal garageplatser",
                     id: "garageplatser",
-                    placeholder: "m",
-                    superscript: 2,
-                    isRight: true
+                    placeholder: "0"
                 },
             ];
         default:

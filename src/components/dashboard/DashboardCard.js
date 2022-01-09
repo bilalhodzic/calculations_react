@@ -6,6 +6,7 @@ import ColoredBox from "../ColoredBox";
 export default function DashboardCard(props) {
     const classes = useStyles();
 
+    console.log(props.icon)
     return (
         <Paper className={classes.menuItem} {...props}>
             <Box className={classes.menuIcon}>{props.icon}</Box>
@@ -17,8 +18,8 @@ export default function DashboardCard(props) {
             </Typography>
 
             <ColoredBox
-                color={el.color}
-                backgroundcolor={el.backgroundColor}
+                color={props.color}
+                backgroundcolor={props.backgroundColor}
                 text={props.category}
                 position="absolute"
             />
@@ -64,4 +65,7 @@ const useStyles = makeStyles((theme) => ({
         margin: 8,
         fontSize: 18,
     },
+    doneStep: {
+        filter: "brightness(0) saturate(100%) invert(15%) sepia(9%) saturate(3603%) hue-rotate(175deg) brightness(91%) contrast(86%)",
+    }
 }));

@@ -69,16 +69,16 @@ export default function Step2(props) {
                     </Box>
                     <Box className={classes.paperBox}>
                         <InputLabel style={inputLabelProps}>
-                            Ansvarig projektledare
+                            Responsible project manager
                         </InputLabel>
                         <TextField
                             key={3}
-                            placeholder="Ansvarig projektledare"
+                            placeholder="Responsible project manager"
                             variant="outlined"
                             defaultValue={""}
                             onChange={(e) => {
                                 props.handleChange(
-                                    "projectSomething",
+                                    "projectLeadName",
                                     e.target.value
                                 );
                             }}
@@ -88,16 +88,16 @@ export default function Step2(props) {
                 <Box className={classes.root}>
                     <Box className={classes.paperBox}>
                         <InputLabel style={inputLabelProps}>
-                            Datering på ritningar och underlag
+                            Date for drawings and documents
                         </InputLabel>
                         <TextField
                             key={4}
-                            placeholder="Datering på ritningar och underlag"
+                            placeholder="Date for drawings and documents"
                             variant="outlined"
                             defaultValue={""}
                             onChange={(e) => {
                                 props.handleChange(
-                                    "projectAnotherThing",
+                                    "architectDate",
                                     e.target.value
                                 );
                             }}

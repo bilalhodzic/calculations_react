@@ -9,7 +9,11 @@ import { HotelIcon } from "../svgIcons/HotelIcon";
 
 import NoCalculations from "./NoCalculations";
 import ColoredBox from "../ColoredBox";
-import { useLocation } from "react-router";
+import { useHistory, useLocation } from "react-router";
+import { icons } from "../../helper/CategoryIcons";
+import DashboardCard from "./DashboardCard";
+import { getLatestCalculations } from "../../helper/externalCalls";
+import types from "../../helper/data.json";
 
 export default function Dashboard() {
     const [totalBuildings, setTotalBuildings] = React.useState(32456);
@@ -17,17 +21,14 @@ export default function Dashboard() {
     const [totalSchool, setTotalSchool] = React.useState(15256);
     const [calculations, setCalculations] = React.useState([]);
 
-    React.useEffect(() => {
-        //call function while first time render
-    }, []);
-
     const classes = useStyles();
+    const history = useHistory();
 
     const initialData = [
         {
             name: "Building in Stockholm Sweden",
             price: "1.854.456",
-            icon: <BuildingIcon color="#21344D" size={49} className={classes.icon} />,
+            icon: icons["1"],
             type: "Building",
             color: "#0EBD00",
             backgroundColor: "#9BFF93",
@@ -35,7 +36,7 @@ export default function Dashboard() {
         {
             name: "Hospital in Stockholm Sweden",
             price: "2.854.456",
-            icon: <HospitalIcon color="#21344D" size={49} className={classes.icon} />,
+            icon: icons["2"],
             type: "Hospital",
             color: "#ff4100",
             backgroundColor: "#FFcebd",
@@ -43,7 +44,7 @@ export default function Dashboard() {
         {
             name: "School in Stockholm Sweden",
             price: "854.456",
-            icon: <SchoolIcon color="#21344D" size={49} className={classes.icon} />,
+            icon: icons["13"],
             type: "School",
             color: "#00adff",
             backgroundColor: "#b4e7ff",
@@ -51,7 +52,7 @@ export default function Dashboard() {
         {
             name: "School in Norway",
             price: "1.054.456",
-            icon: <SchoolIcon color="#21344D" size={49} className={classes.icon} />,
+            icon: icons["13"],
             type: "School",
             color: "#00adff",
             backgroundColor: "#b4e7ff",
@@ -59,41 +60,29 @@ export default function Dashboard() {
         {
             name: "Hotel in Stockholm Sweden",
             price: "4.854.456",
-            icon: <HotelIcon color="#21344D" size={49} className={classes.icon} />,
+            icon: icons["6"],
             type: "Hotel",
             color: "#3F75BD",
             backgroundColor: "#C2DCFF",
         },
     ];
-    const [latestCalc, setLatestCalc] = React.useState(initialData);
+    const [latestCalc, setLatestCalc] = React.useState([]);
 
     const location = useLocation();
 
     if(!location.state || !location.state.token){
-        return "Unauthorized";
+        history.push("/");
     }
     const token = location.state.token;
 
-    const latestCalculationItems = latestCalc.map((el, index) => {
-        return (
-            <Box className={classes.menuItem} key={index}>
-                <Box className={classes.menuIcon}>{el.icon}</Box>
-                <Typography className={classes.menuName}>
-                    {el.name}
-                </Typography>
-                <Typography
-                    style={{ color: "#6B6B6B", fontSize: 14.69, margin: 10 }}
-                >
-                    {el.price}$
-                </Typography>
+    React.useEffect(async () => {
+        setLatestCalc((await getLatestCalculations(token)).data);
+    }, []);
 
-                <ColoredBox
-                    color={el.color}
-                    backgroundcolor={el.backgroundColor}
-                    text={el.type}
-                    position="absolute"
-                />
-            </Box>
+    const latestCalculationItems = latestCalc.map((el) => {
+        console.log(el);
+        return (
+            <DashboardCard name={el.name} icon={icons[el.category]} price={el.totalInclVat} category={types.by_id[el.category].value} color={el.color} backgroundColor={el.backgroundColor} ></DashboardCard>
         );
     });
     const rows = [];

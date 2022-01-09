@@ -17,4 +17,17 @@ async function newCalculation (data, token){
     return response.data;
 };
 
-export { newCalculation };
+async function getLatestCalculations(token){
+    const axiosOptions = {
+        url: `${config.baseUrl}/calculations/getlast`,
+        method: "GET",
+        headers: {
+            "Authorization": `Bearer ${token}`
+        },
+      };
+    const response = await axios(axiosOptions);
+    console.log(response.data);
+    return response.data;
+}
+
+export { newCalculation, getLatestCalculations };
