@@ -1,4 +1,5 @@
 import React from "react";
+import { useHistory } from "react-router";
 import { Box, Button, IconButton, Modal, Typography } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 import { DataGrid } from "@material-ui/data-grid";
@@ -39,6 +40,7 @@ export default function Calctable(props) {
     const [isLoading, setIsLoading] = React.useState(true);
 
     const [data, setData] = React.useState(props.data);
+    const history = useHistory();
 
     React.useEffect(() => {
         setIsLoading(props.data.length === 0);
@@ -164,6 +166,21 @@ export default function Calctable(props) {
             setOpenDialog(false);
         }
     };
+
+    const handlePageChange = async (page) => {
+        if (page.page % 2 == 1) {
+            const moreData = await props.downloadMoreData(page.page + 1);
+            setData([
+                ...data,
+                ...moreData
+            ]);
+        }
+    };
+
+    const handleRowClick = (element) => {
+        history.push({ pathname: "/report", state: { data: element.row }});
+    };
+
     const classes = useStyles();
 
     return (
@@ -180,15 +197,8 @@ export default function Calctable(props) {
                 //autoHeight
                 density="comfortable"
                 components={{ Pagination: CustomPagination }}
-                onPageChange={async (page) => {
-                    if (page.page % 2 == 1) {
-                        const moreData = await props.downloadMoreData(page.page + 1);
-                        setData([
-                            ...data,
-                            ...moreData
-                        ]);
-                    }
-                }}
+                onPageChange={handlePageChange}
+                onRowClick={handleRowClick}
             />
             <Modal
                 open={openDialog}

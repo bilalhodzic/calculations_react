@@ -1,6 +1,7 @@
 import React from "react";
 import { Container, Button, Typography, Box } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
+import { useLocation } from "react-router";
 
 const data = [
     {
@@ -44,10 +45,13 @@ export default function Report(props) {
     }, []);
 
     const classes = useStyles();
+    const location = useLocation();
 
-    if (!props.data) {
+    if (!props.data && !location.state && !location.state.data) {
         return "No data for report";
     }
+
+    const calculationData = props.data || location.state.data;
 
     const items = [];
     for (const entry of data) {
@@ -57,7 +61,7 @@ export default function Report(props) {
                     <Typography style={{ fontWeight: "bold" }}>
                         {entry.label}:
                     </Typography>
-                    <Typography style={{marginLeft: 10}}>{props.data[entry.property]} years and {props.data[entry.property2]} months</Typography>
+                    <Typography style={{marginLeft: 10}}>{calculationData[entry.property]} years and {calculationData[entry.property2]} months</Typography>
                 </Box>
             );
             continue;
@@ -67,7 +71,7 @@ export default function Report(props) {
                 <Typography style={{ fontWeight: "bold" }}>
                     {entry.label}:
                 </Typography>
-                <Typography style={{marginLeft: 10}} >{props.data[entry.property] ? props.data[entry.property].toString() : "/"}</Typography>
+                <Typography style={{marginLeft: 10}} >{calculationData[entry.property] ? calculationData[entry.property].toString() : "/"}</Typography>
             </Box>
         );
     }

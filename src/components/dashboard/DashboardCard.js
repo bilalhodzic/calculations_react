@@ -48,7 +48,7 @@ const useStyles = makeStyles((theme) => ({
         },
         margin: theme.spacing(2),
         [theme.breakpoints.down("xs")]: {
-            width: "19vh",
+            width: "28vw",
             height: "28vh",
         },
     },
@@ -57,8 +57,15 @@ const useStyles = makeStyles((theme) => ({
         marginRight: "auto",
         marginTop: "17%",
         paddingTop: theme.spacing(3),
-        width: "10vw",
+        width: "15vw",
         height: "10vh",
+        textAlign: "center",
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
+        [theme.breakpoints.down("xs")]: {
+            marginTop: "10%"
+        }
     },
     menuName: {
         fontWeight: 600,
