@@ -290,8 +290,7 @@ export default function CustomStepper(props) {
                     <TaxQuestion></TaxQuestion>
                 );
             case 8:
-                console.log(calculation);
-                return <Report data={calculation}></Report>;
+                history.push({pathname: "/report", state: { data: calculation, token: token }});
 
             default:
                 return "nothing";

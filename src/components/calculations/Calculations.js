@@ -199,7 +199,7 @@ export default function Calculations(props) {
         </Button>
       </Paper>
       <Paper elevation={6} className={classes.paper}>
-        <CalcTable data={tableData} downloadMoreData={downloadMoreData} />
+        <CalcTable data={tableData} downloadMoreData={downloadMoreData} token={token} />
       </Paper>
     </Layout>
   );

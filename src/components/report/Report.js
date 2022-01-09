@@ -6,7 +6,8 @@ import Layout from "../Layout";
 import { Pagination } from "@material-ui/lab";
 import Page1 from "./Page1";
 import Page2 from "./Page2";
-
+import Page3 from "./Page3";
+import Page4 from "./Page4";
 
 export default function Report(props) {
     React.useEffect(() => {
@@ -35,6 +36,10 @@ export default function Report(props) {
                 return <Page1 calculationData={calculationData}/>
             case 2:
                 return <Page2 calculationData={calculationData}/>
+            case 3:
+                return <Page3 calculationData={calculationData}/>
+            case 4:
+                return <Page4 calculationData={calculationData}/>
             default:
                 return "nothing";
         }

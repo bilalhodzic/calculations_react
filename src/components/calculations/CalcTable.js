@@ -178,7 +178,7 @@ export default function Calctable(props) {
     };
 
     const handleRowClick = (element) => {
-        history.push({ pathname: "/report", state: { data: element.row }});
+        history.push({ pathname: "/report", state: { data: element.row, token: props.token }});
     };
 
     const classes = useStyles();

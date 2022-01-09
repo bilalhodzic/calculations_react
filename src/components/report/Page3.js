@@ -2,13 +2,11 @@ import React from "react";
 import { Box, Divider, Typography } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 
-import types from "../../helper/data.json";
-
 const data = [
     {
         label: "Total kostnad",
-        noMoms: "totalExclVat",
-        moms: "totalInclVat",
+        noMoms: "productionExclVat",
+        moms: "productionInclVat",
     },
     {
         label: "*Total kostnad vid egen regi",
@@ -18,27 +16,27 @@ const data = [
     },
     {
         label: "Kostnad per m2 BOA/LOA",
-        noMoms: "totalBoaLoaExclVat",
-        moms: "totalBoaLoaInclVat",
+        noMoms: "productionBoaLoaExclVat",
+        moms: "productionBoaLoaInclVat",
     },
     {
         label: "Kostnad per m2 ljus BTA",
-        noMoms: "totalLightBtaExclVat",
-        moms: "totalLightBtaInclVat",
+        noMoms: "productionLightBtaExclVat",
+        moms: "productionLightBtaInclVat",
     },
     {
         label: "Kostnad per m2 total BTA",
-        noMoms: "totalTotalBtaExclVat",
-        moms: "totalTotalBtaInclVat",
+        noMoms: "productionTotalBtaExclVat",
+        moms: "productionTotalBtaInclVat",
     },
     {
         label: "Kostnad per Igh",
-        noMoms: "totalPerIghExclVat",
-        moms: "totalPerIghInclVat",
+        noMoms: "productionPerIghExclVat",
+        moms: "productionPerIghInclVat",
     },
 ];
 
-export default function Page2(props) {
+export default function Page3(props) {
     const classes = useStyles();
     const calculationData = props.calculationData;
 
@@ -46,23 +44,8 @@ export default function Page2(props) {
 
     return (
     <Box>
-        <Box height={50} display= {"flex"} alignItems={"center"}>
-            <Typography className={classes.label} style={{marginLeft: "5%"}}>
-                Developer costs:
-            </Typography>
-            <Typography className={classes.valueText} style={{marginLeft: "2%"}}>
-                15,000 kr
-            </Typography>
-            <Typography className={classes.label} style={{marginLeft: "5%"}}>
-                Production costs:
-            </Typography>
-            <Typography className={classes.valueText} style={{marginLeft: "2%"}}>
-                15,000 kr
-            </Typography>
-        </Box>
-        <Divider/>
-        <Box className={classes.row} style={{marginTop: "5%"}}>
-            <Typography className={classes.valueText}>Total kostnad (bade byggherre och produktion)</Typography>
+        <Box className={classes.row} style={{marginTop: "3%"}}>
+            <Typography className={classes.valueText}>Endast produktionskostnad</Typography>
         </Box>
         {items.map((e) => e)}
     </Box>
