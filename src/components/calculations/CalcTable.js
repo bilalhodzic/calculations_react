@@ -54,6 +54,11 @@ export default function Calctable(props) {
             align: "center",
 
             width: width * 0.1,
+            renderCell: (params) => (
+                <Typography style={{marginLeft: "20%", marginRight: "auto"}}>
+                    {params.value}
+                </Typography>
+            )
         },
         {
             field: "Date",
@@ -64,6 +69,11 @@ export default function Calctable(props) {
             headerAlign: "center",
             align: "center",
             hide: width < 600 ? true : false,
+            renderCell: (params) => (
+                <Typography style={{marginLeft: "20%", marginRight: "auto"}}>
+                    {params.value}
+                </Typography>
+            )
         },
         {
             field: "Category",
@@ -71,12 +81,12 @@ export default function Calctable(props) {
             headerAlign: "center",
             headerClassName: "headerClass",
             align: "center",
-            width: width * 0.15,
+            width: width * 0.14,
             renderCell: (params) => (
-              <ColoredBox style={{marginLeft: "auto", marginRight: "auto"}}
-                  text={types.by_id[params.value].value}
+              <ColoredBox style={{marginLeft: "20%", marginRight: "auto"}}
+                  text={<Typography>{types.by_id[params.value].value}</Typography>}
                   //color={params.value.color}
-                  backgroundcolor={types.by_id[params.value].color}
+                  //backgroundcolor={types.by_id[params.value].color}
               />
           )
         },
@@ -94,7 +104,9 @@ export default function Calctable(props) {
             filterable: false,
             renderCell: (params) => (
               <ColoredBox
+                style={{marginLeft: "auto", marginRight: "10%"}}
                 text={params.value.text}
+                backgroundcolor={params.value.text === "New production" ? "#9BFF93" : "#B4E7FF"}
               />
             )
         },
@@ -106,6 +118,13 @@ export default function Calctable(props) {
             headerAlign: "center",
             align: "center",
             hide: width < 600 ? true : false,
+            renderCell: (params) => (
+                <Typography
+                    style={{marginLeft: "auto", marginRight: "20%"}}
+                >
+                    {params.value}
+                </Typography>
+            )
         },
         {
             field: "Actions",

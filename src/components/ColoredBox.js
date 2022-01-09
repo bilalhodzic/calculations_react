@@ -21,6 +21,8 @@ const useStyles = makeStyles((theme) => ({
     right: 10,
     height: 21,
     textAlign: "center",
+    paddingLeft: theme.spacing(1),
+    paddingRight: theme.spacing(1)
   }),
   text: {
     fontSize: 13.69,

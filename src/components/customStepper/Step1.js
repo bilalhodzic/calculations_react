@@ -5,7 +5,7 @@ import CardRows from "./CardRows";
 
 import { SchoolIcon } from "../svgIcons/SchoolIcon";
 import { HotelIcon } from "../svgIcons/HotelIcon";
-import { ReactComponent as FlerbostadhusIcon } from "../../images/FlerbostadhusIcon.svg";
+import { ReactComponent as FlerbostadhusIcon } from "../../images/FlerbostadshusIcon.svg";
 import { ReactComponent as RadhusIcon } from "../../images/RadhusIcon.svg";
 import { ReactComponent as VillorIcon } from "../../images/VillorIcon.svg";
 import { ReactComponent as VardboendeIcon } from "../../images/VardboendeIcon.svg";

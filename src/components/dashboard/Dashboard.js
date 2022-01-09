@@ -14,59 +14,14 @@ import { icons } from "../../helper/CategoryIcons";
 import DashboardCard from "./DashboardCard";
 import { getLatestCalculations } from "../../helper/externalCalls";
 import types from "../../helper/data.json";
+import { GridLoadIcon } from "@material-ui/data-grid";
 
 export default function Dashboard() {
-    const [totalBuildings, setTotalBuildings] = React.useState(32456);
-    const [totalHospital, setTotalHospital] = React.useState(15256);
-    const [totalSchool, setTotalSchool] = React.useState(15256);
-    const [calculations, setCalculations] = React.useState([]);
-
     const classes = useStyles();
     const history = useHistory();
 
-    const initialData = [
-        {
-            name: "Building in Stockholm Sweden",
-            price: "1.854.456",
-            icon: icons["1"],
-            type: "Building",
-            color: "#0EBD00",
-            backgroundColor: "#9BFF93",
-        },
-        {
-            name: "Hospital in Stockholm Sweden",
-            price: "2.854.456",
-            icon: icons["2"],
-            type: "Hospital",
-            color: "#ff4100",
-            backgroundColor: "#FFcebd",
-        },
-        {
-            name: "School in Stockholm Sweden",
-            price: "854.456",
-            icon: icons["13"],
-            type: "School",
-            color: "#00adff",
-            backgroundColor: "#b4e7ff",
-        },
-        {
-            name: "School in Norway",
-            price: "1.054.456",
-            icon: icons["13"],
-            type: "School",
-            color: "#00adff",
-            backgroundColor: "#b4e7ff",
-        },
-        {
-            name: "Hotel in Stockholm Sweden",
-            price: "4.854.456",
-            icon: icons["6"],
-            type: "Hotel",
-            color: "#3F75BD",
-            backgroundColor: "#C2DCFF",
-        },
-    ];
     const [latestCalc, setLatestCalc] = React.useState([]);
+    const [isLoading, setIsLoading] = React.useState(true);
 
     const location = useLocation();
 
@@ -77,6 +32,7 @@ export default function Dashboard() {
 
     React.useEffect(async () => {
         setLatestCalc((await getLatestCalculations(token)).data);
+        setIsLoading(false);
     }, []);
 
     const latestCalculationItems = latestCalc.map((el) => {
@@ -105,9 +61,9 @@ export default function Dashboard() {
                 <Divider className={classes.divider} />
                 {latestCalc.length != 0 ? (
                     rows.map((e) => e)
-                ) : (
+                ) :(!isLoading ? (
                     <NoCalculations />
-                )}
+                ) : <GridLoadIcon/>)}
             </Paper>
         </Layout>
     );
