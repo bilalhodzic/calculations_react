@@ -1,43 +1,11 @@
 import React from "react";
-import { Container, Button, Typography, Box } from "@material-ui/core";
+import { Box, Button, Divider, Paper, Typography } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 import { useLocation } from "react-router";
+import Layout from "../Layout";
+import { Pagination } from "@material-ui/lab";
+import Page1 from "./Page1";
 
-const data = [
-    {
-        label: "Project number",
-        property: "projectNumber",
-    },
-    {
-        label: "Area",
-        property: "location",
-    },
-    {
-        label: "Within urban area?",
-        property: "urbanArea",
-    },
-    {
-        label: "Production start planned",
-        property: "startDate",
-    },
-    {
-        label: "Production will last",
-        property: "years",
-        property2: "months",
-    },
-    {
-        label: "Key figures calculation has been developed",
-        property: "architectDate",
-    },
-    {
-        label: "Key figures calculation has been produced by",
-        property: "projectLeadName",
-    },
-    {
-        label: "Boa",
-        property: "boa"
-    }
-];
 
 export default function Report(props) {
     React.useEffect(() => {
@@ -47,36 +15,50 @@ export default function Report(props) {
     const classes = useStyles();
     const location = useLocation();
 
+    const [currentPage, setCurrentPage] = React.useState(1);
+
     if (!props.data && !location.state && !location.state.data) {
         return "No data for report";
     }
 
     const calculationData = props.data || location.state.data;
+    const token = location.state.token;
 
-    const items = [];
-    for (const entry of data) {
-        if (entry.property2) {
-            items.push(
-                <Box display={"flex"} flexDirection={"row"} paddingTop={2} paddingBottom={2}>
-                    <Typography style={{ fontWeight: "bold" }}>
-                        {entry.label}:
-                    </Typography>
-                    <Typography style={{marginLeft: 10}}>{calculationData[entry.property]} years and {calculationData[entry.property2]} months</Typography>
-                </Box>
-            );
-            continue;
+    const handlePageChange = (event, value) => {
+        setCurrentPage(value);
+    };
+
+    const PageComponent = () => {
+        switch(currentPage){
+            case 1:
+                return <Page1 calculationData={calculationData}/>
+            default:
+                return "nothing";
         }
-        items.push(
-            <Box display={"flex"} flexDirection={"row"} paddingTop={2} paddingBottom={2}>
-                <Typography style={{ fontWeight: "bold" }}>
-                    {entry.label}:
-                </Typography>
-                <Typography style={{marginLeft: 10}} >{calculationData[entry.property] ? calculationData[entry.property].toString() : "/"}</Typography>
-            </Box>
-        );
-    }
+    };
 
-    return <Box className={classes.root}>{items.map((e) => e)}</Box>;
+    return (
+        <Layout token={token}>
+            <Paper className={classes.paper}>
+                <Box height={100} display={"flex"} alignItems={"center"}>
+                    <Typography className={classes.headerText}>{calculationData.name}</Typography>
+                    <Button className={classes.headerButton} size="large">Export to PDF</Button>
+                </Box>
+                <Divider/>
+                <PageComponent/>
+                <Pagination
+                    className={classes.footer}
+                    count={5}
+                    variant="outlined"
+                    shape="rounded"
+                    size="large"
+                    onChange={handlePageChange}
+                    hidePrevButton
+                    hideNextButton
+                />
+            </Paper>
+        </Layout>
+    );
 }
 
 //add new styles here
@@ -86,4 +68,38 @@ const useStyles = makeStyles((theme) => ({
             margin: theme.spacing(1),
         },
     },
+    paper: {
+        minHeight: "85vh",
+        margin: theme.spacing(5),
+        borderRadius: 7,
+        fontFamily: "Poppins",
+        minWidth: 600,
+        height: "max-content",
+        position: "relative",
+        [theme.breakpoints.down("xs")]: {
+            margin: theme.spacing(1),
+            minWidth: 0,
+        },
+    },
+    footer: {
+        position: "absolute",
+        bottom: 5,
+        left: "5%"
+    },
+    headerText: {
+        fontSize: 26,
+        fontWeight: 500,
+        marginLeft: theme.spacing(5)
+    },
+    headerButton: {
+        background: "#21344D",
+        color: "white",
+        borderRadius: 10,
+        textTransform: "none",
+        marginLeft: "auto",
+        marginRight: theme.spacing(5),
+        width: "15%",
+        fontSize: 18,
+        fontWeight: 600
+    }
 }));

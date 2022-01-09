@@ -251,6 +251,13 @@
             "color": "#afecf5"
         }
     },
+    "standard": {
+        "1": "Normal standard",
+        "2": "Fourth standard",
+        "3": "High standard",
+        "4": "Fifth standard",
+        "5": "Exclusive standard"
+    },
     "types": {
         "new_production":{
             "id": 1,

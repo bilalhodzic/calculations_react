@@ -1,14 +1,9 @@
 import React from "react";
 import Layout from "../Layout";
-import { Paper, Divider, Box, Typography } from "@material-ui/core";
+import { Paper, Divider, Box } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
-import { BuildingIcon } from "../svgIcons/BuildingIcon";
-import { HospitalIcon } from "../svgIcons/HospitalIcon";
-import { SchoolIcon } from "../svgIcons/SchoolIcon";
-import { HotelIcon } from "../svgIcons/HotelIcon";
 
 import NoCalculations from "./NoCalculations";
-import ColoredBox from "../ColoredBox";
 import { useHistory, useLocation } from "react-router";
 import { icons } from "../../helper/CategoryIcons";
 import DashboardCard from "./DashboardCard";

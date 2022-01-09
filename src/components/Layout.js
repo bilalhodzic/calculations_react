@@ -94,7 +94,7 @@ export default function Layout(props) {
                 <Box className={classes.header}>
                     <Box
                         className={classes.drawerHeader}
-                        onClick={() => history.push("/home")}
+                        onClick={() => history.push({ pathname: "/home", state: { token: props.token }})}
                     >
                         <Typography className={classes.drawerHeaderText}>
                             Calculation
