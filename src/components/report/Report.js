@@ -5,6 +5,7 @@ import { useLocation } from "react-router";
 import Layout from "../Layout";
 import { Pagination } from "@material-ui/lab";
 import Page1 from "./Page1";
+import Page2 from "./Page2";
 
 
 export default function Report(props) {
@@ -32,6 +33,8 @@ export default function Report(props) {
         switch(currentPage){
             case 1:
                 return <Page1 calculationData={calculationData}/>
+            case 2:
+                return <Page2 calculationData={calculationData}/>
             default:
                 return "nothing";
         }
