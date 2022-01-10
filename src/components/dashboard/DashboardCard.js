@@ -20,7 +20,7 @@ export default function DashboardCard(props) {
             <Typography
                 style={{ color: "#6B6B6B", fontSize: 14.69, margin: 10 }}
             >
-                {props.price}$
+                {props.price.toLocaleString()} kr
             </Typography>
 
             <ColoredBox

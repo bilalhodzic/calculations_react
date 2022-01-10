@@ -18,6 +18,14 @@ import { ReactComponent as OmbyIcon1 } from "../images/OmbyIcon1.svg";
 import { ReactComponent as PipeIcon } from "../images/PipeIcon.svg";
 import { ReactComponent as TrunkIcon } from "../images/TrunkIcon.svg";
 import { ReactComponent as ValveIcon } from "../images/ValveIcon.svg";
+import { ReactComponent as PlanIcon } from "../images/PlanIcon.svg";
+import { ReactComponent as NewIcon } from "../images/NewIcon.svg";
+import { ReactComponent as SketchIcon } from "../images/SketchIcon.svg";
+import { ReactComponent as DesignIcon } from "../images/DesignIcon.svg";
+import { ReactComponent as ToolboxIcon } from "../images/ToolboxIcon.svg";
+import { ReactComponent as InteriorIcon } from "../images/InteriorIcon.svg";
+import { ReactComponent as HelmetIcon } from "../images/HelmetIcon.svg";
+import { ReactComponent as DocumentIcon } from "../images/DocumentIcon.svg";
 
 const icons = {
     1: <FlerbostadshusIcon/>,
@@ -39,7 +47,15 @@ const icons = {
     17: <OmbyIcon1/>,
     18: <PipeIcon />,
     19: <TrunkIcon />,
-    20: <ValveIcon />
+    20: <ValveIcon />,
+    21: <PlanIcon />,
+    22: <NewIcon />,
+    23: <SketchIcon />,
+    24: <DesignIcon />,
+    25: <ToolboxIcon />,
+    26: <InteriorIcon />,
+    27: <HelmetIcon />,
+    28: <DocumentIcon />
 };
 
 export { icons };

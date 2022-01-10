@@ -92,7 +92,7 @@ function setData(data, calculationData, classes) {
                         className={classes.valueText}
                         style={{ marginLeft: "auto" }}
                     >
-                        {calculationData[entry.noMoms] || 0} kr
+                        {(calculationData[entry.noMoms] || 0).toLocaleString()} kr
                     </Typography>
                 </Box>
                 <Box className={classes.item}>
@@ -100,7 +100,7 @@ function setData(data, calculationData, classes) {
                         className={classes.valueText}
                         style={{ marginLeft: "auto" }}
                     >
-                        {calculationData[entry.moms] || 0} kr
+                        {(calculationData[entry.moms] || 0).toLocaleString()} kr
                     </Typography>
                 </Box>
             </Box>
