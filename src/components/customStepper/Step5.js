@@ -37,8 +37,8 @@ export default function Step5(props) {
     const classes = useStyles();
 
     const [indoorSelected, setIndoorSelected] = React.useState(true);
-    const [externalStandard, setExternalStandard] = React.useState(0);
-    const [internalStandard, setInternalStandard] = React.useState(0);
+    const [externalStandard, setExternalStandard] = React.useState(props.data.externalStandard || 0);
+    const [internalStandard, setInternalStandard] = React.useState(props.data.internalStandard || 0);
 
     const paperItems = standards.map((e, index) => {
         return (

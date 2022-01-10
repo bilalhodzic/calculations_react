@@ -6,9 +6,15 @@ import ColoredBox from "../ColoredBox";
 export default function DashboardCard(props) {
     const classes = useStyles();
 
-    console.log(props.icon)
     return (
-        <Paper className={classes.menuItem} {...props}>
+        <Paper
+            className={classes.menuItem}
+            {...props}
+            onClick={() => {
+                props.handleCardClick(props.value);
+            }}
+            key={1}
+        >
             <Box className={classes.menuIcon}>{props.icon}</Box>
             <Typography className={classes.menuName}>{props.name}</Typography>
             <Typography
@@ -64,8 +70,8 @@ const useStyles = makeStyles((theme) => ({
         justifyContent: "center",
         alignItems: "center",
         [theme.breakpoints.down("xs")]: {
-            marginTop: "10%"
-        }
+            marginTop: "10%",
+        },
     },
     menuName: {
         fontWeight: 600,
@@ -74,5 +80,5 @@ const useStyles = makeStyles((theme) => ({
     },
     doneStep: {
         filter: "brightness(0) saturate(100%) invert(15%) sepia(9%) saturate(3603%) hue-rotate(175deg) brightness(91%) contrast(86%)",
-    }
+    },
 }));

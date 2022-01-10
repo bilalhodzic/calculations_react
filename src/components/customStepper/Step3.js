@@ -38,7 +38,7 @@ export default function Step3(props) {
                 <TextField
                     size="small"
                     type="number"
-                    placeholder={!entry.isRight ? entry.placeholder : null}
+                    placeholder={props.data[entry.id] || (!entry.isRight && entry.placeholder)}
                     variant="outlined"
                     onChange={(e) => {
                         props.handleChange(`${entry.id}`, e.target.value);

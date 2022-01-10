@@ -44,7 +44,7 @@ export default function Step2(props) {
                             key={1}
                             placeholder="Project name"
                             variant="outlined"
-                            defaultValue={""}
+                            defaultValue={props.data.name || ""}
                             onChange={(e) => {
                                 props.handleChange("name", e.target.value);
                             }}
@@ -58,7 +58,7 @@ export default function Step2(props) {
                             key={2}
                             placeholder="Project number"
                             variant="outlined"
-                            defaultValue={""}
+                            defaultValue={props.data.projectNumber || ""}
                             onChange={(e) => {
                                 props.handleChange(
                                     "projectNumber",
@@ -75,7 +75,7 @@ export default function Step2(props) {
                             key={3}
                             placeholder="Responsible project manager"
                             variant="outlined"
-                            defaultValue={""}
+                            defaultValue={props.data.projectLeadName || ""}
                             onChange={(e) => {
                                 props.handleChange(
                                     "projectLeadName",
@@ -94,7 +94,7 @@ export default function Step2(props) {
                             key={4}
                             placeholder="Date for drawings and documents"
                             variant="outlined"
-                            defaultValue={""}
+                            defaultValue={props.data.architectDate || ""}
                             onChange={(e) => {
                                 props.handleChange(
                                     "architectDate",

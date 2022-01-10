@@ -30,10 +30,14 @@ export default function Dashboard() {
         setIsLoading(false);
     }, []);
 
-    const latestCalculationItems = latestCalc.map((el) => {
-        console.log(el);
+    const handleCardClick = (index) => {
+        console.log(index);
+        history.push({ pathname: "/report", state: { data: latestCalc[index], token: token } });
+    };
+
+    const latestCalculationItems = latestCalc.map((el, index) => {
         return (
-            <DashboardCard name={el.name} icon={icons[el.category]} price={el.totalInclVat} category={types.by_id[el.category].value} color={el.color} backgroundColor={el.backgroundColor} ></DashboardCard>
+            <DashboardCard name={el.name} icon={icons[el.category]} price={el.totalInclVat} category={types.by_id[el.category].value} handleCardClick={handleCardClick} value={index} ></DashboardCard>
         );
     });
     const rows = [];

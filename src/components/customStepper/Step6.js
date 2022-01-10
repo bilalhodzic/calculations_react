@@ -8,8 +8,8 @@ import { useState } from "react";
 export default function Step6(props) {
     const classes = useStyles();
 
-    const [yearsValue, setYearsValue] = useState(0);
-    const [monthsValue, setMonthsValue] = useState(0);
+    const [yearsValue, setYearsValue] = useState(props.data.years || 0);
+    const [monthsValue, setMonthsValue] = useState(props.data.months || 0);
 
     props.handleChange("years", yearsValue);
     props.handleChange("months", monthsValue);
@@ -32,6 +32,7 @@ export default function Step6(props) {
                             InputLabelProps={{ shrink: true }}
                             variant="outlined"
                             size="small"
+                            defaultValue={props.data.startDate || ""}
                             inputProps={{
                                 min: todaysDateValue()
                             }}

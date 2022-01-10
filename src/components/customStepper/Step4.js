@@ -14,35 +14,35 @@ import { ReactComponent as Step4Icon } from "../../images/step4Icon.svg";
 
 const locations = [
     {
-        value: 0,
+        value: "",
         city: "City"
     },
     {
-        value: 1,
+        value: "Stockholm",
         city: "Stockholm"
     },
     {
-        value: 2,
+        value: "Lulea",
         city: "Lulea"
     },
     {
-        value: 3,
+        value: "Sundsvall",
         city: "Sundsvall"
     },
     {
-        value: 4,
+        value: "Malmo",
         city: "Malmo"
     },
     {
-        value: 5,
+        value: "Goteborg",
         city: "Goteborg"
     },
     {
-        value: 6,
+        value: "Norrkoping",
         city: "Norrkoping"
     },
     {
-        value: 7,
+        value: "Orter",
         city: "Other"
     },
 ];
@@ -51,7 +51,7 @@ export default function Step4(props) {
     const classes = useStyles();
 
     const [selectedIn, setSelectedIn] = useState(true);
-    const [selectedValue, setSelectedValue] = useState("City");
+    const [selectedValue, setSelectedValue] = useState(props.data.location || "");
 
     props.handleChange("urbanArea", selectedIn);
 
@@ -72,14 +72,14 @@ export default function Step4(props) {
                             size="small"
                             label="City"
                             value={selectedValue}
-                            className={`${classes.select} ${selectedValue === "City" && classes.placeholderText}`}
+                            className={`${classes.select} ${selectedValue === "" && classes.placeholderText}`}
                             onChange={(e) => {
                                 props.handleChange("location", e.target.value);
                                 setSelectedValue(e.target.value);
                             }}
                         >
                             {locations.map((city) => {
-                                return <MenuItem value={city.city} >{city.city}</MenuItem>;
+                                return <MenuItem value={city.value} >{city.city}</MenuItem>;
                             })}
                         </Select>
                     </Box>
