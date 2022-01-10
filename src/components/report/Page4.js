@@ -41,7 +41,7 @@ export default function Page4(props) {
 
     return (
     <Box>
-        <Box className={classes.row} style={{marginTop: "2%"}}>
+        <Box className={classes.row} style={{marginTop: "5%"}}>
             <Typography className={classes.valueText}>Endast byggherrekostnad</Typography>
         </Box>
         {items.map((e) => e)}

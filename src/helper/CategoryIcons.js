@@ -14,6 +14,10 @@ import { ReactComponent as SchoolIcon } from "../images/SchoolIcon.svg";
 import { ReactComponent as ForskolaIcon } from "../images/ForskolaIcon.svg";
 import { ReactComponent as ParkeringshusIcon } from "../images/ParkeringshusIcon.svg";
 import { ReactComponent as IdrottshallIcon } from "../images/IdrottshallIcon.svg";
+import { ReactComponent as OmbyIcon1 } from "../images/OmbyIcon1.svg";
+import { ReactComponent as PipeIcon } from "../images/PipeIcon.svg";
+import { ReactComponent as TrunkIcon } from "../images/TrunkIcon.svg";
+import { ReactComponent as ValveIcon } from "../images/ValveIcon.svg";
 
 const icons = {
     1: <FlerbostadshusIcon/>,
@@ -31,7 +35,11 @@ const icons = {
     13: <SchoolIcon/>,
     14: <ForskolaIcon/>,
     15: <ParkeringshusIcon/>,
-    16: <IdrottshallIcon/>
+    16: <IdrottshallIcon/>,
+    17: <OmbyIcon1/>,
+    18: <PipeIcon />,
+    19: <TrunkIcon />,
+    20: <ValveIcon />
 };
 
 export { icons };

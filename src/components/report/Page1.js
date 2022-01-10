@@ -60,7 +60,7 @@ const dataRight = [
     },
     {
         label: "Number of apartments",
-        property: "",
+        property: "apartmentNumber",
     },
     {
         label: "Number of wcs/showers/baths",
@@ -139,7 +139,7 @@ function setData(data, calculationData, padding) {
         }
         const value = entry.standard
             ? types.standard[calculationData[entry.property]]
-            : calculationData[entry.property]
+            : (calculationData[entry.property] || calculationData[entry.property] === false)
             ? calculationData[entry.property].toString()
             : "/";
         items.push(
