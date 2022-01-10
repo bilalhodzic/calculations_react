@@ -40,36 +40,44 @@ const dataRight = [
     {
         label: "BOA m2",
         property: "boa",
+        meter: true
     },
     {
         label: "BTA m2",
         property: "",
+        meter: true
     },
     {
         label: "BTA m2",
         property: "",
+        meter: true
     },
     {
         label: "Total BTA m2",
         property: "",
         margin: true,
+        meter: true
     },
     {
         label: "LOA m2",
         property: "loa",
+        meter: true
     },
     {
         label: "Number of apartments",
         property: "apartmentNumber",
+        meter: true
     },
     {
         label: "Number of wcs/showers/baths",
         property: "bathNumber",
+        meter: true
     },
     {
         label: "Number of toilets",
         property: "toiletNumber",
         margin: true,
+        meter: true
     },
     {
         label: "Internal standard",
@@ -98,14 +106,10 @@ export default function Page1(props) {
 
     return (
         <Box className={classes.root}>
-            <Box className={classes.side} style={{ left: "5%" }}>
+            <Box className={classes.side} style={{ left: "5%", borderRight: "1px solid #D3D3D3", paddingRight: "10%" }}>
                 {itemsLeft.map((e) => e)}
             </Box>
-            <Divider
-                style={{ color: "red", width: "50%" }}
-                orientation="vertical"
-            />
-            <Box className={classes.side} style={{ right: "15%" }}>
+            <Box className={classes.side} style={{ right: "20%" }}>
                 {itemsRight.map((e) => e)}
             </Box>
         </Box>
@@ -126,10 +130,10 @@ function setData(data, calculationData, padding) {
                     paddingTop={padding}
                     style={style}
                 >
-                    <Typography style={{ fontWeight: "bold" }}>
+                    <Typography style={{ fontWeight: "bold", fontSize: 18 }}>
                         {entry.label}:
                     </Typography>
-                    <Typography style={{ marginLeft: 10 }}>
+                    <Typography style={{ marginLeft: 10, fontSize: 18, color: "#606060" }}>
                         {calculationData[entry.property]} years and{" "}
                         {calculationData[entry.property2]} months
                     </Typography>
@@ -140,7 +144,7 @@ function setData(data, calculationData, padding) {
         const value = entry.standard
             ? types.standard[calculationData[entry.property]]
             : (calculationData[entry.property] || calculationData[entry.property] === false)
-            ? calculationData[entry.property].toString()
+            ? calculationData[entry.property].toLocaleString()
             : "/";
         items.push(
             <Box
@@ -149,11 +153,11 @@ function setData(data, calculationData, padding) {
                 paddingTop={padding}
                 style={style}
             >
-                <Typography style={{ fontWeight: "bold" }}>
+                <Typography style={{ fontWeight: "bold", fontSize: 18 }}>
                     {entry.label}:
                 </Typography>
-                <Typography style={{ marginLeft: 10 }}>
-                    {value}
+                <Typography style={{ marginLeft: 10, fontSize: 18, color: "#606060" }}>
+                    {value} {entry.meter && value !== '/' && "m2"}
                 </Typography>
             </Box>
         );

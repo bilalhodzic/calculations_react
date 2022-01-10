@@ -1,6 +1,6 @@
 import React from "react";
 import Layout from "../Layout";
-import { Paper, Divider, Box } from "@material-ui/core";
+import { Paper, Divider, Box, CircularProgress } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 
 import NoCalculations from "./NoCalculations";
@@ -62,7 +62,7 @@ export default function Dashboard() {
                     rows.map((e) => e)
                 ) :(!isLoading ? (
                     <NoCalculations />
-                ) : <GridLoadIcon/>)}
+                ) : <CircularProgress style={{marginLeft: "50%", marginRight: "50%", marginTop: "25%"}} />)}
             </Paper>
         </Layout>
     );

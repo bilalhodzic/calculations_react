@@ -50,7 +50,7 @@ const locations = [
 export default function Step4(props) {
     const classes = useStyles();
 
-    const [selectedIn, setSelectedIn] = useState(true);
+    const [selectedIn, setSelectedIn] = useState(props.data.urbanArea);
     const [selectedValue, setSelectedValue] = useState(props.data.location || "");
 
     props.handleChange("urbanArea", selectedIn);
