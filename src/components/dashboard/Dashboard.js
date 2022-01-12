@@ -9,7 +9,7 @@ import { icons } from "../../helper/CategoryIcons";
 import DashboardCard from "./DashboardCard";
 import { getLatestCalculations } from "../../helper/externalCalls";
 import types from "../../helper/data.json";
-import { GridLoadIcon } from "@material-ui/data-grid";
+import { useTranslation } from "react-i18next";
 
 export default function Dashboard() {
     const classes = useStyles();
@@ -17,6 +17,7 @@ export default function Dashboard() {
 
     const [latestCalc, setLatestCalc] = React.useState([]);
     const [isLoading, setIsLoading] = React.useState(true);
+    const { t, i18n } = useTranslation();
 
     const location = useLocation();
 
@@ -26,6 +27,7 @@ export default function Dashboard() {
     const token = location.state.token;
 
     React.useEffect(async () => {
+        i18n.changeLanguage("se");
         setLatestCalc((await getLatestCalculations(token)).data);
         setIsLoading(false);
     }, []);
@@ -56,7 +58,7 @@ export default function Dashboard() {
     return (
         <Layout token={token}>
             <Paper elevation={5} className={classes.paper}>
-                Latest Calculations
+                {t('Latest calculations.1')}
                 <Divider className={classes.divider} />
                 {latestCalc.length != 0 ? (
                     rows.map((e) => e)

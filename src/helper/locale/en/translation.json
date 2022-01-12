@@ -1,5 +1,143 @@
 {
+    "Log in": {
+        "1": "Log in"
+    },
+    "Enter your details": {
+        "1": "Enter your details"
+    },
+    "Email or username": {
+        "1": "Email or username"
+    },
+    "Password": {
+        "1": "Password"
+    },
+    "Dashboard": {
+        "1": "Dashboard"
+    },
+    "New calculation": {
+        "1": "New calculation"
+    },
+    "Log out": {
+        "1": "Log out"
+    },
+    "Latest calculations": {
+        "1": "Latest calculations"
+    },
+    "Currently there arent any added calculations": {
+        "1": "Currently there aren't any added calculations"
+    },
+    "Add new calculation": {
+        "1": "Add new calculation"
+    },
     "Calculations": {
         "1": "Calculations"
+    },
+    "Search by name": {
+        "1": "Search by name..."
+    },
+    "Category": {
+        "1": "Category"
+    },
+    "Type": {
+        "1": "Type"
+    },
+    "Search": {
+        "1": "Search"
+    },
+    "Name": {
+        "1": "Name"
+    },
+    "Date": {
+        "1": "Date"
+    },
+    "Area": {
+        "1": "Area"
+    },
+    "What do you want": {
+        "1": "What do you want?"
+    },
+    "Rebuilding": {
+        "1": "Rebuilding"
+    },
+    "New production": {
+        "1": "New production"
+    },
+    "Choose project category": {
+        "1": "Choose project category"
+    },
+    "Previous": {
+        "1": "Previous"
+    },
+    "Next": {
+        "1": "Next"
+    },
+    "Name your project": {
+        "1": "Name your project"
+    },
+    "Project details": {
+        "1": "Project details"
+    },
+    "Location": {
+        "1": "Location"
+    },
+    "In the city": {
+        "1": "In the city"
+    },
+    "Outside the city": {
+        "1": "Outside the city"
+    },
+    "Tell us your project's location": {
+        "1": "Tell us your project's location"
+    },
+    "Flerbostadshus": {
+        "1": "Apartment Building"
+    },
+    "Radhus": {
+        "1": "Townhouse"
+    },
+    "Villor": {
+        "1": "Villas"
+    },
+    "Vardboende": {
+        "1": "Nursing home"
+    },
+    "Studentbostader": {
+        "1": "Student apartments"
+    },
+    "Hotell": {
+        "1": "Hotel"
+    },
+    "Kontor": {
+        "1": "Office"
+    },
+    "Handel": {
+        "1": "Trade"
+    },
+    "Varmlager": {
+        "1": "Hot warehouse"
+    },
+    "Kalllager": {
+        "1": "Cold warehouse"
+    },
+    "Kyllager": {
+        "1": "Freezer warehouse"
+    },
+    "Industribyggnad": {
+        "1": "Industrial building"
+    },
+    "Skola": {
+        "1": "School"
+    },
+    "Forskola": {
+        "1": "Preschool"
+    },
+    "Parkeringhus": {
+        "1": "Parking garage"
+    },
+    "Idrottshall": {
+        "1": "Sports hall"
+    },
+    "Lager": {
+        "1": "Warehouse"
     }
 }

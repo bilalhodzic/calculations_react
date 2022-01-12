@@ -9,7 +9,7 @@ import {
 } from "@material-ui/core";
 import { useHistory } from "react-router-dom";
 import { makeStyles } from "@material-ui/core/styles";
-import { Trans, useTranslation } from "react-i18next";
+import { useTranslation } from "react-i18next";
 
 import axios from "axios";
 import config from "../../config.json";
@@ -61,7 +61,7 @@ export default function Login() {
                             className={classes.button}
                             onClick={() => setOpenDialog(true)}
                         >
-                            Log in
+                            {t('Log in.1')}
                         </Button>
                         <Button
                             className={`${classes.button} ${classes.aboutButton}`}
@@ -80,13 +80,13 @@ export default function Login() {
             >
                 <Box className={classes.paper}>
                     <Typography className={classes.paperHeader}>
-                        Log in
+                        {t('Log in.1')}
                     </Typography>
                     <Typography className={classes.paperText}>
-                        Enter your details
+                        {t('Enter your details.1')}
                     </Typography>
                     <Input
-                        placeholder="Email or username"
+                        placeholder={t('Email or username.1')}
                         disableUnderline={true}
                         className={classes.input}
                         onChange={(e) => setUsername(e.target.value)}
@@ -96,7 +96,7 @@ export default function Login() {
                     ) : null}
                     <Input
                         type="password"
-                        placeholder="Password"
+                        placeholder={t('Password.1')}
                         disableUnderline={true}
                         className={classes.input}
                         onChange={(e) => setPassword(e.target.value)}
@@ -112,7 +112,7 @@ export default function Login() {
                             else setIsInvalidLogin(false);
                         }}
                     >
-                        Log in
+                        {t('Log in.1')}
                     </Button>
                 </Box>
             </Modal>

@@ -88,5 +88,56 @@
     },
     "Tell us your project's location": {
         "1": "Välj en stad"
+    },
+    "Flerbostadshus": {
+        "1": "Flerbostadshus"
+    },
+    "Radhus": {
+        "1": "Radhus"
+    },
+    "Villor": {
+        "1": "Villor"
+    },
+    "Vardboende": {
+        "1": "Vårdboende"
+    },
+    "Studentbostader": {
+        "1": "Studentbostäder"
+    },
+    "Hotell": {
+        "1": "Hotell"
+    },
+    "Kontor": {
+        "1": "Kontor"
+    },
+    "Handel": {
+        "1": "Handel"
+    },
+    "Varmlager": {
+        "1": "Varmlager"
+    },
+    "Kalllager": {
+        "1": "Kalllager"
+    },
+    "Kyllager": {
+        "1": "Kyl/fryslager"
+    },
+    "Industribyggnad": {
+        "1": "Industribyggnad"
+    },
+    "Skola": {
+        "1": "Skola"
+    },
+    "Forskola": {
+        "1": "Förskola"
+    },
+    "Parkeringhus": {
+        "1": "Parkeringshus och Garagehus"
+    },
+    "Idrottshall": {
+        "1": "Idrottshall"
+    },
+    "Lager": {
+        "1": "Lager"
     }
 }

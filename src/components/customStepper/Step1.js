@@ -20,169 +20,211 @@ import { ReactComponent as WorkIcon } from "../../images/WorkIcon.svg";
 import { ReactComponent as ShopIcon } from "../../images/ShopIcon.svg";
 
 import types from "../../helper/data.json";
-
-const newProduction = [
-    {
-        category: types.category.flerbostadshus,
-        icon: (
-            <FlerbostadhusIcon
-                color="#21344d"
-                size={80}
-                style={{ paddingTop: 10 }}
-            />
-        ),
-        label: "Flerbostadhus",
-    },
-    {
-        category: types.category.radhus,
-        icon: (
-            <RadhusIcon color="#21344d" size={80} style={{ paddingTop: 10 }} />
-        ),
-        label: "Radhus",
-    },
-    {
-        category: types.category.villor,
-        icon: (
-            <VillorIcon color="#21344d" size={80} style={{ paddingTop: 10 }} />
-        ),
-        label: "Villor",
-    },
-    {
-        category: types.category.vardboende,
-        icon: (
-            <VardboendeIcon
-                color="#21344d"
-                size={80}
-                style={{ paddingTop: 10 }}
-            />
-        ),
-        label: "Vardboende",
-    },
-    {
-        category: types.category.hotell,
-        icon: (
-            <HotelIcon color="#21344d" size={80} style={{ paddingTop: 10 }} />
-        ),
-        label: "Hotell",
-    },
-    {
-        category: types.category.studentbostader,
-        icon: (
-            <StudentlagenheterIcon
-                color="#21344d"
-                size={80}
-                style={{ paddingTop: 10 }}
-            />
-        ),
-        label: "Studentbostader",
-    },
-    {
-        category: types.category.lager,
-        icon: (
-            <LagerIcon color="#21344d" size={80} style={{ paddingTop: 10 }} />
-        ),
-        label: "Lager",
-    },
-    {
-        category: types.category.industribyggnad,
-        icon: (
-            <IndustribyggnadIcon
-                color="#21344d"
-                size={80}
-                style={{ paddingTop: 10 }}
-            />
-        ),
-        label: "Industribyggnad",
-    },
-    {
-        category: types.category.skola,
-        icon: (
-            <SchoolIcon color="#21344d" size={80} style={{ paddingTop: 10 }} />
-        ),
-        label: "Skola",
-    },
-    {
-        category: types.category.forskola,
-        icon: (
-            <ForskolaIcon
-                color="#21344d"
-                size={80}
-                style={{ paddingTop: 10 }}
-            />
-        ),
-        label: "Forskola",
-    },
-    {
-        category: types.category.parkeringshus,
-        icon: (
-            <ParkeringshusIcon
-                color="#21344d"
-                size={80}
-                style={{ paddingTop: 10 }}
-            />
-        ),
-        label: "Parkeringshus",
-    },
-    {
-        category: types.category.idrottshall,
-        icon: (
-            <IdrottshallIcon
-                color="#21344d"
-                size={80}
-                style={{ paddingTop: 10 }}
-            />
-        ),
-        label: "Idrottshall",
-    },
-];
-const rebuilding = [
-    {
-        category: types.category.ombyggnad,
-        icon: (
-            <TubesIcon color="#21344d" size={80} style={{ paddingTop: 10 }} />
-        ),
-        label: "Ombyggnad bostäder",
-    },
-    {
-        category: types.category.kontor,
-        icon: (
-            <WorkIcon color="#21344d" size={80} style={{ paddingTop: 10 }} />
-        ),
-        label: "Kontor",
-    },
-    {
-        category: types.category.handel,
-        icon: (
-            <ShopIcon color="#21344d" size={80} style={{ paddingTop: 10 }} />
-        ),
-        label: "Handel",
-    },
-    {
-        category: types.category.skola,
-        icon: (
-            <SchoolIcon color="#21344d" size={80} style={{ paddingTop: 10 }} />
-        ),
-        label: "Skola",
-    },
-];
+import { useTranslation } from "react-i18next";
 
 export default function Step1(props) {
     const data = props.data;
+    const { t, i18n } = useTranslation();
 
     const handleClickPaper = (prop) => {
         //setting the state property from parent component
         props.handleChange("category", prop);
     };
 
+    const items = getData(data.type, t);
+
     return (
         <CardRows
             data={data}
             handleClickPaper={handleClickPaper}
-            items={
-                data.type === types.types.new_production.id
-                    ? newProduction
-                    : rebuilding
-            }
+            items={items}
         />
     );
+}
+
+function getData(type, t) {
+    switch (type) {
+        case types.types.new_production.id:
+            return [
+                {
+                    category: types.category.flerbostadshus,
+                    icon: (
+                        <FlerbostadhusIcon
+                            color="#21344d"
+                            size={80}
+                            style={{ paddingTop: 10 }}
+                        />
+                    ),
+                    label: t("Flerbostadshus.1"),
+                },
+                {
+                    category: types.category.radhus,
+                    icon: (
+                        <RadhusIcon
+                            color="#21344d"
+                            size={80}
+                            style={{ paddingTop: 10 }}
+                        />
+                    ),
+                    label: t("Radhus.1"),
+                },
+                {
+                    category: types.category.villor,
+                    icon: (
+                        <VillorIcon
+                            color="#21344d"
+                            size={80}
+                            style={{ paddingTop: 10 }}
+                        />
+                    ),
+                    label: t("Villor.1"),
+                },
+                {
+                    category: types.category.vardboende,
+                    icon: (
+                        <VardboendeIcon
+                            color="#21344d"
+                            size={80}
+                            style={{ paddingTop: 10 }}
+                        />
+                    ),
+                    label: t("Vardboende.1"),
+                },
+                {
+                    category: types.category.hotell,
+                    icon: (
+                        <HotelIcon
+                            color="#21344d"
+                            size={80}
+                            style={{ paddingTop: 10 }}
+                        />
+                    ),
+                    label: t("Hotell.1"),
+                },
+                {
+                    category: types.category.studentbostader,
+                    icon: (
+                        <StudentlagenheterIcon
+                            color="#21344d"
+                            size={80}
+                            style={{ paddingTop: 10 }}
+                        />
+                    ),
+                    label: t("Studentbostader.1"),
+                },
+                {
+                    category: types.category.lager,
+                    icon: (
+                        <LagerIcon
+                            color="#21344d"
+                            size={80}
+                            style={{ paddingTop: 10 }}
+                        />
+                    ),
+                    label: t("Lager.1"),
+                },
+                {
+                    category: types.category.industribyggnad,
+                    icon: (
+                        <IndustribyggnadIcon
+                            color="#21344d"
+                            size={80}
+                            style={{ paddingTop: 10 }}
+                        />
+                    ),
+                    label: t("Industribyggnad.1"),
+                },
+                {
+                    category: types.category.skola,
+                    icon: (
+                        <SchoolIcon
+                            color="#21344d"
+                            size={80}
+                            style={{ paddingTop: 10 }}
+                        />
+                    ),
+                    label: t("Skola.1"),
+                },
+                {
+                    category: types.category.forskola,
+                    icon: (
+                        <ForskolaIcon
+                            color="#21344d"
+                            size={80}
+                            style={{ paddingTop: 10 }}
+                        />
+                    ),
+                    label: t("Forskola.1"),
+                },
+                {
+                    category: types.category.parkeringshus,
+                    icon: (
+                        <ParkeringshusIcon
+                            color="#21344d"
+                            size={80}
+                            style={{ paddingTop: 10 }}
+                        />
+                    ),
+                    label: t("Parkeringhus.1"),
+                },
+                {
+                    category: types.category.idrottshall,
+                    icon: (
+                        <IdrottshallIcon
+                            color="#21344d"
+                            size={80}
+                            style={{ paddingTop: 10 }}
+                        />
+                    ),
+                    label: t("Idrottshall.1"),
+                },
+            ];
+        default:
+            return [
+                {
+                    category: types.category.ombyggnad,
+                    icon: (
+                        <TubesIcon
+                            color="#21344d"
+                            size={80}
+                            style={{ paddingTop: 10 }}
+                        />
+                    ),
+                    label: "Ombyggnad bostäder",
+                },
+                {
+                    category: types.category.kontor,
+                    icon: (
+                        <WorkIcon
+                            color="#21344d"
+                            size={80}
+                            style={{ paddingTop: 10 }}
+                        />
+                    ),
+                    label: "Kontor",
+                },
+                {
+                    category: types.category.handel,
+                    icon: (
+                        <ShopIcon
+                            color="#21344d"
+                            size={80}
+                            style={{ paddingTop: 10 }}
+                        />
+                    ),
+                    label: "Handel",
+                },
+                {
+                    category: types.category.skola,
+                    icon: (
+                        <SchoolIcon
+                            color="#21344d"
+                            size={80}
+                            style={{ paddingTop: 10 }}
+                        />
+                    ),
+                    label: "Skola",
+                },
+            ];
+    }
 }

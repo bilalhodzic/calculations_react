@@ -13,33 +13,40 @@ import {
 } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 import { Helmet } from "react-helmet";
+import { useTranslation } from "react-i18next";
 import { ReactComponent as CalcIcon } from "../images/calc_icon.svg";
 import { ReactComponent as HomeIcon } from "../images/HomeIcon.svg";
 import { ReactComponent as MenuIcon } from "../images/burgerIcon.svg";
 import { ReactComponent as LogoutIcon } from "../images/logoutIcon.svg";
 import { ReactComponent as PlusIcon } from "../images/plusIcon.svg";
 
-const drawerList = [
-    {
-        name: "Dashboard",
-        icon: <HomeIcon />,
-        pathname: "/home",
-    },
-    {
-        name: "Calculations",
-        icon: <CalcIcon />,
-        pathname: "/calculations",
-    },
-];
-
 export default function Layout(props) {
     const [mobileOpen, setMobileOpen] = React.useState(false);
     const history = useHistory();
     const classes = useStyles();
+    const {t, i18n} = useTranslation();
+
+    React.useEffect(() => {
+        i18n.changeLanguage("se");
+    }, []);
 
     const handleDrawer = () => {
         setMobileOpen(!mobileOpen);
     };
+
+    const drawerList = [
+        {
+            name: t('Dashboard.1'),
+            icon: <HomeIcon />,
+            pathname: "/home",
+        },
+        {
+            name: t('Calculations.1'),
+            icon: <CalcIcon />,
+            pathname: "/calculations",
+        },
+    ];
+
     const drawer = (
         <>
             <List className={classes.list}>
@@ -69,7 +76,7 @@ export default function Layout(props) {
                 >
                     <PlusIcon style={{ marginRight: 15 }} />
                     <Typography className={classes.listText}>
-                        New Calculation
+                        {t('New calculation.1')}
                     </Typography>
                 </ListItem>
                 <ListItem
@@ -78,7 +85,7 @@ export default function Layout(props) {
                 >
                     <LogoutIcon style={{ marginRight: 15 }} />
                     <Typography className={classes.listText}>
-                        Log out
+                        {t('Log out.1')}
                     </Typography>
                 </ListItem>
             </List>
@@ -97,7 +104,7 @@ export default function Layout(props) {
                         onClick={() => history.push({ pathname: "/home", state: { token: props.token }})}
                     >
                         <Typography className={classes.drawerHeaderText}>
-                            Calculation
+                            {t('Calculations.1')}
                         </Typography>
                         <MenuIcon className={classes.menuIcon} />
                     </Box>

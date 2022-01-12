@@ -1,10 +1,14 @@
 import { Typography, Box, Button } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
+import { useTranslation } from "react-i18next";
 
 import { ReactComponent as CalculationIcon } from "../../images/calculationIcon.svg"
+import { ReactComponent as PlusIcon } from "../../images/plusIcon.svg";
 
 export default function NoCalculations(props) {
     const classes = useStyles();
+    const { t, i18n } = useTranslation();
+
     return( 
     <>
         <Box className={classes.root}>
@@ -12,8 +16,11 @@ export default function NoCalculations(props) {
                 <CalculationIcon/>
             </Box>
             <Box className={`${classes.paperBox} ${classes.paperBoxBig}`}>
-                <Typography className={classes.paperText}>Currently there aren't any added calculations</Typography>
-                <Button className={classes.button}>+ Add new calculation</Button>
+                <Typography className={classes.paperText}>{t('Currently there arent any added calculations.1')}</Typography>
+                <Button className={classes.button}>
+                  <PlusIcon style={{paddingRight: 10}}/>
+                  {t('Add new calculation.1')}
+                </Button>
             </Box>
         </Box>
     </>
@@ -65,5 +72,6 @@ const useStyles = makeStyles((theme) => ({
         "&:hover": {
             background: "#1b2c44",
         },
+        paddingRight: 10
     }
   }));

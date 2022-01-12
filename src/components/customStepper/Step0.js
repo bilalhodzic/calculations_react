@@ -8,6 +8,7 @@ import { ReactComponent as CalculatorIcon } from "../../images/calculatorIcon.sv
 import { ReactComponent as MenuIcon } from "../../images/burgerIcon.svg";
 
 import types from "../../helper/data.json";
+import { useTranslation } from "react-i18next";
 
 export default function Step0 (props){
 
@@ -15,6 +16,11 @@ export default function Step0 (props){
     const history = useHistory();
     const classes = useStyles();
     const location = useLocation();
+    const { t, i18n } = useTranslation();
+
+    React.useEffect(() => {
+      i18n.changeLanguage("se");
+    }, []);
 
     if(!location.state || !location.state.token){
       return "Unauthorized";
@@ -33,7 +39,7 @@ export default function Step0 (props){
             <Box className={classes.root}>
                 <Box className={classes.header}>
                     <Box className={classes.drawerHeader} onClick={() => history.push({pathname: "/home", state: { token: token }})}>
-                        <Typography className={classes.headerText}>Calculation</Typography>
+                        <Typography className={classes.headerText}>{t('Calculations.1')}</Typography>
                     </Box>
                     <Hidden smUp>
                         <MenuIcon className={classes.menuIcon} onClick={handleDrawer} />
@@ -41,11 +47,11 @@ export default function Step0 (props){
                 </Box>
 
                 <Paper className={classes.paper}>
-                    <Typography className={classes.title}>What do you want ?</Typography>
+                    <Typography className={classes.title}>{t('What do you want.1')}</Typography>
                     <Box className={classes.buttonGroup}>
-                        <Button className={classes.button} onClick={() => history.push({pathname: "/new", state: { type: types.types.rebuilding.id, token: token }})}>Rebuildings</Button>
+                        <Button className={classes.button} onClick={() => history.push({pathname: "/new", state: { type: types.types.rebuilding.id, token: token }})}>{t('Rebuilding.1')}</Button>
                         <CalculatorIcon className={classes.image}/>
-                        <Button className={classes.button} onClick={() => history.push({pathname: "/new", state: { type: types.types.new_production.id, token: token }})}>New production</Button>
+                        <Button className={classes.button} onClick={() => history.push({pathname: "/new", state: { type: types.types.new_production.id, token: token }})}>{t('New production.1')}</Button>
                     </Box>
                 </Paper>
             </Box>

@@ -1,5 +1,6 @@
 import React from "react";
 import { useHistory } from "react-router";
+import { useTranslation } from "react-i18next";
 import {
     Button,
     Stepper,
@@ -24,10 +25,8 @@ import TaxQuestion from "./TaxQuestion";
 import { newCalculation } from "../../helper/externalCalls";
 import types from "../../helper/data.json";
 import useWindowDimensions from "../windowDimension";
-import { useThemeProps } from "@material-ui/data-grid";
 import { useLocation } from "react-router-dom/cjs/react-router-dom.min";
 import BetweenStepRebuilding from "./BetweenStepRebuilding";
-import Report from "../report/Report";
 
 const CustomConnector = withStyles({
     alternativeLabel: {
@@ -63,15 +62,19 @@ export default function CustomStepper(props) {
         type: location.state.type,
     });
     const [calculation, setCalculation] = React.useState({});
+    const { t, i18n } = useTranslation();
 
     React.useEffect(() => {
-        console.log(activeStep);
+        i18n.changeLanguage("se");
+    }, []);
+
+    React.useEffect(() => {
         props.emptySteps();
-        props.pushStep("New Calculation");
+        props.pushStep(t('New calculation.1'));
         props.pushStep(
             betweenStepsData.current.type === 1
-                ? "New Production"
-                : "Rebuilding"
+                ? t('New production.1')
+                : t('Rebuilding.1')
         );
         switch (activeStep) {
             case 1:
@@ -107,11 +110,11 @@ export default function CustomStepper(props) {
 
     const steps = [
         {
-            label: "Choose Project Type",
+            label: "Choose Project Category",
             id: 1,
         },
         {
-            label: "Choose Project Type",
+            label: "Choose Project Subcategory",
             id: (
                 <CircleIcon
                     className={activeStep !== 0 && classes.doneStep}
