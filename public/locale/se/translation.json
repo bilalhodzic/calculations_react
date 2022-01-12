@@ -1,0 +1,92 @@
+{
+    "Log in": {
+        "1": "Logga in"
+    },
+    "Enter your details": {
+        "1": "Skriv in dina inloggningsuppgifter"
+    },
+    "Email or username": {
+        "1": "Mail eller användarnamn"
+    },
+    "Password": {
+        "1": "Lösenord"
+    },
+    "Dashboard": {
+        "1": "Beräkningar"
+    },
+    "New calculation": {
+        "1": "Ny beräkning"
+    },
+    "Log out": {
+        "1": "Logga ut"
+    },
+    "Latest calculations": {
+        "1": "Senaste beräkningarna"
+    },
+    "Currently there arent any added calculations": {
+        "1": "Det finns inga sparade beräkningar"
+    },
+    "Add new calculation": {
+        "1": "Påbörja en ny beräkning"
+    },
+    "Calculations": {
+        "1": "Nyckeltalskalkyler"
+    },
+    "Search by name": {
+        "1": "Sök på namn..."
+    },
+    "Category": {
+        "1": "Kategori"
+    },
+    "Type": {
+        "1": "Typ"
+    },
+    "Search": {
+        "1": "Sök"
+    },
+    "Name": {
+        "1": "Namn"
+    },
+    "Date": {
+        "1": "Datum"
+    },
+    "Area": {
+        "1": "Område"
+    },
+    "What do you want": {
+        "1": "Vad vill du beräkna?"
+    },
+    "Rebuilding": {
+        "1": "Ombyggnation"
+    },
+    "New production": {
+        "1": "Nyproduktion"
+    },
+    "Choose project category": {
+        "1": "Välj en kategori av projekt"
+    },
+    "Previous": {
+        "1": "Gå tillbaka"
+    },
+    "Next": {
+        "1": "Nästa"
+    },
+    "Name your project": {
+        "1": "Projektnamn"
+    },
+    "Project details": {
+        "1": "Projektdetaljer"
+    },
+    "Location": {
+        "1": "Lokalisering"
+    },
+    "In the city": {
+        "1": "Tätort"
+    },
+    "Outside the city": {
+        "1": "Glesbygd"
+    },
+    "Tell us your project's location": {
+        "1": "Välj en stad"
+    }
+}

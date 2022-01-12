@@ -11,7 +11,7 @@ export function getFieldsNewBuilding(type){
         case types.category.forskola:
             return [
                 {
-                    label: "Lokalarea",
+                    label: "LOA",
                     id: "loa",
                     placeholder: "m",
                     superscript: 2,
@@ -28,14 +28,14 @@ export function getFieldsNewBuilding(type){
                     placeholder: "0"
                 },
                 {
-                    label: "Kvm Mork bruttoarea",
+                    label: "Mork bruttoarea",
                     id: "darkBta",
                     placeholder: "m",
                     superscript: 2,
                     isRight: true
                 },
                 {
-                    label: "Kvm Ljus bruttoarea",
+                    label: "Ljus bruttoarea",
                     id: "lightBta",
                     placeholder: "m",
                     superscript: 2,
@@ -62,14 +62,14 @@ export function getFieldsNewBuilding(type){
                     placeholder: "0"
                 },
                 {
-                    label: "Kvm Mork bruttoarea",
+                    label: "Mork bruttoarea",
                     id: "darkBta",
                     placeholder: "m",
                     superscript: 2,
                     isRight: true
                 },
                 {
-                    label: "Kvm Ljus bruttoarea",
+                    label: "Ljus bruttoarea",
                     id: "lightBta",
                     placeholder: "m",
                     superscript: 2,
@@ -84,7 +84,7 @@ export function getFieldsNewBuilding(type){
         case types.category.idrottshall:
             return [
                 {
-                    label: "Yta for idrottshall nklusive omkladningsrum",
+                    label: "Yta för idrottshall inklusive omklädningsrum",
                     id: "yta",
                     placeholder: "m",
                     superscript: 2,
@@ -96,20 +96,20 @@ export function getFieldsNewBuilding(type){
                     placeholder: "0"
                 },
                 {
-                    label: "Dusch and WC",
+                    label: "Antal duschar och WC:n",
                     id: "toiletNumber",
-                    info: "Antal dusch och wc. Summera antal dusch i duschrum,\n separata dusch och wc och skriva det totala antalet här.",
+                    info: "Antal duschar och WC:n. Summera  det totala antalet duschar i duschrum,\nseparat duschar och wc:n.",
                     placeholder: "0"
                 },
                 {
-                    label: "Kvm Mork bruttoarea",
+                    label: "Mork bruttoarea",
                     id: "darkBta",
                     placeholder: "m",
                     superscript: 2,
                     isRight: true
                 },
                 {
-                    label: "Kvm Ljus bruttoarea",
+                    label: "Ljus bruttoarea",
                     id: "lightBta",
                     placeholder: "m",
                     superscript: 2,
@@ -126,14 +126,14 @@ export function getFieldsNewBuilding(type){
                     isRight: true
                 },
                 {
-                    label: "Lokalarea",
+                    label: "LOA",
                     id: "loa",
                     placeholder: "m",
                     superscript: 2,
                     isRight: true
                 },
                 {
-                    label: "Antal lagenheter",
+                    label: "Antal lägenheter",
                     id: "apartmentNumber",
                     placeholder: "0"
                 },
@@ -148,14 +148,14 @@ export function getFieldsNewBuilding(type){
                     placeholder: "0"
                 },
                 {
-                    label: "Kvm Mork bruttoarea",
+                    label: "Mork bruttoarea",
                     id: "darkBta",
                     placeholder: "m",
                     superscript: 2,
                     isRight: true
                 },
                 {
-                    label: "Kvm Ljus bruttoarea",
+                    label: "Ljus bruttoarea",
                     id: "lightBta",
                     placeholder: "m",
                     superscript: 2,
@@ -178,12 +178,12 @@ export function getFieldsNewBuilding(type){
                     isRight: true
                 },
                 {
-                    label: "Antal lagenheter",
+                    label: "Antal lägenheter",
                     id: "apartmentNumber",
                     placeholder: "0"
                 },
                 {
-                    label: "Antal bodrum",
+                    label: "Antal badrum",
                     id: "bathNumber",
                     placeholder: "0"
                 },
@@ -193,12 +193,12 @@ export function getFieldsNewBuilding(type){
                     placeholder: "0"
                 },
                 {
-                    label: "Kvm Mork bruttoarea",
+                    label: "Mork bruttoarea",
                     id: "darkBta",
                     placeholder: "0"
                 },
                 {
-                    label: "Kvm Ljus bruttoarea",
+                    label: "Ljus bruttoarea",
                     id: "lightBta",
                     placeholder: "m",
                     superscript: 2,
@@ -208,21 +208,23 @@ export function getFieldsNewBuilding(type){
         case types.category.vardboende:
             return [
                 {
-                    label: "Kvadratmeter pa vardboendet",
+                    label: "Yta för vårdboendet",
                     id: "kvadratmeter",
                     placeholder: "m",
                     superscript: 2,
                     isRight: true
                 },
                 {
-                    label: "Antal lagenheter",
+                    label: "Antal lägenheter",
                     id: "apartmentNumber",
                     placeholder: "0"
                 },
                 {
                     label: "LOA",
                     id: "loa",
-                    placeholder: "0"
+                    placeholder: "m",
+                    superscript: 2,
+                    isRight: true
                 },
                 {
                     label: "Antal WC",
@@ -230,12 +232,12 @@ export function getFieldsNewBuilding(type){
                     placeholder: "0"
                 },
                 {
-                    label: "Kvm Mork bruttoarea",
+                    label: "Mork bruttoarea",
                     id: "darkBta",
                     placeholder: "0"
                 },
                 {
-                    label: "Antal bodrum",
+                    label: "Antal badrum",
                     id: "bathNumber",
                     placeholder: "0"
                 },
@@ -245,7 +247,7 @@ export function getFieldsNewBuilding(type){
                     placeholder: "0"
                 },
                 {
-                    label: "Kvm Ljus bruttoarea",
+                    label: "Ljus bruttoarea",
                     id: "lightBta",
                     placeholder: "m",
                     superscript: 2,
@@ -262,14 +264,14 @@ export function getFieldsNewBuilding(type){
                     isRight: true
                 },
                 {
-                    label: "Lokalarea",
+                    label: "LOA",
                     id: "loa",
                     placeholder: "m",
                     superscript: 2,
                     isRight: true
                 },
                 {
-                    label: "Antal lagenheter",
+                    label: "Antal lägenheter",
                     id: "apartmentNumber",
                     placeholder: "0"
                 },
@@ -284,14 +286,14 @@ export function getFieldsNewBuilding(type){
                     placeholder: "0"
                 },
                 {
-                    label: "Kvm Mork bruttoarea",
+                    label: "Mork bruttoarea",
                     id: "darkBta",
                     placeholder: "m",
                     superscript: 2,
                     isRight: true
                 },
                 {
-                    label: "Kvm Ljus bruttoarea",
+                    label: "Ljus bruttoarea",
                     id: "lightBta",
                     placeholder: "m",
                     superscript: 2,
@@ -314,7 +316,7 @@ export function getFieldsNewBuilding(type){
                     isRight: true
                 },
                 {
-                    label: "Lokalarea",
+                    label: "LOA",
                     id: "loa",
                     info: "Endast om det är lokal som inte tillhör hotellet,\n såsom separat handelslokal, kontor mm.",
                     placeholder: "m",
@@ -337,14 +339,14 @@ export function getFieldsNewBuilding(type){
                     placeholder: "0"
                 },
                 {
-                    label: "Kvm Mork bruttoarea",
+                    label: "Mork bruttoarea",
                     id: "darkBta",
                     placeholder: "m",
                     superscript: 2,
                     isRight: true
                 },
                 {
-                    label: "Kvm Ljus bruttoarea",
+                    label: "Ljus bruttoarea",
                     id: "lightBta",
                     placeholder: "m",
                     superscript: 2,
@@ -366,7 +368,7 @@ export function getFieldsRebuilding(type){
         case types.rebuildingType.endast:
             return [
                 {
-                    label: "Antal bodrum",
+                    label: "Antal badrum",
                     id: "bathNumber",
                     placeholder: 0
                 },
@@ -381,7 +383,7 @@ export function getFieldsRebuilding(type){
                     placeholder: 0
                 },
                 {
-                    label: "Kvm Mork bruttoarea",
+                    label: "Mork bruttoarea",
                     id: "darkBta",
                     placeholder: "m",
                     superscript: 2,
@@ -399,7 +401,7 @@ export function getFieldsRebuilding(type){
                     superscript: 2
                 },
                 {
-                    label: "Lokalarea",
+                    label: "LOA",
                     id: "loa",
                     placeholder: "m",
                     superscript: 2
@@ -410,7 +412,7 @@ export function getFieldsRebuilding(type){
                     placeholder: 0
                 },
                 {
-                    label: "Antal bodrum",
+                    label: "Antal badrum",
                     id: "bathNumber",
                     placeholder: 0
                 },
@@ -420,14 +422,14 @@ export function getFieldsRebuilding(type){
                     placeholder: 0
                 },
                 {
-                    label: "Kvm Mork bruttoarea",
+                    label: "Mork bruttoarea",
                     id: "darkBta",
                     placeholder: "m",
                     superscript: 2,
                     info: "Avser allmänna utrymmen och där byter man alltid \nstammar/ledningar, pris per m2 mörk BTA är  indikerad i kalkylen"
                 },
                 {
-                    label: "Kvm Ljus bruttoarea",
+                    label: "Ljus bruttoarea",
                     id: "lightBta",
                     placeholder: "m",
                     superscript: 2
@@ -442,7 +444,7 @@ export function getFieldsRebuilding(type){
         case types.rebuildingType.delvis:
             return [
                 {
-                    label: "Lokalarea",
+                    label: "LOA",
                     id: "loa",
                     placeholder: "m",
                     superscript: 2
@@ -458,13 +460,13 @@ export function getFieldsRebuilding(type){
                     placeholder: 0
                 },
                 {
-                    label: "Kvm Mork bruttoarea",
+                    label: "Mork bruttoarea",
                     id: "darkBta",
                     placeholder: "m",
                     superscript: 2
                 },
                 {
-                    label: "Kvm Ljus bruttoarea",
+                    label: "Ljus bruttoarea",
                     id: "lightBta",
                     placeholder: "m",
                     superscript: 2

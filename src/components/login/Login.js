@@ -9,6 +9,7 @@ import {
 } from "@material-ui/core";
 import { useHistory } from "react-router-dom";
 import { makeStyles } from "@material-ui/core/styles";
+import { Trans, useTranslation } from "react-i18next";
 
 import axios from "axios";
 import config from "../../config.json";
@@ -18,6 +19,11 @@ export default function Login() {
     const [username, setUsername] = React.useState("");
     const [password, setPassword] = React.useState("");
     const [isInvalidLogin, setIsInvalidLogin] = React.useState(false);
+    const { t, i18n } = useTranslation();
+
+    React.useEffect(() => {
+        i18n.changeLanguage('se');
+    }, []);
 
     const history = useHistory();
 
@@ -44,7 +50,7 @@ export default function Login() {
                 <>
                     <Box className={classes.box}>
                         <Typography className={classes.header}>
-                            Nyckeltalskalkyler
+                            {t('Calculations.1')}
                         </Typography>
                         <Typography className={classes.loginText}>
                             But I must explain to you how all this mistaken idea
