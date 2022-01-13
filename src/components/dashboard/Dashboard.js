@@ -27,7 +27,6 @@ export default function Dashboard() {
     const token = location.state.token;
 
     React.useEffect(async () => {
-        i18n.changeLanguage("se");
         setLatestCalc((await getLatestCalculations(token)).data);
         setIsLoading(false);
     }, []);

@@ -65,10 +65,6 @@ export default function CustomStepper(props) {
     const { t, i18n } = useTranslation();
 
     React.useEffect(() => {
-        i18n.changeLanguage("se");
-    }, []);
-
-    React.useEffect(() => {
         props.emptySteps();
         props.pushStep(t('New calculation.1'));
         props.pushStep(

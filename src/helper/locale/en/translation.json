@@ -139,5 +139,17 @@
     },
     "Lager": {
         "1": "Warehouse"
+    },
+    "Project number": {
+        "1": "Project number"
+    },
+    "Responsible project manager": {
+        "1": "Responsible project manager"
+    },
+    "Date for drawings and documents": {
+        "1": "Date for drawings and documents"
+    },
+    "Other": {
+        "1": "Other"
     }
 }

@@ -11,6 +11,7 @@ import { ReactComponent as DeleteIcon } from "../../images/deleteIcon.svg";
 import { ReactComponent as WarningIcon } from "../../images/WarningIcon.svg";
 import useWindowDimensions from "../windowDimension";
 import types from "../../helper/data.json";
+import { useTranslation } from "react-i18next";
 
 //add pagination to the datagrid
 function CustomPagination(props) {
@@ -38,6 +39,7 @@ export default function Calctable(props) {
     const [openDialog, setOpenDialog] = React.useState(false);
     const { width } = useWindowDimensions();
     const [isLoading, setIsLoading] = React.useState(true);
+    const { t, i18n } = useTranslation();
 
     const [data, setData] = React.useState(props.data);
     const history = useHistory();
@@ -47,10 +49,11 @@ export default function Calctable(props) {
         setData(props.data);
     }, [props.data]);
 
+    const classes = useStyles();
     const columns = [
         {
             field: "Name",
-            headerName: "Name",
+            headerName: <Typography className={classes.titleLeft}>{t('Name.1')}</Typography>,
             headerClassName: "headerClass",
             headerAlign: "center",
             align: "center",
@@ -64,7 +67,7 @@ export default function Calctable(props) {
         },
         {
             field: "Date",
-            headerName: "Date",
+            headerName: <Typography className={classes.titleLeft}>{t('Date.1')}</Typography>,
             type: "date",
             width: width * 0.095,
             headerClassName: "headerClass",
@@ -79,7 +82,7 @@ export default function Calctable(props) {
         },
         {
             field: "Category",
-            headerName: "Category",
+            headerName: <Typography className={classes.titleLeft}>{t('Category.1')}</Typography>,
             headerAlign: "center",
             headerClassName: "headerClass",
             align: "center",
@@ -94,7 +97,7 @@ export default function Calctable(props) {
         },
         {
             field: "Type",
-            headerName: "Type",
+            headerName: <Typography className={classes.titleRight} style={{marginRight: "30%"}}>{t('Type.1')}</Typography>,
             headerClassName: "headerClass",
             headerAlign: "center",
             cellClassName: "typeClass",
@@ -114,7 +117,7 @@ export default function Calctable(props) {
         },
         {
             field: "Area",
-            headerName: "Area",
+            headerName: <Typography className={classes.titleRight}>{t('Area.1')}</Typography>,
             width: width * 0.13,
             headerClassName: "headerClass",
             headerAlign: "center",
@@ -130,7 +133,7 @@ export default function Calctable(props) {
         },
         {
             field: "Actions",
-            headerName: "Actions",
+            headerName: " ",
             width: width * 0.08,
             headerClassName: "headerClass",
             headerAlign: "center",
@@ -180,8 +183,6 @@ export default function Calctable(props) {
     const handleRowClick = (element) => {
         history.push({ pathname: "/report", state: { data: element.row, token: props.token }});
     };
-
-    const classes = useStyles();
 
     return (
         <Box className={classes.root}>
@@ -303,4 +304,16 @@ const useStyles = makeStyles((theme) => ({
             marginBottom: theme.spacing(2),
         },
     },
+    titleLeft: {
+        fontSize: 18,
+        position: "absolute",
+        left: 0,
+        marginLeft: "25%"
+    },
+    titleRight: {
+        fontSize: 18,
+        position: "absolute",
+        right: 0,
+        marginRight: "25%"
+    }
 }));

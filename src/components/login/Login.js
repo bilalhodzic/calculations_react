@@ -21,12 +21,7 @@ export default function Login() {
     const [isInvalidLogin, setIsInvalidLogin] = React.useState(false);
     const { t, i18n } = useTranslation();
 
-    React.useEffect(() => {
-        i18n.changeLanguage('se');
-    }, []);
-
     const history = useHistory();
-
     const classes = useStyles();
 
     return (

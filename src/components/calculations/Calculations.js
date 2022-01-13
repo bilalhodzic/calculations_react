@@ -17,70 +17,7 @@ import helper from "../../helper/TransformData";
 import types from "../../helper/data.json";
 import config from "../../config.json";
 import { useLocation } from "react-router";
-
-//table data which wiil be returned from database
-//just for testing
-const data = [
-  {
-    id: 1,
-    Name: "Name",
-    Date: "02/05/2021",
-    Type: { text: "Building", color: "#0EBD00", backgroundcolor: "#9BFF93" },
-    Area: "Adress1",
-  },
-  {
-    id: 2,
-    Name: "Name1",
-    Date: "04/03/2021",
-    Type: { text: "School", color: "#00ADFF", backgroundcolor: "#B4E7FF" },
-    Area: "Adress2",
-    Actions: "actions",
-  },
-  {
-    id: 3,
-    Name: "Name2",
-    Date: "04/08/2021",
-    Type: {
-      text: "Hospital",
-      color: "#FF4100",
-      backgroundcolor: "#FFCEBD",
-    },
-    Area: "Adress3",
-    Actions: "actions",
-  },
-  {
-    id: 4,
-    Name: "Name3",
-    Date: "12/08/2021",
-    Type: {
-      text: "Hotel",
-      color: "#3F75BD",
-      backgroundcolor: "#C2DCFF",
-    },
-    Area: "Adress4",
-    Actions: "actions",
-  },
-  {
-    id: 5,
-    Name: "Name4",
-    Date: "24/03/2021",
-    Type: {
-      text: "Hospital",
-      color: "#FF4100",
-      backgroundcolor: "#FFCEBD",
-    },
-    Area: "Adress5",
-    Actions: "actions",
-  },
-  {
-    id: 6,
-    Name: "Name5",
-    Date: "02/01/2021",
-    Type: { text: "Building", color: "#0EBD00", backgroundcolor: "#9BFF93" },
-    Area: "Adress6",
-    Actions: "actions",
-  },
-];
+import { useTranslation } from "react-i18next";
 
 export default function Calculations(props) {
   let maxPage = 1;
@@ -88,6 +25,7 @@ export default function Calculations(props) {
   const [selectValueCategory, setSelectValueCategory] = React.useState(0);
   const [searchInput, setSearchInput] = React.useState("");
   const [tableData, setTableData] = React.useState([]);
+  const { t, i18n } = useTranslation();
 
   React.useEffect(async () => {
     setTableData(helper.transformCalculations((await getCalculationsForPage(1, selectValueCategory, selectValueType)).data));
@@ -140,7 +78,7 @@ export default function Calculations(props) {
   };
 
   const menuItems = [];
-  menuItems.push(<MenuItem value={0}>Category</MenuItem>)
+  menuItems.push(<MenuItem value={0}>{t('Category.1')}</MenuItem>)
   for(const property in types.category){
     if(types.category[property].id === 31) break;
     menuItems.push(<MenuItem value={types.category[property].id}>{types.category[property].value}</MenuItem>);
@@ -151,7 +89,7 @@ export default function Calculations(props) {
       <Paper elevation={6} className={classes.paperHeader}>
         <Hidden xsDown>
           <InputBase
-            placeholder="Search By Name..."
+            placeholder={t("Search by name.1")}
             className={classes.input}
             value={searchInput}
             style={{ width: 300 }}
@@ -174,7 +112,7 @@ export default function Calculations(props) {
           style={{ paddingRight: 10, width: 250 }}
           IconComponent={() => <ArrowDown/> }
         >
-          <MenuItem value={0}>Type</MenuItem>
+          <MenuItem value={0}>{t('Type.1')}</MenuItem>
           <MenuItem value={1}>New Production</MenuItem>
           <MenuItem value={2}>Rebuilding</MenuItem>
         </Select>
@@ -195,7 +133,7 @@ export default function Calculations(props) {
           color="primary"
           variant="contained"
         >
-          Search
+          {t('Search.1')}
         </Button>
       </Paper>
       <Paper elevation={6} className={classes.paper}>

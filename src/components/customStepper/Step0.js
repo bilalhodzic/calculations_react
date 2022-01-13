@@ -18,10 +18,6 @@ export default function Step0 (props){
     const location = useLocation();
     const { t, i18n } = useTranslation();
 
-    React.useEffect(() => {
-      i18n.changeLanguage("se");
-    }, []);
-
     if(!location.state || !location.state.token){
       return "Unauthorized";
     }

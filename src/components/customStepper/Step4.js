@@ -11,49 +11,17 @@ import {
 import { Scrollbars } from "react-custom-scrollbars";
 
 import { ReactComponent as Step4Icon } from "../../images/step4Icon.svg";
-
-const locations = [
-    {
-        value: "",
-        city: "City"
-    },
-    {
-        value: "Stockholm",
-        city: "Stockholm"
-    },
-    {
-        value: "Lulea",
-        city: "Lulea"
-    },
-    {
-        value: "Sundsvall",
-        city: "Sundsvall"
-    },
-    {
-        value: "Malmo",
-        city: "Malmo"
-    },
-    {
-        value: "Goteborg",
-        city: "Goteborg"
-    },
-    {
-        value: "Norrkoping",
-        city: "Norrkoping"
-    },
-    {
-        value: "Orter",
-        city: "Other"
-    },
-];
+import { useTranslation } from "react-i18next";
 
 export default function Step4(props) {
     const classes = useStyles();
+    const {t, i18n} = useTranslation();
 
     const [selectedIn, setSelectedIn] = useState(props.data.urbanArea);
     const [selectedValue, setSelectedValue] = useState(props.data.location || "");
 
     props.handleChange("urbanArea", selectedIn);
+    const locations = getLocations(t);
 
     return (
         <Box maxHeight={"80vh"} overflow="auto">
@@ -63,7 +31,7 @@ export default function Step4(props) {
                         <InputLabel
                             className={`${classes.inputLabel} ${classes.select}`}
                         >
-                            Tell us yout project's location
+                            {t("Tell us your project's location.1")}
                         </InputLabel>
                         <Select
                             displayEmpty
@@ -99,7 +67,7 @@ export default function Step4(props) {
                                 setSelectedIn(true);
                             }}
                         >
-                            In The City
+                            {t("In the city.1")}
                         </Button>
                         <Button
                             className={`${classes.button} ${
@@ -110,7 +78,7 @@ export default function Step4(props) {
                                 setSelectedIn(false);
                             }}
                         >
-                            Outside The City
+                            {t("Outside the city.1")}
                         </Button>
                     </Box>
                     <Box className={classes.paperBox}>
@@ -120,6 +88,43 @@ export default function Step4(props) {
             </Scrollbars>
         </Box>
     );
+}
+
+function getLocations(t){
+    return [
+        {
+            value: "",
+            city: "City"
+        },
+        {
+            value: "Stockholm",
+            city: "Stockholm"
+        },
+        {
+            value: "Lulea",
+            city: "Lulea"
+        },
+        {
+            value: "Sundsvall",
+            city: "Sundsvall"
+        },
+        {
+            value: "Malmo",
+            city: "Malmo"
+        },
+        {
+            value: "Goteborg",
+            city: "Goteborg"
+        },
+        {
+            value: "Norrkoping",
+            city: "Norrkoping"
+        },
+        {
+            value: t("Other.1"),
+            city: "Other"
+        },
+    ];
 }
 
 const useStyles = makeStyles((theme) => ({

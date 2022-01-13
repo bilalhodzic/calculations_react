@@ -6,6 +6,7 @@ import {
     MuiThemeProvider,
     TextField,
 } from "@material-ui/core";
+import { useTranslation } from "react-i18next";
 import { Scrollbars } from "react-custom-scrollbars";
 
 import { ReactComponent as Step2Icon } from "../../images/step2Icon.svg";
@@ -22,6 +23,7 @@ const formLabelsTheme = createMuiTheme({
 
 export default function Step2(props) {
     const classes = useStyles();
+    const { t, i18n } = useTranslation();
 
     const inputLabelProps = {
         fontSize: 16,
@@ -38,11 +40,11 @@ export default function Step2(props) {
                 <Box className={classes.root} style={{ marginTop: 20 }}>
                     <Box className={classes.paperBox}>
                         <InputLabel style={inputLabelProps} required>
-                            Name your project!
+                            {t("Name your project.1")}
                         </InputLabel>
                         <TextField
                             key={1}
-                            placeholder="Project name"
+                            placeholder={t("Name your project.1")}
                             variant="outlined"
                             defaultValue={props.data.name || ""}
                             onChange={(e) => {
@@ -52,11 +54,11 @@ export default function Step2(props) {
                     </Box>
                     <Box className={classes.paperBox}>
                         <InputLabel style={inputLabelProps}>
-                            Project number
+                            {t("Project number.1")}
                         </InputLabel>
                         <TextField
                             key={2}
-                            placeholder="Project number"
+                            placeholder={t("Project number.1")}
                             variant="outlined"
                             defaultValue={props.data.projectNumber || ""}
                             onChange={(e) => {
@@ -69,11 +71,11 @@ export default function Step2(props) {
                     </Box>
                     <Box className={classes.paperBox}>
                         <InputLabel style={inputLabelProps}>
-                            Responsible project manager
+                            {t("Responsible project manager.1")}
                         </InputLabel>
                         <TextField
                             key={3}
-                            placeholder="Responsible project manager"
+                            placeholder={t("Responsible project manager.1")}
                             variant="outlined"
                             defaultValue={props.data.projectLeadName || ""}
                             onChange={(e) => {
@@ -88,11 +90,11 @@ export default function Step2(props) {
                 <Box className={classes.root}>
                     <Box className={classes.paperBox}>
                         <InputLabel style={inputLabelProps}>
-                            Date for drawings and documents
+                            {t("Date for drawings and documents.1")}
                         </InputLabel>
                         <TextField
                             key={4}
-                            placeholder="Date for drawings and documents"
+                            placeholder={t("Date for drawings and documents.1")}
                             variant="outlined"
                             defaultValue={props.data.architectDate || ""}
                             onChange={(e) => {

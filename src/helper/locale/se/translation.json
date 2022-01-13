@@ -139,5 +139,17 @@
     },
     "Lager": {
         "1": "Lager"
+    },
+    "Project number": {
+        "1": "Projektnummer"
+    },
+    "Responsible project manager": {
+        "1": "Ansvarig projektledare"
+    },
+    "Date for drawings and documents": {
+        "1": "Datering på ritningar och underlag"
+    },
+    "Other": {
+        "1": "Orter"
     }
 }
