@@ -82,6 +82,7 @@ const useStyles = makeStyles((theme) => ({
         borderRadius: 7,
         fontFamily: "Poppins",
         minWidth: 600,
+        background: "#F1F3F5",
         height: "max-content",
         position: "relative",
         [theme.breakpoints.down("xs")]: {

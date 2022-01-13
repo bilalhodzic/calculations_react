@@ -1,10 +1,10 @@
 import React from "react";
-import { Box, Divider, Typography } from "@material-ui/core";
+import { Box, Divider, Paper, Typography } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 
 import types from "../../helper/data.json";
 
-const dataLeft = [
+const mainData = [
     {
         label: "Project number",
         property: "projectNumber",
@@ -16,6 +16,7 @@ const dataLeft = [
     {
         label: "Within urban area?",
         property: "urbanArea",
+        margin: true
     },
     {
         label: "Production start planned",
@@ -29,6 +30,7 @@ const dataLeft = [
     {
         label: "Key figures calculation has been developed",
         property: "architectDate",
+        margin: true
     },
     {
         label: "Key figures calculation has been produced by",
@@ -36,7 +38,7 @@ const dataLeft = [
     },
 ];
 
-const dataRight = [
+const dataLeft = [
     {
         label: "BOA m2",
         property: "boa",
@@ -58,6 +60,9 @@ const dataRight = [
         margin: true,
         meter: true
     },
+];
+
+const dataRight = [
     {
         label: "LOA m2",
         property: "loa",
@@ -78,17 +83,7 @@ const dataRight = [
         property: "toiletNumber",
         margin: true,
         meter: true
-    },
-    {
-        label: "Internal standard",
-        property: "internalStandard",
-        standard: true,
-    },
-    {
-        label: "External standard",
-        property: "externalStandard",
-        standard: true,
-    },
+    }
 ];
 
 export default function Page1(props) {
@@ -99,20 +94,24 @@ export default function Page1(props) {
     const classes = useStyles();
     const calculationData = props.calculationData;
 
-    console.log(calculationData);
-
-    const itemsLeft = setData(dataLeft, calculationData, 5);
-    const itemsRight = setData(dataRight, calculationData, 2);
+    const mainDataItems = setData(mainData, calculationData, 2);
+    const itemsLeft = getCalculatedData(dataLeft, calculationData);
+    const itemsRight = getCalculatedData(dataRight, calculationData);
 
     return (
-        <Box className={classes.root}>
-            <Box className={classes.side} style={{ left: "5%", borderRight: "1px solid #D3D3D3", paddingRight: "10%" }}>
-                {itemsLeft.map((e) => e)}
+        <Paper variant="outlined" className={classes.paper}>
+            <Typography>{calculationData.name}</Typography>
+            <Typography className={classes.title}>Basic information</Typography>
+            {mainDataItems.map((e) => e)}
+            <Box className={classes.root}>
+                <Box className={classes.side} style={{ marginRight: 20 }}>
+                    {itemsLeft.map((e) => e)}
+                </Box>
+                <Box className={classes.side}>
+                    {itemsRight.map((e) => e)}
+                </Box>
             </Box>
-            <Box className={classes.side} style={{ right: "20%" }}>
-                {itemsRight.map((e) => e)}
-            </Box>
-        </Box>
+        </Paper>
     );
 }
 
@@ -130,10 +129,10 @@ function setData(data, calculationData, padding) {
                     paddingTop={padding}
                     style={style}
                 >
-                    <Typography style={{ fontWeight: "bold", fontSize: 18 }}>
+                    <Typography style={{ color: "black", fontSize: 16 }}>
                         {entry.label}:
                     </Typography>
-                    <Typography style={{ marginLeft: 10, fontSize: 18, color: "#606060" }}>
+                    <Typography style={{ marginLeft: 10, fontSize: 16, color: "#606060" }}>
                         {calculationData[entry.property]} years and{" "}
                         {calculationData[entry.property2]} months
                     </Typography>
@@ -153,12 +152,34 @@ function setData(data, calculationData, padding) {
                 paddingTop={padding}
                 style={style}
             >
-                <Typography style={{ fontWeight: "bold", fontSize: 18 }}>
+                <Typography style={{ color: "black", fontSize: 16 }}>
                     {entry.label}:
                 </Typography>
-                <Typography style={{ marginLeft: 10, fontSize: 18, color: "#606060" }}>
+                <Typography style={{ marginLeft: 10, fontSize: 16, color: "#606060" }}>
                     {value} {entry.meter && value !== '/' && "m2"}
                 </Typography>
+            </Box>
+        );
+    }
+    return items;
+}
+
+function getCalculatedData(data, calculationData) {
+    const items = [];
+    for(const entry of data){
+        const value = entry.standard
+            ? types.standard[calculationData[entry.property]]
+            : (calculationData[entry.property] || calculationData[entry.property] === false)
+            ? calculationData[entry.property].toLocaleString()
+            : "/";
+        items.push(
+            <Box display={"flex"} flexDirection={"row"}>
+                <Box style={{width: "80%"}}>
+                    <Typography style={{ color: "black", fontSize: 16 }}>{entry.label}</Typography>
+                </Box>
+                <Box style={{width: "20%"}}>
+                    <Typography style={{ fontSize: 16, color: "#606060" }}>{value} {value !== "/" && "m2"}</Typography>
+                </Box>
             </Box>
         );
     }
@@ -171,7 +192,8 @@ const useStyles = makeStyles((theme) => ({
         display: "inline-flex",
         flexDirection: "row",
         justifyContent: "center",
-        marginTop: theme.spacing(5),
+        width: "100%",
+        marginTop: theme.spacing(15),
         [theme.breakpoints.down("xs")]: {
             flexDirection: "column",
             justifyContent: "center",
@@ -181,6 +203,24 @@ const useStyles = makeStyles((theme) => ({
     side: {
         display: "flex",
         flexDirection: "column",
-        position: "absolute",
+        width: "50%"
     },
+    paper: {
+        height: 1200,
+        width: 800,
+        marginTop: theme.spacing(5),
+        marginLeft: "auto",
+        marginRight: "auto",
+        padding: theme.spacing(5),
+        paddingLeft: theme.spacing(8),
+        paddingRight: theme.spacing(8)
+    },
+    title: {
+        marginTop: theme.spacing(5),
+        marginBottom: theme.spacing(5),
+        fontSize: 30,
+        textAlign: "center",
+        color: "#21344D",
+        fontWeight: 600,
+    }
 }));
