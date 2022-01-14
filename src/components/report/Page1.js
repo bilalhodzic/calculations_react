@@ -16,7 +16,7 @@ const mainData = [
     {
         label: "Within urban area?",
         property: "urbanArea",
-        margin: true
+        margin: true,
     },
     {
         label: "Production start planned",
@@ -28,9 +28,13 @@ const mainData = [
         property2: "months",
     },
     {
+        label: "Calculculation's basis/drawings",
+        property: "/",
+        margin: true
+    },
+    {
         label: "Key figures calculation has been developed",
         property: "architectDate",
-        margin: true
     },
     {
         label: "Key figures calculation has been produced by",
@@ -42,23 +46,23 @@ const dataLeft = [
     {
         label: "BOA m2",
         property: "boa",
-        meter: true
+        meter: true,
     },
     {
         label: "BTA m2",
         property: "",
-        meter: true
+        meter: true,
     },
     {
         label: "BTA m2",
         property: "",
-        meter: true
+        meter: true,
     },
     {
         label: "Total BTA m2",
         property: "",
         margin: true,
-        meter: true
+        meter: true,
     },
 ];
 
@@ -66,24 +70,24 @@ const dataRight = [
     {
         label: "LOA m2",
         property: "loa",
-        meter: true
+        meter: true,
     },
     {
         label: "Number of apartments",
         property: "apartmentNumber",
-        meter: true
+        meter: true,
     },
     {
         label: "Number of wcs/showers/baths",
         property: "bathNumber",
-        meter: true
+        meter: true,
     },
     {
         label: "Number of toilets",
         property: "toiletNumber",
         margin: true,
-        meter: true
-    }
+        meter: true,
+    },
 ];
 
 export default function Page1(props) {
@@ -97,6 +101,7 @@ export default function Page1(props) {
     const mainDataItems = setData(mainData, calculationData, 2);
     const itemsLeft = getCalculatedData(dataLeft, calculationData);
     const itemsRight = getCalculatedData(dataRight, calculationData);
+    const itemStandards = getStandards(calculationData);
 
     return (
         <Paper variant="outlined" className={classes.paper}>
@@ -107,9 +112,15 @@ export default function Page1(props) {
                 <Box className={classes.side} style={{ marginRight: 20 }}>
                     {itemsLeft.map((e) => e)}
                 </Box>
-                <Box className={classes.side}>
-                    {itemsRight.map((e) => e)}
-                </Box>
+                <Box className={classes.side}>{itemsRight.map((e) => e)}</Box>
+            </Box>
+            <Box
+                display={"flex"}
+                flexDirection={"column"}
+                width={"100%"}
+                style={{ marginTop: "10%" }}
+            >
+                {itemStandards}
             </Box>
         </Paper>
     );
@@ -132,7 +143,13 @@ function setData(data, calculationData, padding) {
                     <Typography style={{ color: "black", fontSize: 16 }}>
                         {entry.label}:
                     </Typography>
-                    <Typography style={{ marginLeft: 10, fontSize: 16, color: "#606060" }}>
+                    <Typography
+                        style={{
+                            marginLeft: 10,
+                            fontSize: 16,
+                            color: "#606060",
+                        }}
+                    >
                         {calculationData[entry.property]} years and{" "}
                         {calculationData[entry.property2]} months
                     </Typography>
@@ -142,7 +159,8 @@ function setData(data, calculationData, padding) {
         }
         const value = entry.standard
             ? types.standard[calculationData[entry.property]]
-            : (calculationData[entry.property] || calculationData[entry.property] === false)
+            : calculationData[entry.property] ||
+              calculationData[entry.property] === false
             ? calculationData[entry.property].toLocaleString()
             : "/";
         items.push(
@@ -155,8 +173,10 @@ function setData(data, calculationData, padding) {
                 <Typography style={{ color: "black", fontSize: 16 }}>
                     {entry.label}:
                 </Typography>
-                <Typography style={{ marginLeft: 10, fontSize: 16, color: "#606060" }}>
-                    {value} {entry.meter && value !== '/' && "m2"}
+                <Typography
+                    style={{ marginLeft: 10, fontSize: 16, color: "#606060" }}
+                >
+                    {value} {entry.meter && value !== "/" && "m2"}
                 </Typography>
             </Box>
         );
@@ -166,24 +186,66 @@ function setData(data, calculationData, padding) {
 
 function getCalculatedData(data, calculationData) {
     const items = [];
-    for(const entry of data){
+    for (const entry of data) {
         const value = entry.standard
             ? types.standard[calculationData[entry.property]]
-            : (calculationData[entry.property] || calculationData[entry.property] === false)
+            : calculationData[entry.property] ||
+              calculationData[entry.property] === false
             ? calculationData[entry.property].toLocaleString()
             : "/";
         items.push(
             <Box display={"flex"} flexDirection={"row"}>
-                <Box style={{width: "80%"}}>
-                    <Typography style={{ color: "black", fontSize: 16 }}>{entry.label}</Typography>
+                <Box style={{ width: "80%" }}>
+                    <Typography style={{ color: "black", fontSize: 16 }}>
+                        {entry.label}
+                    </Typography>
                 </Box>
-                <Box style={{width: "20%"}}>
-                    <Typography style={{ fontSize: 16, color: "#606060" }}>{value} {value !== "/" && "m2"}</Typography>
+                <Box style={{ width: "20%" }}>
+                    <Typography style={{ fontSize: 16, color: "#606060" }}>
+                        {value} {value !== "/" && "m2"}
+                    </Typography>
                 </Box>
             </Box>
         );
     }
     return items;
+}
+
+function getStandards(calculationData) {
+    return (
+        <>
+            <Box display={"flex"} flexDirection={"column"}>
+                <Box display={"flex"} flexDirection={"row"}>
+                    <Typography style={{ color: "black", fontSize: 16 }}>Internal standard:</Typography>
+                    <Typography style={{ marginLeft: "2%", color: "#606060" }}>{types.standard[calculationData.internalStandard]}</Typography>
+                </Box>
+                <Typography style={{ fontSize: 12, color: "#606060", marginTop: "1%" }}>
+                    (Standard between normal and highNormal design with larger
+                    elements of value-enhancing parts. Normal material selection
+                    that is in the average in the material price range with
+                    single value-enhancing parts. Meets significantly higher
+                    requirements than BBR requirements.)
+                </Typography>
+            </Box>
+            <Box
+                display={"flex"}
+                flexDirection={"column"}
+                style={{ marginTop: "5%" }}
+            >
+                <Box display={"flex"} flexDirection={"row"}>
+                    <Typography style={{ color: "black", fontSize: 16 }}>External standard:</Typography>
+                    <Typography style={{ marginLeft: "2%", color: "#606060" }}>{types.standard[calculationData.externalStandard]}</Typography>
+                </Box>
+                <Typography style={{ fontSize: 12, color: "#606060", marginTop: "1%" }}>
+                    (Standard between normal and highNormal design with larger
+                    elements of value-enhancing parts. Normal material selection
+                    that is in the average in the material price range with
+                    single value-enhancing parts. Meets significantly higher
+                    requirements than BBR requirements.)
+                </Typography>
+            </Box>
+        </>
+    );
 }
 
 //add new styles here
@@ -203,17 +265,18 @@ const useStyles = makeStyles((theme) => ({
     side: {
         display: "flex",
         flexDirection: "column",
-        width: "50%"
+        width: "50%",
     },
     paper: {
-        height: 1200,
+        height: 1100,
         width: 800,
         marginTop: theme.spacing(5),
+        paddingBottom: theme.spacing(5),
         marginLeft: "auto",
         marginRight: "auto",
         padding: theme.spacing(5),
         paddingLeft: theme.spacing(8),
-        paddingRight: theme.spacing(8)
+        paddingRight: theme.spacing(8),
     },
     title: {
         marginTop: theme.spacing(5),
@@ -222,5 +285,5 @@ const useStyles = makeStyles((theme) => ({
         textAlign: "center",
         color: "#21344D",
         fontWeight: 600,
-    }
+    },
 }));

@@ -28,6 +28,7 @@ export default function DashboardCard(props) {
                 backgroundcolor={props.backgroundColor}
                 text={props.category}
                 position="absolute"
+                style={{fontStyle: "italic"}}
             />
         </Paper>
     );

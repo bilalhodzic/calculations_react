@@ -8,6 +8,7 @@ import Page1 from "./Page1";
 import Page2 from "./Page2";
 import Page3 from "./Page3";
 import Page4 from "./Page4";
+import Scrollbars from "react-custom-scrollbars";
 
 export default function Report(props) {
     React.useEffect(() => {
@@ -48,22 +49,16 @@ export default function Report(props) {
     return (
         <Layout token={token}>
             <Paper className={classes.paper}>
-                <Box height={100} display={"flex"} alignItems={"center"}>
-                    <Typography className={classes.headerText}>{calculationData.name}</Typography>
+                <Box height={100} display={"flex"} alignItems={"center"} style={{ background: "white"}}>
+                    <Typography className={classes.headerText}>Preview</Typography>
+                    <Typography style={{marginLeft: "auto", marginRight: "auto"}}>Dummy</Typography>
                     <Button className={classes.headerButton} size="large">Export to PDF</Button>
                 </Box>
                 <Divider/>
-                <PageComponent/>
-                <Pagination
-                    className={classes.footer}
-                    count={5}
-                    variant="outlined"
-                    shape="rounded"
-                    size="large"
-                    onChange={handlePageChange}
-                    hidePrevButton
-                    hideNextButton
-                />
+                <Scrollbars style={{width: "100%", height: "70vh"}}>
+                    <Page1 calculationData={calculationData}/>
+                    <Page1 calculationData={calculationData}/>
+                </Scrollbars>
             </Paper>
         </Layout>
     );
@@ -98,6 +93,7 @@ const useStyles = makeStyles((theme) => ({
     headerText: {
         fontSize: 26,
         fontWeight: 500,
+        width: "20%",
         marginLeft: theme.spacing(5)
     },
     headerButton: {
