@@ -55,6 +55,7 @@ export default function Page2(props) {
             <ReportTable
                 data={data}
                 calculationData={calculationData}
+                title="Total kostnad (bade byggherre och produktion)"
             ></ReportTable>
             <Box style={{ marginTop: "5%"}}>
                 <Typography style={{ fontSize: 12, color: "#606060" }}>

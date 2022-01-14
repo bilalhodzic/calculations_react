@@ -21,12 +21,12 @@ export default function ReportTable(props) {
     };
 
     return (
-        <Box width={"100%"}>
+        <Box width={"100%"} {...props}>
             <Table>
                 <TableHead>
                     <TableRow>
                         <TableCell className={classes.titleCell} colSpan={3} align="center">
-                            <Typography style={{color: "white", fontSize: 18}}>Total kostnad (bade byggherre och produktion)</Typography>
+                            <Typography style={{color: "white", fontSize: 18}}>{props.title}</Typography>
                         </TableCell>
                     </TableRow>
                 </TableHead>

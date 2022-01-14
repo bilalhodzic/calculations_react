@@ -84,6 +84,7 @@ export default function Report(props) {
                 >
                     <Page1 calculationData={calculationData} />
                     <Page2 calculationData={calculationData} />
+                    <Page3 calculationData={calculationData} />
                 </Scrollbars>
             </Paper>
         </Layout>

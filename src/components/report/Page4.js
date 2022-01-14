@@ -4,7 +4,7 @@ import { makeStyles } from "@material-ui/core/styles";
 
 import types from "../../helper/data.json";
 
-const data = [
+const secondTableData = [
     {
         label: "Total kostnad",
         noMoms: "clientExclVat",
@@ -37,7 +37,7 @@ export default function Page4(props) {
     const classes = useStyles();
     const calculationData = props.calculationData;
 
-    const items = setData(data, calculationData, classes);
+    const items = setData(secondTableData, calculationData, classes);
 
     return (
     <Box>
