@@ -1,8 +1,40 @@
 import React from "react";
-import { Box, Divider, Typography } from "@material-ui/core";
+import { Box, Divider, Typography, Paper } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
+import ReportTable from "./ReportTable";
 
-import types from "../../helper/data.json";
+const firstTableData = [
+    {
+        label: "Total kostnad",
+        noMoms: "productionExclVat",
+        moms: "productionInclVat",
+    },
+    {
+        label: "*Total kostnad vid egen regi",
+        noMoms: "",
+        moms: "",
+    },
+    {
+        label: "Kostnad per m2 BOA/LOA",
+        noMoms: "productionBoaLoaExclVat",
+        moms: "productionBoaLoaInclVat",
+    },
+    {
+        label: "Kostnad per m2 ljus BTA",
+        noMoms: "productionLightBtaExclVat",
+        moms: "productionLightBtaInclVat",
+    },
+    {
+        label: "Kostnad per m2 total BTA",
+        noMoms: "productionTotalBtaExclVat",
+        moms: "productionTotalBtaInclVat",
+    },
+    {
+        label: "Kostnad per Igh",
+        noMoms: "productionPerIghExclVat",
+        moms: "productionPerIghInclVat",
+    },
+];
 
 const secondTableData = [
     {
@@ -37,15 +69,14 @@ export default function Page4(props) {
     const classes = useStyles();
     const calculationData = props.calculationData;
 
-    const items = setData(secondTableData, calculationData, classes);
+    const items = setData(firstTableData, calculationData, classes);
 
     return (
-    <Box>
-        <Box className={classes.row} style={{marginTop: "5%"}}>
-            <Typography className={classes.valueText}>Endast byggherrekostnad</Typography>
-        </Box>
-        {items.map((e) => e)}
-    </Box>
+        <Paper variant="outlined" className={classes.paper}>
+            <Typography>{calculationData.name}</Typography>
+            <ReportTable style={{marginBottom: "7%", marginTop: "5%"}} data={firstTableData} calculationData={calculationData} title="Endast produktionskostnad"/>
+            <ReportTable data={secondTableData} calculationData={calculationData} title="Endast byggherrekostnad"/>
+        </Paper>
     );
 }
 
@@ -111,43 +142,15 @@ function setData(data, calculationData, classes) {
 
 //add new styles here
 const useStyles = makeStyles((theme) => ({
-    root: {
-        display: "inline-flex",
-        flexDirection: "row",
-        justifyContent: "center",
+    paper: {
+        height: 1100,
+        width: 800,
         marginTop: theme.spacing(5),
-        [theme.breakpoints.down("xs")]: {
-            flexDirection: "column",
-            justifyContent: "center",
-            alignItems: "center",
-        },
-    },
-    row: {
-        display: "flex",
-        justifyContent: "center",
-        [theme.breakpoints.down("xs")]: {
-            flexDirection: "column",
-            display: "inline-flex",
-            "&>*": {
-                margin: 10,
-            },
-        },
-    },
-    item: {
-        width: "22%",
-        display: "flex",
-    },
-    side: {
-        display: "flex",
-        flexDirection: "column",
-        position: "absolute",
-    },
-    label: {
-        fontSize: 20,
-        color: "#606060"
-    },
-    valueText: {
-        fontSize: 20,
-        fontWeight: 600,
-    },
+        paddingBottom: theme.spacing(5),
+        marginLeft: "auto",
+        marginRight: "auto",
+        padding: theme.spacing(5),
+        paddingLeft: theme.spacing(8),
+        paddingRight: theme.spacing(8),
+    }
 }));

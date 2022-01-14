@@ -3,7 +3,6 @@ import { Box, Button, Divider, Paper, Typography } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 import { useLocation } from "react-router";
 import Layout from "../Layout";
-import { Pagination } from "@material-ui/lab";
 import Page1 from "./Page1";
 import Page2 from "./Page2";
 import Page3 from "./Page3";
@@ -18,7 +17,6 @@ export default function Report(props) {
     const classes = useStyles();
     const location = useLocation();
 
-    const [currentPage, setCurrentPage] = React.useState(1);
 
     if (!props.data && !location.state && !location.state.data) {
         return "No data for report";
@@ -26,25 +24,6 @@ export default function Report(props) {
 
     const calculationData = props.data || location.state.data;
     const token = location.state.token;
-
-    const handlePageChange = (event, value) => {
-        setCurrentPage(value);
-    };
-
-    const PageComponent = () => {
-        switch (currentPage) {
-            case 1:
-                return <Page1 calculationData={calculationData} />;
-            case 2:
-                return <Page2 calculationData={calculationData} />;
-            case 3:
-                return <Page3 calculationData={calculationData} />;
-            case 4:
-                return <Page4 calculationData={calculationData} />;
-            default:
-                return "nothing";
-        }
-    };
 
     return (
         <Layout token={token}>
@@ -82,9 +61,10 @@ export default function Report(props) {
                         />
                     )}
                 >
-                    <Page1 calculationData={calculationData} />
+                    <Page1 type={calculationData.type} title={calculationData.name}/>
                     <Page2 calculationData={calculationData} />
                     <Page3 calculationData={calculationData} />
+                    <Page4 calculationData={calculationData} />
                 </Scrollbars>
             </Paper>
         </Layout>

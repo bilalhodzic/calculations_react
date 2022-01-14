@@ -1,67 +1,41 @@
 import React from "react";
-import { Box, Divider, Typography, Paper } from "@material-ui/core";
+import { Box, Paper, Typography } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
+
+import types from "../../helper/data.json";
 import ReportTable from "./ReportTable";
 
-const firstTableData = [
+const data = [
     {
         label: "Total kostnad",
-        noMoms: "productionExclVat",
-        moms: "productionInclVat",
+        noMoms: "totalExclVat",
+        moms: "totalInclVat",
     },
     {
         label: "*Total kostnad vid egen regi",
         noMoms: "",
         moms: "",
+        margin: true,
     },
     {
         label: "Kostnad per m2 BOA/LOA",
-        noMoms: "productionBoaLoaExclVat",
-        moms: "productionBoaLoaInclVat",
+        noMoms: "totalBoaLoaExclVat",
+        moms: "totalBoaLoaInclVat",
     },
     {
         label: "Kostnad per m2 ljus BTA",
-        noMoms: "productionLightBtaExclVat",
-        moms: "productionLightBtaInclVat",
+        noMoms: "totalLightBtaExclVat",
+        moms: "totalLightBtaInclVat",
     },
     {
         label: "Kostnad per m2 total BTA",
-        noMoms: "productionTotalBtaExclVat",
-        moms: "productionTotalBtaInclVat",
+        noMoms: "totalTotalBtaExclVat",
+        moms: "totalTotalBtaInclVat",
     },
     {
         label: "Kostnad per Igh",
-        noMoms: "productionPerIghExclVat",
-        moms: "productionPerIghInclVat",
-    },
-];
-
-const secondTableData = [
-    {
-        label: "Total kostnad",
-        noMoms: "clientExclVat",
-        moms: "clientInclVat",
-        margin: true
-    },
-    {
-        label: "Kostnad per m2 BOA/LOA",
-        noMoms: "clientBoaLoaExclVat",
-        moms: "clientBoaLoaInclVat",
-    },
-    {
-        label: "Kostnad per m2 ljus BTA",
-        noMoms: "clientLightBtaExclVat",
-        moms: "clientLightBtaInclVat",
-    },
-    {
-        label: "Kostnad per m2 total BTA",
-        noMoms: "clientTotalBtaExclVat",
-        moms: "clientTotalBtaInclVat",
-    },
-    {
-        label: "Kostnad per Igh",
-        noMoms: "clientPerIghExclVat",
-        moms: "clientPerIghInclVat",
+        noMoms: "totalPerIghExclVat",
+        moms: "totalPerIghInclVat",
     },
 ];
 
@@ -69,75 +43,81 @@ export default function Page3(props) {
     const classes = useStyles();
     const calculationData = props.calculationData;
 
-    const items = setData(firstTableData, calculationData, classes);
+    const costs = getCosts(calculationData);
 
     return (
         <Paper variant="outlined" className={classes.paper}>
             <Typography>{calculationData.name}</Typography>
-            <ReportTable style={{marginBottom: "7%", marginTop: "5%"}} data={firstTableData} calculationData={calculationData} title="Endast produktionskostnad"/>
-            <ReportTable data={secondTableData} calculationData={calculationData} title="Endast byggherrekostnad"/>
+            <Typography className={classes.title}>
+                Indicated Key Figure Calculation For The Project
+            </Typography>
+            {costs}
+            <ReportTable
+                data={data}
+                calculationData={calculationData}
+                title="Total kostnad (bade byggherre och produktion)"
+            ></ReportTable>
+            <Box style={{ marginTop: "5%"}}>
+                <Typography style={{ fontSize: 12, color: "#606060" }}>
+                    (*If the production is planned to be carried out in-house
+                    where construction fees are paid, one must start from
+                    compileda cost specified *Total cost on own;. *Please note
+                    that costs for m2 BOA/LOA, Ljus BTA, total BTA are based on
+                    aggregated costs specified Total cost and do not take into
+                    account total costs in own management.)
+                </Typography>
+            </Box>
         </Paper>
     );
 }
 
-function setData(data, calculationData, classes) {
-    const items = [];
-    items.push(
-        <Box className={classes.row} padding={1.5}>
-            <Box className={classes.item}>
-            </Box>
-            <Box className={classes.item}>
+function getCosts(calculationData) {
+    return (
+        <Box style={{ marginBottom: "7%" }}>
+            <Box display={"flex"} flexDirection={"column"}>
+                <Box display={"flex"} flexDirection={"row"}>
+                    <Typography style={{ color: "black", fontSize: 16 }}>
+                        Developer costs:
+                    </Typography>
+                    <Typography style={{ marginLeft: "2%", color: "#606060" }}>
+                        {4501}
+                    </Typography>
+                </Box>
                 <Typography
-                    className={classes.label}
-                    style={{ marginLeft: "auto" }}
+                    style={{ fontSize: 12, color: "#606060", marginTop: "1%" }}
                 >
-                    Exclusive moms
+                    (All developer costs such as street and development costs
+                    outside the plot boundary, mortgages, title deed costs,
+                    connection costs, government costs, building
+                    credit/interest, specification for specifications, the
+                    developers other civil servant costs such as project
+                    manager, design manager, construction manager, quality
+                    manager, and more.)
                 </Typography>
             </Box>
-            <Box className={classes.item}>
+            <Box
+                display={"flex"}
+                flexDirection={"column"}
+                style={{ marginTop: "5%" }}
+            >
+                <Box display={"flex"} flexDirection={"row"}>
+                    <Typography style={{ color: "black", fontSize: 16 }}>
+                        Production costs:
+                    </Typography>
+                    <Typography style={{ marginLeft: "2%", color: "#606060" }}>
+                        {3000}
+                    </Typography>
+                </Box>
                 <Typography
-                    className={classes.label}
-                    style={{ marginLeft: "auto" }}
+                    style={{ fontSize: 12, color: "#606060", marginTop: "1%" }}
                 >
-                    Inclusive moms
+                    (All production costs such as design for construction,
+                    establishment, plastics management, all additional costs
+                    during production, construction fees, and more.)
                 </Typography>
             </Box>
         </Box>
     );
-    for (const entry of data) {
-        const style = {
-            marginBottom: entry.margin ? 40 : 0,
-        };
-        items.push(
-            <Box className={classes.row} style={style} padding={0.5}>
-                <Box className={classes.item}>
-                    <Typography
-                        className={classes.label}
-                        style={{ marginRight: "auto" }}
-                    >
-                        {entry.label}
-                    </Typography>
-                </Box>
-                <Box className={classes.item}>
-                    <Typography
-                        className={classes.valueText}
-                        style={{ marginLeft: "auto" }}
-                    >
-                        {(calculationData[entry.noMoms] || 0).toLocaleString()} kr
-                    </Typography>
-                </Box>
-                <Box className={classes.item}>
-                    <Typography
-                        className={classes.valueText}
-                        style={{ marginLeft: "auto" }}
-                    >
-                        {(calculationData[entry.moms] || 0).toLocaleString()} kr
-                    </Typography>
-                </Box>
-            </Box>
-        );
-    }
-    return items;
 }
 
 //add new styles here
@@ -152,5 +132,13 @@ const useStyles = makeStyles((theme) => ({
         padding: theme.spacing(5),
         paddingLeft: theme.spacing(8),
         paddingRight: theme.spacing(8),
-    }
+    },
+    title: {
+        marginTop: theme.spacing(7),
+        marginBottom: theme.spacing(5),
+        fontSize: 30,
+        textAlign: "center",
+        color: "#21344D",
+        fontWeight: 600,
+    },
 }));
