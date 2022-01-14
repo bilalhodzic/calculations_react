@@ -29,12 +29,12 @@ const mainData = [
     },
     {
         label: "Calculculation's basis/drawings",
-        property: "/",
+        property: "architectDate",
         margin: true
     },
     {
         label: "Key figures calculation has been developed",
-        property: "architectDate",
+        property: "dateCalculated",
     },
     {
         label: "Key figures calculation has been produced by",
@@ -279,7 +279,7 @@ const useStyles = makeStyles((theme) => ({
         paddingRight: theme.spacing(8),
     },
     title: {
-        marginTop: theme.spacing(5),
+        marginTop: theme.spacing(7),
         marginBottom: theme.spacing(5),
         fontSize: 30,
         textAlign: "center",
