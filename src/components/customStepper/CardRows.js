@@ -40,7 +40,7 @@ export default function CardRows(props) {
     }
     return (
         <Box maxHeight={"80vh"} overflow="auto">
-            <Scrollbars style={{ width: "100%", height: "55vh" }}>
+            <Scrollbars style={{ width: "100%", height: "45vh" }}>
                 {rows.map((e) => e)}
             </Scrollbars>
         </Box>

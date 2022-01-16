@@ -25,7 +25,7 @@ export default function Step4(props) {
 
     return (
         <Box maxHeight={"80vh"} overflow="auto">
-            <Scrollbars style={{ width: "100%", height: "55vh"}}>
+            <Scrollbars style={{ width: "100%", height: "45vh"}}>
                 <Box className={classes.root}>
                     <Box className={classes.paperBox} style={{ height: 100 }}>
                         <InputLabel

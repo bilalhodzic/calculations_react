@@ -116,7 +116,7 @@ export default function Step2(props) {
 
     return (
         <Box maxHeight={"80vh"} overflow="auto">
-            <Scrollbars style={{ width: "100%", height: "55vh" }}>
+            <Scrollbars style={{ width: "100%", height: "45vh" }}>
                 {inputFields}
             </Scrollbars>
         </Box>

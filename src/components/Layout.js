@@ -344,6 +344,6 @@ const useStyles = makeStyles((theme) => ({
     },
     bottomList: {
         position: "absolute",
-        bottom: 100,
+        bottom: 160,
     },
 }));

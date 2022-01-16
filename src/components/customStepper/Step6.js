@@ -21,7 +21,7 @@ export default function Step6(props) {
 
     return (
         <Box maxHeight={"80vh"} overflow="auto">
-            <Scrollbars style={{ width: "100%", height: "55vh"}}>
+            <Scrollbars style={{ width: "100%", height: "45vh"}}>
                 <Box className={classes.root} style={{ marginTop: 2 }}>
                     <Box className={classes.paperBox}>
                         <InputLabel className={classes.label}>Start date</InputLabel>

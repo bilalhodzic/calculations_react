@@ -79,7 +79,7 @@ export default function NewCalculation() {
 //add new styles here
 const useStyles = makeStyles((theme) => ({
     paper: {
-        minHeight: "85vh",
+        minHeight: "75vh",
         margin: theme.spacing(5),
         borderRadius: 7,
         fontFamily: "Poppins",
