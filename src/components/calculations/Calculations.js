@@ -95,7 +95,7 @@ export default function Calculations(props) {
         </Hidden>
         <Hidden smUp>
           <InputBase
-            placeholder={t("Search By Name.1")}
+            placeholder={t("Search by name.1")}
             className={classes.input}
             value={searchInput}
             onChange={handleInputChange}

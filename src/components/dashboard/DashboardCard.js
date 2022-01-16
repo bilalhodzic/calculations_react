@@ -55,7 +55,7 @@ const useStyles = makeStyles((theme) => ({
         },
         margin: theme.spacing(2),
         [theme.breakpoints.down("xs")]: {
-            width: "28vw",
+            width: "30vw",
             height: "28vh",
         },
     },

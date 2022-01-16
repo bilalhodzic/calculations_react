@@ -1,5 +1,6 @@
 import React from "react";
 import { useHistory } from "react-router-dom";
+import useWindowDimensions from "./windowDimension";
 import {
     Button,
     Typography,
@@ -22,13 +23,22 @@ import { ReactComponent as PlusIcon } from "../images/plusIcon.svg";
 
 export default function Layout(props) {
     const [mobileOpen, setMobileOpen] = React.useState(false);
+    const { width } = useWindowDimensions();
     const history = useHistory();
     const classes = useStyles();
-    const {t, i18n} = useTranslation();
+    const { t, i18n } = useTranslation();
 
     React.useEffect(() => {
         i18n.changeLanguage("se");
     }, []);
+
+    React.useEffect(() => {
+        if (width < 600 && !mobileOpen) {
+            setMobileOpen(true);
+        } else if (width >= 600 && mobileOpen) {
+            setMobileOpen(false);
+        }
+    }, [width]);
 
     const handleDrawer = () => {
         setMobileOpen(!mobileOpen);
@@ -36,12 +46,12 @@ export default function Layout(props) {
 
     const drawerList = [
         {
-            name: t('Dashboard.1'),
+            name: t("Dashboard.1"),
             icon: <HomeIcon />,
             pathname: "/home",
         },
         {
-            name: t('Calculations.1'),
+            name: t("Calculations.1"),
             icon: <CalcIcon />,
             pathname: "/calculations",
         },
@@ -55,7 +65,12 @@ export default function Layout(props) {
                         className={classes.listButton}
                         button
                         key={list.name}
-                        onClick={() => history.push( { pathname: list.pathname, state: { token: props.token } })}
+                        onClick={() =>
+                            history.push({
+                                pathname: list.pathname,
+                                state: { token: props.token },
+                            })
+                        }
                     >
                         <ListItemIcon className={classes.listIcon}>
                             {list.icon}
@@ -72,11 +87,16 @@ export default function Layout(props) {
             <List className={`${classes.list} ${classes.bottomList}`}>
                 <ListItem
                     className={classes.listButton}
-                    onClick={() => history.push({ pathname: "/add", state: { token: props.token }})}
+                    onClick={() =>
+                        history.push({
+                            pathname: "/add",
+                            state: { token: props.token },
+                        })
+                    }
                 >
                     <PlusIcon style={{ marginRight: 15 }} />
                     <Typography className={classes.listText}>
-                        {t('New calculation.1')}
+                        {t("New calculation.1")}
                     </Typography>
                 </ListItem>
                 <ListItem
@@ -85,7 +105,7 @@ export default function Layout(props) {
                 >
                     <LogoutIcon style={{ marginRight: 15 }} />
                     <Typography className={classes.listText}>
-                        {t('Log out.1')}
+                        {t("Log out.1")}
                     </Typography>
                 </ListItem>
             </List>
@@ -101,16 +121,23 @@ export default function Layout(props) {
                 <Box className={classes.header}>
                     <Box
                         className={classes.drawerHeader}
-                        onClick={() => history.push({ pathname: "/home", state: { token: props.token }})}
+                        onClick={() =>
+                            history.push({
+                                pathname: "/home",
+                                state: { token: props.token },
+                            })
+                        }
                     >
                         <Typography className={classes.drawerHeaderText}>
-                            {t('Calculations.1')}
+                            {t("Calculations.1")}
                         </Typography>
-                        <MenuIcon className={classes.menuIcon} />
+                        <Hidden xsDown>
+                            <MenuIcon className={classes.menuIcon} />
+                        </Hidden>
                     </Box>
                     <Hidden smUp>
                         <MenuIcon
-                            className={classes.menuIcon}
+                            className={classes.menuMobile}
                             onClick={handleDrawer}
                         />
                     </Hidden>
@@ -172,6 +199,13 @@ const useStyles = makeStyles((theme) => ({
             cursor: "pointer",
         },
     },
+    menuMobile: {
+        padding: theme.spacing(3),
+        "&:hover": {
+            cursor: "pointer",
+        },
+        filter: "brightness(0) saturate(100%) invert(15%) sepia(12%) saturate(2489%) hue-rotate(174deg) brightness(101%) contrast(88%)"
+    },
     drawerPaper: {
         color: "white",
         width: calculate(240),
@@ -179,6 +213,9 @@ const useStyles = makeStyles((theme) => ({
         textAlign: "center",
         minWidth: 180,
         marginTop: 55,
+        [theme.breakpoints.down("xs")]: {
+            width: "40%",
+        },
     },
     drawerHeader: {
         height: "100%",
@@ -199,16 +236,20 @@ const useStyles = makeStyles((theme) => ({
         },
         [theme.breakpoints.down("xs")]: {
             "& p": {
-                fontSize: 16
-            }
+                fontSize: 16,
+            },
         },
     },
     drawerHeaderText: {
         marginLeft: theme.spacing(4),
+        [theme.breakpoints.down("xs")]: {
+            marginLeft: "auto",
+            marginRight: "auto"
+        }
     },
     menuIcon: {
         position: "absolute",
-        right: 15
+        right: 15,
     },
     header: {
         backgroundColor: "white",
@@ -247,7 +288,7 @@ const useStyles = makeStyles((theme) => ({
     list: {
         paddingTop: theme.spacing(2),
         alignSelf: "baseline",
-        width: "100%"
+        width: "100%",
     },
     listButton: {
         marginBlockStart: theme.spacing(1),
@@ -257,7 +298,7 @@ const useStyles = makeStyles((theme) => ({
         borderRadius: 42.69,
         "&:hover": {
             background: "#36547B",
-            cursor: "pointer"
+            cursor: "pointer",
         },
         "&:active": {
             background: "#36547B",

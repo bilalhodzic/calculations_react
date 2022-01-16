@@ -72,19 +72,15 @@ export default function Dashboard() {
 //add new styles here
 const useStyles = makeStyles((theme) => ({
     paper: {
- //       height: "72vh",
         margin: theme.spacing(5),
         borderRadius: 7,
         padding: theme.spacing(5),
         paddingLeft: theme.spacing(8),
         paddingRight: theme.spacing(8),
-
-        //maxHeight: "80vh",
         fontSize: 31,
         fontFamily: "Poppins",
         color: "black",
         fontWeight: 500,
-//        minWidth: 600,
         position: "absolute",
         bottom: "-90vh",
         top: "-5vh",
