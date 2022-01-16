@@ -38,7 +38,10 @@ const useStyles = makeStyles((theme) => ({
         padding: theme.spacing(5),
         paddingLeft: theme.spacing(8),
         paddingRight: theme.spacing(8),
-        position: "relative"
+        position: "relative",
+        [theme.breakpoints.down("xs")]: {
+            width: "70%"
+        }
     },
     box: {
         border: "1px solid black",

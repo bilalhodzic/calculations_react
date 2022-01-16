@@ -41,9 +41,8 @@ export default function Calculations(props) {
 
   const getCalculationsForPage = async (pageNumber, categoryNumber, typeNumber) => {
     const axiosOptions = {
-      url: `${config.baseUrl}/calculations/getcalculations/filter/${pageNumber}/${categoryNumber}/${typeNumber}`,
+      url: `${config.baseUrl}/calculations/getcalculations/filter/${searchInput !== '' ? searchInput : '%20'}/${pageNumber}/${categoryNumber}/${typeNumber}`,
       headers: {
-        'Access-Control-Allow-Origin': "*",
         'Authorization': `Bearer ${token}`
       },
       method: "GET",
@@ -66,9 +65,7 @@ export default function Calculations(props) {
   };
 
   const handleSearchClick = async (e) => {
-    if(searchInput === ""){
-      setTableData(helper.transformCalculations((await getCalculationsForPage(1, selectValueCategory, selectValueType)).data));
-    }
+    setTableData(helper.transformCalculations((await getCalculationsForPage(1, selectValueCategory, selectValueType)).data));
   };
 
   const downloadMoreData = async (page) => {
@@ -193,6 +190,8 @@ const useStyles = makeStyles((theme) => ({
       minWidth: 0,
 
       flexDirection: "column",
+      justifyContent: "center",
+      alignItems: "center",
       "& > *": {
         margin: 8,
       },
@@ -211,7 +210,7 @@ const useStyles = makeStyles((theme) => ({
     [theme.breakpoints.down("xs")]: {
       fontSize: 15,
       marginLeft: 0,
-      width: "80%",
+      width: 250,
     },
   },
 
@@ -225,10 +224,10 @@ const useStyles = makeStyles((theme) => ({
     textTransform: "none",
     [theme.breakpoints.down("xs")]: {
       fontSize: 15,
-      marginRight: 0,
-      marginLeft: theme.spacing(5),
+      marginRight: "auto",
+      marginLeft: "auto",
       alignSelf: "flex-start",
-      width: 150,
+      width: 250,
       height: "auto",
     },
   },

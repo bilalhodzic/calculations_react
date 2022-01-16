@@ -152,5 +152,8 @@ const useStyles = makeStyles((theme) => ({
         padding: theme.spacing(5),
         paddingLeft: theme.spacing(8),
         paddingRight: theme.spacing(8),
+        [theme.breakpoints.down("xs")]: {
+            width: "70%"
+        }
     }
 }));

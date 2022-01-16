@@ -102,6 +102,9 @@ const useStyles = makeStyles((theme) => ({
         fontWeight: 500,
         width: "25%",
         marginLeft: theme.spacing(5),
+        [theme.breakpoints.down("xs")]: {
+            fontSize: 22
+        }
     },
     headerButton: {
         background: "#21344D",
@@ -113,6 +116,10 @@ const useStyles = makeStyles((theme) => ({
         width: "15%",
         fontSize: 18,
         fontWeight: 600,
+        [theme.breakpoints.down("xs")]: {
+            fontSize: 14,
+            width: "20%"
+        }
     },
     trackHorizontal: {
         backgroundColor: "blue",

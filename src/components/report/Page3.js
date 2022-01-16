@@ -43,7 +43,7 @@ export default function Page3(props) {
     const classes = useStyles();
     const calculationData = props.calculationData;
 
-    const costs = getCosts(calculationData);
+    const costs = getCosts(calculationData, classes);
 
     return (
         <Paper variant="outlined" className={classes.paper}>
@@ -58,7 +58,7 @@ export default function Page3(props) {
                 title="Total kostnad (bade byggherre och produktion)"
             ></ReportTable>
             <Box style={{ marginTop: "5%"}}>
-                <Typography style={{ fontSize: 12, color: "#606060" }}>
+                <Typography className={classes.details}>
                     (*If the production is planned to be carried out in-house
                     where construction fees are paid, one must start from
                     compileda cost specified *Total cost on own;. *Please note
@@ -71,20 +71,20 @@ export default function Page3(props) {
     );
 }
 
-function getCosts(calculationData) {
+function getCosts(calculationData, classes) {
     return (
         <Box style={{ marginBottom: "7%" }}>
             <Box display={"flex"} flexDirection={"column"}>
                 <Box display={"flex"} flexDirection={"row"}>
-                    <Typography style={{ color: "black", fontSize: 16 }}>
+                    <Typography className={classes.label}>
                         Developer costs:
                     </Typography>
-                    <Typography style={{ marginLeft: "2%", color: "#606060" }}>
+                    <Typography className={classes.value}>
                         {4501}
                     </Typography>
                 </Box>
                 <Typography
-                    style={{ fontSize: 12, color: "#606060", marginTop: "1%" }}
+                    className={classes.details}
                 >
                     (All developer costs such as street and development costs
                     outside the plot boundary, mortgages, title deed costs,
@@ -101,15 +101,15 @@ function getCosts(calculationData) {
                 style={{ marginTop: "5%" }}
             >
                 <Box display={"flex"} flexDirection={"row"}>
-                    <Typography style={{ color: "black", fontSize: 16 }}>
+                    <Typography className={classes.label}>
                         Production costs:
                     </Typography>
-                    <Typography style={{ marginLeft: "2%", color: "#606060" }}>
+                    <Typography className={classes.value}>
                         {3000}
                     </Typography>
                 </Box>
                 <Typography
-                    style={{ fontSize: 12, color: "#606060", marginTop: "1%" }}
+                    className={classes.details}
                 >
                     (All production costs such as design for construction,
                     establishment, plastics management, all additional costs
@@ -132,6 +132,9 @@ const useStyles = makeStyles((theme) => ({
         padding: theme.spacing(5),
         paddingLeft: theme.spacing(8),
         paddingRight: theme.spacing(8),
+        [theme.breakpoints.down("xs")]: {
+            width: "70%"
+        }
     },
     title: {
         marginTop: theme.spacing(7),
@@ -141,4 +144,26 @@ const useStyles = makeStyles((theme) => ({
         color: "#21344D",
         fontWeight: 600,
     },
+    label: {
+        color: "black",
+        fontSize: 16,
+        [theme.breakpoints.down("xs")]: {
+            fontSize: 14
+        }
+    },
+    value: {
+        marginLeft: "2%",
+        color: "#606060",
+        [theme.breakpoints.down("xs")]: {
+            fontSize: 14
+        }
+    },
+    details: {
+        fontSize: 12,
+        color: "#606060",
+        marginTop: "1%",
+        [theme.breakpoints.down("xs")]: {
+            fontSize: 10
+        }
+    }
 }));

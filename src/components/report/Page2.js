@@ -101,10 +101,10 @@ export default function Page2(props) {
     const classes = useStyles();
     const calculationData = props.calculationData;
 
-    const mainDataItems = setData(mainData, calculationData, 2);
-    const itemsLeft = getCalculatedData(dataLeft, calculationData);
-    const itemsRight = getCalculatedData(dataRight, calculationData);
-    const itemStandards = getStandards(calculationData);
+    const mainDataItems = setData(mainData, calculationData, 2, classes);
+    const itemsLeft = getCalculatedData(dataLeft, calculationData, classes);
+    const itemsRight = getCalculatedData(dataRight, calculationData, classes);
+    const itemStandards = getStandards(calculationData, classes);
 
     return (
         <Paper variant="outlined" className={classes.paper}>
@@ -129,7 +129,7 @@ export default function Page2(props) {
     );
 }
 
-function setData(data, calculationData, padding) {
+function setData(data, calculationData, padding, classes) {
     const items = [];
     for (const entry of data) {
         const style = {
@@ -143,15 +143,12 @@ function setData(data, calculationData, padding) {
                     paddingTop={padding}
                     style={style}
                 >
-                    <Typography style={{ color: "black", fontSize: 16 }}>
+                    <Typography className={classes.label}>
                         {entry.label}:
                     </Typography>
                     <Typography
-                        style={{
-                            marginLeft: 10,
-                            fontSize: 16,
-                            color: "#606060",
-                        }}
+                        className={classes.value}
+                        style={{marginLeft: 10}}
                     >
                         {calculationData[entry.property]} years and{" "}
                         {calculationData[entry.property2]} months
@@ -174,11 +171,12 @@ function setData(data, calculationData, padding) {
                 paddingTop={padding}
                 style={style}
             >
-                <Typography style={{ color: "black", fontSize: 16 }}>
+                <Typography className={classes.label}>
                     {entry.label}:
                 </Typography>
                 <Typography
-                    style={{ marginLeft: 10, fontSize: 16, color: "#606060" }}
+                    className={classes.value}
+                    style={{marginLeft: 10}}
                 >
                     {value} {entry.meter && value !== "/" && "m2"}
                 </Typography>
@@ -188,7 +186,7 @@ function setData(data, calculationData, padding) {
     return items;
 }
 
-function getCalculatedData(data, calculationData) {
+function getCalculatedData(data, calculationData, classes) {
     const items = [];
     for (const entry of data) {
         const value = entry.standard
@@ -200,12 +198,12 @@ function getCalculatedData(data, calculationData) {
         items.push(
             <Box display={"flex"} flexDirection={"row"}>
                 <Box style={{ width: "80%" }}>
-                    <Typography style={{ color: "black", fontSize: 16 }}>
+                    <Typography className={classes.label}>
                         {entry.label}
                     </Typography>
                 </Box>
                 <Box style={{ width: "20%" }}>
-                    <Typography style={{ fontSize: 16, color: "#606060" }}>
+                    <Typography className={classes.value}>
                         {value} {value !== "/" && "m2"}
                     </Typography>
                 </Box>
@@ -215,20 +213,21 @@ function getCalculatedData(data, calculationData) {
     return items;
 }
 
-function getStandards(calculationData) {
+function getStandards(calculationData, classes) {
     return (
         <>
             <Box display={"flex"} flexDirection={"column"}>
                 <Box display={"flex"} flexDirection={"row"}>
-                    <Typography style={{ color: "black", fontSize: 16 }}>
+                    <Typography className={classes.label}>
                         Internal standard:
                     </Typography>
-                    <Typography style={{ marginLeft: "2%", color: "#606060" }}>
+                    <Typography style={{ marginLeft: "2%"}} className={classes.value}>
                         {types.standard[calculationData.internalStandard]}
                     </Typography>
                 </Box>
                 <Typography
-                    style={{ fontSize: 12, color: "#606060", marginTop: "1%" }}
+                    style={{ marginTop: "1%" }}
+                    className={classes.details}
                 >
                     (Standard between normal and highNormal design with larger
                     elements of value-enhancing parts. Normal material selection
@@ -243,15 +242,16 @@ function getStandards(calculationData) {
                 style={{ marginTop: "5%" }}
             >
                 <Box display={"flex"} flexDirection={"row"}>
-                    <Typography style={{ color: "black", fontSize: 16 }}>
+                    <Typography className={classes.label}>
                         External standard:
                     </Typography>
-                    <Typography style={{ marginLeft: "2%", color: "#606060" }}>
+                    <Typography style={{ marginLeft: "2%"}} className={classes.value}>
                         {types.standard[calculationData.externalStandard]}
                     </Typography>
                 </Box>
                 <Typography
-                    style={{ fontSize: 12, color: "#606060", marginTop: "1%" }}
+                    style={{ marginTop: "1%" }}
+                    className={classes.details}
                 >
                     (Standard between normal and highNormal design with larger
                     elements of value-enhancing parts. Normal material selection
@@ -282,6 +282,11 @@ const useStyles = makeStyles((theme) => ({
         display: "flex",
         flexDirection: "column",
         width: "50%",
+        [theme.breakpoints.down("xs")]: {
+            marginRight: 20,
+            marginLeft: 0,
+            width: "80%"
+        }
     },
     paper: {
         height: 1100,
@@ -293,6 +298,9 @@ const useStyles = makeStyles((theme) => ({
         padding: theme.spacing(5),
         paddingLeft: theme.spacing(8),
         paddingRight: theme.spacing(8),
+        [theme.breakpoints.down("xs")]: {
+            width: "70%"
+        }
     },
     title: {
         marginTop: theme.spacing(7),
@@ -302,4 +310,31 @@ const useStyles = makeStyles((theme) => ({
         color: "#21344D",
         fontWeight: 600,
     },
+    label: {
+        color: "black",
+        fontSize: 16,
+        [theme.breakpoints.down("xs")]: {
+            fontSize: 14
+        }
+    },
+    value: {
+        fontSize: 16,
+        color: "#606060",
+        [theme.breakpoints.down("xs")]: {
+            fontSize: 14,
+        }
+    },
+    dataRight: {
+        marginLeft: "10%",
+        [theme.breakpoints.down("xs")]: {
+            marginLeft: 0
+        }
+    },
+    details: {
+        fontSize: 12,
+        color: "#606060",
+        [theme.breakpoints.down("xs")]: {
+            fontSize: 10
+        }
+    }
 }));

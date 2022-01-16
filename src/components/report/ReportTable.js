@@ -26,15 +26,15 @@ export default function ReportTable(props) {
                 <TableHead>
                     <TableRow>
                         <TableCell className={classes.titleCell} colSpan={3} align="center">
-                            <Typography style={{color: "white", fontSize: 18}}>{props.title}</Typography>
+                            <Typography style={{color: "white", fontSize: 18}} className={classes.titleText}>{props.title}</Typography>
                         </TableCell>
                     </TableRow>
                 </TableHead>
                 <TableBody>
                     <TableRow>
                         <TableCell className={classes.tableCell}></TableCell>
-                        <TableCell className={classes.tableCell} align="center"><Typography style={{color: "#606060"}}>Exclusive moms</Typography></TableCell>
-                        <TableCell className={classes.tableCell} align="center"><Typography style={{color: "#606060"}}>Inklusive moms</Typography></TableCell>
+                        <TableCell className={classes.tableCell} align="center"><Typography style={{color: "#606060"}} className={classes.text}>Exclusive moms</Typography></TableCell>
+                        <TableCell className={classes.tableCell} align="center"><Typography style={{color: "#606060"}} className={classes.text}>Inklusive moms</Typography></TableCell>
                     </TableRow>
                     {tableItems.map((e) => e)}
                 </TableBody>
@@ -48,9 +48,9 @@ function getTableData(data, calculationData, classes){
     for(const entry of data){
         items.push(
             <TableRow>
-                <TableCell className={classes.tableCell}><Typography style={{color: "#444444"}}>{entry.label}</Typography></TableCell>
-                <TableCell className={classes.tableCell} align="center"><Typography style={{color: "black"}}>{(calculationData[entry.noMoms] || 0).toLocaleString()}</Typography></TableCell>
-                <TableCell className={classes.tableCell} align="center"><Typography style={{color: "black"}}>{(calculationData[entry.moms] || 0).toLocaleString()}</Typography></TableCell>
+                <TableCell className={classes.tableCell}><Typography style={{color: "#444444"}} className={classes.text}>{entry.label}</Typography></TableCell>
+                <TableCell className={classes.tableCell} align="center"><Typography style={{color: "black"}} className={classes.text}>{(calculationData[entry.noMoms] || 0).toLocaleString()}</Typography></TableCell>
+                <TableCell className={classes.tableCell} align="center"><Typography style={{color: "black"}} className={classes.text}>{(calculationData[entry.moms] || 0).toLocaleString()}</Typography></TableCell>
             </TableRow>
         );
     }
@@ -70,5 +70,15 @@ const useStyles = makeStyles((theme) => ({
     titleCell: {
         border: "1px solid #CBCBCB",
         background: "#21344D"
+    },
+    titleText: {
+        [theme.breakpoints.down("xs")]: {
+            fontSize: 16
+        }
+    },
+    text: {
+        [theme.breakpoints.down("xs")]: {
+            fontSize: 14
+        }
     }
 }));
