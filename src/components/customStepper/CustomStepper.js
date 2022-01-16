@@ -283,13 +283,9 @@ export default function CustomStepper(props) {
                     handleChange("category", id);
                     newCalculation(betweenStepsData.current, token).then((res) => {
                         setCalculation(res.data);
+                        history.push({pathname: "/report", state: { data: calculation, token: token }});
                     });
                 }
-                return (
-                    <TaxQuestion></TaxQuestion>
-                );
-            case 8:
-                history.push({pathname: "/report", state: { data: calculation, token: token }});
 
             default:
                 return "nothing";
@@ -337,7 +333,7 @@ export default function CustomStepper(props) {
                     color="secondary"
                     variant="contained"
                 >
-                    Previous
+                    {t("Previous.1")}
                 </Button>
                 <Button
                     variant="contained"
@@ -346,7 +342,7 @@ export default function CustomStepper(props) {
                     style={{ marginRight: 30 }}
                     onClick={handleNext}
                 >
-                    {activeStep === steps.length - 1 ? "Submit" : "Next"}
+                    {activeStep === steps.length - 1 ? t("Submit.1") : t("Next.1")}
                 </Button>
             </footer>
         </>

@@ -4,6 +4,7 @@ import { Scrollbars } from "react-custom-scrollbars";
 
 import { ReactComponent as MedalIcon } from "../../images/medalIcon.svg";
 import { ReactComponent as ExclusiveIcon } from "../../images/exclusiveIcon.svg";
+import { useTranslation } from "react-i18next";
 
 const standards = [
     {
@@ -35,6 +36,7 @@ const standards = [
 
 export default function Step5(props) {
     const classes = useStyles();
+    const { t, i18n } = useTranslation();
 
     const [indoorSelected, setIndoorSelected] = React.useState(true);
     const [externalStandard, setExternalStandard] = React.useState(props.data.externalStandard || 0);
@@ -85,7 +87,7 @@ export default function Step5(props) {
                 <Box className={classes.root}>
                     <Box className={classes.paperBox} style={{ height: 80 }}>
                         <Typography className={classes.paperText}>
-                            Choose your standard
+                            {t("Choose your standard.1")}
                         </Typography>
                     </Box>
                 </Box>
@@ -102,7 +104,7 @@ export default function Step5(props) {
                                 setIndoorSelected(true);
                             }}
                         >
-                            Indoor standard
+                            {t("Indoor standard.1")}
                         </Button>
                         <Button
                             className={`${classes.button} ${
@@ -112,7 +114,7 @@ export default function Step5(props) {
                                 setIndoorSelected(false);
                             }}
                         >
-                            Outdoor standard
+                            {t("Outdoor standard.1")}
                         </Button>
                     </Box>
                 </Box>

@@ -20,7 +20,7 @@ export default function Page1(props) {
             </Box>
         </Box>
         <Box className={classes.footer}>
-            <Typography style={{ color: "#4B4B4B"}}>Date: {(new Date()).toISOString().substring(0, 10)}</Typography>
+            <Typography style={{ color: "#4B4B4B"}}>Date: {(new Date()).toLocaleDateString("en-GB")}</Typography>
         </Box>
     </Paper>
   );

@@ -151,5 +151,26 @@
     },
     "Other": {
         "1": "Orter"
+    },
+    "City": {
+        "1": "Stad"
+    },
+    "Choose your standard": {
+        "1": "Välj din standard"
+    },
+    "Indoor standard": {
+        "1": "Inomhusstandard"
+    },
+    "Outdoor standard": {
+        "1": "Utomhusstandard"
+    },
+    "Start date": {
+        "1": "Start datum"
+    },
+    "Duration - years": {
+        "1": "Varaktighet - år"
+    },
+    "Duration - months": {
+        "1": "Varaktighet - månader"
     }
 }

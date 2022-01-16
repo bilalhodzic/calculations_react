@@ -94,7 +94,7 @@ function getLocations(t){
     return [
         {
             value: "",
-            city: "City"
+            city: t("City.1")
         },
         {
             value: "Stockholm",

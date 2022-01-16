@@ -151,5 +151,29 @@
     },
     "Other": {
         "1": "Other"
+    },
+    "City": {
+        "1": "City"
+    },
+    "Choose your standard": {
+        "1": "Choose your standard"
+    },
+    "Indoor standard": {
+        "1": "Indoor standard"
+    },
+    "Outdoor standard": {
+        "1": "Outdoor standard"
+    },
+    "Start date": {
+        "1": "Start date"
+    },
+    "Duration - years": {
+        "1": "Duration - years"
+    },
+    "Duration - months": {
+        "1": "Duration - months"
+    },
+    "Submit": {
+        "1": "Submit"
     }
 }

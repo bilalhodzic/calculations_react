@@ -164,7 +164,7 @@ function setData(data, calculationData, padding) {
             calculationData[entry.property] ||
             calculationData[entry.property] === false
                 ? entry.date
-                    ? calculationData[entry.property].substring(0, 10)
+                    ? new Date(calculationData[entry.property]).toLocaleDateString("en-GB")
                     : calculationData[entry.property].toLocaleString()
                 : "/";
         items.push(

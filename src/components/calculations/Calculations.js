@@ -98,7 +98,7 @@ export default function Calculations(props) {
         </Hidden>
         <Hidden smUp>
           <InputBase
-            placeholder="Search By Name..."
+            placeholder={t("Search By Name.1")}
             className={classes.input}
             value={searchInput}
             onChange={handleInputChange}
@@ -186,7 +186,7 @@ const useStyles = makeStyles((theme) => ({
     alignItems: "center",
     minWidth: 600,
 
-    justifyContent: "space-between",
+    justifyContent: "center",
     [theme.breakpoints.down("xs")]: {
       margin: theme.spacing(1),
       height: "100%",
@@ -221,6 +221,7 @@ const useStyles = makeStyles((theme) => ({
     borderRadius: 9.4,
     fontSize: 17.82,
     marginRight: theme.spacing(3),
+    marginLeft: "auto",
     textTransform: "none",
     [theme.breakpoints.down("xs")]: {
       fontSize: 15,
