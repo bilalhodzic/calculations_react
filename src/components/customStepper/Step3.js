@@ -18,8 +18,9 @@ export default function Step3(props) {
     const data = props.data;
 
     const fields = data.type == types.types.new_production.id ? getFieldsNewBuilding(data.category) : getFieldsRebuilding(data.category);
+    const [itemValues, setItemValues] = React.useState(initializeItems(props, fields));
 
-    const formItems = fields.map((entry) => {
+    const formItems = fields.map((entry, index) => {
         return (
             <Box className={classes.paperBox}>
                 <InputLabel
@@ -40,8 +41,18 @@ export default function Step3(props) {
                     type="number"
                     placeholder={props.data[entry.id] || (!entry.isRight && entry.placeholder)}
                     variant="outlined"
+                    value={itemValues[index]}
                     onChange={(e) => {
-                        props.handleChange(`${entry.id}`, e.target.value);
+                        let value = parseInt(e.target.value);
+
+                        if(value < 0){
+                            value = 0;
+                        }
+                        const tempArray = [...itemValues];
+                        tempArray[index] = value;
+                        setItemValues(tempArray);
+
+                        props.handleChange(`${entry.id}`, value);
                     }}
                     style={{ position: "absolute", bottom: 0, left: 0, right: 0}}
                     InputProps={
@@ -60,8 +71,15 @@ export default function Step3(props) {
                                     classes: {
                                         adornedEnd: classes.adornedEnd,
                                     },
+                                    inputProps: {
+                                        min: 0
+                                    }
                                 }
-                            : null
+                            : {
+                                inputProps: {
+                                    min: 0
+                                }
+                            }
                     }
                 ></TextField>
             </Box>
@@ -85,6 +103,14 @@ export default function Step3(props) {
             </Scrollbars>
         </Box>
     );
+}
+
+function initializeItems(props, fields){
+    const array = [];
+    fields.forEach((entry) => {
+        array.push(props.data[entry.id] || 0);
+    });
+    return array;
 }
 
 const useStyles = makeStyles((theme) => ({

@@ -22,7 +22,7 @@ export default function ValidateData(activeStep, betweenStepsData){
         case 3:
             return {
                 hideError: betweenStepsData.current && projectInfoError(betweenStepsData),
-                message: "Please fill out all of the fields"
+                message: "All of the fields must be filled out with non-negative numbers"
             };
         case 4:
             return {
@@ -48,7 +48,7 @@ function projectInfoError(betweenStepsData){
     const categoryFields = betweenStepsData.current.type === 1 ? getFieldsNewBuilding(betweenStepsData.current.category) : getFieldsRebuilding(betweenStepsData.current.category);
     for(const entry of categoryFields){
         const id = entry.id;
-        if(!betweenStepsData.current[id])
+        if(!betweenStepsData.current[id] || parseInt(betweenStepsData.current[id]) < 0)
             return false;
     }
     return true;
