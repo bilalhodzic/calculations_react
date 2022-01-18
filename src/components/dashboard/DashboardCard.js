@@ -43,7 +43,7 @@ const useStyles = makeStyles((theme) => ({
     },
     menuItem: {
         width: "17vw",
-        height: "30vh",
+        height: "25vh",
         boxShadow: "0px 6px 14px 3px rgba(186, 186, 186, 0.28)",
         borderRadius: 15,
         fontSize: 15,
@@ -62,7 +62,7 @@ const useStyles = makeStyles((theme) => ({
     menuIcon: {
         marginLeft: "auto",
         marginRight: "auto",
-        marginTop: "17%",
+        marginTop: "5%",
         paddingTop: theme.spacing(3),
         width: "15vw",
         height: "10vh",

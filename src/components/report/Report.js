@@ -11,7 +11,6 @@ import Scrollbars from "react-custom-scrollbars";
 
 export default function Report(props) {
     React.useEffect(() => {
-        //call function while first time render
     }, []);
 
     const classes = useStyles();

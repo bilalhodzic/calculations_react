@@ -20,13 +20,14 @@ import Step4 from "./Step4";
 import Step5 from "./Step5";
 import Step6 from "./Step6";
 import BetweenStep from "./BetweenStep";
-import TaxQuestion from "./TaxQuestion";
 
 import { newCalculation } from "../../helper/externalCalls";
 import types from "../../helper/data.json";
+import ValidateData from "../../helper/ValidateData";
 import useWindowDimensions from "../windowDimension";
 import { useLocation } from "react-router-dom/cjs/react-router-dom.min";
 import BetweenStepRebuilding from "./BetweenStepRebuilding";
+import { Alert } from "@material-ui/lab";
 
 const CustomConnector = withStyles({
     alternativeLabel: {
@@ -63,6 +64,8 @@ export default function CustomStepper(props) {
     });
     const [calculation, setCalculation] = React.useState({});
     const { t, i18n } = useTranslation();
+
+    const [errorMessage, setErrorMessage] = React.useState("");
 
     React.useEffect(() => {
         props.emptySteps();
@@ -145,6 +148,12 @@ export default function CustomStepper(props) {
     };
 
     const handleNext = () => {
+        const validate = ValidateData(activeStep, betweenStepsData);
+        if(!validate.hideError){
+            console.log("Ovdje");
+            setErrorMessage(validate.message);
+            return;
+        }
         console.log(betweenStepsData.current);
         const betweenStepsCategories = [
             types.category.lager,
@@ -181,6 +190,9 @@ export default function CustomStepper(props) {
                 if(!betweenStepsData.current.type){
                     history.push("/add");
                 }
+                if(errorMessage !== ValidateData(activeStep, 0).message){
+                    setErrorMessage("");
+                }
                 return (
                     <Step1
                         handleChange={handleChange}
@@ -189,6 +201,9 @@ export default function CustomStepper(props) {
                     />
                 );
             case 1:
+                if(errorMessage !== ValidateData(activeStep, 0).message){
+                    setErrorMessage("");
+                }
                 if (betweenStepsData.current.type === types.types.rebuilding.id) {
                     return (
                         <BetweenStepRebuilding
@@ -204,18 +219,8 @@ export default function CustomStepper(props) {
                     />
                 );
             case 2:
-                const betweenStepsCategories = [
-                    types.category.lager,
-                    types.category.ombyggnad,
-                    types.category.handel,
-                    types.category.kontor
-                ];
-                if (!betweenStepsData.current["category"]) {
-                    setActiveStep(0);
-                    return "nothing";
-                }else if(betweenStepsCategories.includes(betweenStepsData.current["category"])){
-                    setActiveStep(1);
-                    return "nothing";
+                if(errorMessage !== ValidateData(activeStep, 0).message){
+                    setErrorMessage("");
                 }
                 return (
                     <Step2
@@ -224,12 +229,8 @@ export default function CustomStepper(props) {
                     />
                 );
             case 3:
-                if (
-                    !betweenStepsData.current["name"] ||
-                    betweenStepsData.current["name"].trim() === ""
-                ) {
-                    setActiveStep(2);
-                    return "nothing";
+                if(errorMessage !== ValidateData(activeStep, 0).message){
+                    setErrorMessage("");
                 }
                 return (
                     <Step3
@@ -238,6 +239,9 @@ export default function CustomStepper(props) {
                     />
                 );
             case 4:
+                if(errorMessage !== ValidateData(activeStep, 0).message){
+                    setErrorMessage("");
+                }
                 return (
                     <Step4
                         data={betweenStepsData.current}
@@ -245,9 +249,8 @@ export default function CustomStepper(props) {
                     />
                 );
             case 5:
-                if (!betweenStepsData.current["location"]) {
-                    setActiveStep(4);
-                    return "nothing";
+                if(errorMessage !== ValidateData(activeStep, 0).message){
+                    setErrorMessage("");
                 }
                 return (
                     <Step5
@@ -256,12 +259,8 @@ export default function CustomStepper(props) {
                     />
                 );
             case 6:
-                if (
-                    !betweenStepsData.current["internalStandard"] ||
-                    !betweenStepsData.current["externalStandard"]
-                ) {
-                    setActiveStep(5);
-                    return "nothing";
+                if(errorMessage !== ValidateData(activeStep, 0).message){
+                    setErrorMessage("");
                 }
                 return (
                     <Step6
@@ -270,9 +269,8 @@ export default function CustomStepper(props) {
                     />
                 );
             case 7:
-                if (!betweenStepsData.current["startDate"]) {
-                    setActiveStep(6);
-                    return "nothing";
+                if(errorMessage !== ValidateData(activeStep, 0).message){
+                    setErrorMessage("");
                 }
                 console.log(
                     `Data: ${JSON.stringify(betweenStepsData.current)}`
@@ -318,6 +316,9 @@ export default function CustomStepper(props) {
                     </Step>
                 ))}
             </Stepper>
+            {errorMessage !== '' && <Alert severity="error">
+                {errorMessage}
+            </Alert>}
             <div className={classes.stepContent}>
                 <SwitchStep />
             </div>

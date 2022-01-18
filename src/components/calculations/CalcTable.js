@@ -39,10 +39,19 @@ export default function Calctable(props) {
     const [openDialog, setOpenDialog] = React.useState(false);
     const { width } = useWindowDimensions();
     const [isLoading, setIsLoading] = React.useState(true);
+    const [isHidden, setIsHidden] = React.useState(false);
     const { t, i18n } = useTranslation();
 
     const [data, setData] = React.useState(props.data);
     const history = useHistory();
+
+    React.useEffect(() => {
+        if(!isHidden && width < 600){
+            setIsHidden(true)
+        }else if(isHidden && width >= 600){
+            setIsHidden(false);
+        }
+    }, [width]);
 
     React.useEffect(() => {
         setIsLoading(props.data.length === 0);
@@ -58,7 +67,7 @@ export default function Calctable(props) {
             headerAlign: "center",
             align: "center",
 
-            width: width * 0.1,
+            flex: 0.8,
             renderCell: (params) => (
                 <Typography style={{marginLeft: "20%", marginRight: "auto"}}>
                     {params.value}
@@ -69,13 +78,13 @@ export default function Calctable(props) {
             field: "Date",
             headerName: <Typography className={classes.titleLeft}>{t('Date.1')}</Typography>,
             type: "date",
-            width: width * 0.095,
+            flex: 0.5,
             headerClassName: "headerClass",
             headerAlign: "center",
             align: "center",
-            hide: width < 600 ? true : false,
+            hide: isHidden,
             renderCell: (params) => (
-                <Typography style={{marginLeft: "20%", marginRight: "auto"}}>
+                <Typography style={{marginLeft: "30%", marginRight: "auto"}}>
                     {params.value}
                 </Typography>
             )
@@ -86,9 +95,9 @@ export default function Calctable(props) {
             headerAlign: "center",
             headerClassName: "headerClass",
             align: "center",
-            width: width * 0.14,
+            flex: 0.8,
             renderCell: (params) => (
-              <ColoredBox style={{marginLeft: "20%", marginRight: "auto"}}
+              <ColoredBox style={{marginLeft: "25%", marginRight: "auto"}}
                   text={<Typography>{types.by_id[params.value].value}</Typography>}
                   //color={params.value.color}
                   //backgroundcolor={types.by_id[params.value].color}
@@ -97,14 +106,12 @@ export default function Calctable(props) {
         },
         {
             field: "Type",
-            headerName: <Typography className={classes.titleRight} style={{marginRight: "30%"}}>{t('Type.1')}</Typography>,
+            headerName: <Typography className={classes.titleRight} style={{marginRight: "20%"}}>{t('Type.1')}</Typography>,
             headerClassName: "headerClass",
             headerAlign: "center",
             cellClassName: "typeClass",
-            hide: width < 600 ? true : false,
-
             align: "center",
-            width: width * 0.13,
+            flex: 0.8,
             sortComparator: (v1, v2, params1) => v1.text > v2.text,
             filterable: false,
             renderCell: (params) => (
@@ -118,11 +125,11 @@ export default function Calctable(props) {
         {
             field: "Area",
             headerName: <Typography className={classes.titleRight}>{t('Area.1')}</Typography>,
-            width: width * 0.13,
+            flex: 0.6,
             headerClassName: "headerClass",
             headerAlign: "center",
             align: "center",
-            hide: width < 600 ? true : false,
+            hide: isHidden,
             renderCell: (params) => (
                 <Typography
                     style={{marginLeft: "auto", marginRight: "20%"}}
@@ -134,7 +141,8 @@ export default function Calctable(props) {
         {
             field: "Actions",
             headerName: " ",
-            width: width * 0.08,
+            flex: 1,
+            minWidth: 100,
             headerClassName: "headerClass",
             headerAlign: "center",
             align: "center",
@@ -143,16 +151,16 @@ export default function Calctable(props) {
                     display={"flex"}
                     alignItems={"center"}
                     justifyContent={"center"}
-                    style={{ marginLeft: "auto", marginRight: "auto" }}
+                    style={{ marginRight: "auto", zIndex: 10 }}
                 >
-                    <IconButton style={{ padding: 8 }}>
-                        <InfoIcon />
-                    </IconButton>
                     <IconButton
-                        style={{ padding: 8 }}
+                        style={{ padding: 8, zIndex: 10 }}
                         onClick={handleDeleteClick}
                     >
                         <DeleteIcon />
+                    </IconButton>
+                    <IconButton style={{ padding: 8 }}>
+                        <InfoIcon />
                     </IconButton>
                 </Box>
             ),
@@ -261,6 +269,7 @@ const useStyles = makeStyles((theme) => ({
         "& .MuiDataGrid-cell": {
             borderBottom: "none",
         },
+        width: "100%"
     },
     headerClass: {
         fontWeight: 500,
@@ -315,5 +324,8 @@ const useStyles = makeStyles((theme) => ({
         position: "absolute",
         right: 0,
         marginRight: "25%"
+    },
+    column: {
+        width: "10%"
     }
 }));

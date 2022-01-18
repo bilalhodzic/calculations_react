@@ -82,7 +82,7 @@ const useStyles = makeStyles((theme) => ({
         color: "black",
         fontWeight: 500,
         position: "absolute",
-        bottom: "-90vh",
+        bottom: "-80vh",
         top: "-5vh",
         left: 0,
         right: 0,
