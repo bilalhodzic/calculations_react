@@ -50,6 +50,7 @@ export default function Step2(props) {
                             onChange={(e) => {
                                 props.handleChange("name", e.target.value);
                             }}
+                            className={classes.input}
                         ></TextField>
                     </Box>
                     <Box className={classes.paperBox}>
@@ -67,6 +68,7 @@ export default function Step2(props) {
                                     e.target.value
                                 );
                             }}
+                            className={classes.input}
                         ></TextField>
                     </Box>
                     <Box className={classes.paperBox}>
@@ -84,6 +86,7 @@ export default function Step2(props) {
                                     e.target.value
                                 );
                             }}
+                            className={classes.input}
                         ></TextField>
                     </Box>
                 </Box>
@@ -94,7 +97,8 @@ export default function Step2(props) {
                         </InputLabel>
                         <TextField
                             key={4}
-                            placeholder={t("Date for drawings and documents.1")}
+                            type="date"
+                            onKeyDown={(e) => e.preventDefault()}
                             variant="outlined"
                             defaultValue={props.data.architectDate || ""}
                             onChange={(e) => {
@@ -103,6 +107,7 @@ export default function Step2(props) {
                                     e.target.value
                                 );
                             }}
+                            className={classes.input}
                         ></TextField>
                     </Box>
                     <Box className={classes.paperBox}></Box>
@@ -150,4 +155,7 @@ const useStyles = makeStyles((theme) => ({
             marginTop: theme.spacing(-10),
         },
     },
+    input: {
+        width: "100%"
+    }
 }));

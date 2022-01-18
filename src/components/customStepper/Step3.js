@@ -39,6 +39,7 @@ export default function Step3(props) {
                 <TextField
                     size="small"
                     type="number"
+                    className={classes.input}
                     placeholder={props.data[entry.id] || (!entry.isRight && entry.placeholder)}
                     variant="outlined"
                     value={itemValues[index]}
@@ -154,5 +155,18 @@ const useStyles = makeStyles((theme) => ({
         [theme.breakpoints.down("xs")]:{
             paddingBottom: theme.spacing(8)
         }
-    }
+    },
+    input: {
+        '& input[type=number]': {
+            '-moz-appearance': 'textfield'
+        },
+        '& input[type=number]::-webkit-outer-spin-button': {
+            '-webkit-appearance': 'none',
+            margin: 0
+        },
+        '& input[type=number]::-webkit-inner-spin-button': {
+            '-webkit-appearance': 'none',
+            margin: 0
+        }
+    },
 }));

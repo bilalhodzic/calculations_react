@@ -38,7 +38,7 @@ export default function Dashboard() {
 
     const latestCalculationItems = latestCalc.map((el, index) => {
         return (
-            <DashboardCard name={el.name} icon={icons[el.category]} price={el.totalInclVat} category={types.by_id[el.category].value} handleCardClick={handleCardClick} value={index} ></DashboardCard>
+            <DashboardCard name={el.name} icon={icons[el.category] || '?'} price={el.totalInclVat} category={types.by_id[el.category].value} handleCardClick={handleCardClick} value={index} ></DashboardCard>
         );
     });
     const rows = [];
