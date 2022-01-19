@@ -42,6 +42,10 @@ export default function Step5(props) {
     const [externalStandard, setExternalStandard] = React.useState(props.data.externalStandard || 0);
     const [internalStandard, setInternalStandard] = React.useState(props.data.internalStandard || 0);
 
+    if(props.data.type === 2){
+        props.handleChange("externalStandard", 1);
+    }
+
     const paperItems = standards.map((e, index) => {
         return (
             <Box
@@ -107,6 +111,7 @@ export default function Step5(props) {
                             {t("Indoor standard.1")}
                         </Button>
                         <Button
+                            disabled={props.data.type === 2}
                             className={`${classes.button} ${
                                 !indoorSelected && classes.selectedButton
                             }`}

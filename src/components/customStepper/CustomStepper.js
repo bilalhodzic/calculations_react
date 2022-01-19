@@ -190,7 +190,7 @@ export default function CustomStepper(props) {
                 if(!betweenStepsData.current.type){
                     history.push("/add");
                 }
-                if(errorMessage !== ValidateData(activeStep, 0).message){
+                if(errorMessage !== "" && errorMessage !== ValidateData(activeStep, 0).message){
                     setErrorMessage("");
                 }
                 return (
@@ -201,7 +201,7 @@ export default function CustomStepper(props) {
                     />
                 );
             case 1:
-                if(errorMessage !== ValidateData(activeStep, 0).message){
+                if(errorMessage !== "" && errorMessage !== ValidateData(activeStep, 0).message){
                     setErrorMessage("");
                 }
                 if (betweenStepsData.current.type === types.types.rebuilding.id) {
@@ -219,7 +219,7 @@ export default function CustomStepper(props) {
                     />
                 );
             case 2:
-                if(errorMessage !== ValidateData(activeStep, 0).message){
+                if(errorMessage !== "" && errorMessage !== ValidateData(activeStep, 0).message){
                     setErrorMessage("");
                 }
                 return (
@@ -229,7 +229,7 @@ export default function CustomStepper(props) {
                     />
                 );
             case 3:
-                if(errorMessage !== ValidateData(activeStep, 0).message){
+                if(errorMessage !== "" && errorMessage !== ValidateData(activeStep, 0).message){
                     setErrorMessage("");
                 }
                 return (
@@ -239,7 +239,7 @@ export default function CustomStepper(props) {
                     />
                 );
             case 4:
-                if(errorMessage !== ValidateData(activeStep, 0).message){
+                if(errorMessage !== "" && errorMessage !== ValidateData(activeStep, 0).message){
                     setErrorMessage("");
                 }
                 return (
@@ -249,7 +249,7 @@ export default function CustomStepper(props) {
                     />
                 );
             case 5:
-                if(errorMessage !== ValidateData(activeStep, 0).message){
+                if(errorMessage !== "" && errorMessage !== ValidateData(activeStep, 0).message){
                     setErrorMessage("");
                 }
                 return (
@@ -259,7 +259,7 @@ export default function CustomStepper(props) {
                     />
                 );
             case 6:
-                if(errorMessage !== ValidateData(activeStep, 0).message){
+                if(errorMessage !== "" && errorMessage !== ValidateData(activeStep, 0).message){
                     setErrorMessage("");
                 }
                 return (
@@ -269,7 +269,7 @@ export default function CustomStepper(props) {
                     />
                 );
             case 7:
-                if(errorMessage !== ValidateData(activeStep, 0).message){
+                if(errorMessage !== "" && errorMessage !== ValidateData(activeStep, 0).message){
                     setErrorMessage("");
                 }
                 console.log(

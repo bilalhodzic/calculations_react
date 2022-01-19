@@ -31,7 +31,7 @@ export default function ValidateData(activeStep, betweenStepsData){
             };
         case 5:
             return {
-                hideError: betweenStepsData.current && betweenStepsData.current.internalStandard || betweenStepsData.current.externalStandard,
+                hideError: betweenStepsData.current && betweenStepsData.current.internalStandard && betweenStepsData.current.externalStandard,
                 message: "Please choose both the internal and external standard"
             };
         case 6:

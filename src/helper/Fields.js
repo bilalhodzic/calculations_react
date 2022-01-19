@@ -19,7 +19,7 @@ export function getFieldsNewBuilding(type){
                 },
                 {
                     label: "Antal RWC",
-                    id: "rwc",
+                    id: "bathNumber",
                     placeholder: "0",
                 },
                 {
@@ -46,14 +46,14 @@ export function getFieldsNewBuilding(type){
             return [
                 {
                     label: "Garageyta",
-                    id: "garageyta",
+                    id: "loa",
                     placeholder: "m",
                     superscript: 2,
                     isRight: true
                 },
                 {
                     label: "Antal RWC",
-                    id: "rwc",
+                    id: "bathNumber",
                     placeholder: "0"
                 },
                 {
@@ -92,7 +92,7 @@ export function getFieldsNewBuilding(type){
                 },
                 {
                     label: "Antal RWC",
-                    id: "rwc",
+                    id: "bathNumber",
                     placeholder: "0"
                 },
                 {
@@ -139,7 +139,7 @@ export function getFieldsNewBuilding(type){
                 },
                 {
                     label: "Antal badrum",
-                    id: "badrum",
+                    id: "bathNumber",
                     placeholder: "0"
                 },
                 {
@@ -277,7 +277,7 @@ export function getFieldsNewBuilding(type){
                 },
                 {
                     label: "Antal badrum",
-                    id: "badrum",
+                    id: "bathNumber",
                     placeholder: "0"
                 },
                 {
@@ -330,7 +330,7 @@ export function getFieldsNewBuilding(type){
                 },
                 {
                     label: "Antal badrum",
-                    id: "badrum",
+                    id: "bathNumber",
                     placeholder: "0"
                 },
                 {
@@ -365,7 +365,7 @@ export function getFieldsNewBuilding(type){
 
 export function getFieldsRebuilding(type){
     switch(type){
-        case types.rebuildingType.endast:
+        case types.category.apartment1:
             return [
                 {
                     label: "Antal badrum",
@@ -379,7 +379,7 @@ export function getFieldsRebuilding(type){
                 },
                 {
                     label: "Antal lagenhetter",
-                    id: "lagenhetter",
+                    id: "apartmentNumber",
                     placeholder: 0
                 },
                 {
@@ -391,8 +391,8 @@ export function getFieldsRebuilding(type){
                     info: "Avser allmänna utrymmen och där byter man alltid \nstammar/ledningar, pris per m2 mörk BTA är  indikerad i kalkylen"
                 },
             ];
-        case types.rebuildingType.byte:
-        case types.rebuildingType.indvadigt:
+        case types.category.apartment2:
+        case types.category.apartment3:
             return [
                 {
                     label: "Boarea",
@@ -408,7 +408,7 @@ export function getFieldsRebuilding(type){
                 },
                 {
                     label: "Antal lagenhetter",
-                    id: "lagenhetter",
+                    id: "apartmentNumber",
                     placeholder: 0
                 },
                 {
@@ -435,13 +435,15 @@ export function getFieldsRebuilding(type){
                     superscript: 2
                 },
             ];
-        case types.rebuildingType.upprustning:
-        case types.rebuildingType.helt:
-        case types.rebuildingType.allt:
-        case types.rebuildingType.ytskikt:
-        case types.rebuildingType.ytskikt_helt:
-        case types.rebuildingType.arbete:
-        case types.rebuildingType.delvis:
+        case types.category.apartment4:
+        case types.category.office1:
+        case types.category.office2:
+        case types.category.office3:
+        case types.category.office4:
+        case types.category.trade1:
+        case types.category.trade2:
+        case types.category.trade3:
+        case types.category.trade4:
             return [
                 {
                     label: "LOA",
@@ -451,12 +453,12 @@ export function getFieldsRebuilding(type){
                 },
                 {
                     label: "Antal WC/Dusch",
-                    id: "dusch",
+                    id: "bathNumber",
                     placeholder: 0
                 },
                 {
                     label: "Antal WC/RWC",
-                    id: "rwc",
+                    id: "toiletNumber",
                     placeholder: 0
                 },
                 {

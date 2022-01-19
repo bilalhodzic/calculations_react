@@ -6,6 +6,7 @@ import {
     Box,
     Modal,
     Input,
+    CircularProgress,
 } from "@material-ui/core";
 import { useHistory } from "react-router-dom";
 import { makeStyles } from "@material-ui/core/styles";
@@ -19,6 +20,7 @@ export default function Login() {
     const [username, setUsername] = React.useState("");
     const [password, setPassword] = React.useState("");
     const [isInvalidLogin, setIsInvalidLogin] = React.useState(false);
+    const [isLoading, setIsLoading] = React.useState(false);
     const { t, i18n } = useTranslation();
 
     const history = useHistory();
@@ -100,15 +102,19 @@ export default function Login() {
                         className={classes.button2}
                         onClick={async () => {
                             setIsInvalidLogin(false);
+                            setIsLoading(true);
                             if (!(await login(username, password, history))){
                                 setIsInvalidLogin(true);
-                                console.log(isInvalidLogin);
                             }
                             else setIsInvalidLogin(false);
+                            setIsLoading(false);
                         }}
                     >
                         {t('Log in.1')}
                     </Button>
+                    <Box className={classes.loading}>
+                        {isLoading && <CircularProgress/>}
+                    </Box>
                 </Box>
             </Modal>
         </Container>
@@ -140,7 +146,6 @@ async function login(username, password, history) {
             history.push({ pathname: "/home", state: { token: response.data.data } });
             return true;
         } else {
-            console.log("Invalid login data");
             return false;
         }
     } catch (err) {
@@ -290,5 +295,12 @@ const useStyles = makeStyles((theme) => ({
       marginTop: theme.spacing(-2),
       textAlign: "start",
       marginLeft: theme.spacing(8)
+    },
+    loading: {
+        width: "100%",
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
+        marginTop: theme.spacing(2)
     }
 }));
