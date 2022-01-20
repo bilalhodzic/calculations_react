@@ -21,28 +21,42 @@ export default function Dashboard() {
 
     const location = useLocation();
 
-    if(!location.state || !location.state.token){
+    if (!location.state || !location.state.token) {
         history.push("/");
     }
     const token = location.state.token;
 
     React.useEffect(async () => {
-        setLatestCalc((await getLatestCalculations(token)).data);
+        try {
+            setLatestCalc((await getLatestCalculations(token)).data);
+        } catch (err) {
+            setIsLoading(false);
+        }
         setIsLoading(false);
     }, []);
 
     const handleCardClick = (index) => {
         console.log(index);
-        history.push({ pathname: "/report", state: { data: latestCalc[index], token: token } });
+        history.push({
+            pathname: "/report",
+            state: { data: latestCalc[index], token: token },
+        });
     };
 
     const latestCalculationItems = latestCalc.map((el, index) => {
         return (
-            <DashboardCard name={el.name} icon={icons[el.category] || '?'} price={el.totalInclVat} category={types.by_id[el.category].value} handleCardClick={handleCardClick} value={index} ></DashboardCard>
+            <DashboardCard
+                name={el.name}
+                icon={icons[el.category] || "?"}
+                price={el.totalInclVat}
+                category={types.by_id[el.category].value}
+                handleCardClick={handleCardClick}
+                value={index}
+            ></DashboardCard>
         );
     });
     const rows = [];
-    for (let i = 0; i < latestCalculationItems.length; i+=3) {
+    for (let i = 0; i < latestCalculationItems.length; i += 3) {
         rows.push(
             <Box className={classes.root}>
                 {latestCalculationItems[i]}
@@ -57,13 +71,21 @@ export default function Dashboard() {
     return (
         <Layout token={token}>
             <Paper elevation={5} className={classes.paper}>
-                {t('Latest calculations.1')}
+                {t("Latest calculations.1")}
                 <Divider className={classes.divider} />
                 {latestCalc.length != 0 ? (
                     rows.map((e) => e)
-                ) :(!isLoading ? (
-                    <NoCalculations />
-                ) : <CircularProgress style={{marginLeft: "50%", marginRight: "50%", marginTop: "25%"}} />)}
+                ) : !isLoading ? (
+                    <NoCalculations token={token} />
+                ) : (
+                    <CircularProgress
+                        style={{
+                            marginLeft: "50%",
+                            marginRight: "50%",
+                            marginTop: "25%",
+                        }}
+                    />
+                )}
             </Paper>
         </Layout>
     );
@@ -89,7 +111,7 @@ const useStyles = makeStyles((theme) => ({
         [theme.breakpoints.down("xs")]: {
             margin: theme.spacing(1),
             marginBottom: -10,
-            bottom: "-103vh"
+            bottom: "-103vh",
         },
     },
     divider: {
@@ -118,8 +140,8 @@ const useStyles = makeStyles((theme) => ({
         margin: theme.spacing(2),
         [theme.breakpoints.down("xs")]: {
             width: "19vh",
-            height: "28vh"
-        }
+            height: "28vh",
+        },
     },
     menuIcon: {
         marginLeft: "auto",
@@ -132,7 +154,7 @@ const useStyles = makeStyles((theme) => ({
     menuName: {
         fontWeight: 600,
         margin: 8,
-        fontSize: 18
+        fontSize: 18,
     },
     root: {
         display: "flex",
@@ -148,7 +170,7 @@ const useStyles = makeStyles((theme) => ({
     icon: {
         transform: "scale(2)",
         [theme.breakpoints.down("xs")]: {
-            transform: "scale(1)"
-        }
+            transform: "scale(1)",
+        },
     },
 }));

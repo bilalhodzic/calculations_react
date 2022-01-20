@@ -41,7 +41,7 @@ export default function Calculations(props) {
 
   const getCalculationsForPage = async (pageNumber, categoryNumber, typeNumber) => {
     const axiosOptions = {
-      url: `${config.baseUrl}/calculations/getcalculations/filter/${searchInput !== '' ? searchInput : '%20'}/${pageNumber}/${categoryNumber}/${typeNumber}`,
+      url: `${config.baseUrl}/calculations/getcalculations/filter/${searchInput !== '' ? searchInput : '"*"'}/${pageNumber}/${categoryNumber}/${typeNumber}`,
       headers: {
         'Authorization': `Bearer ${token}`
       },
@@ -51,6 +51,18 @@ export default function Calculations(props) {
     const response = await axios(axiosOptions);
     return response.data;
   }
+
+  const deleteCalculation = async (id) => {
+    const axiosOptions = {
+      url: `${config.baseUrl}/calculations/${id}`,
+      headers: {
+        'Authorization': `Bearer ${token}`
+      },
+      method: "DELETE"
+    };
+    const response = await axios(axiosOptions);
+    setTableData(helper.transformCalculations((await getCalculationsForPage(1, selectValueCategory, selectValueType)).data));
+  };
 
   const handleSelectTypeChange = (e) => {
     setSelectValueType(e.target.value);
@@ -134,7 +146,7 @@ export default function Calculations(props) {
         </Button>
       </Paper>
       <Paper elevation={6} className={classes.paper}>
-        <CalcTable data={tableData} downloadMoreData={downloadMoreData} token={token} />
+        <CalcTable data={tableData} downloadMoreData={downloadMoreData} token={token} deleteCalculation={deleteCalculation}/>
       </Paper>
     </Layout>
   );

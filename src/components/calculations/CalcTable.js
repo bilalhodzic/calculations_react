@@ -40,6 +40,7 @@ export default function Calctable(props) {
     const { width } = useWindowDimensions();
     const [isLoading, setIsLoading] = React.useState(true);
     const [isHidden, setIsHidden] = React.useState(false);
+    const [selectedCalculation, setSelectedCalculation] = React.useState({});
     const { t, i18n } = useTranslation();
 
     const [data, setData] = React.useState(props.data);
@@ -175,7 +176,8 @@ export default function Calctable(props) {
         if (!openDialog) {
             setOpenDialog(true);
         } else {
-            //need to implement delete item..
+            //console.log(selectedCalculation.id);
+            props.deleteCalculation(selectedCalculation.id);
             console.log("deleting");
             setOpenDialog(false);
         }
@@ -213,6 +215,8 @@ export default function Calctable(props) {
                 onCellClick={(e) => {
                     if(e.field !== 'Actions'){
                         handleRowClick(e);
+                    }else{
+                        setSelectedCalculation(e.row);
                     }
                 }}
             />

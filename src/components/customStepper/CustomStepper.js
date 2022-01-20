@@ -174,13 +174,12 @@ export default function CustomStepper(props) {
     };
 
     const handleBack = () => {
+        console.log(betweenStepsData.current.category);
         setActiveStep(
             (prevActiveStep) =>
                 prevActiveStep -
                 1 -
-                (prevActiveStep == 2 &&
-                    betweenStepsData.current.category.id < 17 &&
-                    1)
+                (prevActiveStep == 2 && 1)
         );
     };
 
