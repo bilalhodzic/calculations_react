@@ -56,6 +56,9 @@ export default function Step6(props) {
                                 if(value < 0) value = 0;
                                 setYearsValue(value);
 
+                                if(e.target.value === ''){
+                                    return;
+                                }
                                 props.handleChange("years", value);
                             }}
                         ></TextField>
@@ -75,7 +78,10 @@ export default function Step6(props) {
                                 if(value > 11) value = 11;
                                 setMonthsValue(value);
 
-                                props.handleChange("months", e.target.value);
+                                if(e.target.value === ''){
+                                    return;
+                                }
+                                props.handleChange("months", value);
                             }}
                         ></TextField>
                     </Box>

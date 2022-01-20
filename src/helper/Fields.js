@@ -75,17 +75,12 @@ export function getFieldsNewBuilding(type){
                     superscript: 2,
                     isRight: true
                 },
-                {
-                    label: "Antal garageplatser",
-                    id: "garageplatser",
-                    placeholder: "0"
-                },
             ];
         case types.category.idrottshall:
             return [
                 {
                     label: "Yta för idrottshall inklusive omklädningsrum",
-                    id: "yta",
+                    id: "boa",
                     placeholder: "m",
                     superscript: 2,
                     isRight: true
@@ -161,11 +156,6 @@ export function getFieldsNewBuilding(type){
                     superscript: 2,
                     isRight: true
                 },
-                {
-                    label: "Antal garageplatser",
-                    id: "garageplatser",
-                    placeholder: "0"
-                },
             ];
         case types.category.radhus:
         case types.category.villor:
@@ -209,7 +199,7 @@ export function getFieldsNewBuilding(type){
             return [
                 {
                     label: "Yta för vårdboendet",
-                    id: "kvadratmeter",
+                    id: "boa",
                     placeholder: "m",
                     superscript: 2,
                     isRight: true
@@ -239,11 +229,6 @@ export function getFieldsNewBuilding(type){
                 {
                     label: "Antal badrum",
                     id: "bathNumber",
-                    placeholder: "0"
-                },
-                {
-                    label: "Antal garageplatser",
-                    id: "garageplatser",
                     placeholder: "0"
                 },
                 {
@@ -299,11 +284,6 @@ export function getFieldsNewBuilding(type){
                     superscript: 2,
                     isRight: true
                 },
-                {
-                    label: "Antal garageplatser",
-                    id: "garageplatser",
-                    placeholder: "0"
-                },
             ];
         case types.category.hotell:
             return [
@@ -325,7 +305,7 @@ export function getFieldsNewBuilding(type){
                 },
                 {
                     label: "Antal uthyrningsrum",
-                    id: "uthyrningsrum",
+                    id: "apartmentNumber",
                     placeholder: "0"
                 },
                 {
@@ -351,11 +331,6 @@ export function getFieldsNewBuilding(type){
                     placeholder: "m",
                     superscript: 2,
                     isRight: true
-                },
-                {
-                    label: "Antal garageplatser",
-                    id: "garageplatser",
-                    placeholder: "0"
                 },
             ];
         default:

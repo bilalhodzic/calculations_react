@@ -1,3 +1,4 @@
+import React from "react";
 import {
     Box,
     createMuiTheme,
@@ -24,6 +25,7 @@ const formLabelsTheme = createMuiTheme({
 export default function Step2(props) {
     const classes = useStyles();
     const { t, i18n } = useTranslation();
+    const [projectNumber, setProjectNumber] = React.useState(props.data.projectNumber || 0);
 
     const inputLabelProps = {
         fontSize: 16,
@@ -59,13 +61,24 @@ export default function Step2(props) {
                         </InputLabel>
                         <TextField
                             key={2}
+                            type="number"
                             placeholder={t("Project number.1")}
                             variant="outlined"
-                            defaultValue={props.data.projectNumber || ""}
+                            value={projectNumber}
                             onChange={(e) => {
+                                let value = parseInt(e.target.value);
+
+                                if(value < 0){
+                                    value = 0;
+                                }
+
+                                setProjectNumber(value);
+                                if(e.target.value === ''){
+                                    return;
+                                }
                                 props.handleChange(
                                     "projectNumber",
-                                    e.target.value
+                                    value
                                 );
                             }}
                             className={classes.input}
@@ -156,6 +169,17 @@ const useStyles = makeStyles((theme) => ({
         },
     },
     input: {
-        width: "100%"
+        width: "100%",
+        '& input[type=number]': {
+            '-moz-appearance': 'textfield'
+        },
+        '& input[type=number]::-webkit-outer-spin-button': {
+            '-webkit-appearance': 'none',
+            margin: 0
+        },
+        '& input[type=number]::-webkit-inner-spin-button': {
+            '-webkit-appearance': 'none',
+            margin: 0
+        }
     }
 }));

@@ -39,11 +39,11 @@ export default function Report(props) {
                     <Typography
                         style={{ marginLeft: "auto", marginRight: "auto" }}
                     >
-                        Dummy
+                        {calculationData.name}
                     </Typography>
-                    <Button className={classes.headerButton} size="large">
+                    {false && <Button className={classes.headerButton} size="large">
                         Export to PDF
-                    </Button>
+                    </Button>}
                 </Box>
                 <Divider />
                 <Scrollbars
@@ -99,7 +99,6 @@ const useStyles = makeStyles((theme) => ({
     headerText: {
         fontSize: 26,
         fontWeight: 500,
-        width: "25%",
         marginLeft: theme.spacing(5),
         [theme.breakpoints.down("xs")]: {
             fontSize: 22

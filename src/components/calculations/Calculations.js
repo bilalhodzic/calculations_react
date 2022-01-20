@@ -140,16 +140,6 @@ export default function Calculations(props) {
   );
 }
 
-async function getCalculationsWithName(name){
-  const axiosOptions = {
-    url: `${config.baseUrl}/calculations/getname/${name}`,
-    method: "GET",
-  };
-
-  const response = await axios(axiosOptions);
-  return response.data;
-}
-
 //add new styles here
 const useStyles = makeStyles((theme) => ({
   paper: {

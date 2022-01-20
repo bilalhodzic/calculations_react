@@ -108,10 +108,9 @@ export default function Step5(props) {
                                 setIndoorSelected(true);
                             }}
                         >
-                            {t("Indoor standard.1")}
+                            {props.data.type === 2 ? "Standard" : t("Indoor standard.1")}
                         </Button>
-                        <Button
-                            disabled={props.data.type === 2}
+                        { props.data.type !== 2 && <Button
                             className={`${classes.button} ${
                                 !indoorSelected && classes.selectedButton
                             }`}
@@ -120,7 +119,7 @@ export default function Step5(props) {
                             }}
                         >
                             {t("Outdoor standard.1")}
-                        </Button>
+                        </Button>}
                     </Box>
                 </Box>
                 {rows.map((e) => e)}

@@ -52,18 +52,19 @@ const dataLeft = [
         meter: true,
     },
     {
-        label: "BTA m2",
-        property: "",
+        label: "Light BTA m2",
+        property: "lightBta",
         meter: true,
     },
     {
-        label: "BTA m2",
-        property: "",
+        label: "Dark BTA m2",
+        property: "darkBta",
         meter: true,
     },
     {
         label: "Total BTA m2",
-        property: "",
+        property: "lightBta",
+        property2: "darkBta",
         margin: true,
         meter: true,
     },
@@ -78,18 +79,15 @@ const dataRight = [
     {
         label: "Number of apartments",
         property: "apartmentNumber",
-        meter: true,
     },
     {
         label: "Number of wcs/showers/baths",
         property: "bathNumber",
-        meter: true,
     },
     {
         label: "Number of toilets",
         property: "toiletNumber",
         margin: true,
-        meter: true,
     },
 ];
 
@@ -148,7 +146,7 @@ function setData(data, calculationData, padding, classes) {
                     </Typography>
                     <Typography
                         className={classes.value}
-                        style={{marginLeft: 10}}
+                        style={{ marginLeft: 10 }}
                     >
                         {calculationData[entry.property]} years and{" "}
                         {calculationData[entry.property2]} months
@@ -161,7 +159,9 @@ function setData(data, calculationData, padding, classes) {
             calculationData[entry.property] ||
             calculationData[entry.property] === false
                 ? entry.date
-                    ? new Date(calculationData[entry.property]).toLocaleDateString("en-GB")
+                    ? new Date(
+                          calculationData[entry.property]
+                      ).toLocaleDateString("en-GB")
                     : calculationData[entry.property].toLocaleString()
                 : "/";
         items.push(
@@ -176,7 +176,7 @@ function setData(data, calculationData, padding, classes) {
                 </Typography>
                 <Typography
                     className={classes.value}
-                    style={{marginLeft: 10}}
+                    style={{ marginLeft: 10 }}
                 >
                     {value} {entry.meter && value !== "/" && "m2"}
                 </Typography>
@@ -189,12 +189,16 @@ function setData(data, calculationData, padding, classes) {
 function getCalculatedData(data, calculationData, classes) {
     const items = [];
     for (const entry of data) {
-        const value = entry.standard
-            ? types.standard[calculationData[entry.property]]
-            : calculationData[entry.property] ||
-              calculationData[entry.property] === false
-            ? calculationData[entry.property].toLocaleString()
-            : "/";
+        const value =
+            calculationData[entry.property] ||
+            calculationData[entry.property] === false
+                ? calculationData[entry.property2]
+                    ? (
+                          calculationData[entry.property] +
+                          calculationData[entry.property2]
+                      ).toLocaleString()
+                    : calculationData[entry.property].toLocaleString()
+                : "/";
         items.push(
             <Box display={"flex"} flexDirection={"row"}>
                 <Box style={{ width: "80%" }}>
@@ -204,7 +208,7 @@ function getCalculatedData(data, calculationData, classes) {
                 </Box>
                 <Box style={{ width: "20%" }}>
                     <Typography className={classes.value}>
-                        {value} {value !== "/" && "m2"}
+                        {value} {value !== "/" && entry.meter && "m2"}
                     </Typography>
                 </Box>
             </Box>
@@ -221,7 +225,10 @@ function getStandards(calculationData, classes) {
                     <Typography className={classes.label}>
                         Internal standard:
                     </Typography>
-                    <Typography style={{ marginLeft: "2%"}} className={classes.value}>
+                    <Typography
+                        style={{ marginLeft: "2%" }}
+                        className={classes.value}
+                    >
                         {types.standard[calculationData.internalStandard]}
                     </Typography>
                 </Box>
@@ -245,7 +252,10 @@ function getStandards(calculationData, classes) {
                     <Typography className={classes.label}>
                         External standard:
                     </Typography>
-                    <Typography style={{ marginLeft: "2%"}} className={classes.value}>
+                    <Typography
+                        style={{ marginLeft: "2%" }}
+                        className={classes.value}
+                    >
                         {types.standard[calculationData.externalStandard]}
                     </Typography>
                 </Box>
@@ -285,8 +295,8 @@ const useStyles = makeStyles((theme) => ({
         [theme.breakpoints.down("xs")]: {
             marginRight: 20,
             marginLeft: 0,
-            width: "80%"
-        }
+            width: "80%",
+        },
     },
     paper: {
         height: 1100,
@@ -299,8 +309,8 @@ const useStyles = makeStyles((theme) => ({
         paddingLeft: theme.spacing(8),
         paddingRight: theme.spacing(8),
         [theme.breakpoints.down("xs")]: {
-            width: "70%"
-        }
+            width: "70%",
+        },
     },
     title: {
         marginTop: theme.spacing(7),
@@ -314,27 +324,27 @@ const useStyles = makeStyles((theme) => ({
         color: "black",
         fontSize: 16,
         [theme.breakpoints.down("xs")]: {
-            fontSize: 14
-        }
+            fontSize: 14,
+        },
     },
     value: {
         fontSize: 16,
         color: "#606060",
         [theme.breakpoints.down("xs")]: {
             fontSize: 14,
-        }
+        },
     },
     dataRight: {
         marginLeft: "10%",
         [theme.breakpoints.down("xs")]: {
-            marginLeft: 0
-        }
+            marginLeft: 0,
+        },
     },
     details: {
         fontSize: 12,
         color: "#606060",
         [theme.breakpoints.down("xs")]: {
-            fontSize: 10
-        }
-    }
+            fontSize: 10,
+        },
+    },
 }));

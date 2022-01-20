@@ -10,6 +10,7 @@ import {
     StepConnector,
     Hidden,
     Box,
+    CircularProgress,
 } from "@material-ui/core";
 import { makeStyles, withStyles } from "@material-ui/core/styles";
 import { ReactComponent as CircleIcon } from "../../images/CircleIcon.svg";
@@ -62,7 +63,6 @@ export default function CustomStepper(props) {
     const betweenStepsData = React.useRef({
         type: location.state.type,
     });
-    const [calculation, setCalculation] = React.useState({});
     const { t, i18n } = useTranslation();
 
     const [errorMessage, setErrorMessage] = React.useState("");
@@ -280,13 +280,13 @@ export default function CustomStepper(props) {
                     id = betweenStepsData.current["category"].id;
                     handleChange("category", id);
                     newCalculation(betweenStepsData.current, token).then((res) => {
-                        setCalculation(res.data);
-                        history.push({pathname: "/report", state: { data: calculation, token: token }});
+                        console.log("Done");
+                        history.push({pathname: "/report", state: { data: res.data, token: token }});
                     });
                 }
 
             default:
-                return "nothing";
+                return <CircularProgress />;
         }
     };
 

@@ -85,6 +85,7 @@ export default function Login() {
                     <Input
                         placeholder={t('Email or username.1')}
                         disableUnderline={true}
+                        disabled={isLoading}
                         className={classes.input}
                         onChange={(e) => setUsername(e.target.value)}
                     />
@@ -95,6 +96,7 @@ export default function Login() {
                         type="password"
                         placeholder={t('Password.1')}
                         disableUnderline={true}
+                        disabled={isLoading}
                         className={classes.input}
                         onChange={(e) => setPassword(e.target.value)}
                     />

@@ -69,7 +69,7 @@ export default function Calctable(props) {
 
             flex: 0.8,
             renderCell: (params) => (
-                <Typography style={{marginLeft: "20%", marginRight: "auto"}}>
+                <Typography style={{marginLeft: "25%", marginRight: "auto"}}>
                     {params.value}
                 </Typography>
             )
@@ -106,7 +106,7 @@ export default function Calctable(props) {
         },
         {
             field: "Type",
-            headerName: <Typography className={classes.titleRight} style={{marginRight: "20%"}}>{t('Type.1')}</Typography>,
+            headerName: <Typography className={classes.titleRight} style={{marginRight: "30%"}}>{t('Type.1')}</Typography>,
             headerClassName: "headerClass",
             headerAlign: "center",
             cellClassName: "typeClass",
@@ -151,15 +151,18 @@ export default function Calctable(props) {
                     display={"flex"}
                     alignItems={"center"}
                     justifyContent={"center"}
-                    style={{ marginRight: "auto", zIndex: 10 }}
+                    style={{ marginRight: "auto" }}
                 >
                     <IconButton
-                        style={{ padding: 8, zIndex: 10 }}
+                        style={{ padding: 8 }}
                         onClick={handleDeleteClick}
                     >
                         <DeleteIcon />
                     </IconButton>
-                    <IconButton style={{ padding: 8 }}>
+                    <IconButton 
+                        style={{ padding: 8 }}
+                        onClick={(e) => { console.log(e)}}
+                    >
                         <InfoIcon />
                     </IconButton>
                 </Box>
@@ -196,7 +199,7 @@ export default function Calctable(props) {
         <Box className={classes.root}>
             <DataGrid
                 pagination
-                loading={isLoading}
+                loading={false}
                 rows={data}
                 rowHeight={70}
                 columns={columns}
@@ -207,7 +210,11 @@ export default function Calctable(props) {
                 density="comfortable"
                 components={{ Pagination: CustomPagination }}
                 onPageChange={handlePageChange}
-                onRowClick={handleRowClick}
+                onCellClick={(e) => {
+                    if(e.field !== 'Actions'){
+                        handleRowClick(e);
+                    }
+                }}
             />
             <Modal
                 open={openDialog}
@@ -317,7 +324,7 @@ const useStyles = makeStyles((theme) => ({
         fontSize: 18,
         position: "absolute",
         left: 0,
-        marginLeft: "25%"
+        marginLeft: "30%"
     },
     titleRight: {
         fontSize: 18,

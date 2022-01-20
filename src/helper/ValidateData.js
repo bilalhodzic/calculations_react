@@ -36,7 +36,7 @@ export default function ValidateData(activeStep, betweenStepsData){
             };
         case 6:
             return {
-                hideError: betweenStepsData.current && betweenStepsData.current.startDate,
+                hideError: betweenStepsData.current && betweenStepsData.current.startDate && (betweenStepsData.current.years || betweenStepsData.current.months),
                 message: "Please select start date for your project"
             };
         default:

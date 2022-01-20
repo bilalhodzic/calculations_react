@@ -53,6 +53,9 @@ export default function Step3(props) {
                         tempArray[index] = value;
                         setItemValues(tempArray);
 
+                        if(e.target.value === ''){
+                            return;
+                        }
                         props.handleChange(`${entry.id}`, value);
                     }}
                     style={{ position: "absolute", bottom: 0, left: 0, right: 0}}
