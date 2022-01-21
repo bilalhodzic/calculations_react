@@ -11,6 +11,8 @@ import {
     ListItemIcon,
     ListItemText,
     Hidden,
+    Select,
+    MenuItem,
 } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 import { Helmet } from "react-helmet";
@@ -20,6 +22,19 @@ import { ReactComponent as HomeIcon } from "../images/HomeIcon.svg";
 import { ReactComponent as MenuIcon } from "../images/burgerIcon.svg";
 import { ReactComponent as LogoutIcon } from "../images/logoutIcon.svg";
 import { ReactComponent as PlusIcon } from "../images/plusIcon.svg";
+import { ReactComponent as BritishFlagIcon } from "../images/uk.svg";
+import { ReactComponent as SwedishFlagIcon } from "../images/se.svg";
+
+const languages = [
+    {
+        flag: <BritishFlagIcon />,
+        value: "en",
+    },
+    {
+        flag: <SwedishFlagIcon />,
+        value: "se",
+    },
+];
 
 export default function Layout(props) {
     const [mobileOpen, setMobileOpen] = React.useState(false);
@@ -27,6 +42,7 @@ export default function Layout(props) {
     const history = useHistory();
     const classes = useStyles();
     const { t, i18n } = useTranslation();
+    const [currentLanguage, setCurrentLanguage] = React.useState("se");
 
     React.useEffect(() => {
         i18n.changeLanguage("se");
@@ -141,6 +157,21 @@ export default function Layout(props) {
                             onClick={handleDrawer}
                         />
                     </Hidden>
+                    <Select
+                        value={currentLanguage}
+                        onChange={(e) => {
+                            setCurrentLanguage(e.target.value);
+                            i18n.changeLanguage(e.target.value);
+                        }}
+                        className={classes.select}
+                    >
+                        <MenuItem value={languages[0].value}>
+                            {languages[0].flag}
+                        </MenuItem>
+                        <MenuItem value={languages[1].value}>
+                            {languages[1].flag}
+                        </MenuItem>
+                    </Select>
                 </Box>
                 <Hidden smUp>
                     <Drawer
@@ -204,7 +235,7 @@ const useStyles = makeStyles((theme) => ({
         "&:hover": {
             cursor: "pointer",
         },
-        filter: "brightness(0) saturate(100%) invert(15%) sepia(12%) saturate(2489%) hue-rotate(174deg) brightness(101%) contrast(88%)"
+        filter: "brightness(0) saturate(100%) invert(15%) sepia(12%) saturate(2489%) hue-rotate(174deg) brightness(101%) contrast(88%)",
     },
     drawerPaper: {
         color: "white",
@@ -244,8 +275,8 @@ const useStyles = makeStyles((theme) => ({
         marginLeft: theme.spacing(4),
         [theme.breakpoints.down("xs")]: {
             marginLeft: "auto",
-            marginRight: "auto"
-        }
+            marginRight: "auto",
+        },
     },
     menuIcon: {
         position: "absolute",
@@ -346,4 +377,8 @@ const useStyles = makeStyles((theme) => ({
         position: "absolute",
         bottom: 160,
     },
+    select: {
+        width: "2.5%",
+        marginRight: "1.5%",
+    }
 }));

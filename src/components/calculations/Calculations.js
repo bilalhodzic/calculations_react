@@ -41,7 +41,7 @@ export default function Calculations(props) {
 
   const getCalculationsForPage = async (pageNumber, categoryNumber, typeNumber) => {
     const axiosOptions = {
-      url: `${config.baseUrl}/calculations/getcalculations/filter/${searchInput !== '' ? searchInput : '"*"'}/${pageNumber}/${categoryNumber}/${typeNumber}`,
+      url: `${config.baseUrl}/calculations/getcalculations/filter/${searchInput.trim() !== '' ? searchInput.trim() : 'ššđšđ'}/${pageNumber}/${categoryNumber}/${typeNumber}`,
       headers: {
         'Authorization': `Bearer ${token}`
       },
