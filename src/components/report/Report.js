@@ -36,11 +36,11 @@ export default function Report(props) {
                     <Typography className={classes.headerText}>
                         Preview
                     </Typography>
-                    <Typography
+                    {false && <Typography
                         style={{ marginLeft: "auto", marginRight: "auto" }}
                     >
                         {calculationData.name}
-                    </Typography>
+                    </Typography>}
                     {false && <Button className={classes.headerButton} size="large">
                         Export to PDF
                     </Button>}

@@ -60,7 +60,7 @@ export default function Calculations(props) {
       },
       method: "DELETE"
     };
-    const response = await axios(axiosOptions);
+    await axios(axiosOptions);
     setTableData(helper.transformCalculations((await getCalculationsForPage(1, selectValueCategory, selectValueType)).data));
   };
 

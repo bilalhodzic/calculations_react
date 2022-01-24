@@ -151,7 +151,6 @@ async function login(username, password, history) {
             return false;
         }
     } catch (err) {
-        history.push({ pathname: "/home", state: { token: ("token") } });
         return false;
     }
 }
