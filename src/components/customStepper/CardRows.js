@@ -1,5 +1,6 @@
 import { Scrollbars } from "react-custom-scrollbars";
 import { Paper, Typography, Box, makeStyles } from "@material-ui/core";
+import { ReactComponent as InfoIcon } from "../../images/infoIcon.svg";
 import React from "react";
 
 export default function CardRows(props) {
@@ -23,7 +24,16 @@ export default function CardRows(props) {
                 }
             >
                 {e.icon}
-                <Typography className={classes.paperText}>{e.label}</Typography>
+                <Typography className={classes.paperText}>
+                    {e.label}
+                    {e.info && (
+                        <abbr title={e.info}>
+                            <InfoIcon
+                                style={{ height: 12, width: 12, marginLeft: 5 }}
+                            />
+                        </abbr>
+                    )}
+                </Typography>
             </Paper>
         );
     });
@@ -31,7 +41,12 @@ export default function CardRows(props) {
     const rows = [];
     for (let i = 0; i < items.length; i += 3) {
         rows.push(
-            <Box className={`${classes.root} ${i + 3 >= items.length && classes.lastRoot}`} style={{ marginTop: 20 }}>
+            <Box
+                className={`${classes.root} ${
+                    i + 3 >= items.length && classes.lastRoot
+                }`}
+                style={{ marginTop: 20 }}
+            >
                 {items[i]}
                 {i + 1 < items.length && items[i + 1]}
                 {i + 2 < items.length && items[i + 2]}
@@ -78,13 +93,13 @@ const useStyles = makeStyles((theme) => ({
         fontWeight: 600,
         color: "black",
         [theme.breakpoints.down("xs")]: {
-            fontSize: 16
-        }
+            fontSize: 16,
+        },
     },
     lastRoot: {
         paddingBottom: theme.spacing(2),
         [theme.breakpoints.down("xs")]: {
-            paddingBottom: theme.spacing(8)
-        }
-    }
+            paddingBottom: theme.spacing(8),
+        },
+    },
 }));

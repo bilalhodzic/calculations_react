@@ -190,7 +190,7 @@ function getData(type, t) {
                             style={{ paddingTop: 10 }}
                         />
                     ),
-                    label: "Ombyggnad bostäder",
+                    label: "Bostäder",
                 },
                 {
                     category: types.category.kontor,

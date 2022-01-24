@@ -252,11 +252,11 @@
         }
     },
     "standard": {
-        "1": "Normal standard",
-        "2": "Fourth standard",
-        "3": "High standard",
-        "4": "Fifth standard",
-        "5": "Exclusive standard"
+        "1": "Låg standard",
+        "2": "Normal standard",
+        "3": "Hög standard",
+        "4": "Standard mellan låg och normal",
+        "5": "Standard mellan normal och hög"
     },
     "types": {
         "new_production":{

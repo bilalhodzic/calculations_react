@@ -25,7 +25,8 @@ const ombyList = [
                 style={{ paddingTop: 10 }}
             />
         ),
-        label: "Stambyte, renovering av badrum och wc, byte av samtliga avlopps - och vattenledningar",
+        label: "Stambyte",
+        info: "Stambyte, renovering av badrum och wc, byte av samtliga avlopps- och vattenledningar inom fastigheten"
     },
     {
         category: types.category.apartment2,
@@ -36,7 +37,8 @@ const ombyList = [
                 style={{ paddingTop: 10 }}
             />
         ),
-        label: "Stambyte inkl kök, renovering av badrum, wc och kök, byte av samtliga avlopps - och",
+        label: "Stambyte + kök",
+        info: "Stambyte inkl kök, renovering av badrum, wc och kök, byte av samtliga avlopps- och vattenledningar inom fastigheten"
     },
     {
         category: types.category.apartment3,
@@ -47,7 +49,8 @@ const ombyList = [
                 style={{ paddingTop: 10 }}
             />
         ),
-        label: "Total invändig ombyggnad, allt nytt invändigt, badrum, kök, golv, målning väggar, nya",
+        label: "Stambyte + allt invändigt",
+        info: "Total invändig ombyggnad, allt nytt invändigt, badrum, kök, golv, målning väggar, nya lägenhetsdörrar, nya installationer VS, vent, el styr m m" 
     },
     {
         category: types.category.apartment4,
@@ -58,7 +61,8 @@ const ombyList = [
                 style={{ paddingTop: 10 }}
             />
         ),
-        label: "Total invändig ombyggnad, allt nytt invändigt, badrum, kök, golv, målning väggar, nya",
+        label: "Stambyte + allt invändigt och utvändigt",
+        info: "Total invändigt och utvändigt ombyggnad, allt nytt invändigt, badrum, kök, golv, målning väggar, nya lägenhetsdörrar, nya installationer VS, vent, el styr, nya fönster, fasader, tak m m"
     },
 ];
 const kontorList = [
@@ -71,7 +75,8 @@ const kontorList = [
                 style={{ paddingTop: 10 }}
             />
         ),
-        label: "Nya invändiga ytskikt, nya pentry, rwc, wc, belysning, ej installationer",
+        label: "Nya invändiga ytskikt och utrustning i lokaler (ej installationer)",
+        info: "Ombyggnad kontor (nya invändiga ytskikt, nya pentry, rwc, wc, belysning, ej installationer)"
     },
     {
         category: types.category.office2,
@@ -82,7 +87,8 @@ const kontorList = [
                 style={{ paddingTop: 10 }}
             />
         ),
-        label: "50 % installationer, nya invändiga ytskikt, nya pentry, rwc, wc, belysning",
+        label: "Nya invändiga ytskikt och utrustning i lokaler med ca 50 % nya installationer",
+        info: "Ombyggnad kontor inkl 50 % installationer (nya invändiga ytskikt, nya pentry, rwc, wc, belysning, 50 % installationer)"
     },
     {
         category: types.category.office3,
@@ -93,7 +99,8 @@ const kontorList = [
                 style={{ paddingTop: 10 }}
             />
         ),
-        label: "Samtliga installationer, nya invändiga ytskikt, nya pentry, rwc, wc, belysning, helt nya installationer",
+        label: "Nya invändiga ytskikt och utrustning i lokaler inkl samtliga installationer",
+        info: "Ombyggnad kontor inkl samtliga installationer (nya invändiga ytskikt, nya pentry, rwc, wc, belysning, helt nya installationer)"
     },
     {
         category: types.category.office4,
@@ -104,7 +111,8 @@ const kontorList = [
                 style={{ paddingTop: 10 }}
             />
         ),
-        label: "Total ombyggnad kontor inkl samtliga installationer samt utvändigt fasad, tak, fönster m m (nya invändiga...)",
+        label: "Nya invändiga och utvändiga ytskikt och utrustning i lokaler inkl samtliga installationer",
+        info: "Total ombyggnad kontor inkl samtliga installationer samt utvändigt fasad, tak, fönster m m (nya invändiga ytskikt, nya pentry, rwc, wc, belysning, helt nya installationer, nya fönster, tak, fasad m m)"
     },
 ];
 const handelList = [
@@ -117,7 +125,8 @@ const handelList = [
                 style={{ paddingTop: 10 }}
             />
         ),
-        label: "Ombyggnad handel (nya invändiga ytskikt, nya pentry, rwc, wc, belysning, ej installationer)",
+        label: "Nya invändiga ytskikt och utrustning i lokaler (ej installationer)",
+        info: "Ombyggnad handel (nya invändiga ytskikt, nya pentry, rwc, wc, belysning, ej installationer)"
     },
     {
         category: types.category.trade2,
@@ -128,7 +137,8 @@ const handelList = [
                 style={{ paddingTop: 10 }}
             />
         ),
-        label: " Ombyggnad handel inkl 50 % installationer (nya invändiga ytskikt, nya pentry, rwc, wc, belysning, 50 % installationer)",
+        label: "Nya invändiga ytskikt och utrustning i lokaler med ca 50 % nya installationer",
+        info: "Ombyggnad handel inkl 50 % installationer (nya invändiga ytskikt, nya pentry, rwc, wc, belysning, 50 % installationer)"
     },
     {
         category: types.category.trade3,
@@ -139,7 +149,8 @@ const handelList = [
                 style={{ paddingTop: 10 }}
             />
         ),
-        label: "Ombyggnad handel inkl samtliga installationer (nya invändiga ytskikt, nya pentry, rwc, wc, belysning, helt nya installationer)",
+        label: "Nya invändiga ytskikt och utrustning i lokaler inkl samtliga installationer",
+        info: "Ombyggnad handel inkl samtliga installationer (nya invändiga ytskikt, nya pentry, rwc, wc, belysning, helt nya installationer)"
     },
     {
         category: types.category.trade4,
@@ -150,7 +161,8 @@ const handelList = [
                 style={{ paddingTop: 10 }}
             />
         ),
-        label: "Total ombyggnad handel inkl samtliga installationer samt utvändigt fasad, tak, fönster m m ",
+        label: "Nya invändiga och utvändiga ytskikt och utrustning i lokaler inkl samtliga installationer",
+        info: "Total ombyggnad handel inkl samtliga installationer samt utvändigt fasad, tak, fönster m m (nya invändiga ytskikt, nya pentry, rwc, wc, belysning, helt nya installationer, nya fönster, tak, fasad m m)"
     },
 ]
 

@@ -8,27 +8,27 @@ import { useTranslation } from "react-i18next";
 
 const standards = [
     {
-        name: "Normal Standard",
+        name: "Låg standard",
         icon: <MedalIcon />,
         value: 1,
     },
     {
-        name: "Fourth Standard",
+        name: "Normal Standard",
         icon: <MedalIcon />,
         value: 2,
     },
     {
-        name: "High Standard",
+        name: "Hög standard",
         icon: <MedalIcon />,
         value: 3,
     },
     {
-        name: "Fifth Standard",
+        name: "Standard mellan låg och normal",
         icon: <MedalIcon />,
         value: 4,
     },
     {
-        name: "Exclusive Standard",
+        name: "Standard mellan normal och hög",
         icon: <ExclusiveIcon />,
         value: 5,
     },
@@ -156,7 +156,7 @@ const useStyles = makeStyles((theme) => ({
         marginTop: theme.spacing(1),
     },
     standardsSize: {
-        minWidth: 200,
+        width: 250,
         minHeight: 150,
         alignItems: "center",
         justifyContent: "center",
