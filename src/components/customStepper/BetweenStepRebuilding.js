@@ -11,6 +11,8 @@ import { ReactComponent as ToolboxIcon } from "../../images/ToolboxIcon.svg";
 import { ReactComponent as InteriorIcon } from "../../images/InteriorIcon.svg";
 import { ReactComponent as HelmetIcon } from "../../images/HelmetIcon.svg";
 import { ReactComponent as DocumentIcon } from "../../images/DocumentIcon.svg";
+import { ReactComponent as SchoolIcon } from "../../images/SchoolIcon.svg";
+import { ReactComponent as School2Icon } from "../../images/School2Icon.svg";
 import CardRows from "./CardRows";
 
 import types from "../../helper/data.json";
@@ -165,6 +167,31 @@ const handelList = [
         info: "Total ombyggnad handel inkl samtliga installationer samt utvändigt fasad, tak, fönster m m (nya invändiga ytskikt, nya pentry, rwc, wc, belysning, helt nya installationer, nya fönster, tak, fasad m m)"
     },
 ]
+const schoolList = [
+    {
+        category: types.category.school1,
+        icon: (
+            <SchoolIcon
+                color="#21344d"
+                size={80}
+                style={{ paddingTop: 10 }}
+            />
+        ),
+        label: "Total renovering invändigt och utvändigt, inkl samtliga installationer, fasad, tak m m",
+        //info: "Ombyggnad handel (nya invändiga ytskikt, nya pentry, rwc, wc, belysning, ej installationer)"
+    },
+    {
+        category: types.category.school2,
+        icon: (
+            <School2Icon
+                color="#21344d"
+                size={80}
+                style={{ paddingTop: 10 }}
+            />
+        ),
+        label: "Total renovering invändigt och utvändigt, 50 % installationer, fasader, tak m m"
+    }
+];
 
 export default function BetweenStepRebuilding (props) {
     const data = props.data;
@@ -176,6 +203,8 @@ export default function BetweenStepRebuilding (props) {
         items = kontorList;
     }else if(data.category === types.category.handel){
         items = handelList;
+    }else if(data.category === types.category.skola){
+        items = schoolList;
     }
 
     const handleClickPaper = (prop) => {

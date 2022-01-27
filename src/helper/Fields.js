@@ -480,12 +480,15 @@ export function getFieldsRebuilding(type){
         case types.category.trade2:
         case types.category.trade3:
         case types.category.trade4:
+        case types.category.school1:
+        case types.category.school2:
             return [
                 {
                     label: "LOA",
                     id: "loa",
                     placeholder: "m",
-                    superscript: 2
+                    superscript: 2,
+                    isRight: true
                 },
                 {
                     label: "Antal WC/Dusch",
@@ -501,13 +504,15 @@ export function getFieldsRebuilding(type){
                     label: "Mörk bruttoarea",
                     id: "darkBta",
                     placeholder: "m",
-                    superscript: 2
+                    superscript: 2,
+                    isRight: true
                 },
                 {
                     label: "Ljus bruttoarea",
                     id: "lightBta",
                     placeholder: "m",
-                    superscript: 2
+                    superscript: 2,
+                    isRight: true
                 },
             ];
         default:

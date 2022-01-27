@@ -160,18 +160,20 @@ export default function CustomStepper(props) {
             types.category.ombyggnad,
             types.category.kontor,
             types.category.handel,
+            types.category.skola,
         ];
         let extraStep = 1;
         if (
-            (activeStep === 0 &&
-                betweenStepsData.current.type === types.types.rebuilding.id &&
-                !betweenStepsCategoriesRebuilding.includes(
+            activeStep === 0 &&
+            ((betweenStepsData.current.type === types.types.rebuilding.id &&
+                betweenStepsCategoriesRebuilding.includes(
                     betweenStepsData.current.category
                 )) ||
-            (betweenStepsData.current.type === types.types.new_production.id &&
-                betweenStepsCategoriesNew.includes(
-                    betweenStepsData.current.category
-                ))
+                (betweenStepsData.current.type ===
+                    types.types.new_production.id &&
+                    betweenStepsCategoriesNew.includes(
+                        betweenStepsData.current.category
+                    )))
         ) {
             extraStep = 0;
         }
