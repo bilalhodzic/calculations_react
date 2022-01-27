@@ -4,8 +4,8 @@ import { ReactComponent as VillorIcon } from "../images/VillorIcon.svg";
 import { ReactComponent as VardboendeIcon } from "../images/VardboendeIcon.svg";
 import { ReactComponent as StudentlagenheterIcon } from "../images/StudentlagenheterIcon.svg";
 import { ReactComponent as HotellIcon } from "../images/HotelIcon.svg";
-import { ReactComponent as WorkIcon } from "../images/WorkIcon.svg";
-import { ReactComponent as ShopIcon } from "../images/ShopIcon.svg";
+import { ReactComponent as WorkIcon } from "../images/OfficeIcon.svg";
+import { ReactComponent as ShopIcon } from "../images/TradeIcon.svg";
 import { ReactComponent as VarmlagerIcon } from "../images/VarmlagerIcon.svg";
 import { ReactComponent as KalllagerIcon } from "../images/KallLagerIcon.svg";
 import { ReactComponent as KylLagerIcon } from "../images/KylLagerIcon.svg";
@@ -26,6 +26,7 @@ import { ReactComponent as ToolboxIcon } from "../images/ToolboxIcon.svg";
 import { ReactComponent as InteriorIcon } from "../images/InteriorIcon.svg";
 import { ReactComponent as HelmetIcon } from "../images/HelmetIcon.svg";
 import { ReactComponent as DocumentIcon } from "../images/DocumentIcon.svg";
+import { ReactComponent as School2Icon } from "../images/School2Icon.svg";
 
 const icons = {
     1: <FlerbostadshusIcon/>,
@@ -55,7 +56,9 @@ const icons = {
     25: <ToolboxIcon />,
     26: <InteriorIcon />,
     27: <HelmetIcon />,
-    28: <DocumentIcon />
+    28: <DocumentIcon />,
+    29: <SchoolIcon />,
+    30: <School2Icon />
 };
 
 export { icons };
