@@ -131,7 +131,7 @@ function setData(data, calculationData, padding, classes) {
     const items = [];
     for (const entry of data) {
         const style = {
-            marginBottom: entry.margin ? 40 : 0,
+            marginBottom: entry.margin ? 30 : 0,
         };
         if (entry.property2) {
             items.push(
@@ -281,7 +281,7 @@ const useStyles = makeStyles((theme) => ({
         flexDirection: "row",
         justifyContent: "center",
         width: "100%",
-        marginTop: theme.spacing(15),
+        marginTop: theme.spacing(10),
         [theme.breakpoints.down("xs")]: {
             flexDirection: "column",
             justifyContent: "center",
@@ -299,7 +299,7 @@ const useStyles = makeStyles((theme) => ({
         },
     },
     paper: {
-        height: 1100,
+        height: 920,
         width: 800,
         marginTop: theme.spacing(5),
         paddingBottom: theme.spacing(5),
@@ -322,13 +322,13 @@ const useStyles = makeStyles((theme) => ({
     },
     label: {
         color: "black",
-        fontSize: 16,
+        fontSize: 14,
         [theme.breakpoints.down("xs")]: {
             fontSize: 14,
         },
     },
     value: {
-        fontSize: 16,
+        fontSize: 14,
         color: "#606060",
         [theme.breakpoints.down("xs")]: {
             fontSize: 14,
@@ -341,7 +341,7 @@ const useStyles = makeStyles((theme) => ({
         },
     },
     details: {
-        fontSize: 12,
+        fontSize: 10,
         color: "#606060",
         [theme.breakpoints.down("xs")]: {
             fontSize: 10,

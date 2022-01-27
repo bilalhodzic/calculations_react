@@ -1,7 +1,7 @@
-import React from "react";
+import React, { useRef } from "react";
 import { Box, Button, Divider, Paper, Typography } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
-import { useLocation } from "react-router";
+import {  useLocation } from "react-router";
 import Layout from "../Layout";
 import Page1 from "./Page1";
 import Page2 from "./Page2";
@@ -9,13 +9,16 @@ import Page3 from "./Page3";
 import Page4 from "./Page4";
 import Scrollbars from "react-custom-scrollbars";
 
-export default function Report(props) {
-    React.useEffect(() => {
-    }, []);
+import { useReactToPrint } from "react-to-print";
 
+export default function Report(props) {
     const classes = useStyles();
     const location = useLocation();
+    const pdfRef = useRef();
 
+    const handleExport = useReactToPrint({
+        content: () => pdfRef.current
+    });
 
     if (!props.data && !location.state && !location.state.data) {
         return "No data for report";
@@ -36,14 +39,20 @@ export default function Report(props) {
                     <Typography className={classes.headerText}>
                         Preview
                     </Typography>
-                    {false && <Typography
-                        style={{ marginLeft: "auto", marginRight: "auto" }}
+                    {false && (
+                        <Typography
+                            style={{ marginLeft: "auto", marginRight: "auto" }}
+                        >
+                            {calculationData.name}
+                        </Typography>
+                    )}
+                    <Button
+                        className={classes.headerButton}
+                        size="large"
+                        onClick={() => handleExport()}
                     >
-                        {calculationData.name}
-                    </Typography>}
-                    {false && <Button className={classes.headerButton} size="large">
                         Export to PDF
-                    </Button>}
+                    </Button>
                 </Box>
                 <Divider />
                 <Scrollbars
@@ -60,10 +69,15 @@ export default function Report(props) {
                         />
                     )}
                 >
-                    <Page1 type={calculationData.type} title={calculationData.name}/>
-                    <Page2 calculationData={calculationData} />
-                    <Page3 calculationData={calculationData} />
-                    <Page4 calculationData={calculationData} />
+                    <div ref={pdfRef}>
+                        <Page1
+                            type={calculationData.type}
+                            title={calculationData.name}
+                        />
+                        <Page2 calculationData={calculationData} />
+                        <Page3 calculationData={calculationData} />
+                        <Page4 calculationData={calculationData} />
+                    </div>
                 </Scrollbars>
             </Paper>
         </Layout>
@@ -101,8 +115,8 @@ const useStyles = makeStyles((theme) => ({
         fontWeight: 500,
         marginLeft: theme.spacing(5),
         [theme.breakpoints.down("xs")]: {
-            fontSize: 22
-        }
+            fontSize: 22,
+        },
     },
     headerButton: {
         background: "#21344D",
@@ -116,8 +130,8 @@ const useStyles = makeStyles((theme) => ({
         fontWeight: 600,
         [theme.breakpoints.down("xs")]: {
             fontSize: 14,
-            width: "20%"
-        }
+            width: "20%",
+        },
     },
     trackHorizontal: {
         backgroundColor: "blue",

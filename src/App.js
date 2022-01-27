@@ -7,6 +7,7 @@ import NewCalculation from "./components/new_calculation/NewCalculation";
 import AboutUs from "./components/about/AboutUs";
 import Step0 from "./components/customStepper/Step0";
 import Report from "./components/report/Report";
+import PdfDocument from "./components/pdf/PdfDocument";
 import "./App.css";
 import "./helper/i18n";
 import { ThemeProvider, createMuiTheme } from "@material-ui/core/styles";
@@ -34,6 +35,7 @@ function App() {
                     <Route path="/about" component={AboutUs} />
                     <Route path="/new" component={NewCalculation} />
                     <Route path="/report" component={Report} />
+                    <Route path="/pdf" component={PdfDocument} />
                 </BrowserRouter>
             </ThemeProvider>
         </Suspense>

@@ -123,7 +123,7 @@ function getCosts(calculationData, classes) {
 //add new styles here
 const useStyles = makeStyles((theme) => ({
     paper: {
-        height: 1100,
+        height: 920,
         width: 800,
         marginTop: theme.spacing(5),
         paddingBottom: theme.spacing(5),
@@ -146,20 +146,21 @@ const useStyles = makeStyles((theme) => ({
     },
     label: {
         color: "black",
-        fontSize: 16,
+        fontSize: 14,
         [theme.breakpoints.down("xs")]: {
             fontSize: 14
         }
     },
     value: {
         marginLeft: "2%",
+        fontSize: 14,
         color: "#606060",
         [theme.breakpoints.down("xs")]: {
             fontSize: 14
         }
     },
     details: {
-        fontSize: 12,
+        fontSize: 10,
         color: "#606060",
         marginTop: "1%",
         [theme.breakpoints.down("xs")]: {
