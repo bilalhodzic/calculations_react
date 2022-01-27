@@ -28,7 +28,7 @@ export function getFieldsNewBuilding(type){
                     placeholder: "0"
                 },
                 {
-                    label: "Mork bruttoarea",
+                    label: "Mörk bruttoarea",
                     id: "darkBta",
                     placeholder: "m",
                     superscript: 2,
@@ -62,7 +62,7 @@ export function getFieldsNewBuilding(type){
                     placeholder: "0"
                 },
                 {
-                    label: "Mork bruttoarea",
+                    label: "Mörk bruttoarea",
                     id: "darkBta",
                     placeholder: "m",
                     superscript: 2,
@@ -97,7 +97,7 @@ export function getFieldsNewBuilding(type){
                     placeholder: "0"
                 },
                 {
-                    label: "Mork bruttoarea",
+                    label: "Mörk bruttoarea",
                     id: "darkBta",
                     placeholder: "m",
                     superscript: 2,
@@ -143,7 +143,7 @@ export function getFieldsNewBuilding(type){
                     placeholder: "0"
                 },
                 {
-                    label: "Mork bruttoarea",
+                    label: "Mörk bruttoarea",
                     id: "darkBta",
                     placeholder: "m",
                     superscript: 2,
@@ -183,7 +183,7 @@ export function getFieldsNewBuilding(type){
                     placeholder: "0"
                 },
                 {
-                    label: "Mork bruttoarea",
+                    label: "Mörk bruttoarea",
                     id: "darkBta",
                     placeholder: "0"
                 },
@@ -222,7 +222,7 @@ export function getFieldsNewBuilding(type){
                     placeholder: "0"
                 },
                 {
-                    label: "Mork bruttoarea",
+                    label: "Mörk bruttoarea",
                     id: "darkBta",
                     placeholder: "0"
                 },
@@ -271,7 +271,7 @@ export function getFieldsNewBuilding(type){
                     placeholder: "0"
                 },
                 {
-                    label: "Mork bruttoarea",
+                    label: "Mörk bruttoarea",
                     id: "darkBta",
                     placeholder: "m",
                     superscript: 2,
@@ -319,7 +319,7 @@ export function getFieldsNewBuilding(type){
                     placeholder: "0"
                 },
                 {
-                    label: "Mork bruttoarea",
+                    label: "Mörk bruttoarea",
                     id: "darkBta",
                     placeholder: "m",
                     superscript: 2,
@@ -332,6 +332,67 @@ export function getFieldsNewBuilding(type){
                     superscript: 2,
                     isRight: true
                 },
+            ];
+        case types.category.kontor:
+            return [
+                {
+                    label: "LOA",
+                    id: "loa",
+                    placeholder: "m",
+                    superscript: 2,
+                    isRight: true
+                },
+                {
+                    label: "Antal wc/dusch",
+                    id: "bathNumber",
+                    placeholder: "0"
+                },
+                {
+                    label: "Antal wc/rwc",
+                    id: "toiletNumber",
+                    placeholder: "0"
+                },
+                {
+                    label: "Ljus bruttoarea",
+                    id: "lightBta",
+                    placeholder: "m",
+                    superscript: 2,
+                    isRight: true
+                }
+            ];
+        case types.category.handel:
+            return [
+                {
+                    label: "LOA",
+                    id: "loa",
+                    placeholder: "m",
+                    superscript: 2,
+                    isRight: true
+                },
+                {
+                    label: "Antal wc/dusch",
+                    id: "bathNumber",
+                    placeholder: "0"
+                },
+                {
+                    label: "Antal wc/rwc",
+                    id: "toiletNumber",
+                    placeholder: "0"
+                },
+                {
+                    label: "Ljus bruttoarea",
+                    id: "lightBta",
+                    placeholder: "m",
+                    superscript: 2,
+                    isRight: true
+                },
+                {
+                    label: "Mörk bruttoarea",
+                    id: "darkBta",
+                    placeholder: "m",
+                    superscript: 2,
+                    isRight: true
+                }
             ];
         default:
             return [];
@@ -358,7 +419,7 @@ export function getFieldsRebuilding(type){
                     placeholder: 0
                 },
                 {
-                    label: "Mork bruttoarea",
+                    label: "Mörk bruttoarea",
                     id: "darkBta",
                     placeholder: "m",
                     superscript: 2,
@@ -397,7 +458,7 @@ export function getFieldsRebuilding(type){
                     placeholder: 0
                 },
                 {
-                    label: "Mork bruttoarea",
+                    label: "Mörk bruttoarea",
                     id: "darkBta",
                     placeholder: "m",
                     superscript: 2,
@@ -437,7 +498,7 @@ export function getFieldsRebuilding(type){
                     placeholder: 0
                 },
                 {
-                    label: "Mork bruttoarea",
+                    label: "Mörk bruttoarea",
                     id: "darkBta",
                     placeholder: "m",
                     superscript: 2

@@ -18,6 +18,8 @@ import { ReactComponent as IdrottshallIcon } from "../../images/IdrottshallIcon.
 import { ReactComponent as TubesIcon } from "../../images/TubesIcon.svg";
 import { ReactComponent as WorkIcon } from "../../images/WorkIcon.svg";
 import { ReactComponent as ShopIcon } from "../../images/ShopIcon.svg";
+import { ReactComponent as OfficeIcon } from "../../images/OfficeIcon.svg";
+import { ReactComponent as TradeIcon } from "../../images/TradeIcon.svg";
 
 import types from "../../helper/data.json";
 import { useTranslation } from "react-i18next";
@@ -111,6 +113,28 @@ function getData(type, t) {
                         />
                     ),
                     label: t("Studentbostader.1"),
+                },
+                {
+                    category: types.category.kontor,
+                    icon: (
+                        <OfficeIcon 
+                            color="#21344d"
+                            size={80}
+                            style={{ paddingTop: 10 }}                   
+                        />
+                    ),
+                    label: "Kontor"
+                },
+                {
+                    category: types.category.handel,
+                    icon: (
+                        <TradeIcon 
+                            color="#21344d"
+                            size={80}
+                            style={{ paddingTop: 10 }}                   
+                        />
+                    ),
+                    label: "Handel"
                 },
                 {
                     category: types.category.lager,

@@ -57,7 +57,7 @@ export default function CustomStepper(props) {
     const { width } = useWindowDimensions();
 
     const location = useLocation();
-    if(!location){
+    if (!location) {
         history.push("/add");
     }
     const betweenStepsData = React.useRef({
@@ -69,11 +69,11 @@ export default function CustomStepper(props) {
 
     React.useEffect(() => {
         props.emptySteps();
-        props.pushStep(t('New calculation.1'));
+        props.pushStep(t("New calculation.1"));
         props.pushStep(
             betweenStepsData.current.type === 1
-                ? t('New production.1')
-                : t('Rebuilding.1')
+                ? t("New production.1")
+                : t("Rebuilding.1")
         );
         switch (activeStep) {
             case 1:
@@ -102,7 +102,7 @@ export default function CustomStepper(props) {
 
     const classes = useStyles();
 
-    if(!props.token){
+    if (!props.token) {
         return "Unauthorized";
     }
     const token = props.token;
@@ -149,47 +149,52 @@ export default function CustomStepper(props) {
 
     const handleNext = () => {
         const validate = ValidateData(activeStep, betweenStepsData);
-        if(!validate.hideError){
+        if (!validate.hideError) {
             console.log("Ovdje");
             setErrorMessage(validate.message);
             return;
         }
         console.log(betweenStepsData.current);
-        const betweenStepsCategories = [
-            types.category.lager,
+        const betweenStepsCategoriesNew = [types.category.lager];
+        const betweenStepsCategoriesRebuilding = [
             types.category.ombyggnad,
             types.category.kontor,
             types.category.handel,
         ];
-        setActiveStep(
-            (prevActiveStep) =>
-                prevActiveStep +
-                1 +
-                (prevActiveStep == 0 &&
-                    !betweenStepsCategories.includes(
-                        betweenStepsData.current.category
-                    ) &&
-                    1)
-        );
+        let extraStep = 1;
+        if (
+            (activeStep === 0 &&
+                betweenStepsData.current.type === types.types.rebuilding.id &&
+                !betweenStepsCategoriesRebuilding.includes(
+                    betweenStepsData.current.category
+                )) ||
+            (betweenStepsData.current.type === types.types.new_production.id &&
+                betweenStepsCategoriesNew.includes(
+                    betweenStepsData.current.category
+                ))
+        ) {
+            extraStep = 0;
+        }
+        setActiveStep((prevActiveStep) => prevActiveStep + 1 + extraStep);
     };
 
     const handleBack = () => {
         console.log(betweenStepsData.current.category);
         setActiveStep(
-            (prevActiveStep) =>
-                prevActiveStep -
-                1 -
-                (prevActiveStep == 2 && 1)
+            (prevActiveStep) => prevActiveStep - 1 - (prevActiveStep == 2 && 1)
         );
     };
 
     const SwitchStep = () => {
         switch (activeStep) {
             case 0:
-                if(!betweenStepsData.current.type){
+                if (!betweenStepsData.current.type) {
                     history.push("/add");
                 }
-                if(errorMessage !== "" && errorMessage !== ValidateData(activeStep, 0).message){
+                if (
+                    errorMessage !== "" &&
+                    errorMessage !== ValidateData(activeStep, 0).message
+                ) {
                     setErrorMessage("");
                 }
                 return (
@@ -200,10 +205,15 @@ export default function CustomStepper(props) {
                     />
                 );
             case 1:
-                if(errorMessage !== "" && errorMessage !== ValidateData(activeStep, 0).message){
+                if (
+                    errorMessage !== "" &&
+                    errorMessage !== ValidateData(activeStep, 0).message
+                ) {
                     setErrorMessage("");
                 }
-                if (betweenStepsData.current.type === types.types.rebuilding.id) {
+                if (
+                    betweenStepsData.current.type === types.types.rebuilding.id
+                ) {
                     return (
                         <BetweenStepRebuilding
                             data={betweenStepsData.current}
@@ -218,7 +228,10 @@ export default function CustomStepper(props) {
                     />
                 );
             case 2:
-                if(errorMessage !== "" && errorMessage !== ValidateData(activeStep, 0).message){
+                if (
+                    errorMessage !== "" &&
+                    errorMessage !== ValidateData(activeStep, 0).message
+                ) {
                     setErrorMessage("");
                 }
                 return (
@@ -228,7 +241,10 @@ export default function CustomStepper(props) {
                     />
                 );
             case 3:
-                if(errorMessage !== "" && errorMessage !== ValidateData(activeStep, 0).message){
+                if (
+                    errorMessage !== "" &&
+                    errorMessage !== ValidateData(activeStep, 0).message
+                ) {
                     setErrorMessage("");
                 }
                 return (
@@ -238,7 +254,10 @@ export default function CustomStepper(props) {
                     />
                 );
             case 4:
-                if(errorMessage !== "" && errorMessage !== ValidateData(activeStep, 0).message){
+                if (
+                    errorMessage !== "" &&
+                    errorMessage !== ValidateData(activeStep, 0).message
+                ) {
                     setErrorMessage("");
                 }
                 return (
@@ -248,7 +267,10 @@ export default function CustomStepper(props) {
                     />
                 );
             case 5:
-                if(errorMessage !== "" && errorMessage !== ValidateData(activeStep, 0).message){
+                if (
+                    errorMessage !== "" &&
+                    errorMessage !== ValidateData(activeStep, 0).message
+                ) {
                     setErrorMessage("");
                 }
                 return (
@@ -258,7 +280,10 @@ export default function CustomStepper(props) {
                     />
                 );
             case 6:
-                if(errorMessage !== "" && errorMessage !== ValidateData(activeStep, 0).message){
+                if (
+                    errorMessage !== "" &&
+                    errorMessage !== ValidateData(activeStep, 0).message
+                ) {
                     setErrorMessage("");
                 }
                 return (
@@ -268,7 +293,10 @@ export default function CustomStepper(props) {
                     />
                 );
             case 7:
-                if(errorMessage !== "" && errorMessage !== ValidateData(activeStep, 0).message){
+                if (
+                    errorMessage !== "" &&
+                    errorMessage !== ValidateData(activeStep, 0).message
+                ) {
                     setErrorMessage("");
                 }
                 console.log(
@@ -278,10 +306,15 @@ export default function CustomStepper(props) {
                 if (betweenStepsData.current["category"]) {
                     id = betweenStepsData.current["category"].id;
                     handleChange("category", id);
-                    newCalculation(betweenStepsData.current, token).then((res) => {
-                        console.log("Done");
-                        history.push({pathname: "/report", state: { data: res.data, token: token }});
-                    });
+                    newCalculation(betweenStepsData.current, token).then(
+                        (res) => {
+                            console.log("Done");
+                            history.push({
+                                pathname: "/report",
+                                state: { data: res.data, token: token },
+                            });
+                        }
+                    );
                 }
 
             default:
@@ -299,7 +332,9 @@ export default function CustomStepper(props) {
                 orientation={width < 600 ? "vertical" : "horizontal"}
                 activeStep={activeStep}
                 connector={<CustomConnector />}
-                className={`${classes.stepper} ${activeStep>=7 && classes.hidden}`}
+                className={`${classes.stepper} ${
+                    activeStep >= 7 && classes.hidden
+                }`}
             >
                 {steps.map((e, index) => (
                     <Step key={e.label}>
@@ -315,9 +350,9 @@ export default function CustomStepper(props) {
                     </Step>
                 ))}
             </Stepper>
-            {errorMessage !== '' && <Alert severity="error">
-                {errorMessage}
-            </Alert>}
+            {errorMessage !== "" && (
+                <Alert severity="error">{errorMessage}</Alert>
+            )}
             <div className={classes.stepContent}>
                 <SwitchStep />
             </div>
@@ -342,7 +377,9 @@ export default function CustomStepper(props) {
                     style={{ marginRight: 30 }}
                     onClick={handleNext}
                 >
-                    {activeStep === steps.length - 1 ? t("Submit.1") : t("Next.1")}
+                    {activeStep === steps.length - 1
+                        ? t("Submit.1")
+                        : t("Next.1")}
                 </Button>
             </footer>
         </>
@@ -357,7 +394,7 @@ const useStyles = makeStyles((theme) => ({
         borderRadius: 8,
         marginBottom: 10,
         height: 40,
-        fontWeight: "bold"
+        fontWeight: "bold",
     },
     stepFooter: {
         display: "flex",
@@ -422,6 +459,6 @@ const useStyles = makeStyles((theme) => ({
         filter: "brightness(0) saturate(100%) invert(15%) sepia(9%) saturate(3603%) hue-rotate(175deg) brightness(91%) contrast(86%)",
     },
     hidden: {
-        display: "none"
-    }
+        display: "none",
+    },
 }));
