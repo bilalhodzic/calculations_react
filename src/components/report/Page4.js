@@ -143,7 +143,7 @@ function setData(data, calculationData, classes) {
 //add new styles here
 const useStyles = makeStyles((theme) => ({
     paper: {
-        height: 920,
+        height: 1010,
         width: 800,
         marginTop: theme.spacing(5),
         paddingBottom: theme.spacing(5),

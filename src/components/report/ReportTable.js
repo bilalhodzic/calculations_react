@@ -26,7 +26,7 @@ export default function ReportTable(props) {
                 <TableHead>
                     <TableRow>
                         <TableCell className={classes.titleCell} colSpan={3} align="center">
-                            <Typography style={{color: "white", fontSize: 16}} className={classes.titleText}>{props.title}</Typography>
+                            <Typography style={{color: "white", fontSize: 18}} className={classes.titleText}>{props.title}</Typography>
                         </TableCell>
                     </TableRow>
                 </TableHead>

@@ -17,7 +17,8 @@ export default function Report(props) {
     const pdfRef = useRef();
 
     const handleExport = useReactToPrint({
-        content: () => pdfRef.current
+        content: () => pdfRef.current,
+        documentTitle: `${location.state.data.name}-calculation`
     });
 
     if (!props.data && !location.state && !location.state.data) {
@@ -128,6 +129,9 @@ const useStyles = makeStyles((theme) => ({
         width: "15%",
         fontSize: 18,
         fontWeight: 600,
+        "&:hover": {
+            background: "#21344D", 
+        },
         [theme.breakpoints.down("xs")]: {
             fontSize: 14,
             width: "20%",
