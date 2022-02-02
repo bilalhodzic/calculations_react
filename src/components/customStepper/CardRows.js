@@ -23,16 +23,16 @@ export default function CardRows(props) {
                         : { border: "4px solid white" }
                 }
             >
-                {e.icon}
-                <Typography className={classes.paperText}>
-                    {e.label}
-                    {e.info && (
+                {e.info && (
                         <abbr title={e.info}>
                             <InfoIcon
-                                style={{ height: 12, width: 12, marginLeft: 5 }}
+                                style={{ position: "absolute", right: 5 }}
                             />
                         </abbr>
                     )}
+                {e.icon}
+                <Typography className={classes.paperText}>
+                    {e.label}
                 </Typography>
             </Paper>
         );
@@ -118,6 +118,7 @@ const useStyles = makeStyles((theme) => ({
         [theme.breakpoints.down("xs")]: {
             width: "30vw",
         },
+        position: "relative"
     },
     paperText: {
         fontSize: 18,
