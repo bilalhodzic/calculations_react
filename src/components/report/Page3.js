@@ -12,12 +12,6 @@ const data = [
         moms: "totalInclVat",
     },
     {
-        label: "*Total kostnad vid egen regi",
-        noMoms: "",
-        moms: "",
-        margin: true,
-    },
-    {
         label: "Kostnad per m2 BOA/LOA",
         noMoms: "totalBoaLoaExclVat",
         moms: "totalBoaLoaInclVat",

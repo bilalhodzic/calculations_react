@@ -194,7 +194,7 @@ export default function Calctable(props) {
     };
 
     const handleRowClick = (element) => {
-        history.push({ pathname: "/report", state: { data: element.row, token: props.token }});
+        history.push({ pathname: "/report", state: { id: element.row.id, token: props.token }});
     };
 
     return (

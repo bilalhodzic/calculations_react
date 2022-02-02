@@ -1,7 +1,14 @@
 import React, { useRef } from "react";
-import { Box, Button, Divider, Paper, Typography } from "@material-ui/core";
+import {
+    Box,
+    Button,
+    CircularProgress,
+    Divider,
+    Paper,
+    Typography,
+} from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
-import {  useLocation } from "react-router";
+import { useLocation } from "react-router";
 import Layout from "../Layout";
 import Page1 from "./Page1";
 import Page2 from "./Page2";
@@ -10,76 +17,127 @@ import Page4 from "./Page4";
 import Scrollbars from "react-custom-scrollbars";
 
 import { useReactToPrint } from "react-to-print";
+import { getCalculationById } from "../../helper/externalCalls";
+
+const CHEAP = 1;
+const EXPENSIVE = 0;
 
 export default function Report(props) {
-    const classes = useStyles();
     const location = useLocation();
+    React.useEffect(() => {
+        getCalculationById(location.state.id, location.state.token).then(
+            (response) => {
+                setCalculation(response.data);
+            }
+        );
+    }, [location.state]);
+
+    const classes = useStyles();
     const pdfRef = useRef();
+    const [calculation, setCalculation] = React.useState([]);
+    const [reportOption, setReportOption] = React.useState(CHEAP);
 
     const handleExport = useReactToPrint({
         content: () => pdfRef.current,
-        documentTitle: `${location.state.data.name}-calculation`
+        documentTitle: `${calculation[reportOption]}-calculation`,
     });
 
-    if (!props.data && !location.state && !location.state.data) {
+    if (!props.data && !location.state && !location.state.id) {
         return "No data for report";
     }
-
-    const calculationData = props.data || location.state.data;
     const token = location.state.token;
 
     return (
         <Layout token={token}>
             <Paper className={classes.paper}>
-                <Box
-                    height={100}
-                    display={"flex"}
-                    alignItems={"center"}
-                    style={{ background: "white" }}
-                >
-                    <Typography className={classes.headerText}>
-                        Preview
-                    </Typography>
-                    {false && (
-                        <Typography
-                            style={{ marginLeft: "auto", marginRight: "auto" }}
+                {calculation.length === 0 ? (
+                    <CircularProgress />
+                ) : (
+                    <>
+                        <Box
+                            height={100}
+                            display={"flex"}
+                            alignItems={"center"}
+                            style={{ background: "white" }}
                         >
-                            {calculationData.name}
-                        </Typography>
-                    )}
+                            <Typography className={classes.headerText}>
+                                Preview
+                            </Typography>
+                            {false && (
+                                <Typography
+                                    style={{
+                                        marginLeft: "auto",
+                                        marginRight: "auto",
+                                    }}
+                                >
+                                    {calculation[reportOption].name}
+                                </Typography>
+                            )}
+                            <Button
+                                className={classes.headerButton}
+                                size="large"
+                                onClick={() => handleExport()}
+                            >
+                                Export to PDF
+                            </Button>
+                        </Box>
+                        <Divider />
+                        <Scrollbars
+                            color="#fff"
+                            style={{ width: "100%", height: "70vh" }}
+                            renderThumbVertical={({ style, ...props }) => (
+                                <div
+                                    {...props}
+                                    style={{
+                                        ...style,
+                                        backgroundColor: "#21344D",
+                                        width: "7px",
+                                    }}
+                                />
+                            )}
+                        >
+                            <div ref={pdfRef}>
+                                <Page1
+                                    type={calculation[reportOption].type}
+                                    title={calculation[reportOption].name}
+                                />
+                                <Page2
+                                    calculationData={calculation[reportOption]}
+                                />
+                                <Page3
+                                    calculationData={calculation[reportOption]}
+                                />
+                                <Page4
+                                    calculationData={calculation[reportOption]}
+                                />
+                            </div>
+                        </Scrollbars>
+                    </>
+                )}
+                <Box className={classes.footer}>
                     <Button
-                        className={classes.headerButton}
-                        size="large"
-                        onClick={() => handleExport()}
+                        className={`${classes.button} ${
+                            reportOption === EXPENSIVE && classes.selectedButton
+                        }`}
+                        onClick={() => {
+                            if (reportOption !== EXPENSIVE)
+                                setReportOption(EXPENSIVE);
+                        }}
                     >
-                        Export to PDF
+                        Expensive
+                    </Button>
+                    <Button
+                        className={`${classes.button} ${
+                            reportOption === CHEAP && classes.selectedButton
+                        }`}
+                        onClick={() => {
+                            if (reportOption !== CHEAP)
+                                setReportOption(CHEAP);
+                        }}
+                    >
+                        Cheap
                     </Button>
                 </Box>
-                <Divider />
-                <Scrollbars
-                    color="#fff"
-                    style={{ width: "100%", height: "70vh" }}
-                    renderThumbVertical={({ style, ...props }) => (
-                        <div
-                            {...props}
-                            style={{
-                                ...style,
-                                backgroundColor: "#21344D",
-                                width: "7px",
-                            }}
-                        />
-                    )}
-                >
-                    <div ref={pdfRef}>
-                        <Page1
-                            type={calculationData.type}
-                            title={calculationData.name}
-                        />
-                        <Page2 calculationData={calculationData} />
-                        <Page3 calculationData={calculationData} />
-                        <Page4 calculationData={calculationData} />
-                    </div>
-                </Scrollbars>
             </Paper>
         </Layout>
     );
@@ -109,7 +167,10 @@ const useStyles = makeStyles((theme) => ({
     footer: {
         position: "absolute",
         bottom: 5,
-        left: "5%",
+        left: "2%",
+        display: "flex",
+        flexBasis: 2,
+        width: "15%",
     },
     headerText: {
         fontSize: 26,
@@ -130,7 +191,7 @@ const useStyles = makeStyles((theme) => ({
         fontSize: 18,
         fontWeight: 600,
         "&:hover": {
-            background: "#21344D", 
+            background: "#21344D",
         },
         [theme.breakpoints.down("xs")]: {
             fontSize: 14,
@@ -143,5 +204,19 @@ const useStyles = makeStyles((theme) => ({
         left: 0,
         bottom: 0,
         height: "10 !important",
+    },
+    button: {
+        border: "1px solid black",
+        background: "white",
+        color: "black",
+        fontWeight: 600,
+        flex: 1,
+    },
+    selectedButton: {
+        background: "#21344D",
+        color: "white",
+        "&:hover": {
+            background: "#21344D",
+        }
     },
 }));

@@ -36,10 +36,9 @@ export default function Dashboard() {
     }, []);
 
     const handleCardClick = (index) => {
-        console.log(index);
         history.push({
             pathname: "/report",
-            state: { data: latestCalc[index], token: token },
+            state: { id: latestCalc[index].id, token: token },
         });
     };
 

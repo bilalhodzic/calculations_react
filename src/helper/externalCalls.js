@@ -13,7 +13,6 @@ async function newCalculation (data, token){
         }
       };
     const response = await axios(axiosOptions);
-    console.log(response.data);
     return response.data;
 };
 
@@ -26,8 +25,19 @@ async function getLatestCalculations(token){
         },
       };
     const response = await axios(axiosOptions);
-    console.log(response.data);
     return response.data;
 }
 
-export { newCalculation, getLatestCalculations };
+async function getCalculationById(id, token){
+    const axiosOptions = {
+        url: `${config.baseUrl}/calculations/getid/${id}`,
+        method: "GET",
+        headers: {
+            "Authorization": `Bearer ${token}`
+        },
+      };
+    const response = await axios(axiosOptions);
+    return response.data;
+}
+
+export { newCalculation, getLatestCalculations, getCalculationById };

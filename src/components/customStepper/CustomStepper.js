@@ -313,7 +313,7 @@ export default function CustomStepper(props) {
                             console.log("Done");
                             history.push({
                                 pathname: "/report",
-                                state: { data: res.data, token: token },
+                                state: { data: res.data[0].id, token: token },
                             });
                         }
                     );

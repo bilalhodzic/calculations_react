@@ -1,5 +1,5 @@
 import React from "react";
-import { Box, Divider, Typography, Paper } from "@material-ui/core";
+import { Box, Typography, Paper } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 import ReportTable from "./ReportTable";
 
@@ -8,11 +8,6 @@ const firstTableData = [
         label: "Total kostnad",
         noMoms: "productionExclVat",
         moms: "productionInclVat",
-    },
-    {
-        label: "*Total kostnad vid egen regi",
-        noMoms: "",
-        moms: "",
     },
     {
         label: "Kostnad per m2 BOA/LOA",
