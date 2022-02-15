@@ -111,6 +111,8 @@ const useStyles = makeStyles((theme) => ({
             margin: theme.spacing(1),
             marginBottom: -10,
             bottom: "-103vh",
+            paddingLeft: theme.spacing(2),
+            paddingRight: theme.spacing(2)
         },
     },
     divider: {

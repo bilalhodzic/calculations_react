@@ -48,14 +48,6 @@ export default function Layout(props) {
         i18n.changeLanguage("se");
     }, []);
 
-    React.useEffect(() => {
-        if (width < 600 && !mobileOpen) {
-            setMobileOpen(true);
-        } else if (width >= 600 && mobileOpen) {
-            setMobileOpen(false);
-        }
-    }, [width]);
-
     const handleDrawer = () => {
         setMobileOpen(!mobileOpen);
     };

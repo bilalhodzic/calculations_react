@@ -35,7 +35,7 @@ export default function Report(props) {
     const classes = useStyles();
     const pdfRef = useRef();
     const [calculation, setCalculation] = React.useState([]);
-    const [reportOption, setReportOption] = React.useState(CHEAP);
+    const [reportOption, setReportOption] = React.useState(EXPENSIVE);
 
     const handleExport = useReactToPrint({
         content: () => pdfRef.current,
@@ -51,7 +51,9 @@ export default function Report(props) {
         <Layout token={token}>
             <Paper className={classes.paper}>
                 {calculation.length === 0 ? (
-                    <CircularProgress />
+                    <Box width={"100%"} height={"100vh"} display={"flex"}>
+                        <CircularProgress style={{ margin: "auto"}} />
+                    </Box>
                 ) : (
                     <>
                         <Box
@@ -114,7 +116,7 @@ export default function Report(props) {
                         </Scrollbars>
                     </>
                 )}
-                <Box className={classes.footer}>
+                {calculation.length !== 0 && <Box className={classes.footer}>
                     <Button
                         className={`${classes.button} ${
                             reportOption === EXPENSIVE && classes.selectedButton
@@ -137,7 +139,7 @@ export default function Report(props) {
                     >
                         Cheap
                     </Button>
-                </Box>
+                </Box>}
             </Paper>
         </Layout>
     );
