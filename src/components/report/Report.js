@@ -52,7 +52,7 @@ export default function Report(props) {
             <Paper className={classes.paper}>
                 {calculation.length === 0 ? (
                     <Box width={"100%"} height={"100vh"} display={"flex"}>
-                        <CircularProgress style={{ margin: "auto"}} />
+                        <CircularProgress style={{ margin: "auto" }} />
                     </Box>
                 ) : (
                     <>
@@ -61,19 +61,38 @@ export default function Report(props) {
                             display={"flex"}
                             alignItems={"center"}
                             style={{ background: "white" }}
+                            position="relative"
                         >
                             <Typography className={classes.headerText}>
                                 Preview
                             </Typography>
-                            {false && (
-                                <Typography
-                                    style={{
-                                        marginLeft: "auto",
-                                        marginRight: "auto",
-                                    }}
-                                >
-                                    {calculation[reportOption].name}
-                                </Typography>
+                            {calculation.length !== 0 && (
+                                <Box className={classes.buttonGroup}>
+                                    <Button
+                                        className={`${classes.button} ${
+                                            reportOption === EXPENSIVE &&
+                                            classes.selectedButton
+                                        }`}
+                                        onClick={() => {
+                                            if (reportOption !== EXPENSIVE)
+                                                setReportOption(EXPENSIVE);
+                                        }}
+                                    >
+                                        Inkl entreprenadskostnad (+10%)
+                                    </Button>
+                                    <Button
+                                        className={`${classes.button} ${
+                                            reportOption === CHEAP &&
+                                            classes.selectedButton
+                                        }`}
+                                        onClick={() => {
+                                            if (reportOption !== CHEAP)
+                                                setReportOption(CHEAP);
+                                        }}
+                                    >
+                                        Exkl entreprenadskostnad (-10%)
+                                    </Button>
+                                </Box>
                             )}
                             <Button
                                 className={classes.headerButton}
@@ -116,30 +135,6 @@ export default function Report(props) {
                         </Scrollbars>
                     </>
                 )}
-                {calculation.length !== 0 && <Box className={classes.footer}>
-                    <Button
-                        className={`${classes.button} ${
-                            reportOption === EXPENSIVE && classes.selectedButton
-                        }`}
-                        onClick={() => {
-                            if (reportOption !== EXPENSIVE)
-                                setReportOption(EXPENSIVE);
-                        }}
-                    >
-                        Expensive
-                    </Button>
-                    <Button
-                        className={`${classes.button} ${
-                            reportOption === CHEAP && classes.selectedButton
-                        }`}
-                        onClick={() => {
-                            if (reportOption !== CHEAP)
-                                setReportOption(CHEAP);
-                        }}
-                    >
-                        Cheap
-                    </Button>
-                </Box>}
             </Paper>
         </Layout>
     );
@@ -213,12 +208,18 @@ const useStyles = makeStyles((theme) => ({
         color: "black",
         fontWeight: 600,
         flex: 1,
+        width: "50%"
     },
     selectedButton: {
         background: "#21344D",
         color: "white",
         "&:hover": {
             background: "#21344D",
-        }
+        },
     },
+    buttonGroup: {
+        position: "absolute",
+        left: "25%",
+        right: "25%"
+    }
 }));

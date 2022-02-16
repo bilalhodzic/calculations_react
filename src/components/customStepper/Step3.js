@@ -40,7 +40,7 @@ export default function Step3(props) {
                     size="small"
                     type="number"
                     className={classes.input}
-                    placeholder={props.data[entry.id] || (!entry.isRight && entry.placeholder)}
+                    placeholder={0}
                     variant="outlined"
                     value={itemValues[index]}
                     onChange={(e) => {
@@ -112,7 +112,7 @@ export default function Step3(props) {
 function initializeItems(props, fields){
     const array = [];
     fields.forEach((entry) => {
-        array.push(props.data[entry.id] || 0);
+        array.push(props.data[entry.id]);
     });
     return array;
 }
