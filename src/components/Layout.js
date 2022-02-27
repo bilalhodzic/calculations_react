@@ -66,7 +66,7 @@ export default function Layout(props) {
     ];
 
     const drawer = (
-        <>
+        <Box className={classes.listContainer}>
             <List className={classes.list}>
                 {drawerList.map((list, index) => (
                     <ListItem
@@ -117,7 +117,7 @@ export default function Layout(props) {
                     </Typography>
                 </ListItem>
             </List>
-        </>
+        </Box>
     );
 
     return (
@@ -213,7 +213,6 @@ const useStyles = makeStyles((theme) => ({
         position: "relative",
     },
     drawer: {
-        width: calculate(220),
         flexShrink: 0,
     },
     menuIcon: {
@@ -231,7 +230,7 @@ const useStyles = makeStyles((theme) => ({
     },
     drawerPaper: {
         color: "white",
-        width: calculate(240),
+        width: "17%",
         backgroundColor: "#21344D",
         textAlign: "center",
         minWidth: 180,
@@ -242,7 +241,7 @@ const useStyles = makeStyles((theme) => ({
     },
     drawerHeader: {
         height: "100%",
-        width: calculate(241),
+        width: "17%",
         display: "flex",
         minWidth: 181,
         position: "relative",
@@ -251,20 +250,16 @@ const useStyles = makeStyles((theme) => ({
         justifyContent: "flex-start",
         alignItems: "inherit",
         "& p": {
-            fontSize: 22,
+            fontSize: "min(1.2vw, 2.2vh)",
             color: "white",
         },
         "&:hover": {
             cursor: "pointer",
         },
-        [theme.breakpoints.down("xs")]: {
-            "& p": {
-                fontSize: 16,
-            },
-        },
     },
     drawerHeaderText: {
         marginLeft: theme.spacing(4),
+        fontSize: "1vw",
         [theme.breakpoints.down("xs")]: {
             marginLeft: "auto",
             marginRight: "auto",
@@ -334,7 +329,7 @@ const useStyles = makeStyles((theme) => ({
         },
     },
     listText: {
-        fontSize: 19,
+        fontSize: "min(1vw, 2vh)",
         fontWeight: 500,
         fontFamily: "Poppins",
         [theme.breakpoints.down("xs")]: {
@@ -366,11 +361,17 @@ const useStyles = makeStyles((theme) => ({
         textAlign: "center",
     },
     bottomList: {
-        position: "absolute",
-        bottom: 160,
+        marginTop: "auto",
+        marginBottom: "35%"
     },
     select: {
         width: "2.5%",
         marginRight: "1.5%",
+    },
+    listContainer: {
+        display: "flex",
+        flexDirection: "column",
+        height: "100%",
+        width: "100%"
     }
 }));

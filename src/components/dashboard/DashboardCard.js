@@ -16,20 +16,22 @@ export default function DashboardCard(props) {
             key={1}
         >
             <Box className={classes.menuIcon}>{props.icon}</Box>
-            <Typography className={classes.menuName}>{props.name}</Typography>
-            <Typography
-                style={{ color: "#6B6B6B", fontSize: 14.69, margin: 10 }}
-            >
-                {props.price.toLocaleString()} kr
-            </Typography>
+            <Box height={"15%"}>
+                <Typography className={classes.menuName}>
+                    {props.name}
+                </Typography>
+            </Box>
+            <Box height={"15%"}>
+                <Typography
+                    style={{ color: "#6B6B6B", fontSize: "100%", margin: 10 }}
+                >
+                    {props.price.toLocaleString()} kr
+                </Typography>
+            </Box>
 
-            <ColoredBox
-                color={props.color}
-                backgroundcolor={props.backgroundColor}
-                text={props.category}
-                position="absolute"
-                style={{fontStyle: "italic"}}
-            />
+            <Box className={classes.categoryItem}>
+                <Typography className={classes.categoryItemText}>{props.category}</Typography>
+            </Box>
         </Paper>
     );
 }
@@ -42,8 +44,10 @@ const useStyles = makeStyles((theme) => ({
         },
     },
     menuItem: {
+        display: "flex",
+        flexDirection: "column",
         width: "25%",
-        height: "90%",
+        minHeight: "90%",
         boxShadow: "0px 6px 14px 3px rgba(186, 186, 186, 0.28)",
         borderRadius: 15,
         fontSize: 15,
@@ -76,6 +80,16 @@ const useStyles = makeStyles((theme) => ({
     menuName: {
         fontWeight: 600,
         margin: 8,
-        fontSize: 18,
+        fontSize: "110%",
     },
+    categoryItem: {
+        marginTop: "auto",
+        marginLeft: "auto",
+        marginRight: "5%",
+        height: "10%",
+    },
+    categoryItemText: {
+        fontSize: "100%",
+        fontStyle: "italic"
+    }
 }));
