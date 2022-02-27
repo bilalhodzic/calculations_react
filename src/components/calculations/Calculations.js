@@ -16,7 +16,7 @@ import axios from "axios";
 import helper from "../../helper/TransformData";
 import types from "../../helper/data.json";
 import config from "../../config.json";
-import { useLocation } from "react-router";
+import { useHistory, useLocation } from "react-router";
 import { useTranslation } from "react-i18next";
 
 export default function Calculations(props) {
@@ -32,12 +32,12 @@ export default function Calculations(props) {
   }, []);
 
   const classes = useStyles();
-  const location = useLocation();
+  const history = useHistory();
 
-  if(!location.state || !location.state.token){
-    return "Unauthorized";
+  if(!localStorage.getItem('token')){
+    history.push("/");
   }
-  const token = location.state.token;
+  const token = localStorage.getItem('token');
 
   const getCalculationsForPage = async (pageNumber, categoryNumber, typeNumber) => {
     const axiosOptions = {
@@ -94,7 +94,7 @@ export default function Calculations(props) {
   }
 
   return (
-    <Layout token={token}>
+    <Layout>
       <Paper elevation={6} className={classes.paperHeader}>
         <Hidden xsDown>
           <InputBase
@@ -146,7 +146,7 @@ export default function Calculations(props) {
         </Button>
       </Paper>
       <Paper elevation={6} className={classes.paper}>
-        <CalcTable data={tableData} downloadMoreData={downloadMoreData} token={token} deleteCalculation={deleteCalculation}/>
+        <CalcTable data={tableData} downloadMoreData={downloadMoreData} deleteCalculation={deleteCalculation}/>
       </Paper>
     </Layout>
   );

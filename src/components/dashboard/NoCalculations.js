@@ -11,8 +11,6 @@ export default function NoCalculations(props) {
     const { t, i18n } = useTranslation();
     const history = useHistory();
 
-    const token = props.token;
-
     return (
         <>
             <Box className={classes.root}>
@@ -27,8 +25,7 @@ export default function NoCalculations(props) {
                         className={classes.button}
                         onClick={() => {
                             history.push({
-                                pathname: "/add",
-                                state: { token: token },
+                                pathname: "/add"
                             });
                         }}
                     >

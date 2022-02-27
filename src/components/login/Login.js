@@ -145,7 +145,8 @@ async function login(username, password, history) {
     try {
         const response = await axios(axiosOptions);
         if (response.status === 200) {
-            history.push({ pathname: "/home", state: { token: (response.data.data) } });
+            localStorage.setItem('token', response.data.data);
+            history.push('/home');
             return true;
         } else {
             return false;

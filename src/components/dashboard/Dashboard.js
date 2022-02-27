@@ -19,12 +19,10 @@ export default function Dashboard() {
     const [isLoading, setIsLoading] = React.useState(true);
     const { t, i18n } = useTranslation();
 
-    const location = useLocation();
-
-    if (!location.state || !location.state.token) {
+    if (!localStorage.getItem('token')) {
         history.push("/");
     }
-    const token = location.state.token;
+    const token = localStorage.getItem('token');
 
     React.useEffect(async () => {
         try {
@@ -38,7 +36,7 @@ export default function Dashboard() {
     const handleCardClick = (index) => {
         history.push({
             pathname: "/report",
-            state: { id: latestCalc[index].id, token: token },
+            state: { id: latestCalc[index].id},
         });
     };
 
@@ -68,14 +66,14 @@ export default function Dashboard() {
     }
 
     return (
-        <Layout token={token}>
+        <Layout>
             <Paper elevation={5} className={classes.paper}>
                 {t("Latest calculations.1")}
                 <Divider className={classes.divider} />
                 {latestCalc.length != 0 ? (
                     rows.map((e) => e)
                 ) : !isLoading ? (
-                    <NoCalculations token={token} />
+                    <NoCalculations />
                 ) : (
                     <CircularProgress
                         style={{

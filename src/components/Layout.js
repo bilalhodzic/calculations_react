@@ -76,7 +76,6 @@ export default function Layout(props) {
                         onClick={() =>
                             history.push({
                                 pathname: list.pathname,
-                                state: { token: props.token },
                             })
                         }
                     >
@@ -98,7 +97,6 @@ export default function Layout(props) {
                     onClick={() =>
                         history.push({
                             pathname: "/add",
-                            state: { token: props.token },
                         })
                     }
                 >
@@ -109,7 +107,10 @@ export default function Layout(props) {
                 </ListItem>
                 <ListItem
                     className={classes.listButton}
-                    onClick={() => history.push("/")}
+                    onClick={() => {
+                        localStorage.removeItem('token');
+                        history.push("/");
+                    }}
                 >
                     <LogoutIcon style={{ marginRight: 15 }} />
                     <Typography className={classes.listText}>
@@ -132,7 +133,6 @@ export default function Layout(props) {
                         onClick={() =>
                             history.push({
                                 pathname: "/home",
-                                state: { token: props.token },
                             })
                         }
                     >

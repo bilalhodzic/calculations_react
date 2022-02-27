@@ -18,10 +18,10 @@ export default function Step0 (props){
     const location = useLocation();
     const { t, i18n } = useTranslation();
 
-    if(!location.state || !location.state.token){
-      return "Unauthorized";
+    if(!localStorage.getItem('token')){
+      history.push('/');
     }
-    const token = location.state.token;
+    const token = localStorage.getItem('token');
 
     const handleDrawer = () => {
         setMobileOpen(!mobileOpen);
@@ -34,7 +34,7 @@ export default function Step0 (props){
             </Helmet>
             <Box className={classes.root}>
                 <Box className={classes.header}>
-                    <Box className={classes.drawerHeader} onClick={() => history.push({pathname: "/home", state: { token: token }})}>
+                    <Box className={classes.drawerHeader} onClick={() => history.push({pathname: "/home"})}>
                         <Typography className={classes.headerText}>{t('Calculations.1')}</Typography>
                     </Box>
                     <Hidden smUp>
@@ -45,9 +45,9 @@ export default function Step0 (props){
                 <Paper className={classes.paper}>
                     <Typography className={classes.title}>{t('What do you want.1')}</Typography>
                     <Box className={classes.buttonGroup}>
-                        <Button className={classes.button} onClick={() => history.push({pathname: "/new", state: { type: types.types.rebuilding.id, token: token }})}>{t('Rebuilding.1')}</Button>
+                        <Button className={classes.button} onClick={() => history.push({pathname: "/new", state: { type: types.types.rebuilding.id}})}>{t('Rebuilding.1')}</Button>
                         <CalculatorIcon className={classes.image}/>
-                        <Button className={classes.button} onClick={() => history.push({pathname: "/new", state: { type: types.types.new_production.id, token: token }})}>{t('New production.1')}</Button>
+                        <Button className={classes.button} onClick={() => history.push({pathname: "/new", state: { type: types.types.new_production.id}})}>{t('New production.1')}</Button>
                     </Box>
                 </Paper>
             </Box>

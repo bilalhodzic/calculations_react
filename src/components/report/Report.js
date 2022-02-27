@@ -25,7 +25,7 @@ const EXPENSIVE = 0;
 export default function Report(props) {
     const location = useLocation();
     React.useEffect(() => {
-        getCalculationById(location.state.id, location.state.token).then(
+        getCalculationById(location.state.id, localStorage.getItem('token')).then(
             (response) => {
                 setCalculation(response.data);
             }
@@ -45,10 +45,10 @@ export default function Report(props) {
     if (!props.data && !location.state && !location.state.id) {
         return "No data for report";
     }
-    const token = location.state.token;
+    const token = localStorage.getItem('token');
 
     return (
-        <Layout token={token}>
+        <Layout>
             <Paper className={classes.paper}>
                 {calculation.length === 0 ? (
                     <Box width={"100%"} height={"100vh"} display={"flex"}>

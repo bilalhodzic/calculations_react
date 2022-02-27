@@ -102,10 +102,10 @@ export default function CustomStepper(props) {
 
     const classes = useStyles();
 
-    if (!props.token) {
-        return "Unauthorized";
+    if (!localStorage.getItem('token')) {
+        history.push('/');
     }
-    const token = props.token;
+    const token = localStorage.getItem('token');
 
     const steps = [
         {
@@ -313,7 +313,7 @@ export default function CustomStepper(props) {
                             console.log("Done");
                             history.push({
                                 pathname: "/report",
-                                state: { data: res.data[0].id, token: token },
+                                state: { data: res.data[0].id},
                             });
                         }
                     );
