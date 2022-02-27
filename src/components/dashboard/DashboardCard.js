@@ -42,18 +42,17 @@ const useStyles = makeStyles((theme) => ({
         },
     },
     menuItem: {
-        width: "17vw",
-        height: "25vh",
+        width: "25%",
+        height: "85%",
         boxShadow: "0px 6px 14px 3px rgba(186, 186, 186, 0.28)",
         borderRadius: 15,
         fontSize: 15,
         fontWeight: 600,
         position: "relative",
         textAlign: "center",
-        "&:hover": {
-            cursor: "pointer",
-        },
+        cursor: "pointer",
         margin: theme.spacing(2),
+        paddingBottom: theme.spacing(2),
         [theme.breakpoints.down("xs")]: {
             width: "30vw",
             height: "28vh",
