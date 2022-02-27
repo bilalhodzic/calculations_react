@@ -43,7 +43,7 @@ const useStyles = makeStyles((theme) => ({
     },
     menuItem: {
         width: "25%",
-        height: "85%",
+        height: "90%",
         boxShadow: "0px 6px 14px 3px rgba(186, 186, 186, 0.28)",
         borderRadius: 15,
         fontSize: 15,
@@ -63,8 +63,8 @@ const useStyles = makeStyles((theme) => ({
         marginRight: "auto",
         marginTop: "5%",
         paddingTop: theme.spacing(3),
-        width: "15vw",
-        height: "10vh",
+        width: "30%",
+        height: "40%",
         textAlign: "center",
         display: "flex",
         justifyContent: "center",
@@ -77,8 +77,5 @@ const useStyles = makeStyles((theme) => ({
         fontWeight: 600,
         margin: 8,
         fontSize: 18,
-    },
-    doneStep: {
-        filter: "brightness(0) saturate(100%) invert(15%) sepia(9%) saturate(3603%) hue-rotate(175deg) brightness(91%) contrast(86%)",
     },
 }));

@@ -106,6 +106,7 @@ const useStyles = makeStyles((theme) => ({
         flexDirection: "column",
         width: "85%",
         height: "70vh",
+        overflow: "auto",
         [theme.breakpoints.down("xs")]: {
             margin: theme.spacing(1),
             marginBottom: -10,
@@ -159,6 +160,7 @@ const useStyles = makeStyles((theme) => ({
     root: {
         display: "flex",
         justifyContent: "center",
+        height: "50%",
         [theme.breakpoints.down("xs")]: {
             flexDirection: "column",
             display: "inline-flex",
