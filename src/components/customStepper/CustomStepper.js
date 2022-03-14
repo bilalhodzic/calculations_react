@@ -311,9 +311,10 @@ export default function CustomStepper(props) {
                     newCalculation(betweenStepsData.current, token).then(
                         (res) => {
                             console.log("Done");
+                            console.log(res.data);
                             history.push({
                                 pathname: "/report",
-                                state: { data: res.data[0].id},
+                                state: { id: res.data[0].id},
                             });
                         }
                     );

@@ -25,9 +25,15 @@ const EXPENSIVE = 0;
 export default function Report(props) {
     const location = useLocation();
     React.useEffect(() => {
+        setIsLoading(true);
+        console.log("Use effect report");
+        console.log(location.state.id);
         getCalculationById(location.state.id, localStorage.getItem('token')).then(
             (response) => {
+                console.log("Then");
+                console.log(response.data);
                 setCalculation(response.data);
+                setIsLoading(false);
             }
         );
     }, [location.state]);
@@ -36,6 +42,7 @@ export default function Report(props) {
     const pdfRef = useRef();
     const [calculation, setCalculation] = React.useState([]);
     const [reportOption, setReportOption] = React.useState(EXPENSIVE);
+    const [isLoading, setIsLoading] = React.useState(true);
 
     const handleExport = useReactToPrint({
         content: () => pdfRef.current,
@@ -50,7 +57,7 @@ export default function Report(props) {
     return (
         <Layout>
             <Paper className={classes.paper}>
-                {calculation.length === 0 ? (
+                {isLoading ? (
                     <Box width={"100%"} height={"100vh"} display={"flex"}>
                         <CircularProgress style={{ margin: "auto" }} />
                     </Box>
