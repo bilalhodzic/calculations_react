@@ -108,7 +108,7 @@ export default function Layout(props) {
                 <ListItem
                     className={classes.listButton}
                     onClick={() => {
-                        localStorage.removeItem('token');
+                        localStorage.removeItem("token");
                         history.push("/");
                     }}
                 >
@@ -149,21 +149,23 @@ export default function Layout(props) {
                             onClick={handleDrawer}
                         />
                     </Hidden>
-                    <Select
-                        value={currentLanguage}
-                        onChange={(e) => {
-                            setCurrentLanguage(e.target.value);
-                            i18n.changeLanguage(e.target.value);
-                        }}
-                        className={classes.select}
-                    >
-                        <MenuItem value={languages[0].value}>
-                            {languages[0].flag}
-                        </MenuItem>
-                        <MenuItem value={languages[1].value}>
-                            {languages[1].flag}
-                        </MenuItem>
-                    </Select>
+                    <Hidden xsDown>
+                        <Select
+                            value={currentLanguage}
+                            onChange={(e) => {
+                                setCurrentLanguage(e.target.value);
+                                i18n.changeLanguage(e.target.value);
+                            }}
+                            className={classes.select}
+                        >
+                            <MenuItem value={languages[0].value}>
+                                {languages[0].flag}
+                            </MenuItem>
+                            <MenuItem value={languages[1].value}>
+                                {languages[1].flag}
+                            </MenuItem>
+                        </Select>
+                    </Hidden>
                 </Box>
                 <Hidden smUp>
                     <Drawer
@@ -256,6 +258,11 @@ const useStyles = makeStyles((theme) => ({
         "&:hover": {
             cursor: "pointer",
         },
+        [theme.breakpoints.down("xs")]: {
+            "& p": {
+                fontSize: "min(5vw, 2vh)"
+            }
+        }
     },
     drawerHeaderText: {
         marginLeft: theme.spacing(4),
@@ -362,7 +369,7 @@ const useStyles = makeStyles((theme) => ({
     },
     bottomList: {
         marginTop: "auto",
-        marginBottom: "35%"
+        marginBottom: "35%",
     },
     select: {
         width: "2.5%",
@@ -372,6 +379,6 @@ const useStyles = makeStyles((theme) => ({
         display: "flex",
         flexDirection: "column",
         height: "100%",
-        width: "100%"
-    }
+        width: "100%",
+    },
 }));

@@ -1,6 +1,12 @@
 import React from "react";
 import Layout from "../Layout";
-import { Paper, Divider, Box, CircularProgress } from "@material-ui/core";
+import {
+    Paper,
+    Divider,
+    Box,
+    CircularProgress,
+    Hidden,
+} from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 
 import NoCalculations from "./NoCalculations";
@@ -19,10 +25,10 @@ export default function Dashboard() {
     const [isLoading, setIsLoading] = React.useState(true);
     const { t, i18n } = useTranslation();
 
-    if (!localStorage.getItem('token')) {
+    if (!localStorage.getItem("token")) {
         history.push("/");
     }
-    const token = localStorage.getItem('token');
+    const token = localStorage.getItem("token");
 
     React.useEffect(async () => {
         try {
@@ -36,7 +42,7 @@ export default function Dashboard() {
     const handleCardClick = (index) => {
         history.push({
             pathname: "/report",
-            state: { id: latestCalc[index].id},
+            state: { id: latestCalc[index].id },
         });
     };
 
@@ -65,13 +71,29 @@ export default function Dashboard() {
         );
     }
 
+    const responsiveRows = [];
+    for (let i = 0; i < latestCalculationItems.length; i += 2) {
+        responsiveRows.push(
+            <Box className={classes.root}>
+                {latestCalculationItems[i]}
+                {i + 1 < latestCalculationItems.length &&
+                    latestCalculationItems[i + 1]}
+            </Box>
+        );
+    }
+
     return (
         <Layout>
             <Paper elevation={5} className={classes.paper}>
                 {t("Latest calculations.1")}
                 <Divider className={classes.divider} />
                 {latestCalc.length != 0 ? (
-                    rows.map((e) => e)
+                    <>
+                        <Hidden xsDown>{rows.map((e) => e)}</Hidden>
+                        <Hidden smUp>
+                            {responsiveRows.map((e) => e)}
+                        </Hidden>
+                    </>
                 ) : !isLoading ? (
                     <NoCalculations />
                 ) : (
@@ -106,11 +128,9 @@ const useStyles = makeStyles((theme) => ({
         height: "70vh",
         overflow: "auto",
         [theme.breakpoints.down("xs")]: {
-            margin: theme.spacing(1),
-            marginBottom: -10,
-            bottom: "-103vh",
-            paddingLeft: theme.spacing(2),
-            paddingRight: theme.spacing(2)
+            margin: "auto",
+            paddingLeft: theme.spacing(1),
+            paddingRight: theme.spacing(1),
         },
     },
     divider: {
@@ -160,8 +180,8 @@ const useStyles = makeStyles((theme) => ({
         justifyContent: "center",
         height: "50%",
         [theme.breakpoints.down("xs")]: {
-            flexDirection: "column",
-            display: "inline-flex",
+            // flexDirection: "column",
+            // display: "inline-flex",
             "&>*": {
                 margin: 10,
             },

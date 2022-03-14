@@ -58,8 +58,7 @@ const useStyles = makeStyles((theme) => ({
         margin: theme.spacing(2),
         paddingBottom: theme.spacing(2),
         [theme.breakpoints.down("xs")]: {
-            width: "30vw",
-            height: "28vh",
+            width: "50vw"
         },
     },
     menuIcon: {
@@ -81,6 +80,9 @@ const useStyles = makeStyles((theme) => ({
         fontWeight: 600,
         margin: 8,
         fontSize: "110%",
+        [theme.breakpoints.down("xs")]: {
+            fontSize: "80%"
+        }
     },
     categoryItem: {
         marginTop: "auto",
