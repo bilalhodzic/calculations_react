@@ -26,12 +26,8 @@ export default function Report(props) {
     const location = useLocation();
     React.useEffect(() => {
         setIsLoading(true);
-        console.log("Use effect report");
-        console.log(location.state.id);
         getCalculationById(location.state.id, localStorage.getItem('token')).then(
             (response) => {
-                console.log("Then");
-                console.log(response.data);
                 setCalculation(response.data);
                 setIsLoading(false);
             }
@@ -128,6 +124,7 @@ export default function Report(props) {
                                 <Page1
                                     type={calculation[reportOption].type}
                                     title={calculation[reportOption].name}
+                                    category={calculation[reportOption].category}
                                 />
                                 <Page2
                                     calculationData={calculation[reportOption]}

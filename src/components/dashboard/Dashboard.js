@@ -50,7 +50,7 @@ export default function Dashboard() {
         return (
             <DashboardCard
                 name={el.name}
-                icon={icons[el.category] || "?"}
+                icon={icons()[el.category] || "?"}
                 price={el.totalInclVat}
                 category={types.by_id[el.category].value}
                 handleCardClick={handleCardClick}

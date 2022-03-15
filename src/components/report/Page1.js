@@ -1,16 +1,20 @@
 import React from "react";
 import { Box, Paper, Typography } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
+import {icons} from "../../helper/CategoryIcons";
 
 export default function Page1(props) {
   const classes = useStyles();
 
   const type = props.type === 1 ? "New production" : "Rebuilding";
   const title = props.title;
+  const category = parseInt(props.category);
 
   return (
     <Paper variant="outlined" className={classes.paper}>
-        <Paper className={classes.box} />
+        <Paper className={classes.box}>
+            {icons({ transform: "scale(2.5)"})[category]}
+        </Paper>
         <Box width={"100%"} style={{marginTop: "15%"}}>
             <Box width={"100%"}>
                 <Typography className={classes.type}>{type}</Typography>
@@ -44,12 +48,14 @@ const useStyles = makeStyles((theme) => ({
         }
     },
     box: {
-        border: "1px solid black",
         marginLeft: "auto",
         marginRight: "auto",
         marginTop: theme.spacing(12),
         width: "60%",
-        height: "25%"
+        height: "25%",
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center"
     },
     title: {
         marginTop: theme.spacing(2),

@@ -127,7 +127,6 @@ const useStyles = makeStyles((theme) => ({
         },
     },
     paperBox: {
-        height: "100%",
         flex: 1,
         minHeight: 140,
         textAlign: "center",
