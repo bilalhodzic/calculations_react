@@ -1,5 +1,5 @@
 import { Scrollbars } from "react-custom-scrollbars";
-import { Paper, Typography, Box, makeStyles } from "@material-ui/core";
+import { Paper, Typography, Box, makeStyles, Hidden } from "@material-ui/core";
 import { ReactComponent as InfoIcon } from "../../images/infoIcon.svg";
 import React from "react";
 
@@ -72,10 +72,34 @@ export default function CardRows(props) {
             </Box>
         );
     }
+
+    const responsiveRows = [];
+    for (let i = 0; i < items.length; i += 2) {
+        responsiveRows.push(
+            <Box
+                className={`${classes.root} ${
+                    i + 3 >= items.length && classes.lastRoot
+                }`}
+                style={{ marginTop: 20 }}
+                display={"flex"}
+                flexBasis={2}
+                width={"70%"}
+            >
+                {items[i]}
+                {i + 1 < items.length ? items[i + 1] : addDummyElement(i, 2, items.length, classes)}
+            </Box>
+        );
+    }
+
     return (
         <Box maxHeight={"80vh"} overflow="auto">
             <Scrollbars style={{ width: "100%", height: "45vh" }}>
-                {rows.map((e) => e)}
+                <Hidden xsDown>
+                    {rows}
+                </Hidden>
+                <Hidden smUp>
+                    {responsiveRows}
+                </Hidden>
             </Scrollbars>
         </Box>
     );
@@ -97,15 +121,13 @@ const useStyles = makeStyles((theme) => ({
         marginLeft: "auto",
         marginRight: "auto",
         [theme.breakpoints.down("xs")]: {
-            flexDirection: "column",
-            display: "inline-flex",
             "&>*": {
                 margin: 10,
             },
         },
     },
     paperBox: {
-        //width: 250,
+        height: "100%",
         flex: 1,
         minHeight: 140,
         textAlign: "center",
