@@ -39,10 +39,14 @@ export default function Step5(props) {
     const { t, i18n } = useTranslation();
 
     const [indoorSelected, setIndoorSelected] = React.useState(true);
-    const [externalStandard, setExternalStandard] = React.useState(props.data.externalStandard || 0);
-    const [internalStandard, setInternalStandard] = React.useState(props.data.internalStandard || 0);
+    const [externalStandard, setExternalStandard] = React.useState(
+        props.data.externalStandard || 0
+    );
+    const [internalStandard, setInternalStandard] = React.useState(
+        props.data.internalStandard || 0
+    );
 
-    if(props.data.type === 2){
+    if (props.data.type === 2) {
         props.handleChange("externalStandard", 1);
     }
 
@@ -54,13 +58,16 @@ export default function Step5(props) {
                 <Paper
                     elevation={4}
                     className={`${classes.standardsSize} ${
-                        (!indoorSelected && index + 1 === externalStandard || indoorSelected && internalStandard === index + 1) && classes.selectedStandard
+                        ((!indoorSelected && index + 1 === externalStandard) ||
+                            (indoorSelected &&
+                                internalStandard === index + 1)) &&
+                        classes.selectedStandard
                     }`}
                     onClick={() => {
-                        if(indoorSelected){
+                        if (indoorSelected) {
                             props.handleChange("internalStandard", e.value);
                             setInternalStandard(e.value);
-                        }else{
+                        } else {
                             props.handleChange("externalStandard", e.value);
                             setExternalStandard(e.value);
                         }
@@ -75,15 +82,22 @@ export default function Step5(props) {
         );
     });
     const rows = [];
-    for (let i = 0; i < paperItems.length; i += 3) {
-        rows.push(
-            <Box className={`${classes.root} ${i === 0 && classes.initialRoot} ${i + 3 >= paperItems.length && classes.lastRoot}`}>
-                {paperItems[i]}
-                {i + 1 < paperItems.length && paperItems[i + 1]}
-                {i + 2 < paperItems.length && paperItems[i + 2]}
-            </Box>
-        );
-    }
+    const Row = () => (
+        <Box
+            className={`${classes.root} ${classes.initialRoot} ${classes.lastRoot}`}
+        >
+            {paperItems.map((e) => e)}
+        </Box>
+    );
+    // for (let i = 0; i < paperItems.length; i += 3) {
+    //     rows.push(
+    //         <Box className={`${classes.root} ${i === 0 && classes.initialRoot} ${i + 3 >= paperItems.length && classes.lastRoot}`}>
+    //             {paperItems[i]}
+    //             {i + 1 < paperItems.length && paperItems[i + 1]}
+    //             {i + 2 < paperItems.length && paperItems[i + 2]}
+    //         </Box>
+    //     );
+    // }
 
     return (
         <Box maxHeight={"80vh"} overflow="auto">
@@ -108,21 +122,25 @@ export default function Step5(props) {
                                 setIndoorSelected(true);
                             }}
                         >
-                            {props.data.type === 2 ? "Standard" : t("Indoor standard.1")}
+                            {props.data.type === 2
+                                ? "Standard"
+                                : t("Indoor standard.1")}
                         </Button>
-                        { props.data.type !== 2 && <Button
-                            className={`${classes.button} ${
-                                !indoorSelected && classes.selectedButton
-                            }`}
-                            onClick={() => {
-                                setIndoorSelected(false);
-                            }}
-                        >
-                            {t("Outdoor standard.1")}
-                        </Button>}
+                        {props.data.type !== 2 && (
+                            <Button
+                                className={`${classes.button} ${
+                                    !indoorSelected && classes.selectedButton
+                                }`}
+                                onClick={() => {
+                                    setIndoorSelected(false);
+                                }}
+                            >
+                                {t("Outdoor standard.1")}
+                            </Button>
+                        )}
                     </Box>
                 </Box>
-                {rows.map((e) => e)}
+                <Row/>
             </Scrollbars>
         </Box>
     );
@@ -144,8 +162,8 @@ const useStyles = makeStyles((theme) => ({
         minWidth: 250,
         height: 140,
         textAlign: "center",
-        marginLeft: theme.spacing(2),
-        marginRight: theme.spacing(2),
+        marginLeft: theme.spacing(1),
+        marginRight: theme.spacing(1),
         border: "4px solid white",
         [theme.breakpoints.down("xs")]: {
             width: 140,
@@ -190,8 +208,8 @@ const useStyles = makeStyles((theme) => ({
         [theme.breakpoints.down("xs")]: {
             flexDirection: "column",
             justifyContent: "center",
-            alignItems: "center"
-        }
+            alignItems: "center",
+        },
     },
     button: {
         width: 400,
@@ -210,8 +228,8 @@ const useStyles = makeStyles((theme) => ({
         margin: theme.spacing(1),
         textTransform: "none",
         [theme.breakpoints.down("xs")]: {
-            width: "50vw"
-        }
+            width: "50vw",
+        },
     },
     selectedButton: {
         color: "white",
@@ -219,12 +237,12 @@ const useStyles = makeStyles((theme) => ({
     },
     initialRoot: {
         [theme.breakpoints.down("xs")]: {
-            marginTop: theme.spacing(5)
-        }
+            marginTop: theme.spacing(5),
+        },
     },
     lastRoot: {
         [theme.breakpoints.down("xs")]: {
-            paddingBottom: theme.spacing(8)
-        }
-    }
+            paddingBottom: theme.spacing(8),
+        },
+    },
 }));
