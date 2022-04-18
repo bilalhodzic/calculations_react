@@ -138,11 +138,9 @@ export default function Step5(props) {
                     </Box>
                 </Box>
                 <Row/>
-                <Box className={classes.root} style={{ marginTop: "1%"}}>
-                    <Typography style={{ textAlign: "left", fontWeight: "bold", marginRight: "1%"}}>Lägst<br/>standard</Typography>
-                    <Box display={"flex"} width="80%" marginTop={"auto"} marginBottom="auto" style={{ borderBottom: "3px solid black"}}>
-                    </Box>
-                    <Typography style={{ textAlign: "right", fontWeight: "bold", marginLeft: "1%"}}>Högst<br/>standard</Typography>
+                <Box className={classes.root} style={{ borderTop: "2px solid #21344D", marginTop: "2%", marginLeft: "auto", marginRight: "auto", justifyContent: "space-between", width: "90%"}}>
+                    <Typography style={{ marginTop: "1%", fontWeight: "bold"}}>Lägst standard</Typography>
+                    <Typography style={{ marginTop: "1%", fontWeight: "bold"}}>Högst standard</Typography>
                 </Box>
             </Scrollbars>
         </Box>
