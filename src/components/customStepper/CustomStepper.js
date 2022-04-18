@@ -48,6 +48,9 @@ const CustomConnector = withStyles({
         borderColor: "#bababa",
         height: 3,
         borderTopWidth: 3,
+        width: "4vw",
+        marginLeft: "-8%",
+        marginTop: "-5%",
     },
 })(StepConnector);
 
@@ -117,7 +120,7 @@ export default function CustomStepper(props) {
             id: (
                 <CircleIcon
                     className={activeStep !== 0 && classes.doneStep}
-                    style={{ height: 30, width: 30, marginTop: 6 }}
+                    style={{ height: 20, width: 20 }}
                 />
             ),
         },
@@ -327,10 +330,7 @@ export default function CustomStepper(props) {
 
     return (
         <>
-            <Typography style={{}} className={classes.stepLabel}>
-                {steps[activeStep] && steps[activeStep].label}
-            </Typography>
-            <Stepper
+        <Stepper
                 alternativeLabel={width < 600 ? false : true}
                 orientation={width < 600 ? "vertical" : "horizontal"}
                 activeStep={activeStep}
@@ -342,7 +342,16 @@ export default function CustomStepper(props) {
                 {steps.map((e, index) => (
                     <Step key={e.label}>
                         <StepLabel
-                            icon={e.id}
+                            icon={
+                                index !== 1 ?
+                                <Box className={`${classes.step} ${index <= activeStep ? classes.passedStep : classes.nonPassedStep}`}>
+                                    {e.id}
+                                </Box>
+                                :
+                                <Box>
+                                    {e.id}
+                                </Box>
+                            }
                             classes={{
                                 iconContainer: `${classes.icon}`,
                                 labelContainer: classes.labelContainer,
@@ -353,6 +362,9 @@ export default function CustomStepper(props) {
                     </Step>
                 ))}
             </Stepper>
+            <Typography className={classes.stepLabel}>
+                {steps[activeStep] && steps[activeStep].label}
+            </Typography>
             {errorMessage !== "" && (
                 <Alert severity="error">{errorMessage}</Alert>
             )}
@@ -422,7 +434,7 @@ const useStyles = makeStyles((theme) => ({
     },
     stepLabel: {
         fontSize: 26,
-        marginTop: theme.spacing(4),
+        marginBottom: theme.spacing(2),
         color: "black",
         textAlign: "center",
         [theme.breakpoints.down("xs")]: {
@@ -434,7 +446,6 @@ const useStyles = makeStyles((theme) => ({
         color: "black",
         marginLeft: theme.spacing(3),
         fontSize: 20,
-        fontWeight: 600,
     },
     icon: {
         fontSize: 25,
@@ -453,13 +464,29 @@ const useStyles = makeStyles((theme) => ({
         },
     },
     stepper: {
-        width: "75%",
-        marginLeft: "auto",
+        width: "50%",
+        marginLeft: "1%",
         marginRight: "auto",
-        //marginBottom: theme.spacing(1),
     },
     doneStep: {
         filter: "brightness(0) saturate(100%) invert(15%) sepia(9%) saturate(3603%) hue-rotate(175deg) brightness(91%) contrast(86%)",
+    },
+    passedStep: {
+        background: "#21344d",
+        color: "white"
+    },
+    nonPassedStep: {
+        background: "#bababa",
+        color: "white"
+    },
+    step: {
+        display: "flex",
+        width: 30,
+        height: 30,
+        borderRadius: "50%",
+        fontSize: 20,
+        alignItems: "center",
+        justifyContent: "center"
     },
     hidden: {
         display: "none",
