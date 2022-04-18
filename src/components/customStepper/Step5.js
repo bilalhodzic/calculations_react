@@ -4,6 +4,7 @@ import { Scrollbars } from "react-custom-scrollbars";
 
 import { ReactComponent as MedalIcon } from "../../images/medalIcon.svg";
 import { ReactComponent as ExclusiveIcon } from "../../images/exclusiveIcon.svg";
+import { ReactComponent as InfoIcon } from "../../images/infoIcon.svg";
 import { useTranslation } from "react-i18next";
 
 const standards = [
@@ -73,9 +74,14 @@ export default function Step5(props) {
                         }
                     }}
                 >
+                    <abbr title={e.name}>
+                        <InfoIcon
+                            style={{ position: "absolute", right: 5, top: 5 }}
+                        />
+                    </abbr>
                     {e.icon}
                     <Typography className={classes.standardsText}>
-                        {e.name}
+                        {e.value}
                     </Typography>
                 </Paper>
             </Box>
@@ -89,15 +95,6 @@ export default function Step5(props) {
             {paperItems.map((e) => e)}
         </Box>
     );
-    // for (let i = 0; i < paperItems.length; i += 3) {
-    //     rows.push(
-    //         <Box className={`${classes.root} ${i === 0 && classes.initialRoot} ${i + 3 >= paperItems.length && classes.lastRoot}`}>
-    //             {paperItems[i]}
-    //             {i + 1 < paperItems.length && paperItems[i + 1]}
-    //             {i + 2 < paperItems.length && paperItems[i + 2]}
-    //         </Box>
-    //     );
-    // }
 
     return (
         <Box maxHeight={"80vh"} overflow="auto">
@@ -141,6 +138,12 @@ export default function Step5(props) {
                     </Box>
                 </Box>
                 <Row/>
+                <Box className={classes.root} style={{ marginTop: "1%"}}>
+                    <Typography style={{ textAlign: "left", fontWeight: "bold", marginRight: "1%"}}>Lägst<br/>standard</Typography>
+                    <Box display={"flex"} width="80%" marginTop={"auto"} marginBottom="auto" style={{ borderBottom: "3px solid black"}}>
+                    </Box>
+                    <Typography style={{ textAlign: "right", fontWeight: "bold", marginLeft: "1%"}}>Högst<br/>standard</Typography>
+                </Box>
             </Scrollbars>
         </Box>
     );
@@ -180,6 +183,7 @@ const useStyles = makeStyles((theme) => ({
         justifyContent: "center",
         display: "flex",
         flexDirection: "column",
+        position: "relative",
         "&:hover": {
             cursor: "pointer",
             border: "3px solid #21344d",
