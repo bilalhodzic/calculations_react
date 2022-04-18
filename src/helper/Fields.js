@@ -148,7 +148,7 @@ export function getFieldsNewBuilding(type) {
                     isRight: true,
                 },
                 {
-                    label: "Antal lägenheter",
+                    label: "Antal boendeenheter",
                     id: "apartmentNumber",
                     placeholder: "0",
                 },
@@ -188,7 +188,7 @@ export function getFieldsNewBuilding(type) {
                     isRight: true,
                 },
                 {
-                    label: "Antal lägenheter",
+                    label: "Antal boendeenheter",
                     id: "apartmentNumber",
                     placeholder: "0",
                 },
@@ -200,11 +200,6 @@ export function getFieldsNewBuilding(type) {
                 {
                     label: "Antal WC",
                     id: "toiletNumber",
-                    placeholder: "0",
-                },
-                {
-                    label: "Mörk bruttoarea",
-                    id: "darkBta",
                     placeholder: "0",
                 },
                 {
@@ -225,7 +220,7 @@ export function getFieldsNewBuilding(type) {
                     isRight: true,
                 },
                 {
-                    label: "Antal lägenheter",
+                    label: "Antal boendeenheter",
                     id: "apartmentNumber",
                     placeholder: "0",
                 },
@@ -276,7 +271,7 @@ export function getFieldsNewBuilding(type) {
                     isRight: true,
                 },
                 {
-                    label: "Antal lägenheter",
+                    label: "Antal boendeenheter",
                     id: "apartmentNumber",
                     placeholder: "0",
                 },
