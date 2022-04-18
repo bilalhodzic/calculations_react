@@ -48,7 +48,7 @@ function projectInfoError(betweenStepsData){
     const categoryFields = betweenStepsData.current.type === 1 ? getFieldsNewBuilding(betweenStepsData.current.category) : getFieldsRebuilding(betweenStepsData.current.category);
     for(const entry of categoryFields){
         const id = entry.id;
-        if(!betweenStepsData.current[id] || parseInt(betweenStepsData.current[id]) < 0)
+        if(betweenStepsData.current[id] === undefined || parseInt(betweenStepsData.current[id]) < 0)
             return false;
     }
     return true;

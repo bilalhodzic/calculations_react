@@ -150,7 +150,6 @@ export default function CustomStepper(props) {
     const handleNext = () => {
         const validate = ValidateData(activeStep, betweenStepsData);
         if (!validate.hideError) {
-            console.log("Ovdje");
             setErrorMessage(validate.message);
             return;
         }
