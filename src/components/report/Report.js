@@ -26,13 +26,17 @@ export default function Report(props) {
     const location = useLocation();
     React.useEffect(() => {
         setIsLoading(true);
-        getCalculationById(location.state.id, localStorage.getItem('token')).then(
-            (response) => {
-                setCalculation(response.data);
-                setIsLoading(false);
-            }
-        );
-    }, [location.state]);
+        console.log(location.state.id);
+        getCalculationById(
+            location.state.id,
+            localStorage.getItem("token")
+        ).then((response) => {
+            setCalculation(response.data);
+            console.log("Data: ");
+            console.log(response.data);
+            setIsLoading(false);
+        });
+    }, []);
 
     const classes = useStyles();
     const pdfRef = useRef();
@@ -48,7 +52,7 @@ export default function Report(props) {
     if (!props.data && !location.state && !location.state.id) {
         return "No data for report";
     }
-    const token = localStorage.getItem('token');
+    const token = localStorage.getItem("token");
 
     return (
         <Layout>
@@ -124,7 +128,9 @@ export default function Report(props) {
                                 <Page1
                                     type={calculation[reportOption].type}
                                     title={calculation[reportOption].name}
-                                    category={calculation[reportOption].category}
+                                    category={
+                                        calculation[reportOption].category
+                                    }
                                 />
                                 <Page2
                                     calculationData={calculation[reportOption]}
@@ -212,7 +218,7 @@ const useStyles = makeStyles((theme) => ({
         color: "black",
         fontWeight: 600,
         flex: 1,
-        width: "50%"
+        width: "50%",
     },
     selectedButton: {
         background: "#21344D",
@@ -224,6 +230,6 @@ const useStyles = makeStyles((theme) => ({
     buttonGroup: {
         position: "absolute",
         left: "25%",
-        right: "25%"
-    }
+        right: "25%",
+    },
 }));

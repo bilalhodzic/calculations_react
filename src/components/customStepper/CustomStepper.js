@@ -307,16 +307,17 @@ export default function CustomStepper(props) {
                 if (betweenStepsData.current["category"]) {
                     id = betweenStepsData.current["category"].id;
                     handleChange("category", id);
-                    newCalculation(betweenStepsData.current, token).then(
-                        (res) => {
-                            console.log("Done");
-                            console.log(res.data);
-                            history.push({
-                                pathname: "/report",
-                                state: { id: res.data[0].id},
-                            });
-                        }
-                    );
+                    if(betweenStepsData.current.category > 0 && betweenStepsData.current.category < 31)
+                        newCalculation(betweenStepsData.current, token).then(
+                            (res) => {
+                                console.log("Done");
+                                console.log(res.data);
+                                history.push({
+                                    pathname: "/report",
+                                    state: { id: Math.min(res.data[0].id, res.data[1].id) },
+                                });
+                            }
+                        );
                 }
 
             default:

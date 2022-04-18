@@ -26,7 +26,7 @@ export default function ValidateData(activeStep, betweenStepsData){
             };
         case 4:
             return {
-                hideError: betweenStepsData.current && betweenStepsData.current.location && betweenStepsData.current.urbanArea,
+                hideError: betweenStepsData.current && betweenStepsData.current.location && betweenStepsData.current.urbanArea !== undefined,
                 message: "Please select the location and area type for your project"
             };
         case 5:
