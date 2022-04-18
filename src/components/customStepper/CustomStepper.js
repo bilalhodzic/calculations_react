@@ -85,12 +85,12 @@ export default function CustomStepper(props) {
                         types.category.varmlager,
                         types.category.kalllager,
                         types.category.kyllager,
-                    ].includes(betweenStepsData.category)
+                    ].includes(betweenStepsData.current.category)
                 ) {
                     props.pushStep("Lager");
                 }
-                if (betweenStepsData.category) {
-                    props.pushStep(betweenStepsData.category.value);
+                if (betweenStepsData.current.category) {
+                    props.pushStep(betweenStepsData.current.category.value);
                 }
                 break;
             case 2:
