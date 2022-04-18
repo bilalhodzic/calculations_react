@@ -20,7 +20,6 @@ export default function Step4(props) {
     const [selectedIn, setSelectedIn] = useState(props.data.urbanArea);
     const [selectedValue, setSelectedValue] = useState(props.data.location || "");
 
-    props.handleChange("urbanArea", selectedIn);
     const locations = getLocations(t);
 
     return (
@@ -60,7 +59,7 @@ export default function Step4(props) {
                     <Box className={`${classes.paperBox} ${classes.buttonGroup}`}>
                         <Button
                             className={`${classes.button} ${
-                                selectedIn ? classes.selectedButton : ""
+                                selectedIn && props.data.urbanArea !== undefined && classes.selectedButton
                             }`}
                             onClick={() => {
                                 props.handleChange("urbanArea", true);
@@ -71,7 +70,7 @@ export default function Step4(props) {
                         </Button>
                         <Button
                             className={`${classes.button} ${
-                                !selectedIn ? classes.selectedButton : ""
+                                !selectedIn && props.data.urbanArea !== undefined && classes.selectedButton
                             } ${classes.buttonRight}`}
                             onClick={() => {
                                 props.handleChange("urbanArea", false);
