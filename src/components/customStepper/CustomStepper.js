@@ -48,8 +48,6 @@ const CustomConnector = withStyles({
         borderColor: "#bababa",
         height: 3,
         borderTopWidth: 3,
-        width: "4vw",
-        marginLeft: "-8%",
         marginTop: "-5%",
     },
 })(StepConnector);

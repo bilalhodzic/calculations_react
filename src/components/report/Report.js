@@ -26,17 +26,14 @@ export default function Report(props) {
     const location = useLocation();
     React.useEffect(() => {
         setIsLoading(true);
-        console.log(location.state.id);
         getCalculationById(
             location.state.id,
             localStorage.getItem("token")
         ).then((response) => {
             setCalculation(response.data);
-            console.log("Data: ");
-            console.log(response.data);
             setIsLoading(false);
         });
-    }, []);
+    }, [location.state.id]);
 
     const classes = useStyles();
     const pdfRef = useRef();
@@ -52,7 +49,6 @@ export default function Report(props) {
     if (!props.data && !location.state && !location.state.id) {
         return "No data for report";
     }
-    const token = localStorage.getItem("token");
 
     return (
         <Layout>

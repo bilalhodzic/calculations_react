@@ -16,9 +16,6 @@ export default function ReportTable(props) {
     const calculationData = props.calculationData;
 
     const tableItems = getTableData(data, calculationData, classes);
-    const sx = {
-        border: "1px solid black"
-    };
 
     return (
         <Box width={"100%"} {...props}>

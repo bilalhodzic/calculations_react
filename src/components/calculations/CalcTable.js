@@ -56,6 +56,7 @@ export default function Calctable(props) {
 
     React.useEffect(() => {
         setIsLoading(props.data.length === 0);
+        console.log(props.data);
         setData(props.data);
     }, [props.data]);
 
@@ -184,8 +185,8 @@ export default function Calctable(props) {
     };
 
     const handlePageChange = async (page) => {
-        if (page.page % 2 == 1) {
-            const moreData = await props.downloadMoreData(page.page + 1);
+        if (page % 2 == 1) {
+            const moreData = await props.downloadMoreData(page + 1);
             setData([
                 ...data,
                 ...moreData
@@ -201,7 +202,7 @@ export default function Calctable(props) {
         <Box className={classes.root}>
             <DataGrid
                 pagination
-                loading={false}
+                //loading={false}
                 rows={data}
                 rowHeight={70}
                 columns={columns}
@@ -210,7 +211,7 @@ export default function Calctable(props) {
                 className={classes.dataGrid}
                 //autoHeight
                 density="comfortable"
-                components={{ Pagination: CustomPagination }}
+                // components={{ Pagination: CustomPagination }}
                 onPageChange={handlePageChange}
                 onCellClick={(e) => {
                     if(e.field !== 'Actions'){

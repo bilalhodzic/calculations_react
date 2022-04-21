@@ -6,6 +6,7 @@ import {
   MenuItem,
   Button,
   Hidden,
+  Typography,
 } from "@material-ui/core";
 import Layout from "../Layout";
 import { makeStyles } from "@material-ui/core/styles";
@@ -28,7 +29,8 @@ export default function Calculations(props) {
   const { t, i18n } = useTranslation();
 
   React.useEffect(async () => {
-    setTableData(helper.transformCalculations((await getCalculationsForPage(1, selectValueCategory, selectValueType)).data));
+    const data = helper.transformCalculations((await getCalculationsForPage(1, selectValueCategory, selectValueType)).data);
+    setTableData(data);
   }, []);
 
   const classes = useStyles();
