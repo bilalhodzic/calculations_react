@@ -153,7 +153,6 @@ export default function CustomStepper(props) {
             setErrorMessage(validate.message);
             return;
         }
-        console.log(betweenStepsData.current);
         const betweenStepsCategoriesNew = [types.category.lager];
         const betweenStepsCategoriesRebuilding = [
             types.category.ombyggnad,
@@ -180,7 +179,6 @@ export default function CustomStepper(props) {
     };
 
     const handleBack = () => {
-        console.log(betweenStepsData.current.category);
         setActiveStep(
             (prevActiveStep) => prevActiveStep - 1 - (prevActiveStep === 2 && 1)
         );
@@ -300,9 +298,6 @@ export default function CustomStepper(props) {
                 ) {
                     setErrorMessage("");
                 }
-                console.log(
-                    `Data: ${JSON.stringify(betweenStepsData.current)}`
-                );
                 let id = 0;
                 if (betweenStepsData.current["category"]) {
                     id = betweenStepsData.current["category"].id;
@@ -310,8 +305,6 @@ export default function CustomStepper(props) {
                     if(betweenStepsData.current.category > 0 && betweenStepsData.current.category < 31)
                         newCalculation(betweenStepsData.current, token).then(
                             (res) => {
-                                console.log("Done");
-                                console.log(res.data);
                                 history.push({
                                     pathname: "/report",
                                     state: { id: Math.min(res.data[0].id, res.data[1].id) },

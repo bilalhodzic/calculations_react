@@ -32,7 +32,6 @@ export default function Calctable(props) {
 
     React.useEffect(() => {
         setIsLoading(props.data.length === 0);
-        console.log(props.data);
         setData(props.data);
     }, [props.data]);
 
@@ -139,7 +138,6 @@ export default function Calctable(props) {
                     </IconButton>
                     <IconButton 
                         style={{ padding: 8 }}
-                        onClick={(e) => { console.log(e)}}
                     >
                         <InfoIcon />
                     </IconButton>
@@ -153,9 +151,7 @@ export default function Calctable(props) {
         if (!openDialog) {
             setOpenDialog(true);
         } else {
-            //console.log(selectedCalculation.id);
             props.deleteCalculation(selectedCalculation.id);
-            console.log("deleting");
             setOpenDialog(false);
         }
     };
