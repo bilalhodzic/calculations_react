@@ -37,7 +37,7 @@ const standards = [
 
 export default function Step5(props) {
     const classes = useStyles();
-    const { t, i18n } = useTranslation();
+    const { t } = useTranslation();
 
     const [indoorSelected, setIndoorSelected] = React.useState(true);
     const [externalStandard, setExternalStandard] = React.useState(
@@ -87,7 +87,6 @@ export default function Step5(props) {
             </Box>
         );
     });
-    const rows = [];
     const Row = () => (
         <Box
             className={`${classes.root} ${classes.initialRoot} ${classes.lastRoot}`}

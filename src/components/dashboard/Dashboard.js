@@ -10,7 +10,7 @@ import {
 import { makeStyles } from "@material-ui/core/styles";
 
 import NoCalculations from "./NoCalculations";
-import { useHistory, useLocation } from "react-router";
+import { useHistory } from "react-router";
 import { icons } from "../../helper/CategoryIcons";
 import DashboardCard from "./DashboardCard";
 import { getLatestCalculations } from "../../helper/externalCalls";
@@ -23,16 +23,18 @@ export default function Dashboard() {
 
     const [latestCalc, setLatestCalc] = React.useState([]);
     const [isLoading, setIsLoading] = React.useState(true);
-    const { t, i18n } = useTranslation();
+    const { t } = useTranslation();
 
     if (!localStorage.getItem("token")) {
         history.push("/");
     }
     const token = localStorage.getItem("token");
 
-    React.useEffect(async () => {
+    React.useEffect(() => {
         try {
-            setLatestCalc((await getLatestCalculations(token)).data);
+            getLatestCalculations(token).then((data) => {
+                setLatestCalc(data.data);
+            });
         } catch (err) {
             setIsLoading(false);
         }
@@ -87,7 +89,7 @@ export default function Dashboard() {
             <Paper elevation={5} className={classes.paper}>
                 {t("Latest calculations.1")}
                 <Divider className={classes.divider} />
-                {latestCalc.length != 0 ? (
+                {latestCalc.length !== 0 ? (
                     <>
                         <Hidden xsDown>{rows.map((e) => e)}</Hidden>
                         <Hidden smUp>

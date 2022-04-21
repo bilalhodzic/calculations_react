@@ -8,7 +8,7 @@ import { ReactComponent as PlusIcon } from "../../images/plusIcon.svg";
 
 export default function NoCalculations(props) {
     const classes = useStyles();
-    const { t, i18n } = useTranslation();
+    const { t } = useTranslation();
     const history = useHistory();
 
     return (

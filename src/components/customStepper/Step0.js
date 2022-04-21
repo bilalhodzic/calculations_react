@@ -1,7 +1,6 @@
 import React from "react";
 import { Box, makeStyles, Typography, Hidden, Paper, Button } from "@material-ui/core";
 import { useHistory } from "react-router-dom";
-import { useLocation } from "react-router";
 import {Helmet} from 'react-helmet';
 
 import { ReactComponent as CalculatorIcon } from "../../images/calculatorIcon.svg";
@@ -10,18 +9,16 @@ import { ReactComponent as MenuIcon } from "../../images/burgerIcon.svg";
 import types from "../../helper/data.json";
 import { useTranslation } from "react-i18next";
 
-export default function Step0 (props){
+export default function Step0 (){
 
     const [mobileOpen, setMobileOpen] = React.useState(false);
     const history = useHistory();
     const classes = useStyles();
-    const location = useLocation();
-    const { t, i18n } = useTranslation();
+    const { t } = useTranslation();
 
     if(!localStorage.getItem('token')){
       history.push('/');
     }
-    const token = localStorage.getItem('token');
 
     const handleDrawer = () => {
         setMobileOpen(!mobileOpen);

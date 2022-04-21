@@ -6,7 +6,6 @@ import {
     makeStyles,
     MenuItem,
     Select,
-    Typography,
 } from "@material-ui/core";
 import { Scrollbars } from "react-custom-scrollbars";
 
@@ -15,7 +14,7 @@ import { useTranslation } from "react-i18next";
 
 export default function Step4(props) {
     const classes = useStyles();
-    const {t, i18n} = useTranslation();
+    const {t} = useTranslation();
 
     const [selectedIn, setSelectedIn] = useState(props.data.urbanArea);
     const [selectedValue, setSelectedValue] = useState(props.data.location || "");

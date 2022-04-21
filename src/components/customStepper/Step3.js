@@ -17,7 +17,7 @@ export default function Step3(props) {
     const classes = useStyles();
     const data = props.data;
 
-    const fields = data.type == types.types.new_production.id ? getFieldsNewBuilding(data.category) : getFieldsRebuilding(data.category);
+    const fields = data.type === types.types.new_production.id ? getFieldsNewBuilding(data.category) : getFieldsRebuilding(data.category);
     const [itemValues, setItemValues] = React.useState(initializeItems(props, fields));
 
     const formItems = fields.map((entry, index) => {

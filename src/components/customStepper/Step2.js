@@ -24,7 +24,7 @@ const formLabelsTheme = createMuiTheme({
 
 export default function Step2(props) {
     const classes = useStyles();
-    const { t, i18n } = useTranslation();
+    const { t } = useTranslation();
     const [projectNumber, setProjectNumber] = React.useState(props.data.projectNumber || 0);
 
     const inputLabelProps = {

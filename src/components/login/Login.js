@@ -21,7 +21,7 @@ export default function Login() {
     const [password, setPassword] = React.useState("");
     const [isInvalidLogin, setIsInvalidLogin] = React.useState(false);
     const [isLoading, setIsLoading] = React.useState(false);
-    const { t, i18n } = useTranslation();
+    const { t } = useTranslation();
 
     const history = useHistory();
     const classes = useStyles();

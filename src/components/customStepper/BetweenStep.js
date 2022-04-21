@@ -7,7 +7,7 @@ import CardRows from "./CardRows";
 import { useTranslation } from "react-i18next";
 
 export default function BetweenStep(props) {
-    const {t, i18n} = useTranslation();
+    const {t} = useTranslation();
     const data = props.data;
 
     const items = getData(t);

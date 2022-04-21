@@ -1,6 +1,5 @@
 import React from "react";
 
-import { makeStyles } from "@material-ui/core/styles";
 import CardRows from "./CardRows";
 
 import { SchoolIcon } from "../svgIcons/SchoolIcon";
@@ -26,7 +25,7 @@ import { useTranslation } from "react-i18next";
 
 export default function Step1(props) {
     const data = props.data;
-    const { t, i18n } = useTranslation();
+    const { t } = useTranslation();
 
     const handleClickPaper = (prop) => {
         //setting the state property from parent component

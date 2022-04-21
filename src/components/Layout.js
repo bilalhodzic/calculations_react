@@ -1,8 +1,6 @@
 import React from "react";
 import { useHistory } from "react-router-dom";
-import useWindowDimensions from "./windowDimension";
 import {
-    Button,
     Typography,
     Drawer,
     Box,
@@ -38,7 +36,6 @@ const languages = [
 
 export default function Layout(props) {
     const [mobileOpen, setMobileOpen] = React.useState(false);
-    const { width } = useWindowDimensions();
     const history = useHistory();
     const classes = useStyles();
     const { t, i18n } = useTranslation();
@@ -46,7 +43,7 @@ export default function Layout(props) {
 
     React.useEffect(() => {
         i18n.changeLanguage("se");
-    }, []);
+    }, [i18n]);
 
     const handleDrawer = () => {
         setMobileOpen(!mobileOpen);
@@ -216,12 +213,6 @@ const useStyles = makeStyles((theme) => ({
     },
     drawer: {
         flexShrink: 0,
-    },
-    menuIcon: {
-        padding: theme.spacing(3),
-        "&:hover": {
-            cursor: "pointer",
-        },
     },
     menuMobile: {
         padding: theme.spacing(3),

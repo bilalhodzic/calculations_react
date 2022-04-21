@@ -6,7 +6,6 @@ import {
   MenuItem,
   Button,
   Hidden,
-  Typography,
 } from "@material-ui/core";
 import Layout from "../Layout";
 import { makeStyles } from "@material-ui/core/styles";
@@ -17,7 +16,7 @@ import axios from "axios";
 import helper from "../../helper/TransformData";
 import types from "../../helper/data.json";
 import config from "../../config.json";
-import { useHistory, useLocation } from "react-router";
+import { useHistory } from "react-router";
 import { useTranslation } from "react-i18next";
 
 export default function Calculations(props) {
@@ -26,11 +25,13 @@ export default function Calculations(props) {
   const [selectValueCategory, setSelectValueCategory] = React.useState(0);
   const [searchInput, setSearchInput] = React.useState("");
   const [tableData, setTableData] = React.useState([]);
-  const { t, i18n } = useTranslation();
+  const { t } = useTranslation();
 
-  React.useEffect(async () => {
-    const data = helper.transformCalculations((await getCalculationsForPage(1, selectValueCategory, selectValueType)).data);
-    setTableData(data);
+  React.useEffect(() => {
+    getCalculationsForPage(1, selectValueCategory, selectValueType).then((data) => {
+      const transformedData = helper.transformCalculations(data.data);
+      setTableData(transformedData);
+    })
   }, []);
 
   const classes = useStyles();

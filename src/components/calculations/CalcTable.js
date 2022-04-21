@@ -3,9 +3,7 @@ import { useHistory } from "react-router";
 import { Box, Button, IconButton, Modal, Typography } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 import { DataGrid } from "@material-ui/data-grid";
-import { Pagination } from "@material-ui/lab";
 import ColoredBox from "../ColoredBox";
-import { ReactComponent as EditIcon } from "../../images/editIcon.svg";
 import { ReactComponent as InfoIcon } from "../../images/infoIcon.svg";
 import { ReactComponent as DeleteIcon } from "../../images/deleteIcon.svg";
 import { ReactComponent as WarningIcon } from "../../images/WarningIcon.svg";
@@ -13,35 +11,13 @@ import useWindowDimensions from "../windowDimension";
 import types from "../../helper/data.json";
 import { useTranslation } from "react-i18next";
 
-//add pagination to the datagrid
-function CustomPagination(props) {
-    const { state, api } = props;
-    const [displayPage, setDisplayPage] = React.useState(1);
-
-    //inital page number is 0
-    //added varibale displaypage which displays the correct page
-    React.useEffect(() => {
-        setDisplayPage(state.pagination.page + 1);
-    }, [state]);
-
-    return (
-        <Pagination
-            page={displayPage}
-            shape="rounded"
-            color="primary"
-            count={state.pagination.pageCount}
-            onChange={(event, value) => api.current.setPage(value - 1)}
-        />
-    );
-}
-
 export default function Calctable(props) {
     const [openDialog, setOpenDialog] = React.useState(false);
     const { width } = useWindowDimensions();
-    const [isLoading, setIsLoading] = React.useState(true);
+    const [isLoading, setIsLoading] = React.useState(false);
     const [isHidden, setIsHidden] = React.useState(false);
     const [selectedCalculation, setSelectedCalculation] = React.useState({});
-    const { t, i18n } = useTranslation();
+    const { t } = useTranslation();
 
     const [data, setData] = React.useState(props.data);
     const history = useHistory();
@@ -185,7 +161,7 @@ export default function Calctable(props) {
     };
 
     const handlePageChange = async (page) => {
-        if (page % 2 == 1) {
+        if (page % 2 === 1) {
             const moreData = await props.downloadMoreData(page + 1);
             setData([
                 ...data,
@@ -202,7 +178,7 @@ export default function Calctable(props) {
         <Box className={classes.root}>
             <DataGrid
                 pagination
-                //loading={false}
+                loading={isLoading}
                 rows={data}
                 rowHeight={70}
                 columns={columns}

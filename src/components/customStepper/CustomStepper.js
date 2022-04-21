@@ -8,7 +8,6 @@ import {
     StepLabel,
     Typography,
     StepConnector,
-    Hidden,
     Box,
     CircularProgress,
 } from "@material-ui/core";
@@ -64,7 +63,7 @@ export default function CustomStepper(props) {
     const betweenStepsData = React.useRef({
         type: location.state.type,
     });
-    const { t, i18n } = useTranslation();
+    const { t } = useTranslation();
 
     const [errorMessage, setErrorMessage] = React.useState("");
 
@@ -183,7 +182,7 @@ export default function CustomStepper(props) {
     const handleBack = () => {
         console.log(betweenStepsData.current.category);
         setActiveStep(
-            (prevActiveStep) => prevActiveStep - 1 - (prevActiveStep == 2 && 1)
+            (prevActiveStep) => prevActiveStep - 1 - (prevActiveStep === 2 && 1)
         );
     };
 

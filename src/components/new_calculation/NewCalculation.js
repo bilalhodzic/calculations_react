@@ -1,6 +1,5 @@
 import React from "react";
 import {
-    Container,
     Divider,
     Hidden,
     Paper,
@@ -11,12 +10,10 @@ import { makeStyles } from "@material-ui/core/styles";
 import Layout from "../Layout";
 import CustomStepper from "../customStepper/CustomStepper";
 import { ReactComponent as ArrowIcon } from "../../images/ArrowIcon.svg";
-import { useHistory, useLocation } from "react-router";
 
 export default function NewCalculation() {
     const [steps, setSteps] = React.useState(["New Calculation"]);
     const classes = useStyles();
-    const history = useHistory();
 
     const newStep = (newStep) => {
         setSteps(previous => [...previous, newStep]);
