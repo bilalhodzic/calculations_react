@@ -10,6 +10,9 @@ export default function Page1(props) {
   const type = props.type === 1 ? "Nyproduktion" : "Ombyggnation";
   const title = props.title;
   const category = parseInt(props.category);
+  const today = new Date();
+
+  const formatedDate = today.getFullYear() + "/" + (today.getMonth() + 1).toString().padStart(2, '0') + "/" + (today.getDate()).toString().padStart(2, '0');
 
   return (
     <Paper variant="outlined" className={classes.paper}>
@@ -28,7 +31,7 @@ export default function Page1(props) {
             <Content />
         </Box>
         <Box className={classes.footer}>
-            <Typography style={{ color: "#4B4B4B"}}>Datum: {(new Date()).toLocaleDateString("en-GB")}</Typography>
+            <Typography style={{ color: "#4B4B4B"}}>Datum: {formatedDate}</Typography>
         </Box>
     </Paper>
   );

@@ -161,9 +161,7 @@ function setData(data, calculationData, padding, classes) {
             calculationData[entry.property] ||
             calculationData[entry.property] === false
                 ? entry.date
-                    ? new Date(
-                          calculationData[entry.property]
-                      ).toLocaleDateString("en-GB")
+                    ? formatDate(calculationData[entry.property])
                     : calculationData[entry.property].toLocaleString()
                 : "/";
         items.push(
@@ -186,6 +184,18 @@ function setData(data, calculationData, padding, classes) {
         );
     }
     return items;
+}
+
+function formatDate(date) {
+    const today = new Date(date);
+
+    return (
+        today.getFullYear() +
+        "/" +
+        (today.getMonth() + 1).toString().padStart(2, "0") +
+        "/" +
+        today.getDate().toString().padStart(2, "0")
+    );
 }
 
 function getCalculatedData(data, calculationData, classes) {
