@@ -9,27 +9,27 @@ import { useTranslation } from "react-i18next";
 
 const standards = [
     {
-        name: "Låg standard",
+        name: "Enkel utformning.\nEnkel materialval som ligger lägst i materialprisintervallet.\nUppfyller inte mer än BBR krav",
         icon: <MedalIcon />,
         value: 1,
     },
     {
-        name: "Normal Standard",
+        name: "Enkel utformning med inslag av några värdehöjande delar.\nEnkel materialval som ligger lägst i materialprisintervallet med enstaka värdehöjande delar.\nUppfyller inte mer än BBR krav.",
         icon: <MedalIcon />,
         value: 2,
     },
     {
-        name: "Hög standard",
+        name: "Normal utformning.\nNormalt materialval som ligger i medel i materialprisintervallet.\nUppfyller generellt något högre krav än BBR krav.",
         icon: <MedalIcon />,
         value: 3,
     },
     {
-        name: "Standard mellan låg och normal",
+        name: "Normal utformning med större inslag av värdehöjande delar.\nNormalt materialval som ligger i medel i materialprisintervallet med enstaka värdehöjande delar.\nUppfyller väsentligt högre krav än BBR krav.",
         icon: <MedalIcon />,
         value: 4,
     },
     {
-        name: "Standard mellan normal och hög",
+        name: "Projektet formas md hög arkitektoniskt inslag och har generellt värdehöjande och projektspecifika kvalitéer, både invändigt och utvändigt.\nMaterialval som ligger genomgående i högpris materialprisintervallet.\nUppfyller mycket högre krav än BBR krav.",
         icon: <ExclusiveIcon />,
         value: 5,
     },
