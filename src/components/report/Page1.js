@@ -2,6 +2,7 @@ import React from "react";
 import { Box, Paper, Typography } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 import {icons} from "../../helper/CategoryIcons";
+import Content from "./Content";
 
 export default function Page1(props) {
   const classes = useStyles();
@@ -22,6 +23,9 @@ export default function Page1(props) {
             <Box width={"100%"}>
                 <Typography className={classes.title}>{title}</Typography>
             </Box>
+        </Box>
+        <Box width="45%" style={{ marginTop: "15%", marginRight: "auto"}}>
+            <Content />
         </Box>
         <Box className={classes.footer}>
             <Typography style={{ color: "#4B4B4B"}}>Datum: {(new Date()).toLocaleDateString("en-GB")}</Typography>
