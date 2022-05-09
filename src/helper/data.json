@@ -253,10 +253,10 @@
     },
     "standard": {
         "1": "Låg standard",
-        "2": "Normal standard",
-        "3": "Hög standard",
-        "4": "Standard mellan låg och normal",
-        "5": "Standard mellan normal och hög"
+        "2": "Standard mellan låg och normal",
+        "3": "Normal standard",
+        "4": "Standard mellan normal och hög",
+        "5": "Hög standard"
     },
     "types": {
         "new_production":{
