@@ -6,7 +6,7 @@ import {icons} from "../../helper/CategoryIcons";
 export default function Page1(props) {
   const classes = useStyles();
 
-  const type = props.type === 1 ? "New production" : "Rebuilding";
+  const type = props.type === 1 ? "Nyproduktion" : "Ombyggnation";
   const title = props.title;
   const category = parseInt(props.category);
 
@@ -24,7 +24,7 @@ export default function Page1(props) {
             </Box>
         </Box>
         <Box className={classes.footer}>
-            <Typography style={{ color: "#4B4B4B"}}>Date: {(new Date()).toLocaleDateString("en-GB")}</Typography>
+            <Typography style={{ color: "#4B4B4B"}}>Datum: {(new Date()).toLocaleDateString("en-GB")}</Typography>
         </Box>
     </Paper>
   );

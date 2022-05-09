@@ -6,41 +6,41 @@ import types from "../../helper/data.json";
 
 const mainData = [
     {
-        label: "Project number",
+        label: "Projektets nummer",
         property: "projectNumber",
     },
     {
-        label: "Area",
+        label: "Område",
         property: "location",
     },
     {
-        label: "Within urban area?",
+        label: "Inom tätort?",
         property: "urbanArea",
         margin: true,
     },
     {
-        label: "Production start planned",
+        label: "Produktionsstart planerad",
         property: "startDate",
         date: true,
     },
     {
-        label: "Production will last",
+        label: "Produktionen kommer att pågå",
         property: "years",
         property2: "months",
     },
     {
-        label: "Calculculation's basis/drawings",
+        label: "Kalkyleringens underlag/ritningar",
         property: "architectDate",
         margin: true,
         date: true,
     },
     {
-        label: "Key figures calculation has been developed",
+        label: "Beräkning av nyckeltal har tagits fram",
         property: "dateCalculated",
         date: true,
     },
     {
-        label: "Key figures calculation has been produced by",
+        label: "Beräkningen av nyckeltal har tagits fram av",
         property: "projectLeadName",
     },
 ];
@@ -52,17 +52,17 @@ const dataLeft = [
         meter: true,
     },
     {
-        label: "Light BTA m2",
+        label: "Lätt BTA m2",
         property: "lightBta",
         meter: true,
     },
     {
-        label: "Dark BTA m2",
+        label: "Mörk BTA m2",
         property: "darkBta",
         meter: true,
     },
     {
-        label: "Total BTA m2",
+        label: "Totalt BTA m2",
         property: "lightBta",
         property2: "darkBta",
         margin: true,
@@ -77,15 +77,15 @@ const dataRight = [
         meter: true,
     },
     {
-        label: "Number of apartments",
+        label: "Antal lägenheter",
         property: "apartmentNumber",
     },
     {
-        label: "Number of wcs/showers/baths",
+        label: "Antal wcs/duschar/bad",
         property: "bathNumber",
     },
     {
-        label: "Number of toilets",
+        label: "Antal toaletter",
         property: "toiletNumber",
         margin: true,
     },
@@ -107,7 +107,9 @@ export default function Page2(props) {
     return (
         <Paper variant="outlined" className={classes.paper}>
             <Typography>{calculationData.name}</Typography>
-            <Typography className={classes.title}>Basic information</Typography>
+            <Typography className={classes.title}>
+                Grundläggande information
+            </Typography>
             {mainDataItems.map((e) => e)}
             <Box className={classes.root}>
                 <Box className={classes.side} style={{ marginRight: 20 }}>
@@ -223,7 +225,7 @@ function getStandards(calculationData, classes) {
             <Box display={"flex"} flexDirection={"column"}>
                 <Box display={"flex"} flexDirection={"row"}>
                     <Typography className={classes.label}>
-                        Internal standard:
+                        Intern standard:
                     </Typography>
                     <Typography
                         style={{ marginLeft: "2%" }}
@@ -236,11 +238,10 @@ function getStandards(calculationData, classes) {
                     style={{ marginTop: "1%" }}
                     className={classes.details}
                 >
-                    (Standard between normal and highNormal design with larger
-                    elements of value-enhancing parts. Normal material selection
-                    that is in the average in the material price range with
-                    single value-enhancing parts. Meets significantly higher
-                    requirements than BBR requirements.)
+                    (Standard mellan normal och högnormal design med större
+                    inslag av värdehöjande delar. Normalt materialval som ligger
+                    i genomsnitt i materialprisklassen med enstaka värdehöjande
+                    delar. Uppfyller betydligt högre krav än BBR-kraven.)
                 </Typography>
             </Box>
             <Box
@@ -250,7 +251,7 @@ function getStandards(calculationData, classes) {
             >
                 <Box display={"flex"} flexDirection={"row"}>
                     <Typography className={classes.label}>
-                        External standard:
+                        Extern standard:
                     </Typography>
                     <Typography
                         style={{ marginLeft: "2%" }}
@@ -263,11 +264,10 @@ function getStandards(calculationData, classes) {
                     style={{ marginTop: "1%" }}
                     className={classes.details}
                 >
-                    (Standard between normal and highNormal design with larger
-                    elements of value-enhancing parts. Normal material selection
-                    that is in the average in the material price range with
-                    single value-enhancing parts. Meets significantly higher
-                    requirements than BBR requirements.)
+                    (Standard mellan normal och högnormal design med större
+                    inslag av värdehöjande delar. Normalt materialval som ligger
+                    i genomsnitt i materialprisklassen med enstaka värdehöjande
+                    delar. Uppfyller betydligt högre krav än BBR-kraven.)
                 </Typography>
             </Box>
         </>

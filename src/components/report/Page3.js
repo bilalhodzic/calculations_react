@@ -42,7 +42,7 @@ export default function Page3(props) {
         <Paper variant="outlined" className={classes.paper}>
             <Typography>{calculationData.name}</Typography>
             <Typography className={classes.title}>
-                Indicated Key Figure Calculation For The Project
+                Indikerad nyckeltalsberäkning för projektet
             </Typography>
             {costs}
             <ReportTable
@@ -50,14 +50,14 @@ export default function Page3(props) {
                 calculationData={calculationData}
                 title="Total kostnad (bade byggherre och produktion)"
             ></ReportTable>
-            <Box style={{ marginTop: "5%"}}>
+            <Box style={{ marginTop: "5%" }}>
                 <Typography className={classes.details}>
-                    (*If the production is planned to be carried out in-house
-                    where construction fees are paid, one must start from
-                    compileda cost specified *Total cost on own;. *Please note
-                    that costs for m2 BOA/LOA, Ljus BTA, total BTA are based on
-                    aggregated costs specified Total cost and do not take into
-                    account total costs in own management.)
+                    (*Om produktionen planeras att utföras internt där
+                    byggavgifter betalas, måste man utgå från sammanställd
+                    kostnad specificerad *Total kostnad i sig;. *Observera att
+                    kostnader för m2 BOA/LOA, Ljus BTA, total BTA baseras på
+                    aggregerade kostnader specificerade Total kostnad och tar
+                    inte hänsyn till totala kostnader i egen förvaltning.)
                 </Typography>
             </Box>
         </Paper>
@@ -70,22 +70,17 @@ function getCosts(calculationData, classes) {
             <Box display={"flex"} flexDirection={"column"}>
                 <Box display={"flex"} flexDirection={"row"}>
                     <Typography className={classes.label}>
-                        Developer costs:
+                        Utvecklarkostnader:
                     </Typography>
-                    <Typography className={classes.value}>
-                        {4501}
-                    </Typography>
+                    <Typography className={classes.value}>{4501}</Typography>
                 </Box>
-                <Typography
-                    className={classes.details}
-                >
-                    (All developer costs such as street and development costs
-                    outside the plot boundary, mortgages, title deed costs,
-                    connection costs, government costs, building
-                    credit/interest, specification for specifications, the
-                    developers other civil servant costs such as project
-                    manager, design manager, construction manager, quality
-                    manager, and more.)
+                <Typography className={classes.details}>
+                    (Alla utvecklarkostnader som gatu- och utvecklingskostnader
+                    utanför tomtgränsen, inteckningar, lagfartskostnader,
+                    anslutningskostnader, statliga kostnader, byggnadskredit /
+                    ränta, specifikation för specifikationer, utvecklarna andra
+                    tjänstemannakostnader som projektledare, designchef,
+                    byggledare, kvalitetschef och mer.)
                 </Typography>
             </Box>
             <Box
@@ -95,18 +90,14 @@ function getCosts(calculationData, classes) {
             >
                 <Box display={"flex"} flexDirection={"row"}>
                     <Typography className={classes.label}>
-                        Production costs:
+                        Produktionskostnader:
                     </Typography>
-                    <Typography className={classes.value}>
-                        {3000}
-                    </Typography>
+                    <Typography className={classes.value}>{3000}</Typography>
                 </Box>
-                <Typography
-                    className={classes.details}
-                >
-                    (All production costs such as design for construction,
-                    establishment, plastics management, all additional costs
-                    during production, construction fees, and more.)
+                <Typography className={classes.details}>
+                    (Alla produktionskostnader som design för konstruktion,
+                    etablering, plasthantering, alla extra kostnader under
+                    produktionen, byggavgifter och mer.)
                 </Typography>
             </Box>
         </Box>
@@ -126,8 +117,8 @@ const useStyles = makeStyles((theme) => ({
         paddingLeft: theme.spacing(8),
         paddingRight: theme.spacing(8),
         [theme.breakpoints.down("xs")]: {
-            width: "70%"
-        }
+            width: "70%",
+        },
     },
     title: {
         marginTop: theme.spacing(7),
@@ -141,23 +132,23 @@ const useStyles = makeStyles((theme) => ({
         color: "black",
         fontSize: 14,
         [theme.breakpoints.down("xs")]: {
-            fontSize: 14
-        }
+            fontSize: 14,
+        },
     },
     value: {
         marginLeft: "2%",
         fontSize: 14,
         color: "#606060",
         [theme.breakpoints.down("xs")]: {
-            fontSize: 14
-        }
+            fontSize: 14,
+        },
     },
     details: {
         fontSize: 10,
         color: "#606060",
         marginTop: "1%",
         [theme.breakpoints.down("xs")]: {
-            fontSize: 10
-        }
-    }
+            fontSize: 10,
+        },
+    },
 }));

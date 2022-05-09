@@ -30,7 +30,7 @@ export default function ReportTable(props) {
                 <TableBody>
                     <TableRow>
                         <TableCell className={classes.tableCell}></TableCell>
-                        <TableCell className={classes.tableCell} align="center"><Typography style={{color: "#606060"}} className={classes.text}>Exclusive moms</Typography></TableCell>
+                        <TableCell className={classes.tableCell} align="center"><Typography style={{color: "#606060"}} className={classes.text}>Exklusiva moms</Typography></TableCell>
                         <TableCell className={classes.tableCell} align="center"><Typography style={{color: "#606060"}} className={classes.text}>Inklusive moms</Typography></TableCell>
                     </TableRow>
                     {tableItems.map((e) => e)}
