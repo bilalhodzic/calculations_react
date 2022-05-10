@@ -211,5 +211,5 @@ export default function BetweenStepRebuilding (props) {
         props.handleChange("category", prop);
     };
 
-    return <CardRows data={data} handleClickPaper={handleClickPaper} items={items} offset={2} />
+    return <CardRows data={data} handleClickPaper={handleClickPaper} items={items} offset={2} height="50%" />
 }

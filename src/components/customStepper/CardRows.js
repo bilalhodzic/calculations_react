@@ -39,7 +39,7 @@ export default function CardRows(props) {
     });
 
     const rows = [];
-    const offset = props.offset || 3;
+    const offset = props.offset || 4;
 
     for (let i = 0; i < items.length; i += offset) {
         const row = [];
@@ -63,10 +63,9 @@ export default function CardRows(props) {
                 className={`${classes.root} ${
                     i + 3 >= items.length && classes.lastRoot
                 }`}
-                style={{ marginTop: 20 }}
+                style={{ marginTop: 20, height: props.height }}
                 display={"flex"}
                 flexBasis={offset}
-                width={"70%"}
             >
                 {row}
             </Box>
@@ -106,7 +105,7 @@ export default function CardRows(props) {
 }
 
 function addDummyElement(i, offset, length, classes){
-    if(i + 1 >= length){
+    if(i + offset > length){
         return <Paper className={classes.sameSizePaper} />;
     }else if(offset === 3 && i + 2 >= length){
         return <Paper className={classes.halfPaper} />;
@@ -119,7 +118,8 @@ const useStyles = makeStyles((theme) => ({
         justifyContent: "center",
         alignItems: "center",
         marginLeft: "auto",
-        marginRight: "auto",
+        marginRight: "2%",
+        height: "40%",
         [theme.breakpoints.down("xs")]: {
             "&>*": {
                 margin: 10,
@@ -128,7 +128,7 @@ const useStyles = makeStyles((theme) => ({
     },
     paperBox: {
         flex: 1,
-        minHeight: 140,
+        height: "100%",
         textAlign: "center",
         marginLeft: theme.spacing(2),
         marginRight: theme.spacing(2),
