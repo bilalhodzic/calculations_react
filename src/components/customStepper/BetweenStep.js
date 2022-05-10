@@ -22,6 +22,7 @@ export default function BetweenStep(props) {
             data={data}
             handleClickPaper={handleClickPaper}
             items={items}
+            offset={3}
         />
     );
 }
