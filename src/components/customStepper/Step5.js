@@ -54,7 +54,7 @@ export default function Step5(props) {
     const paperItems = standards.map((e, index) => {
         return (
             <Box
-                className={`${classes.paperBox} ${classes.standardsBoxHeight}`}
+                className={`${classes.card}`}
             >
                 <Paper
                     elevation={4}
@@ -89,7 +89,7 @@ export default function Step5(props) {
     });
     const Row = () => (
         <Box
-            className={`${classes.root} ${classes.initialRoot} ${classes.lastRoot}`}
+            className={`${classes.row} ${classes.initialRoot} ${classes.lastRoot}`}
         >
             {paperItems.map((e) => e)}
         </Box>
@@ -137,7 +137,7 @@ export default function Step5(props) {
                     </Box>
                 </Box>
                 <Row/>
-                <Box className={classes.root} style={{ borderTop: "2px solid #21344D", marginTop: "2%", marginLeft: "auto", marginRight: "auto", justifyContent: "space-between", width: "90%"}}>
+                <Box className={classes.root} style={{ borderTop: "2px solid #21344D", marginTop: "2%", marginLeft: "auto", marginRight: "auto", justifyContent: "space-between", width: "90%", height: "7.5vh"}}>
                     <Typography style={{ marginTop: "1%", fontWeight: "bold"}}>Lägst standard</Typography>
                     <Typography style={{ marginTop: "1%", fontWeight: "bold"}}>Högst standard</Typography>
                 </Box>
@@ -158,9 +158,34 @@ const useStyles = makeStyles((theme) => ({
             },
         },
     },
+    row: {
+        display: "flex",
+        flexDirection: "row",
+        justifyContent: "center",
+        flexBasis: 5,
+        [theme.breakpoints.down("xs")]: {
+            flexDirection: "column",
+            display: "inline-flex",
+            "&>*": {
+                margin: 10,
+            },
+        },
+    },
+    card: {
+        display: "flex",
+        width: "13vw",
+        height: "14vh",
+        justifyContent: "center",
+        textAlign: "center",
+        border: "4px solid white",
+        [theme.breakpoints.down("xs")]: {
+            width: "80vw",
+            height: "20vh"
+        }
+    },
     paperBox: {
-        minWidth: 250,
         height: 140,
+        justifyContent: "center",
         textAlign: "center",
         marginLeft: theme.spacing(1),
         marginRight: theme.spacing(1),
@@ -172,10 +197,10 @@ const useStyles = makeStyles((theme) => ({
     standardsBoxHeight: {
         minHeight: 150,
         marginTop: theme.spacing(1),
+        width: "4vw"
     },
     standardsSize: {
-        width: 250,
-        minHeight: 150,
+        width: "100%",
         alignItems: "center",
         justifyContent: "center",
         display: "flex",
