@@ -26,6 +26,13 @@ export default function Login() {
     const history = useHistory();
     const classes = useStyles();
 
+    const onKeyPressed = (props) => {
+        console.log(props);
+        if(props.key === 'Enter'){
+            document.getElementById("submitLogin").click();
+        }
+    }
+
     return (
         <Container className={classes.root}>
             <img
@@ -75,7 +82,7 @@ export default function Login() {
                 className={classes.dialog}
                 onClose={() => setOpenDialog(false)}
             >
-                <Box className={classes.paper}>
+                <Box className={classes.paper} onKeyDown={onKeyPressed}>
                     <Typography className={classes.paperHeader}>
                         {t('Log in.1')}
                     </Typography>
@@ -102,6 +109,7 @@ export default function Login() {
                     />
                     <Button
                         className={classes.button2}
+                        id="submitLogin"
                         onClick={async () => {
                             setIsInvalidLogin(false);
                             setIsLoading(true);
