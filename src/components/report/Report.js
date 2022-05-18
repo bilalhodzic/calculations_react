@@ -211,6 +211,8 @@ const useStyles = makeStyles((theme) => ({
     button: {
         border: "1px solid black",
         background: "white",
+        borderRadius: "8px",
+        boxShadow: "0px 1px 6px rgba(96, 96, 96, 0.25)",
         color: "black",
         fontWeight: 600,
         flex: 1,
