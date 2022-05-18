@@ -76,10 +76,12 @@ export default function Step5(props) {
                 >
                     <abbr title={e.name}>
                         <InfoIcon
-                            style={{ position: "absolute", right: 5, top: 5 }}
+                            style={{ position: "absolute", right: 5, top: 10 }}
                         />
                     </abbr>
-                    {e.icon}
+                    <Box style={{ position: "absolute", left: 15, top: 10}}>
+                        {e.icon}
+                    </Box>
                     <Typography className={classes.standardsText}>
                         {e.value}
                     </Typography>
@@ -137,7 +139,7 @@ export default function Step5(props) {
                     </Box>
                 </Box>
                 <Row/>
-                <Box className={classes.root} style={{ borderTop: "2px solid #21344D", marginTop: "2%", marginLeft: "auto", marginRight: "auto", justifyContent: "space-between", width: "90%", height: "7.5vh"}}>
+                <Box className={classes.root} style={{ borderTop: "2px solid #21344D", marginTop: "2%", marginLeft: "auto", marginRight: "auto", justifyContent: "space-between", width: "80%", height: "7.5vh"}}>
                     <Typography style={{ marginTop: "1%", fontWeight: "bold"}}>Lägst standard</Typography>
                     <Typography style={{ marginTop: "1%", fontWeight: "bold"}}>Högst standard</Typography>
                 </Box>
@@ -173,8 +175,10 @@ const useStyles = makeStyles((theme) => ({
     },
     card: {
         display: "flex",
-        width: "13vw",
+        width: "10vw",
         height: "14vh",
+        marginLeft: "1%",
+        marginRight: "1%",
         justifyContent: "center",
         textAlign: "center",
         border: "4px solid white",
@@ -215,8 +219,9 @@ const useStyles = makeStyles((theme) => ({
         border: "3px solid #21344d",
     },
     standardsText: {
-        fontSize: 18,
+        fontSize: 30,
         fontWeight: 600,
+        color: "black",
         marginTop: theme.spacing(3),
     },
     paperText: {
@@ -238,10 +243,12 @@ const useStyles = makeStyles((theme) => ({
         },
     },
     button: {
-        width: 400,
+        width: "13vw",
         height: 50,
         borderStyle: "solid",
         borderWidth: 2,
+        boxShadow: "0px 1px 6px rgba(96, 96, 96, 0.25)",
+        borderRadius: "8px",
         borderColor: "black",
         backgroundColor: "white",
         color: "#21344d",
