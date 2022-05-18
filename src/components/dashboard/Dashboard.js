@@ -34,11 +34,11 @@ export default function Dashboard() {
         try {
             getLatestCalculations(token).then((data) => {
                 setLatestCalc(data.data);
+                setIsLoading(false);
             });
         } catch (err) {
             setIsLoading(false);
         }
-        setIsLoading(false);
     }, []);
 
     const handleCardClick = (index) => {
