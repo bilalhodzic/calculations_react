@@ -16,7 +16,7 @@ export default function CardRows(props) {
                     props.handleClickPaper(e.category);
                     setSelectedIndex(index);
                 }}
-                className={classes.paperBox}
+                className={`${classes.paperBox} ${props.betweenStep && classes.betweenStepPaperBox}`}
                 style={
                     index === selectedIndex
                         ? { border: "4px solid #21344d" }
@@ -30,8 +30,10 @@ export default function CardRows(props) {
                             />
                         </abbr>
                     )}
-                {e.icon}
-                <Typography className={classes.paperText}>
+                <Box style={props.betweenStep && { marginLeft: "4%"}}>
+                    {e.icon}
+                </Box>
+                <Typography className={`${classes.paperText} ${props.betweenStep && classes.betweenStepText}`}>
                     {e.label}
                 </Typography>
             </Paper>
@@ -117,7 +119,7 @@ const useStyles = makeStyles((theme) => ({
         display: "flex",
         justifyContent: "center",
         alignItems: "center",
-        height: "40%",
+        height: "30%",
         [theme.breakpoints.down("xs")]: {
             "&>*": {
                 margin: 10,
@@ -138,6 +140,10 @@ const useStyles = makeStyles((theme) => ({
             width: "30vw",
         },
         position: "relative"
+    },
+    betweenStepPaperBox: {
+        display: "flex",
+        flexDirection: "row",
     },
     paperText: {
         fontSize: 18,
@@ -162,5 +168,10 @@ const useStyles = makeStyles((theme) => ({
         flex: 0.5,
         marginLeft: theme.spacing(2),
         marginRight: theme.spacing(2),
+    },
+    betweenStepText: {
+        marginTop: "auto",
+        marginBottom: "auto",
+        marginLeft: "5%"
     }
 }));
