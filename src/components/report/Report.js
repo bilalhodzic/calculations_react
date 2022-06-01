@@ -176,7 +176,7 @@ const useStyles = makeStyles((theme) => ({
         width: "15%",
     },
     headerText: {
-        fontSize: 26,
+        fontSize: "2.7vh",
         fontWeight: 500,
         marginLeft: theme.spacing(5),
         [theme.breakpoints.down("xs")]: {
@@ -191,7 +191,7 @@ const useStyles = makeStyles((theme) => ({
         marginLeft: "auto",
         marginRight: theme.spacing(5),
         width: "15%",
-        fontSize: 18,
+        fontSize: "1.9vh",
         fontWeight: 600,
         "&:hover": {
             background: "#21344D",

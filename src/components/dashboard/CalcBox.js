@@ -41,7 +41,7 @@ const useStyles = makeStyles((theme) => ({
     borderRadius: 15,
     height: 100,
     width: 187,
-    fontSize: 19,
+    fontSize: "2vh",
     fontWeight: 400,
     padding: theme.spacing(2),
     display: "inline-block",

@@ -66,7 +66,7 @@ const useStyles = makeStyles((theme) => ({
         flex: 3,
     },
     paperText: {
-        fontSize: 22,
+        fontSize: "2.3vh",
         fontWeight: 600,
         color: "black",
         [theme.breakpoints.down("xs")]: {
@@ -78,7 +78,7 @@ const useStyles = makeStyles((theme) => ({
         backgroundColor: "#21344D",
         borderRadius: 42,
         textTransform: "none",
-        fontSize: 18,
+        fontSize: "1.9vh",
         color: "white",
         "&:hover": {
             background: "#1b2c44",

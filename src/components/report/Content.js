@@ -51,7 +51,7 @@ const useStyles = makeStyles((theme) => ({
     },
     title: {
         fontWeight: 600,
-        fontSize: 18
+        fontSize: "1.9vh"
     },
     leftSide: {
         marginRight: "auto"

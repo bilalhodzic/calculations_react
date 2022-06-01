@@ -91,7 +91,7 @@ const useStyles = makeStyles((theme) => ({
     position: "absolute",
     left: calculate(128),
     top: calculate(371, 1324),
-    fontSize: 15,
+    fontSize: "1.6vh",
     maxWidth: 820,
   },
   header: {

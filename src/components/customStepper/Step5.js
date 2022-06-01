@@ -219,13 +219,13 @@ const useStyles = makeStyles((theme) => ({
         border: "3px solid #21344d",
     },
     standardsText: {
-        fontSize: 30,
+        fontSize: "3.1vh",
         fontWeight: 600,
         color: "black",
         marginTop: theme.spacing(3),
     },
     paperText: {
-        fontSize: 20,
+        fontSize: "2.1vh",
         fontWeight: 600,
         color: "black",
         [theme.breakpoints.down("xs")]: {
@@ -253,7 +253,7 @@ const useStyles = makeStyles((theme) => ({
         backgroundColor: "white",
         color: "#21344d",
         fontWeight: "1000",
-        fontSize: 18,
+        fontSize: "1.9vh",
         "&:hover": {
             color: "white",
             backgroundColor: "#21344d",

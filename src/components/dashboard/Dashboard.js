@@ -120,7 +120,7 @@ const useStyles = makeStyles((theme) => ({
         padding: theme.spacing(5),
         paddingLeft: theme.spacing(8),
         paddingRight: theme.spacing(8),
-        fontSize: 31,
+        fontSize: "3.2vh",
         fontFamily: "Poppins",
         color: "black",
         fontWeight: 500,
@@ -151,7 +151,7 @@ const useStyles = makeStyles((theme) => ({
         height: "30vh",
         boxShadow: "0px 6px 14px 3px rgba(186, 186, 186, 0.28)",
         borderRadius: 15,
-        fontSize: 15,
+        fontSize: "1.6vh",
         fontWeight: 600,
         position: "relative",
         textAlign: "center",
@@ -175,7 +175,7 @@ const useStyles = makeStyles((theme) => ({
     menuName: {
         fontWeight: 600,
         margin: 8,
-        fontSize: 18,
+        fontSize: "1.9vh",
     },
     root: {
         display: "flex",

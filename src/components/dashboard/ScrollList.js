@@ -77,7 +77,7 @@ export default function ScrollList(props) {
                 {el.name}
               </Typography>
               <Typography
-                style={{ color: "#6B6B6B", fontSize: 13.69, margin: 10 }}
+                style={{ color: "#6B6B6B", fontSize: "1.4vh", margin: 10 }}
               >
                 {el.price}$
               </Typography>
@@ -111,7 +111,7 @@ const useStyles = makeStyles((theme) => ({
     height: 200,
     boxShadow: "0px 0px 14px 3px rgba(0, 0, 0, 0.25)",
     borderRadius: 15,
-    fontSize: 15,
+    fontSize: "1.6vh",
     fontWeight: 600,
     position: "relative",
     textAlign: "center",
@@ -138,7 +138,7 @@ const useStyles = makeStyles((theme) => ({
     position: "absolute",
     bottom: 10,
     right: 10,
-    fontSize: 13.69,
+    fontSize: "1.4vh",
     fontWeight: 400,
   },
   arrowBtn: (props) => ({

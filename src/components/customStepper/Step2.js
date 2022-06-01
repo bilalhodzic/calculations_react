@@ -28,7 +28,7 @@ export default function Step2(props) {
     const [projectNumber, setProjectNumber] = React.useState(props.data.projectNumber || 0);
 
     const inputLabelProps = {
-        fontSize: 16,
+        fontSize: "1.7vh",
         fontWeight: "bold",
         color: "black",
         textAlign: "start",

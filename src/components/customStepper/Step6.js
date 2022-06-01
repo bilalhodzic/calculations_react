@@ -119,7 +119,7 @@ const useStyles = makeStyles((theme) => ({
         },
     },
     paperText: {
-        fontSize: 24,
+        fontSize: "2.5vh",
         fontWeight: 600,
         color: "black",
         [theme.breakpoints.down("xs")]: {

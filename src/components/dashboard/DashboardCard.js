@@ -49,7 +49,7 @@ const useStyles = makeStyles((theme) => ({
         minHeight: "90%",
         boxShadow: "0px 6px 14px 3px rgba(186, 186, 186, 0.28)",
         borderRadius: 15,
-        fontSize: 15,
+        fontSize: "1.6vh",
         fontWeight: 600,
         position: "relative",
         textAlign: "center",

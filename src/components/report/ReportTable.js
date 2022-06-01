@@ -23,7 +23,7 @@ export default function ReportTable(props) {
                 <TableHead>
                     <TableRow>
                         <TableCell className={classes.titleCell} colSpan={3} align="center">
-                            <Typography style={{color: "white", fontSize: 18}} className={classes.titleText}>{props.title}</Typography>
+                            <Typography style={{color: "white", fontSize: "1.9vh"}} className={classes.titleText}>{props.title}</Typography>
                         </TableCell>
                     </TableRow>
                 </TableHead>
@@ -69,13 +69,13 @@ const useStyles = makeStyles((theme) => ({
         background: "#21344D"
     },
     titleText: {
-        fontSize: 16,
+        fontSize: "1.7vh",
         [theme.breakpoints.down("xs")]: {
             fontSize: 16
         }
     },
     text: {
-        fontSize: 14,
+        fontSize: "1.5vh",
         [theme.breakpoints.down("xs")]: {
             fontSize: 14
         }

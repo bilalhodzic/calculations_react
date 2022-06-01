@@ -66,14 +66,14 @@ const useStyles = makeStyles((theme) => ({
     },
     title: {
         marginTop: theme.spacing(2),
-        fontSize: 30,
+        fontSize: "3.1vh",
         textAlign: "center",
         color: "#21344D",
         fontWeight: 600,
     },
     type: {
         textAlign: "center",
-        fontSize: 22
+        fontSize: "2.3vh"
     },
     footer: {
         position: "absolute",

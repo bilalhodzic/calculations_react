@@ -325,20 +325,20 @@ const useStyles = makeStyles((theme) => ({
     title: {
         marginTop: theme.spacing(7),
         marginBottom: theme.spacing(5),
-        fontSize: 30,
+        fontSize: "3.1vh",
         textAlign: "center",
         color: "#21344D",
         fontWeight: 600,
     },
     label: {
         color: "black",
-        fontSize: 14,
+        fontSize: "1.5vh",
         [theme.breakpoints.down("xs")]: {
             fontSize: 14,
         },
     },
     value: {
-        fontSize: 14,
+        fontSize: "1.5vh",
         color: "#606060",
         [theme.breakpoints.down("xs")]: {
             fontSize: 14,
@@ -351,7 +351,7 @@ const useStyles = makeStyles((theme) => ({
         },
     },
     details: {
-        fontSize: 10,
+        fontSize: "1.1vh",
         color: "#606060",
         [theme.breakpoints.down("xs")]: {
             fontSize: 10,

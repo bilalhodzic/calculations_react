@@ -202,7 +202,7 @@ export default function Calctable(props) {
             >
                 <Box className={classes.paper}>
                     <WarningIcon />
-                    <Typography style={{ fontSize: 21.37 }}>
+                    <Typography style={{ fontSize: "2.2vh" }}>
                         Are you Sure?
                     </Typography>
                     <Button
@@ -235,7 +235,7 @@ const useStyles = makeStyles((theme) => ({
         height: "100%",
         "& .headerClass": {
             fontWeight: 500,
-            fontSize: 20,
+            fontSize: "2.1vh",
             color: "black",
         },
         "& .typeClass": {
@@ -257,7 +257,7 @@ const useStyles = makeStyles((theme) => ({
     },
     headerClass: {
         fontWeight: 500,
-        fontSize: 20,
+        fontSize: "2.1vh",
         color: "black",
     },
     paper: {
@@ -288,7 +288,7 @@ const useStyles = makeStyles((theme) => ({
         textTransform: "none",
         width: 122,
         height: 46,
-        fontSize: 17.41,
+        fontSize: "1.8vh",
         fontWeight: 500,
         marginInline: theme.spacing(1),
         [theme.breakpoints.down("xs")]: {
@@ -298,13 +298,13 @@ const useStyles = makeStyles((theme) => ({
         },
     },
     titleLeft: {
-        fontSize: 18,
+        fontSize: "1.9vh",
         position: "absolute",
         left: 0,
         marginLeft: "30%"
     },
     titleRight: {
-        fontSize: 18,
+        fontSize: "1.9vh",
         position: "absolute",
         right: 0,
         marginRight: "25%"

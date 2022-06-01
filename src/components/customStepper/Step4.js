@@ -151,7 +151,7 @@ const useStyles = makeStyles((theme) => ({
     },
     inputLabel: {
         marginBottom: 20,
-        fontSize: 18,
+        fontSize: "1.9vh",
         color: "black",
         fontWeight: "bold",
     },
@@ -166,7 +166,7 @@ const useStyles = makeStyles((theme) => ({
         boxShadow: "0px 1px 6px rgba(96, 96, 96, 0.25)",
         color: "#21344d",
         fontWeight: "1000",
-        fontSize: 18,
+        fontSize: "1.9vh",
         "&:hover": {
             color: "white",
             backgroundColor: "#21344d",

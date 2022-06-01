@@ -24,7 +24,7 @@ export default function NewCalculation() {
 
     const customSteps = steps.map((e, index) => {
         const style = {
-            fontSize: 18,
+            fontSize: "1.9vh",
             color: "grey",
             fontWeight: 600,
             margin: 15,
@@ -32,7 +32,7 @@ export default function NewCalculation() {
         };
         if (index === steps.length - 1) {
             style.color = "black";
-            style.fontSize = 21;
+            style.fontSize = "2.2vh";
         }
         if (index !== 0) {
             return (

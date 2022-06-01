@@ -108,7 +108,7 @@ const useStyles = makeStyles((theme) => ({
     },
     title: {
         color: "#21344D",
-        fontSize: 70,
+        fontSize: "7.1vh",
         fontWeight: 900,
         margin: "0 auto",
         textAlign: "center",
@@ -129,7 +129,7 @@ const useStyles = makeStyles((theme) => ({
         paddingRight: theme.spacing(8),
         boxShadow: "1px 1px 14px 8px rgba(0, 0, 0, 0.25)",
         maxHeight: "80vh",
-        fontSize: 31,
+        fontSize: "3.2vh",
         fontFamily: "Poppins",
         color: "black",
         fontWeight: 500,
@@ -168,7 +168,7 @@ const useStyles = makeStyles((theme) => ({
               color: "white"
           },
           textTransform: "none",
-          fontSize: 20,
+          fontSize: "2.1vh",
           fontWeight: 600,
       },
       image: {

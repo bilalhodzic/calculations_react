@@ -202,7 +202,7 @@ const useStyles = makeStyles((theme) => ({
         position: "absolute",
         left: calculate(128),
         top: calculate(300, 1024),
-        fontSize: 15,
+        fontSize: "1.6vh",
         maxWidth: 620,
     },
     header: {
@@ -250,7 +250,7 @@ const useStyles = makeStyles((theme) => ({
         textTransform: "none",
         fontWeight: 500,
         color: "white",
-        fontSize: "22.81px",
+        fontSize: "2.3vh",
         "&:hover": {
             background: "#1b2c44",
         },
@@ -276,13 +276,13 @@ const useStyles = makeStyles((theme) => ({
     },
     paperHeader: {
         color: "#606060",
-        fontSize: 35,
+        fontSize: "3.6vh",
         fontWeight: 600,
         marginTop: 30,
     },
     paperText: {
         color: "#797979",
-        fontSize: 20,
+        fontSize: "2.1vh",
         fontWeight: 500,
         marginTop: 10,
     },
@@ -293,14 +293,14 @@ const useStyles = makeStyles((theme) => ({
         borderRadius: 18.67,
         margin: theme.spacing(3.5),
         paddingLeft: theme.spacing(3),
-        fontSize: 18,
+        fontSize: "1.9vh",
         [theme.breakpoints.down("xs")]: {
             width: 250,
             fontSize: 15,
         },
     },
     errorMessage: {
-      fontSize: 12,
+      fontSize: "1.3vh",
       color: "red",
       fontWeight: "bold",
       marginTop: theme.spacing(-2),

@@ -65,7 +65,7 @@ export default function Step3(props) {
                                     endAdornment: (
                                         <InputAdornment position="end">
                                             <Typography
-                                                style={{ fontSize: 14 }}
+                                                style={{ fontSize: "1.5vh" }}
                                             >
                                                 {entry.placeholder}
                                                 <sup>{entry.superscript}</sup>

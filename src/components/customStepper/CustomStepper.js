@@ -423,7 +423,7 @@ const useStyles = makeStyles((theme) => ({
         textAlign: "center",
     },
     stepLabel: {
-        fontSize: 26,
+        fontSize: "2.7vh",
         marginBottom: theme.spacing(2),
         color: "black",
         textAlign: "center",
@@ -435,10 +435,10 @@ const useStyles = makeStyles((theme) => ({
         fontWeight: 600,
         color: "black",
         marginLeft: theme.spacing(3),
-        fontSize: 20,
+        fontSize: "2.1vh",
     },
     icon: {
-        fontSize: 25,
+        fontSize: "2.6vh",
         "& svg": {
             width: 45,
             height: 45,
@@ -474,7 +474,7 @@ const useStyles = makeStyles((theme) => ({
         width: 30,
         height: 30,
         borderRadius: "50%",
-        fontSize: 20,
+        fontSize: "2.1vh",
         alignItems: "center",
         justifyContent: "center"
     },
