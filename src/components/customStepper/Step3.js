@@ -94,8 +94,8 @@ export default function Step3(props) {
         form.push(
             <Box className={`${classes.root} ${i + 3 >= formItems.length && classes.lastRoot}`}>
                 {formItems[i]}
-                {i + 1 < formItems.length ? formItems[i + 1] : null}
-                {i + 2 < formItems.length ? formItems[i + 2] : null}
+                {i + 1 < formItems.length && formItems[i + 1]}
+                {i + 2 < formItems.length && formItems[i + 2]}
             </Box>
         );
     }
@@ -119,10 +119,12 @@ function initializeItems(props, fields){
 
 const useStyles = makeStyles((theme) => ({
     root: {
+        width: "65%",
+        marginLeft: "auto",
+        marginRight: "auto",
         display: "flex",
-        justifyContent: "center",
         alignItems: "center",
-        marginBottom: theme.spacing(5),
+        marginTop: theme.spacing(5),
         [theme.breakpoints.down("xs")]: {
             flexDirection: "column",
             justifyContent: "center",

@@ -79,7 +79,7 @@ export default function Step5(props) {
                             style={{ position: "absolute", right: 5, top: 10 }}
                         />
                     </abbr>
-                    <Box style={{ position: "absolute", left: 15, top: 10}}>
+                    <Box className={classes.paperIcon}>
                         {e.icon}
                     </Box>
                     <Typography className={classes.standardsText}>
@@ -100,14 +100,7 @@ export default function Step5(props) {
     return (
         <Box maxHeight={"80vh"} overflow="auto">
             <Scrollbars style={{ width: "100%", height: "45vh" }}>
-                <Box className={classes.root}>
-                    <Box className={classes.paperBox} style={{ height: 80 }}>
-                        <Typography className={classes.paperText}>
-                            {t("Choose your standard.1")}
-                        </Typography>
-                    </Box>
-                </Box>
-                <Box className={classes.root}>
+                <Box className={classes.root} style={{ marginTop: "3%"}}>
                     <Box
                         className={`${classes.paperBox} ${classes.buttonGroup}`}
                         style={{ height: 80 }}
@@ -222,7 +215,7 @@ const useStyles = makeStyles((theme) => ({
         fontSize: "3.1vh",
         fontWeight: 600,
         color: "black",
-        marginTop: theme.spacing(3),
+        marginTop: "2%",
     },
     paperText: {
         fontSize: "2.1vh",
@@ -278,4 +271,13 @@ const useStyles = makeStyles((theme) => ({
             paddingBottom: theme.spacing(8),
         },
     },
+    paperIcon: {
+        display: "flex",
+        flexDirection: "column",
+        maxWidth: "30%",
+        maxHeight: "40%",
+        marginLeft: "7%",
+        marginRight: "auto",
+        marginTop: "-12%"
+    }
 }));
