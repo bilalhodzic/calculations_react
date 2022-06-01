@@ -30,12 +30,14 @@ export default function CardRows(props) {
                             />
                         </abbr>
                     )}
-                <Box style={props.betweenStep && { marginLeft: "4%"}}>
+                <Box className={classes.paperIcon} style={props.betweenStep && { marginLeft: "4%"}}>
                     {e.icon}
                 </Box>
-                <Typography className={`${classes.paperText} ${props.betweenStep && classes.betweenStepText}`}>
-                    {e.label}
-                </Typography>
+                <Box className={props.betweenStep && classes.textContainer}>
+                    <Typography className={`${classes.paperText} ${props.betweenStep && classes.betweenStepText}`}>
+                        {e.label}
+                    </Typography>
+                </Box>
             </Paper>
         );
     });
@@ -145,8 +147,12 @@ const useStyles = makeStyles((theme) => ({
         display: "flex",
         flexDirection: "row",
     },
+    textContainer: {
+        display: "flex",
+        width: "85%"
+    },
     paperText: {
-        fontSize: 18,
+        fontSize: "1.9vh",
         fontWeight: 600,
         color: "black",
         [theme.breakpoints.down("xs")]: {
@@ -154,7 +160,7 @@ const useStyles = makeStyles((theme) => ({
         },
     },
     lastRoot: {
-        paddingBottom: theme.spacing(2),
+        paddingBottom: theme.spacing(4),
         [theme.breakpoints.down("xs")]: {
             paddingBottom: theme.spacing(8),
         },
@@ -173,5 +179,16 @@ const useStyles = makeStyles((theme) => ({
         marginTop: "auto",
         marginBottom: "auto",
         marginLeft: "5%"
+    },
+    paperIcon: {
+        display: "flex",
+        flexDirection: "column",
+        maxWidth: "50%",
+        maxHeight: "70%",
+        justifyContent: "center",
+        alignItems: "center",
+        marginLeft: "auto",
+        marginRight: "auto",
+        marginBottom: "2%"
     }
 }));
