@@ -86,10 +86,8 @@ export default function Step6(props) {
                         ></TextField>
                     </Box>
                 </Box>
-                <Box className={classes.root}>
-                    <Box className={classes.paperBox}>
-                        <DatePickerIcon className={classes.svg}/>
-                    </Box>
+                <Box className={classes.paperIcon}>
+                    <DatePickerIcon className={classes.svg}/>
                 </Box>
             </Scrollbars>
         </Box>
@@ -100,6 +98,7 @@ const useStyles = makeStyles((theme) => ({
     root: {
         display: "flex",
         justifyContent: "center",
+        maxHeight: "50%",
         [theme.breakpoints.down("xs")]: {
             flexDirection: "column",
             alignItems: "center"
@@ -141,5 +140,16 @@ const useStyles = makeStyles((theme) => ({
         [theme.breakpoints.down("xs")]: {
             paddingBottom: theme.spacing(8)
         }
+    },
+    paperIcon: {
+        display: "flex",
+        flexDirection: "column",
+        maxWidth: "30%",
+        maxHeight: "40%",
+        justifyContent: "center",
+        alignItems: "center",
+        marginLeft: "auto",
+        marginRight: "auto",
+        marginBottom: "2%"
     }
 }));

@@ -46,7 +46,7 @@ const useStyles = makeStyles((theme) => ({
         display: "flex",
         flexDirection: "column",
         width: "25%",
-        minHeight: "90%",
+        height: "90%",
         boxShadow: "0px 6px 14px 3px rgba(186, 186, 186, 0.28)",
         borderRadius: 15,
         fontSize: "1.6vh",

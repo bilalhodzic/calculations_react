@@ -121,7 +121,7 @@ const useStyles = makeStyles((theme) => ({
         display: "flex",
         justifyContent: "center",
         alignItems: "center",
-        height: "30%",
+        height: "25%",
         [theme.breakpoints.down("xs")]: {
             "&>*": {
                 margin: 10,

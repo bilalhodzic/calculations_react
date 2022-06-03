@@ -179,8 +179,9 @@ const useStyles = makeStyles((theme) => ({
     },
     root: {
         display: "flex",
+        flexDirection: "row",
         justifyContent: "center",
-        height: "50%",
+        height: "40%",
         [theme.breakpoints.down("xs")]: {
             // flexDirection: "column",
             // display: "inline-flex",
