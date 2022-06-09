@@ -25,9 +25,9 @@ export default function CardRows(props) {
             >
                 {e.info && (
                         <abbr title={e.info}>
-                            <InfoIcon
-                                style={{ position: "absolute", right: 5 }}
-                            />
+                            <Box className={classes.infoIconContainer}>
+                                <InfoIcon />
+                            </Box>
                         </abbr>
                     )}
                 <Box className={classes.paperIcon} style={props.betweenStep && { marginLeft: "4%"}}>
@@ -190,5 +190,13 @@ const useStyles = makeStyles((theme) => ({
         marginLeft: "auto",
         marginRight: "auto",
         marginBottom: "2%"
+    },
+    infoIconContainer: {
+        position: "absolute",
+        right: 5,
+        display: "flex",
+        flexDirection: "column",
+        maxHeight: "20%",
+        maxWidth: "10%"
     }
 }));

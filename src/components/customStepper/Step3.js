@@ -29,9 +29,11 @@ export default function Step3(props) {
                     {entry.label}{" "}
                     {entry.info ? (
                         <abbr title={entry.info}>
-                            <InfoIcon
-                                style={{ height: 12, width: 12, marginLeft: 5 }}
-                            />
+                            <Box className={classes.infoIconContainer}>
+                                <InfoIcon
+                                    // style={{ height: 12, width: 12, marginLeft: 5 }}
+                                />
+                            </Box>
                         </abbr>
                     ) : null}
                 </InputLabel>
@@ -174,4 +176,13 @@ const useStyles = makeStyles((theme) => ({
             margin: 0
         }
     },
+    infoIconContainer: {
+        position: "absolute",
+        top: 0,
+        right: 5,
+        display: "flex",
+        flexDirection: "column",
+        maxHeight: "20%",
+        maxWidth: "10%"
+    }
 }));

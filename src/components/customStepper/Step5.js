@@ -75,9 +75,9 @@ export default function Step5(props) {
                     }}
                 >
                     <abbr title={e.name}>
-                        <InfoIcon
-                            style={{ position: "absolute", right: 5, top: 10 }}
-                        />
+                        <Box className={classes.infoIconContainer}>
+                            <InfoIcon />
+                        </Box>
                     </abbr>
                     <Box className={classes.paperIcon}>
                         {e.icon}
@@ -279,5 +279,14 @@ const useStyles = makeStyles((theme) => ({
         marginLeft: "7%",
         marginRight: "auto",
         marginTop: "-12%"
+    },
+    infoIconContainer: {
+        position: "absolute",
+        top: 5,
+        right: 5,
+        display: "flex",
+        flexDirection: "column",
+        maxHeight: "20%",
+        maxWidth: "15%"
     }
 }));
