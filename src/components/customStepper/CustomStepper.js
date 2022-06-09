@@ -367,10 +367,10 @@ export default function CustomStepper(props) {
                     className={classes.stepBtn}
                     style={{
                         marginLeft: 30,
-                        color: "white",
+                        color: "#21344d",
+                        background: "white",
                         visibility: activeStep === 0 ? "hidden" : "initial",
                     }}
-                    color="secondary"
                     variant="contained"
                 >
                     {t("Previous.1")}
